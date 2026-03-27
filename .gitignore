@@ -1,0 +1,10 @@
+# 运行时生成，不提交
+2.0/user-data.json
+2.0/.port
+2.0/__pycache__/
+2.0/node_modules/
+2.0/package-lock.json
+2.0/.playwright-cli/
+2.0/artifacts/
+*.DS_Store
+.daemon.pid

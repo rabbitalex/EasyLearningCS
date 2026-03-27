@@ -1,0 +1,223 @@
+/* ===== 代码交互区 ===== */
+.code-playground {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-secondary);
+  overflow: hidden;
+}
+
+.playground-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-card);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 0.7rem;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-muted);
+  font-family: var(--font-main);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  transition: var(--transition);
+  position: relative;
+}
+
+.tab-btn:hover { color: var(--text-secondary); background: rgba(108, 92, 231, 0.04); }
+
+.tab-btn.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+  background: rgba(108, 92, 231, 0.06);
+}
+
+.tab-content {
+  display: none;
+  flex: 1;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.tab-content.active { display: flex; }
+
+/* 编辑器工具栏 */
+.editor-toolbar {
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.5rem 0.8rem;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-card);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.btn-run, .btn-step-run, .btn-reset, .btn-copy, .btn-clear {
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-family: var(--font-main);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: var(--transition);
+}
+
+.btn-run {
+  background: linear-gradient(135deg, var(--success), #00a884);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 2px 10px rgba(0, 184, 148, 0.25);
+}
+
+.btn-run:hover {
+  box-shadow: 0 4px 18px rgba(0, 184, 148, 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-run:active { transform: translateY(0) scale(0.98); }
+
+.btn-step-run {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 2px 10px rgba(108, 92, 231, 0.25);
+}
+
+.btn-step-run:hover {
+  box-shadow: 0 4px 18px rgba(108, 92, 231, 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-reset:hover, .btn-copy:hover, .btn-clear:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: rgba(108, 92, 231, 0.06);
+}
+
+/* 代码编辑器 */
+.code-editor-wrapper {
+  flex: 1;
+  display: flex;
+  position: relative;
+  overflow: auto;
+  background: var(--bg-code);
+  min-height: 200px;
+}
+
+.line-numbers {
+  padding: 0.8rem 0.6rem;
+  text-align: right;
+  font-family: var(--font-code);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  user-select: none;
+  line-height: 1.6;
+  min-width: 40px;
+  background: rgba(0, 0, 0, 0.15);
+  border-right: 1px solid var(--border-color);
+}
+
+.code-editor {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  background: transparent;
+  border: none;
+  resize: none;
+  outline: none;
+  font-family: var(--font-code);
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+  tab-size: 4;
+  white-space: pre;
+  caret-color: var(--primary);
+}
+
+.code-editor::placeholder { color: var(--text-muted); }
+
+.current-line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1.312rem;
+  background: rgba(255, 152, 0, 0.18);
+  border-left: 3px solid #FF9800;
+  pointer-events: none;
+  display: none;
+  transition: top 0.2s ease;
+}
+
+.current-line-highlight::after {
+  content: '';
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 8px solid #FF9800;
+  filter: drop-shadow(0 0 3px rgba(255, 152, 0, 0.5));
+}
+
+.current-line-highlight.visible { display: block; }
+
+/* 输出区域 */
+.output-header, .variables-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.8rem;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+}
+
+.var-hint {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.output-area {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  overflow-y: auto;
+  font-family: var(--font-code);
+  font-size: 0.82rem;
+  line-height: 1.7;
+  background: var(--bg-code);
+  min-height: 150px;
+}
+
+.output-placeholder { color: var(--text-muted); }
+
+.output-line {
+  animation: outputSlideIn 0.3s ease forwards;
+  padding: 1px 0;
+}
+
+@keyframes outputSlideIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.output-error { color: var(--danger); }
+.output-success { color: var(--success); }
+

@@ -1,0 +1,469 @@
+/* ========== Sidebar - 彩色卡通侧边栏 ========== */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: var(--bg-sidebar);
+  border-right: none;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: transform 0.3s ease;
+  box-shadow: 4px 0 30px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar-header {
+  padding: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.logo-icon {
+  font-size: 2.2rem;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.15));
+}
+
+.logo-text {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #FFFFFF;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  -webkit-text-fill-color: #FFFFFF;
+  background: none;
+  cursor: default;
+  user-select: none;
+}
+
+.progress-overview {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  cursor: default;
+  user-select: none;
+}
+
+.progress-bar-inline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.35rem;
+}
+
+.progress-bar-inline .progress-label {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.7);
+  font-weight: 700;
+}
+
+.progress-bar-inline .progress-pct {
+  font-size: 0.78rem;
+  color: #FFFFFF;
+  font-weight: 900;
+}
+
+.progress-bar-track {
+  height: 8px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar-fill-inline {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary));
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.course-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.6rem;
+}
+
+.course-nav::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.3);
+}
+
+/* ========== 全部展开/收起按钮 ========== */
+.nav-global-actions {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+.nav-action-btn {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+  border-radius: 6px;
+  padding: 4px 7px;
+  font-size: 0.65rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.nav-action-btn:hover {
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.9);
+}
+
+/* ========== 卷（Volume）样式 ========== */
+.nav-volume {
+  margin-bottom: 0.4rem;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: border-color 0.3s;
+}
+.nav-volume:hover {
+  border-color: rgba(255,255,255,0.1);
+}
+.nav-volume.expanded {
+  border-color: var(--vol-color, rgba(255,255,255,0.15));
+  background: rgba(255,255,255,0.04);
+}
+.nav-volume-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 0.7rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s;
+  border-bottom: 1px solid transparent;
+}
+.nav-volume.expanded > .nav-volume-header {
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-volume-header:hover {
+  background: rgba(255,255,255,0.06);
+}
+.nav-volume-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.nav-vol-arrow {
+  font-size: 0.55rem;
+  color: rgba(255,255,255,0.4);
+  transition: transform 0.3s ease, color 0.3s;
+}
+.nav-volume.expanded .nav-vol-arrow {
+  transform: rotate(90deg);
+  color: var(--vol-color, #FF9800);
+}
+.nav-volume-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.nav-volume-name {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.5px;
+  cursor: default;
+  pointer-events: none;
+}
+.nav-volume.expanded .nav-volume-name {
+  color: var(--vol-color, rgba(255,255,255,0.9));
+}
+.nav-volume.active-parent .nav-volume-name {
+  color: var(--vol-color, #FF9800);
+}
+.nav-volume-body {
+  display: none;
+  padding: 0.3rem 0;
+}
+.nav-volume-body.expanded {
+  display: block;
+  animation: volExpand 0.25s ease forwards;
+}
+@keyframes volExpand {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.nav-volume-tree {
+  position: relative;
+  padding-left: 0.3rem;
+}
+
+/* ========== 章节样式（在卷内部） ========== */
+.nav-chapter {
+  margin-bottom: 0.1rem;
+  padding: 0 0.2rem;
+  position: relative;
+}
+
+/* 章节之间的树状竖线 */
+.nav-volume-tree > .nav-chapter:not(.last-in-volume)::before {
+  content: '';
+  position: absolute;
+  left: 1.05rem;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255,255,255,0.1);
+  z-index: 0;
+}
+
+.nav-chapter-title {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.42rem 0.55rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.8);
+  position: relative;
+  z-index: 1;
+}
+.nav-chapter-title:hover {
+  background: rgba(255,255,255,0.08);
+}
+.nav-chapter-title .nav-arrow {
+  color: rgba(255,255,255,0.35);
+  font-size: 0.55rem;
+  transition: transform 0.3s, color 0.3s;
+  flex-shrink: 0;
+  width: 0.7rem;
+  text-align: center;
+}
+.nav-chapter-title.expanded .nav-arrow {
+  transform: rotate(90deg);
+  color: var(--vol-color, rgba(255,255,255,0.7));
+}
+.nav-chapter-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.3;
+}
+.nav-ch-badge {
+  font-size: 0.58rem;
+  color: rgba(255,255,255,0.3);
+  font-weight: 600;
+  background: rgba(255,255,255,0.06);
+  padding: 1px 6px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ========== 课程列表（树状连接线） ========== */
+.nav-lessons {
+  display: none;
+  padding-left: 0.5rem;
+  margin-left: 1rem;
+  border-left: 1px solid rgba(255,255,255,0.1);
+  position: relative;
+}
+.nav-lessons.expanded {
+  display: block;
+  animation: treeExpand 0.2s ease forwards;
+}
+@keyframes treeExpand {
+  from { opacity: 0; transform: translateY(-3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.nav-lesson {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.5rem 0.35rem 0.9rem;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.6);
+  transition: background 0.2s, color 0.2s;
+  font-weight: 600;
+  position: relative;
+}
+
+/* 课程水平连接线 */
+.nav-lesson::before {
+  content: '';
+  position: absolute;
+  left: -0.5rem;
+  top: 50%;
+  width: 0.65rem;
+  height: 1px;
+  background: rgba(255,255,255,0.1);
+}
+
+/* 最后一个课程截断竖线 */
+.nav-lesson.last-lesson::after {
+  content: '';
+  position: absolute;
+  left: calc(-0.5rem - 1px);
+  top: 50%;
+  bottom: -999px;
+  width: 1px;
+  background: var(--sidebar-bg, #1b2838);
+}
+
+/* 课程节点圆点 */
+.nav-lesson-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.18);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.45rem;
+  color: transparent;
+  transition: all 0.25s;
+}
+.nav-lesson-text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.nav-lesson:hover {
+  background: rgba(255,255,255,0.08);
+  color: #FFFFFF;
+}
+.nav-lesson:hover .nav-lesson-dot {
+  border-color: rgba(255,255,255,0.35);
+}
+.nav-lesson.active {
+  background: rgba(255, 152, 0, 0.18);
+  color: #FFFFFF;
+  font-weight: 800;
+}
+.nav-lesson.active .nav-lesson-dot {
+  border-color: var(--vol-color, #FF9800);
+  background: var(--vol-color, #FF9800);
+  box-shadow: 0 0 6px color-mix(in srgb, var(--vol-color, #FF9800) 40%, transparent);
+}
+.nav-lesson.completed .nav-lesson-dot {
+  border-color: #69F0AE;
+  background: #69F0AE;
+  color: #1a2332;
+  font-size: 0.45rem;
+}
+.nav-lesson.completed .nav-lesson-dot i {
+  display: block;
+}
+
+/* ========== 各卷颜色主题 ========== */
+.nav-volume-theory .nav-lesson.active { background: rgba(108, 92, 231, 0.15); }
+.nav-volume-theory .nav-lesson.active .nav-lesson-dot { border-color: #6c5ce7; background: #6c5ce7; box-shadow: 0 0 6px rgba(108,92,231,0.4); }
+
+.nav-volume-python .nav-lesson.active { background: rgba(0, 206, 201, 0.15); }
+.nav-volume-python .nav-lesson.active .nav-lesson-dot { border-color: #00cec9; background: #00cec9; box-shadow: 0 0 6px rgba(0,206,201,0.4); }
+
+.nav-volume-dsa .nav-lesson.active { background: rgba(253, 121, 168, 0.15); }
+.nav-volume-dsa .nav-lesson.active .nav-lesson-dot { border-color: #fd79a8; background: #fd79a8; box-shadow: 0 0 6px rgba(253,121,168,0.4); }
+
+.nav-volume-cpp .nav-lesson.active { background: rgba(9, 132, 227, 0.15); }
+.nav-volume-cpp .nav-lesson.active .nav-lesson-dot { border-color: #0984e3; background: #0984e3; box-shadow: 0 0 6px rgba(9,132,227,0.4); }
+
+.sidebar-bottom-nav {
+  padding: 0.4rem 0.5rem;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  flex-direction: row;
+  gap: 0.25rem;
+}
+
+.sidebar-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  flex: 1;
+  padding: 0.45rem 0.4rem;
+  border-radius: 10px;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+  background: transparent;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.sidebar-nav-btn:hover {
+  background: rgba(255,255,255,0.15);
+  color: #FFFFFF;
+}
+
+.sidebar-nav-btn.active {
+  background: rgba(255,255,255,0.25);
+  color: #FFFFFF;
+}
+
+.sidebar-nav-btn i {
+  width: 18px;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.sidebar-footer {
+  padding: 0.8rem 1rem;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.github-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.7);
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+  background: rgba(255,255,255,0.1);
+}
+
+.github-link:hover {
+  background: rgba(255,255,255,0.25);
+  color: #FFFFFF;
+  transform: scale(1.1);
+}
+
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 99;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.sidebar-overlay.show {
+  display: block;
+  opacity: 1;
+}
+

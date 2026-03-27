@@ -1,0 +1,268 @@
+/* 变量追踪器 */
+.variables-tracker {
+  position: absolute;
+  right: 1rem;
+  top: 60px;
+  width: 220px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+  z-index: 20;
+  overflow: hidden;
+  transition: var(--transition);
+  max-height: 300px;
+}
+
+.variables-tracker.collapsed { max-height: 40px; }
+
+.tracker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.8rem;
+  background: rgba(108, 92, 231, 0.08);
+  border-bottom: 1px solid var(--border-color);
+  cursor: pointer;
+  user-select: none;
+}
+
+.tracker-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.tracker-title i { color: var(--primary); }
+
+.tracker-toggle {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.2rem;
+  transition: var(--transition);
+}
+
+.tracker-toggle:hover { color: var(--primary); }
+
+.variables-list {
+  padding: 0.5rem;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.variable-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 0.6rem;
+  background: var(--bg-card);
+  border-radius: var(--radius-xs);
+  margin-bottom: 0.3rem;
+  font-size: 0.78rem;
+  transition: var(--transition);
+  animation: varIn 0.3s ease;
+}
+
+@keyframes varIn {
+  from { opacity: 0; transform: translateX(10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.variable-item:hover { background: var(--bg-elevated); }
+
+.variable-name {
+  color: var(--primary-light);
+  font-family: var(--font-code);
+  font-weight: 600;
+}
+
+.variable-value {
+  color: var(--success-light);
+  font-family: var(--font-code);
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.variable-type {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  background: var(--bg-primary);
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  margin-left: 0.3rem;
+}
+
+/* 挑战区域 */
+.challenge-section {
+  background: linear-gradient(135deg, var(--bg-card), var(--bg-elevated));
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  padding: 1.2rem;
+  margin-top: 1rem;
+}
+
+.challenge-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+
+.challenge-title {
+  font-size: 1rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.challenge-title i { color: var(--accent); }
+
+.challenge-difficulty {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.difficulty-easy { background: rgba(0, 184, 148, 0.15); color: var(--success); }
+.difficulty-medium { background: rgba(253, 203, 110, 0.15); color: var(--warning); }
+.difficulty-hard { background: rgba(225, 112, 85, 0.15); color: var(--danger); }
+
+.challenge-desc {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.challenge-hint {
+  background: rgba(253, 121, 168, 0.08);
+  border: 1px solid rgba(253, 121, 168, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  display: none;
+}
+
+.challenge-hint.show { display: block; animation: hintIn 0.3s ease; }
+
+@keyframes hintIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hint-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.challenge-actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.hint-btn, .submit-btn {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.hint-btn {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+.hint-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, var(--success), #00a884);
+  border: none;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 184, 148, 0.3);
+}
+
+.submit-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 184, 148, 0.4);
+}
+
+/* 挑战结果 */
+.challenge-result {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  display: none;
+}
+
+.challenge-result.show { display: block; animation: resultIn 0.4s ease; }
+
+@keyframes resultIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.challenge-result.success {
+  background: linear-gradient(135deg, rgba(0, 184, 148, 0.1), rgba(85, 239, 196, 0.05));
+  border: 1px solid rgba(0, 184, 148, 0.3);
+}
+
+.challenge-result.error {
+  background: linear-gradient(135deg, rgba(225, 112, 85, 0.1), rgba(255, 118, 117, 0.05));
+  border: 1px solid rgba(225, 112, 85, 0.3);
+}
+
+.result-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.challenge-result.success .result-icon { color: var(--success); }
+.challenge-result.error .result-icon { color: var(--danger); }
+
+.result-title {
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 0.3rem;
+}
+
+.result-message {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.xp-earned {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: linear-gradient(135deg, var(--warning), #e0a800);
+  color: var(--bg-primary);
+  padding: 0.3rem 0.6rem;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  margin-top: 0.5rem;
+}

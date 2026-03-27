@@ -1,0 +1,86 @@
+/* 加载动画 */
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.loader-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-content {
+  text-align: center;
+  animation: loaderContentIn 0.6s ease;
+}
+
+@keyframes loaderContentIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.snake-animation span {
+  font-size: 5rem;
+  display: inline-block;
+  animation: snakeBounce 1.5s ease-in-out infinite;
+  filter: drop-shadow(0 10px 30px rgba(108, 92, 231, 0.5));
+}
+
+@keyframes snakeBounce {
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  25% { transform: translateY(-25px) rotate(-15deg) scale(1.05); }
+  50% { transform: translateY(-5px) rotate(0deg) scale(1); }
+  75% { transform: translateY(-15px) rotate(10deg) scale(1.02); }
+}
+
+.loader-content h2 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-top: 1.2rem;
+  background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.loader-content p {
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+.loader-bar {
+  width: 220px;
+  height: 4px;
+  margin: 1.8rem auto 0;
+  background: var(--border-color);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.loader-bar-fill {
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+  background-size: 200% 100%;
+  border-radius: 4px;
+  animation: loaderFill 2s ease-in-out forwards, gradientShift 2s ease infinite;
+}
+
+@keyframes loaderFill { to { width: 100%; } }

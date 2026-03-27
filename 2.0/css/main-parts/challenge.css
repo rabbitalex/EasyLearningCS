@@ -1,0 +1,194 @@
+/* ========== Challenge Section - 卡通挑战区 ========== */
+.challenge-section {
+  padding: 1rem 1.5rem;
+  background: var(--bg-primary);
+  border-top: 3px solid var(--border-color);
+}
+
+.challenge-card {
+  background: linear-gradient(135deg, rgba(255, 96, 144, 0.06), rgba(255, 152, 0, 0.06));
+  border: 3px solid rgba(255, 96, 144, 0.15);
+  border-radius: 22px;
+  padding: 0.8rem 1.2rem;
+  box-shadow: 0 4px 16px rgba(255, 96, 144, 0.06);
+  transition: padding 0.3s ease;
+}
+
+.challenge-card.expanded {
+  padding: 1.2rem 1.5rem;
+}
+
+.challenge-header {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0;
+  color: var(--accent);
+  transition: margin-bottom 0.3s ease;
+}
+
+.challenge-card.expanded .challenge-header {
+  margin-bottom: 1.2rem;
+}
+
+.challenge-header h3 {
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+.challenge-desc {
+  color: var(--text-primary);
+  margin-bottom: 1.2rem;
+  font-size: 1.08rem;
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+.challenge-editor-wrapper {
+  margin-bottom: 1.2rem;
+}
+
+.challenge-editor {
+  width: 100%;
+  min-height: 120px;
+  padding: 1.2rem;
+  background: var(--bg-code);
+  border: 3px solid var(--border-color);
+  border-radius: 16px;
+  color: var(--text-primary);
+  font-family: var(--font-code);
+  font-size: 1rem;
+  resize: vertical;
+  transition: var(--transition);
+}
+
+.challenge-editor:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(255, 96, 144, 0.1);
+  outline: none;
+}
+
+.challenge-actions {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.btn-submit {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1.2rem;
+  background: linear-gradient(135deg, #2979FF, #1565C0);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--bounce);
+  box-shadow: 0 3px 12px rgba(41, 121, 255, 0.3);
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(41, 121, 255, 0.4);
+}
+
+.btn-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1.2rem;
+  background: rgba(255, 171, 64, 0.08);
+  border: 2px solid var(--warning);
+  border-radius: 12px;
+  color: var(--warning);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--bounce);
+}
+
+.btn-hint:hover {
+  background: rgba(255, 171, 64, 0.15);
+  transform: translateY(-2px);
+}
+
+.challenge-result {
+  margin-top: 1.2rem;
+  padding: 1.2rem;
+  border-radius: 16px;
+  display: none;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.challenge-result.show {
+  display: block;
+  animation: popIn 0.4s ease;
+}
+
+.challenge-result.success {
+  background: rgba(0, 230, 118, 0.08);
+  border: 2px solid var(--success);
+  color: #00873e;
+}
+
+.challenge-result.error {
+  background: rgba(255, 82, 82, 0.08);
+  border: 2px solid var(--danger);
+  color: #c62828;
+}
+
+/* ========== Modal - 卡通弹窗 ========== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+}
+
+.modal-content {
+  background: var(--bg-card);
+  border-radius: 28px;
+  padding: 2.5rem;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  border: 3px solid var(--border-color);
+  box-shadow: 0 20px 60px rgba(255, 152, 0, 0.2);
+  animation: popIn 0.4s ease;
+}
+
+.achievement-icon {
+  font-size: 5rem;
+  margin-bottom: 1.2rem;
+  display: block;
+  animation: cuteJump 1s ease infinite;
+}
+
+.modal-content h2 {
+  font-size: 1.7rem;
+  margin-bottom: 0.5rem;
+  font-weight: 900;
+  color: var(--text-primary);
+}
+
+.xp-reward {
+  font-size: 1.4rem;
+  color: var(--warning);
+  font-weight: 900;
+  margin: 1rem 0;
+  padding: 0.5rem 1.5rem;
+  background: rgba(255, 171, 64, 0.1);
+  border-radius: 16px;
+  display: inline-block;
+  border: 2px solid rgba(255, 171, 64, 0.2);
+}
+

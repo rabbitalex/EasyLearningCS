@@ -1,0 +1,312 @@
+/* ===== 课程学习页 ===== */
+.lesson-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.lesson-header {
+  padding: 1rem 1.5rem 0;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.lesson-nav-arrows {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.btn-nav {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: var(--font-main);
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.btn-nav:hover:not(:disabled) {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-nav:disabled { opacity: 0.35; cursor: not-allowed; }
+
+.lesson-title-wrapper { text-align: center; flex: 1; }
+
+.lesson-chapter {
+  font-size: 0.72rem;
+  color: var(--primary-light);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.lesson-title {
+  font-size: 1.3rem;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+
+.lesson-progress-bar {
+  height: 3px;
+  background: var(--border-color);
+  border-radius: 3px;
+  margin-top: 1rem;
+  overflow: hidden;
+}
+
+.lesson-progress-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+  background-size: 200% 100%;
+  border-radius: 3px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: progressGlow 2s ease infinite;
+}
+
+@keyframes progressGlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* 课程主体布局 */
+.lesson-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  min-height: 0;
+}
+
+/* 教学区域 */
+.lesson-teach-area {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border-color);
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+.step-container {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.step-card {
+  display: none;
+  animation: stepSlideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.step-card.active { display: block; }
+
+@keyframes stepSlideIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.step-card h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  box-shadow: 0 3px 12px rgba(108, 92, 231, 0.3);
+}
+
+.step-card .step-content {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.85;
+}
+
+.step-card .step-content p { margin-bottom: 0.7rem; }
+.step-card .step-content strong { color: var(--text-primary); font-weight: 700; }
+.step-card .step-content em {
+  color: var(--accent);
+  font-style: normal;
+  font-weight: 700;
+  padding: 0.05em 0.2em;
+  background: rgba(253, 121, 168, 0.1);
+  border-radius: 3px;
+}
+
+/* 代码块 */
+.step-code-block {
+  background: var(--bg-code);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.2rem;
+  font-family: var(--font-code);
+  font-size: 0.84rem;
+  margin: 0.8rem 0;
+  overflow-x: auto;
+  position: relative;
+  line-height: 1.7;
+  white-space: pre;
+  transition: var(--transition);
+}
+
+.step-code-block::before {
+  content: 'Python';
+  position: absolute;
+  top: 0.35rem;
+  right: 0.6rem;
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  font-family: var(--font-main);
+  font-weight: 600;
+  opacity: 0.6;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.step-code-block:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 0 15px rgba(108, 92, 231, 0.08);
+}
+
+/* 提示卡片 */
+.step-callout {
+  background: rgba(108, 92, 231, 0.08);
+  border-left: 4px solid var(--primary);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 0.8rem 1rem;
+  margin: 0.8rem 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  position: relative;
+  transition: var(--transition);
+}
+
+.step-callout.tip {
+  border-left-color: var(--success);
+  background: rgba(0, 184, 148, 0.08);
+}
+
+.step-callout.warning {
+  border-left-color: var(--warning);
+  background: rgba(253, 203, 110, 0.08);
+}
+
+.step-callout:hover { transform: translateX(4px); }
+
+/* 变量变化标签 */
+.step-var-change {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: rgba(0, 206, 201, 0.1);
+  border: 1px solid rgba(0, 206, 201, 0.2);
+  border-radius: var(--radius-xs);
+  padding: 0.15rem 0.5rem;
+  font-family: var(--font-code);
+  font-size: 0.8rem;
+  animation: varPulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes varPulse {
+  0% { transform: scale(0.85); opacity: 0; }
+  60% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.step-var-change .var-name { color: var(--secondary); font-weight: 700; }
+.step-var-change .var-value { color: var(--accent); font-weight: 700; }
+
+/* 步骤导航 */
+.step-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 1rem;
+}
+
+.btn-step {
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: var(--transition);
+}
+
+.btn-step:hover:not(:disabled) {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.btn-step:disabled { opacity: 0.35; cursor: not-allowed; }
+
+.btn-step.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 3px 12px rgba(108, 92, 231, 0.25);
+}
+
+.btn-step.btn-primary:hover {
+  box-shadow: 0 6px 20px rgba(108, 92, 231, 0.4);
+  transform: translateY(-2px);
+}
+
+.step-dots { display: flex; gap: 0.4rem; }
+
+.step-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border-color);
+  transition: var(--transition-spring);
+  cursor: pointer;
+}
+
+.step-dot:hover { transform: scale(1.4); }
+.step-dot.active {
+  background: var(--primary);
+  transform: scale(1.4);
+  box-shadow: 0 0 8px rgba(108, 92, 231, 0.4);
+}
+.step-dot.completed { background: var(--success); }
+

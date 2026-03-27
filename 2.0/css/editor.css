@@ -1,0 +1,144 @@
+/* ========== CodeMirror Customization ========== */
+.CodeMirror {
+  font-family: 'Fira Code', 'Monaco', 'Consolas', monospace !important;
+  font-size: 14px;
+  line-height: 1.6;
+  background: rgba(0,0,0,0.2) !important;
+  border-radius: 12px;
+  height: 100%;
+}
+
+.CodeMirror-gutters {
+  background: rgba(255,255,255,0.03) !important;
+  border-right: 1px solid rgba(255,255,255,0.05);
+}
+
+.CodeMirror-linenumber {
+  color: rgba(255,255,255,0.25) !important;
+  font-size: 12px;
+}
+
+.CodeMirror-cursor {
+  border-left: 2px solid var(--neon-cyan) !important;
+}
+
+.CodeMirror-activeline-background {
+  background: rgba(255,255,255,0.03) !important;
+}
+
+.CodeMirror-selected {
+  background: rgba(102, 126, 234, 0.3) !important;
+}
+
+.CodeMirror-matchingbracket {
+  background: rgba(0, 206, 201, 0.3) !important;
+  color: var(--neon-cyan) !important;
+}
+
+.CodeMirror-foldmarker {
+  color: var(--neon-cyan);
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+}
+
+.CodeMirror-foldgutter {
+  width: 20px;
+}
+
+.CodeMirror-foldgutter-folded,
+.CodeMirror-foldgutter-open {
+  color: var(--neon-cyan);
+}
+
+/* ========== Execution Line Highlight ========== */
+.CodeMirror-line.exec-highlight {
+  background-color: rgba(255, 152, 0, 0.18) !important;
+  position: relative;
+}
+
+.exec-highlight {
+  background-color: rgba(255, 152, 0, 0.18) !important;
+}
+
+/* 确保行高亮在 dracula 主题上可见 */
+.CodeMirror-line.exec-highlight .CodeMirror-gutter-wrapper + pre {
+  background-color: rgba(255, 152, 0, 0.18) !important;
+  border-left: 3px solid #FF9800;
+}
+
+.CodeMirror-line.exec-highlight::after {
+  content: '';
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 8px solid #FF9800;
+  filter: drop-shadow(0 0 3px rgba(255, 152, 0, 0.5));
+}
+
+/* ========== Editor Header ========== */
+.editor-header {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--glass-border);
+  background: rgba(0,0,0,0.1);
+}
+
+.editor-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.editor-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(102, 126, 234, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--magic-purple);
+}
+
+.editor-title {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.editor-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.editor-footer {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  background: rgba(0,0,0,0.15);
+  border-top: 1px solid var(--glass-border);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ========== Python Syntax Token Colors ========== */
+.cm-keyword { color: #ff79c6; }
+.cm-string { color: #f1fa8c; }
+.cm-number { color: #bd93f9; }
+.cm-comment { color: #6272a4; }
+.cm-variable { color: #ffb86c; }
+.cm-def { color: #50fa7b; }
+.cm-property { color: #8be9fd; }
+.cm-operator { color: #ff79c6; }
+.cm-builtin { color: #8be9fd; }

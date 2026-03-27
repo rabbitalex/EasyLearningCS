@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎭 贴纸舞台 - 用代码让贴纸动起来！</title>
+  <link rel="stylesheet" href="lib/css/fonts.css">
+  <link rel="stylesheet" href="lib/fontawesome/css/all.min.css">
+  <script src="lib/skulpt/skulpt.min.js"></script>
+  <script src="lib/skulpt/skulpt-stdlib.js"></script>
+  <link rel="stylesheet" href="css/sticker-stage.css">
+</head>
+<body>
+  <!-- 顶部导航 -->
+  <header class="top-nav">
+    <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> 返回学院</a>
+    <div class="nav-title">
+      <span class="nav-icon">🎭</span>
+      <span>贴纸舞台</span>
+      <span class="nav-sub">用Python代码让贴纸动起来！</span>
+    </div>
+    <div class="nav-actions">
+      <button class="btn-icon" id="helpBtn" title="帮助"><i class="fas fa-question-circle"></i></button>
+      <button class="btn-icon" id="fullscreenBtn" title="全屏舞台"><i class="fas fa-expand"></i></button>
+    </div>
+  </header>
+
+  <div class="app-layout" id="appLayout">
+    <!-- 左侧：贴纸库 + 舞台 -->
+    <div class="left-panel" id="leftPanel">
+      <!-- 贴纸库 -->
+      <div class="sticker-library">
+        <div class="library-header">
+          <span><i class="fas fa-star"></i> 贴纸库</span>
+          <div class="library-tabs">
+            <button class="lib-tab active" data-cat="animals">🐾 动物</button>
+            <button class="lib-tab" data-cat="food">🍎 食物</button>
+            <button class="lib-tab" data-cat="nature">🌸 自然</button>
+            <button class="lib-tab" data-cat="objects">⭐ 物品</button>
+            <button class="lib-tab" data-cat="faces">😊 表情</button>
+          </div>
+        </div>
+        <div class="sticker-grid" id="stickerGrid"></div>
+      </div>
+
+      <!-- 舞台 -->
+      <div class="stage-wrapper">
+        <div class="stage-toolbar">
+          <span class="stage-label"><i class="fas fa-theater-masks"></i> 舞台</span>
+          <div class="stage-tools">
+            <button class="tool-btn active" id="toolSelect" title="选择"><i class="fas fa-mouse-pointer"></i></button>
+            <button class="tool-btn" id="toolClear" title="清空舞台"><i class="fas fa-trash"></i></button>
+            <button class="tool-btn" id="toolScreenshot" title="截图"><i class="fas fa-camera"></i></button>
+          </div>
+          <div class="stage-size-info">800 × 500</div>
+        </div>
+        <div class="stage-container" id="stageContainer">
+          <canvas id="stageCanvas" width="800" height="500"></canvas>
+          <div id="stageElements" class="stage-elements"></div>
+          <div class="coord-hint" id="coordHint"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 左右拖动分隔条 -->
+    <div class="panel-resizer" id="panelResizer"></div>
+
+    <!-- 右侧：属性面板 + 代码编辑器 + 底部输出区 -->
+    <div class="right-panel" id="rightPanel">
+
+      <!-- 贴纸属性面板 -->
+      <div class="props-panel" id="propsPanel">
+        <div class="props-header">
+          <span id="propsTitle">🎯 点击贴纸选中</span>
+          <button class="btn-icon-sm" id="propsDelete" title="删除"><i class="fas fa-trash"></i></button>
+        </div>
+        <div class="props-grid">
+          <label>名称 <input type="text" id="propName" class="prop-input" placeholder="sticker1"></label>
+          <label>X坐标 <input type="number" id="propX" class="prop-input" value="0"></label>
+          <label>Y坐标 <input type="number" id="propY" class="prop-input" value="0"></label>
+          <label>大小 <input type="number" id="propSize" class="prop-input" value="60" min="10" max="300"></label>
+          <label>旋转° <input type="number" id="propRotation" class="prop-input" value="0"></label>
+          <label>透明度 <input type="number" id="propOpacity" class="prop-input" value="100" min="0" max="100"></label>
+        </div>
+        <div class="props-hint">💡 在代码中用 <code>名称</code> 来控制这个贴纸</div>
+      </div>
+
+      <!-- 代码编辑器区域 -->
+      <div class="editor-section" id="editorSection">
+        <!-- 编辑器头部：标题 + 示例 + 操作按钮 -->
+        <div class="editor-header">
+          <div class="editor-header-left">
+            <span class="editor-title"><i class="fas fa-code"></i> Python 代码</span>
+            <!-- 示例代码横向滚动 -->
+            <div class="examples-inline" id="examplesList"></div>
+          </div>
+          <div class="editor-actions">
+            <button class="btn-reset-code" id="resetBtn" title="重置代码"><i class="fas fa-undo"></i></button>
+            <button class="btn-stop" id="stopBtn" disabled><i class="fas fa-stop"></i> 停止</button>
+            <button class="btn-run" id="runBtn"><i class="fas fa-play"></i> 运行</button>
+          </div>
+        </div>
+
+        <!-- 代码编辑器主体 -->
+        <div class="editor-body">
+          <div class="line-nums" id="lineNums"></div>
+          <textarea id="codeEditor" class="code-editor" spellcheck="false"></textarea>
+        </div>
+      </div>
+
+      <!-- 底部输出区：运行结果 + 变量跟踪 Tab -->
+      <div class="output-section" id="outputSection">
+        <!-- 拖动分隔条 -->
+        <div class="output-resizer" id="outputResizer"></div>
+
+        <!-- Tab 头部 -->
+        <div class="output-tabs">
+          <button class="output-tab active" data-tab="console">
+            <i class="fas fa-terminal"></i> 运行结果
+            <span class="tab-badge" id="consoleBadge" style="display:none"></span>
+          </button>
+          <button class="output-tab" data-tab="vars">
+            <i class="fas fa-eye"></i> 变量跟踪
+            <span class="tab-badge" id="varsBadge" style="display:none"></span>
+          </button>
+          <div class="output-tabs-spacer"></div>
+          <button class="btn-icon-sm" id="clearOutput" title="清空"><i class="fas fa-trash"></i></button>
+        </div>
+
+        <!-- 运行结果面板 -->
+        <div class="output-pane active" id="consolePane">
+          <div class="console-output" id="consoleOutput">
+            <div class="console-welcome">🎉 欢迎来到贴纸舞台！先从贴纸库拖一个贴纸到舞台，然后用代码让它动起来！</div>
+          </div>
+        </div>
+
+        <!-- 变量跟踪面板 -->
+        <div class="output-pane" id="varsPane">
+          <div class="vars-toolbar">
+            <span class="vars-hint">代码运行后，这里会显示所有变量的值</span>
+            <button class="btn-icon-sm" id="refreshVars" title="刷新"><i class="fas fa-sync-alt"></i></button>
+          </div>
+          <div class="vars-table-wrap" id="varsTable">
+            <div class="vars-empty">
+              <i class="fas fa-eye-slash"></i>
+              <p>暂无变量</p>
+              <p class="vars-empty-sub">运行代码后，变量会自动显示在这里</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 帮助弹窗 -->
+  <div class="modal-overlay" id="helpModal" style="display:none">
+    <div class="help-modal">
+      <div class="help-header">
+        <h2>📖 代码指令手册</h2>
+        <button class="btn-icon" onclick="document.getElementById('helpModal').style.display='none'"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="help-content">
+        <div class="help-section">
+          <h3>🎯 基础操作</h3>
+          <div class="help-table">
+            <div class="help-row"><code>move(名称, x, y)</code><span>移动贴纸到坐标(x,y)</span></div>
+            <div class="help-row"><code>move_by(名称, dx, dy)</code><span>相对移动贴纸</span></div>
+            <div class="help-row"><code>rotate(名称, 角度)</code><span>旋转贴纸（度数）</span></div>
+            <div class="help-row"><code>scale(名称, 大小)</code><span>设置贴纸大小（像素）</span></div>
+            <div class="help-row"><code>opacity(名称, 透明度)</code><span>设置透明度（0-100）</span></div>
+            <div class="help-row"><code>show(名称)</code><span>显示贴纸</span></div>
+            <div class="help-row"><code>hide(名称)</code><span>隐藏贴纸</span></div>
+          </div>
+        </div>
+        <div class="help-section">
+          <h3>🎬 动画效果</h3>
+          <div class="help-table">
+            <div class="help-row"><code>animate_move(名称, x, y, 时间)</code><span>平滑移动到目标位置</span></div>
+            <div class="help-row"><code>animate_rotate(名称, 角度, 时间)</code><span>平滑旋转</span></div>
+            <div class="help-row"><code>animate_scale(名称, 大小, 时间)</code><span>平滑缩放</span></div>
+            <div class="help-row"><code>bounce(名称, 次数)</code><span>弹跳动画</span></div>
+            <div class="help-row"><code>shake(名称)</code><span>抖动动画</span></div>
+            <div class="help-row"><code>spin(名称, 圈数)</code><span>旋转圈数</span></div>
+            <div class="help-row"><code>wait(秒数)</code><span>等待指定秒数</span></div>
+          </div>
+        </div>
+        <div class="help-section">
+          <h3>📍 获取信息</h3>
+          <div class="help-table">
+            <div class="help-row"><code>get_x(名称)</code><span>获取X坐标</span></div>
+            <div class="help-row"><code>get_y(名称)</code><span>获取Y坐标</span></div>
+            <div class="help-row"><code>get_size(名称)</code><span>获取大小</span></div>
+            <div class="help-row"><code>say(名称, 文字)</code><span>贴纸说话（显示气泡）</span></div>
+            <div class="help-row"><code>print(文字)</code><span>在控制台输出</span></div>
+          </div>
+        </div>
+        <div class="help-section">
+          <h3>💡 坐标说明</h3>
+          <p style="color:#a0a3c0;font-size:0.85rem;line-height:1.6">舞台中心为 (0, 0)，X轴向右为正，Y轴向下为正。舞台大小为 800×500，所以坐标范围大约是 X: -400~400，Y: -250~250。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/sticker-stage/data.js"></script>
+  <script src="js/sticker-stage/state.js"></script>
+  <script src="js/sticker-stage/render.js"></script>
+  <script src="js/sticker-stage/drag.js"></script>
+  <script src="js/sticker-stage/sticker-ops.js"></script>
+  <script src="js/sticker-stage/code-run.js"></script>
+  <script src="js/sticker-stage/code-api.js"></script>
+  <script src="js/sticker-stage/code-queue.js"></script>
+  <script src="js/sticker-stage/animations.js"></script>
+  <script src="js/sticker-stage/vars-panel.js"></script>
+  <script src="js/sticker-stage/code-finish.js"></script>
+  <script src="js/sticker-stage/boot.js"></script>
+  <script src="js/sticker-stage/inline-ui.js"></script>
+</body>
+</html>

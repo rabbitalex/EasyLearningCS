@@ -1,0 +1,104 @@
+/* ========== Top Bar - 明亮卡通 ========== */
+.top-bar {
+  height: 48px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+.menu-btn {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 2px solid var(--border-color);
+  background: var(--bg-elevated);
+  color: var(--primary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: var(--bounce);
+}
+
+.menu-btn:hover {
+  transform: scale(1.1);
+  border-color: var(--primary);
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.breadcrumb-item {
+  color: var(--text-secondary);
+}
+
+.breadcrumb-link {
+  cursor: pointer;
+  transition: color 0.2s, text-decoration 0.2s;
+}
+
+.breadcrumb-link:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.breadcrumb-current {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.streak-badge, .xp-badge, .level-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  background: var(--bg-elevated);
+  border-radius: 24px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  border: 2px solid var(--border-color);
+  transition: var(--bounce);
+}
+
+.streak-badge:hover, .xp-badge:hover, .level-badge:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+.streak-badge {
+  color: var(--accent);
+  border-color: rgba(255,96,144,0.3);
+  background: rgba(255,96,144,0.1);
+}
+
+.xp-badge {
+  color: var(--warning);
+  border-color: rgba(255,171,64,0.3);
+  background: rgba(255,171,64,0.1);
+}
+
+.level-badge {
+  color: var(--primary);
+  border-color: rgba(255,152,0,0.3);
+  background: rgba(255,152,0,0.1);
+}
+

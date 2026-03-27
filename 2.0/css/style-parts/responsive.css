@@ -1,0 +1,128 @@
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .lesson-content { flex-direction: column; }
+  .code-panel { max-width: none; min-width: auto; }
+  .variables-tracker { position: static; width: 100%; max-height: none; margin-top: 0.5rem; }
+}
+
+@media (max-width: 768px) {
+  :root { --sidebar-width: 260px; --radius: 12px; }
+  
+  .sidebar {
+    transform: translateX(-100%);
+    width: var(--sidebar-width);
+  }
+  
+  .sidebar.show { transform: translateX(0); }
+  
+  .main-content { margin-left: 0; }
+  
+  .menu-btn { display: block; }
+  
+  .sidebar-overlay.show { display: block; }
+  
+  .home-content { padding: 1rem; }
+  
+  .welcome-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  
+  .welcome-stats { width: 100%; overflow-x: auto; padding-bottom: 0.5rem; }
+  
+  .stat-card { min-width: 90px; }
+  
+  .courses-grid { grid-template-columns: 1fr; }
+  
+  .course-header { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+  
+  .course-actions { width: 100%; }
+  
+  .course-actions .btn { flex: 1; }
+  
+  .steps-nav { padding: 0.6rem 1rem; }
+  
+  .step-dot { width: 28px; height: 28px; font-size: 0.7rem; }
+  
+  .step-connector { width: 15px; }
+  
+  .lesson-content { padding: 0.6rem; gap: 0.6rem; }
+  
+  .teaching-content { padding: 1rem; }
+  
+  .challenge-section { padding: 1rem; }
+  
+  .challenge-actions { flex-direction: row; flex-wrap: nowrap; }
+  
+  .hint-btn, .submit-btn { justify-content: center; }
+  
+  .modal { width: 95%; margin: 1rem; }
+  
+  .modal-body { padding: 1rem; }
+  
+  .toast-container { right: 0.5rem; left: 0.5rem; }
+  
+  .toast { min-width: auto; max-width: none; }
+  
+  .top-bar { padding: 0 1rem; }
+  
+  .breadcrumb { display: none; }
+  
+  .streak-badge, .xp-badge, .level-badge { padding: 0.25rem 0.5rem; font-size: 0.72rem; }
+}
+
+@media (max-width: 480px) {
+  :root { font-size: 14px; --radius: 10px; --radius-sm: 8px; }
+  
+  .welcome-title { font-size: 1.3rem; }
+  
+  .welcome-subtitle { font-size: 0.82rem; }
+  
+  .stat-value { font-size: 1.2rem; }
+  
+  .course-card { padding: 1rem; }
+  
+  .course-icon { width: 40px; height: 40px; font-size: 1.2rem; }
+  
+  .course-title { font-size: 0.95rem; }
+  
+  .code-editor-wrapper .CodeMirror { font-size: 0.82rem; }
+  
+  .run-btn { padding: 0.4rem 0.8rem; font-size: 0.78rem; }
+  
+  .panel-header { padding: 0.6rem 0.8rem; }
+  
+  .panel-title { font-size: 0.8rem; }
+  
+  .achievement-icon { width: 80px; height: 80px; font-size: 2.5rem; }
+  
+  .achievement-title { font-size: 1.1rem; }
+  
+  .confirm-icon { width: 60px; height: 60px; font-size: 1.8rem; }
+}
+
+/* 打印样式 */
+@media print {
+  .sidebar, .top-bar, .code-panel, .variables-tracker, .challenge-section, .toast-container { display: none !important; }
+  
+  .main-content { margin-left: 0 !important; }
+  
+  .lesson-content { display: block; }
+  
+  .content-panel { border: 1px solid #ddd; margin-bottom: 1rem; }
+}
+
+/* 动画偏好 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 高对比度模式 */
+@media (prefers-contrast: high) {
+  :root {
+    --border-color: rgba(255, 255, 255, 0.3);
+    --text-secondary: #ccc;
+    --text-muted: #999;
+  }
+}

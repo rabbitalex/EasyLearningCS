@@ -1,0 +1,3 @@
+/* paint-editor.css — aggregator */
+@import url('paint-editor-parts/part1.css');
+@import url('paint-editor-parts/part2.css');

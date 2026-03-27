@@ -1,0 +1,13 @@
+/* style.css — 聚合入口 */
+@import url('css/style-parts-split/_header.css');
+@import url('css/style-parts-split/variables.css');
+@import url('css/style-parts-split/base.css');
+@import url('css/style-parts-split/layout.css');
+@import url('css/style-parts-split/sidebar.css');
+@import url('css/style-parts-split/content.css');
+@import url('css/style-parts-split/welcome.css');
+@import url('css/style-parts-split/lesson.css');
+@import url('css/style-parts-split/code.css');
+@import url('css/style-parts-split/tracker.css');
+@import url('css/style-parts-split/challenge.css');
+@import url('css/style-parts-split/modal-misc.css');

@@ -1,0 +1,49 @@
+// 卷四 · C++ - STL容器（参考C++ Primer Plus）
+const CHAPTER_V4_CPP5 = {
+  chapter: "第五章：STL容器",
+  icon: "📦",
+  lessons: [
+    {
+      id: "v4-cpp5-1",
+      title: "STL概览 —— C++的标准武器库",
+      xp: 30,
+      code: '// STL容器演示（伪代码展示）\n\n/*\n#include <iostream>\n#include <vector>\n#include <map>\n#include <set>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    // ========= vector 动态数组 =========\n    vector<int> nums = {5, 3, 8, 1, 9, 2, 7};\n    \n    // 排序\n    sort(nums.begin(), nums.end());\n    cout << "排序后: ";\n    for(int n : nums) cout << n << " ";\n    cout << endl;\n    \n    // 添加和删除\n    nums.push_back(10);\n    nums.erase(nums.begin());  // 删除第一个\n    \n    // ========= map 键值对 =========\n    map<string, int> scores;\n    scores["数学"] = 95;\n    scores["英语"] = 88;\n    scores["物理"] = 92;\n    \n    for(auto& [subject, score] : scores) {\n        cout << subject << ": " << score << endl;\n    }\n    \n    // ========= set 集合 =========\n    set<int> unique_nums(nums.begin(), nums.end());\n    cout << "去重后元素个数: " << unique_nums.size() << endl;\n    \n    return 0;\n}\n*/',
+      steps: [
+        {
+          title: "STL三大组件",
+          content: '<p><strong>STL（标准模板库）</strong>是C++最强大的特性之一，包含<strong>容器、算法、迭代器</strong>三大组件。</p><div class="theory-anim-box"><div class="theory-anim-title">📦 STL 三大组件</div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;margin:1rem 0"><div class="t0-fadein" style="animation-delay:0.2s;background:rgba(108,92,231,0.12);border:2px solid rgba(108,92,231,0.3);border-radius:12px;padding:1rem;text-align:center"><div style="font-size:2rem;margin-bottom:0.3rem">📦</div><div style="font-weight:800;color:#6c5ce7;font-size:0.9rem">容器</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.4);margin-top:0.3rem;line-height:1.6">vector, list, map<br>set, queue, stack<br>存放数据</div></div><div class="t0-fadein" style="animation-delay:0.4s;background:rgba(0,206,201,0.12);border:2px solid rgba(0,206,201,0.3);border-radius:12px;padding:1rem;text-align:center"><div style="font-size:2rem;margin-bottom:0.3rem">⚙️</div><div style="font-weight:800;color:#00cec9;font-size:0.9rem">算法</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.4);margin-top:0.3rem;line-height:1.6">sort, find, count<br>transform, accumulate<br>处理数据</div></div><div class="t0-fadein" style="animation-delay:0.6s;background:rgba(255,152,0,0.12);border:2px solid rgba(255,152,0,0.3);border-radius:12px;padding:1rem;text-align:center"><div style="font-size:2rem;margin-bottom:0.3rem">🔗</div><div style="font-weight:800;color:#FF9800;font-size:0.9rem">迭代器</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.4);margin-top:0.3rem;line-height:1.6">begin(), end()<br>++, --, *<br>连接容器与算法</div></div></div></div>'
+        },
+        {
+          title: "常用容器对比",
+          content: '<p>不同容器有不同的性能特征，选择正确的容器至关重要！</p><div class="theory-anim-box"><div class="theory-anim-title">📊 容器性能对比</div><table style="width:100%;border-collapse:collapse;font-size:0.7rem;margin:0.5rem 0"><tr style="border-bottom:1px solid rgba(255,255,255,0.15)"><th style="padding:0.4rem;text-align:left;color:rgba(255,255,255,0.5)">容器</th><th style="padding:0.4rem;text-align:center;color:rgba(255,255,255,0.5)">访问</th><th style="padding:0.4rem;text-align:center;color:rgba(255,255,255,0.5)">插入</th><th style="padding:0.4rem;text-align:center;color:rgba(255,255,255,0.5)">删除</th><th style="padding:0.4rem;text-align:center;color:rgba(255,255,255,0.5)">查找</th></tr><tr style="border-bottom:1px solid rgba(255,255,255,0.05)"><td style="padding:0.4rem;color:#6c5ce7;font-weight:700">vector</td><td style="padding:0.4rem;text-align:center;color:#69F0AE">O(1)</td><td style="padding:0.4rem;text-align:center;color:#fd79a8">O(n)</td><td style="padding:0.4rem;text-align:center;color:#fd79a8">O(n)</td><td style="padding:0.4rem;text-align:center;color:#fd79a8">O(n)</td></tr><tr style="border-bottom:1px solid rgba(255,255,255,0.05)"><td style="padding:0.4rem;color:#00cec9;font-weight:700">list</td><td style="padding:0.4rem;text-align:center;color:#fd79a8">O(n)</td><td style="padding:0.4rem;text-align:center;color:#69F0AE">O(1)</td><td style="padding:0.4rem;text-align:center;color:#69F0AE">O(1)</td><td style="padding:0.4rem;text-align:center;color:#fd79a8">O(n)</td></tr><tr style="border-bottom:1px solid rgba(255,255,255,0.05)"><td style="padding:0.4rem;color:#FF9800;font-weight:700">map</td><td style="padding:0.4rem;text-align:center;color:#FF9800">O(log n)</td><td style="padding:0.4rem;text-align:center;color:#FF9800">O(log n)</td><td style="padding:0.4rem;text-align:center;color:#FF9800">O(log n)</td><td style="padding:0.4rem;text-align:center;color:#FF9800">O(log n)</td></tr><tr><td style="padding:0.4rem;color:#fd79a8;font-weight:700">unordered_map</td><td style="padding:0.4rem;text-align:center;color:#69F0AE">O(1)</td><td style="padding:0.4rem;text-align:center;color:#69F0AE">O(1)</td><td style="padding:0.4rem;text-align:center;color:#69F0AE">O(1)</td><td style="padding:0.4rem;text-align:center;color:#69F0AE">O(1)</td></tr></table><div class="theory-callout">💡 <strong>C++ Primer Plus建议</strong>：默认用vector，需要快速查找用map/unordered_map，需要频繁插删用list。</div></div>'
+        }
+      ],
+      challenge: {
+        desc: "概念题：如果你需要存储学生成绩（按姓名查找），应该用什么容器？如果需要按成绩排名呢？",
+        hint: "按姓名查找用map<string,int>，按成绩排名用vector<pair<string,int>>配合sort。"
+      }
+    },
+    {
+      id: "v4-cpp5-2",
+      title: "STL算法 —— 不用自己写的轮子",
+      xp: 30,
+      code: '// STL常用算法演示（伪代码）\n\n/*\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <numeric>\nusing namespace std;\n\nint main() {\n    vector<int> v = {3, 1, 4, 1, 5, 9, 2, 6};\n    \n    // 排序\n    sort(v.begin(), v.end());\n    // → {1, 1, 2, 3, 4, 5, 6, 9}\n    \n    // 查找\n    auto it = find(v.begin(), v.end(), 5);\n    // → 指向5的迭代器\n    \n    // 去重(需先排序)\n    auto last = unique(v.begin(), v.end());\n    v.erase(last, v.end());\n    // → {1, 2, 3, 4, 5, 6, 9}\n    \n    // 求和\n    int sum = accumulate(v.begin(), v.end(), 0);\n    \n    // 变换\n    transform(v.begin(), v.end(), v.begin(),\n              [](int x){ return x * 2; });\n    \n    // 计数\n    int cnt = count_if(v.begin(), v.end(),\n                       [](int x){ return x > 10; });\n    \n    return 0;\n}\n*/',
+      steps: [
+        {
+          title: "STL算法一览",
+          content: '<p>STL提供了<strong>80+</strong>个通用算法，它们通过迭代器操作任何容器，让你不用"重新发明轮子"。</p><div class="theory-anim-box"><div class="theory-anim-title">⚙️ STL 算法分类</div><div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.6rem;margin:1rem 0"><div class="t0-fadein" style="animation-delay:0.2s;background:rgba(108,92,231,0.1);border:1px solid rgba(108,92,231,0.25);border-radius:10px;padding:0.7rem"><div style="font-weight:800;color:#6c5ce7;font-size:0.8rem;margin-bottom:0.4rem">🔍 查找算法</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.5);line-height:1.7;font-family:monospace">find() - 查找元素<br>count() - 计数<br>binary_search() - 二分查找<br>lower_bound() - 下界</div></div><div class="t0-fadein" style="animation-delay:0.3s;background:rgba(0,206,201,0.1);border:1px solid rgba(0,206,201,0.25);border-radius:10px;padding:0.7rem"><div style="font-weight:800;color:#00cec9;font-size:0.8rem;margin-bottom:0.4rem">📊 排序算法</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.5);line-height:1.7;font-family:monospace">sort() - 排序<br>stable_sort() - 稳定排序<br>partial_sort() - 部分排序<br>nth_element() - 第n个元素</div></div><div class="t0-fadein" style="animation-delay:0.4s;background:rgba(255,152,0,0.1);border:1px solid rgba(255,152,0,0.25);border-radius:10px;padding:0.7rem"><div style="font-weight:800;color:#FF9800;font-size:0.8rem;margin-bottom:0.4rem">🔄 变换算法</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.5);line-height:1.7;font-family:monospace">transform() - 变换<br>replace() - 替换<br>remove_if() - 条件删除<br>unique() - 去重</div></div><div class="t0-fadein" style="animation-delay:0.5s;background:rgba(253,121,168,0.1);border:1px solid rgba(253,121,168,0.25);border-radius:10px;padding:0.7rem"><div style="font-weight:800;color:#fd79a8;font-size:0.8rem;margin-bottom:0.4rem">📐 数值算法</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.5);line-height:1.7;font-family:monospace">accumulate() - 求和<br>inner_product() - 内积<br>min/max_element() - 最值<br>iota() - 递增填充</div></div></div></div>'
+        },
+        {
+          title: "Lambda + 算法 = 超级组合",
+          content: '<p>C++11引入的<strong>Lambda表达式</strong>与STL算法配合，让代码极其简洁优雅。</p><div class="theory-anim-box"><div class="theory-anim-title">🎯 Lambda 语法速览</div><div style="background:rgba(0,0,0,0.2);border-radius:8px;padding:0.7rem;margin:0.8rem 0;font-family:monospace;font-size:0.72rem;line-height:2"><span style="color:#546e7a">// Lambda基本语法</span><br>[<span style="color:#f78c6c">捕获列表</span>](<span style="color:#ffcb6b">参数</span>) -> <span style="color:#c792ea">返回类型</span> { <span style="color:#c3e88d">函数体</span> }<br><br><span style="color:#546e7a">// 实际例子</span><br>sort(v.begin(), v.end(), [](<span style="color:#c792ea">int</span> a, <span style="color:#c792ea">int</span> b) {<br>&nbsp;&nbsp;<span style="color:#c792ea">return</span> a > b; <span style="color:#546e7a">// 降序排列</span><br>});<br><br><span style="color:#546e7a">// 结合count_if</span><br><span style="color:#c792ea">int</span> adults = count_if(ages.begin(), ages.end(),<br>&nbsp;&nbsp;[](<span style="color:#c792ea">int</span> age){ <span style="color:#c792ea">return</span> age >= <span style="color:#f78c6c">18</span>; });</div><div class="theory-callout">💡 Lambda让你在"使用的地方"定义函数，不需要单独写一个命名函数。STL算法+Lambda是现代C++最强大的组合之一！</div></div>'
+        }
+      ],
+      challenge: {
+        desc: "概念题：用STL的sort+Lambda，怎么实现按字符串长度从短到长排序？写出关键代码。",
+        hint: "sort(v.begin(), v.end(), [](const string& a, const string& b){ return a.size() < b.size(); });"
+      }
+    }
+  ]
+};
+
+registerChapter('cpp', CHAPTER_V4_CPP5);

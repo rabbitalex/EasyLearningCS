@@ -1,0 +1,225 @@
+/* 课程学习页 */
+.course-detail {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-primary);
+}
+
+.course-header {
+  background: linear-gradient(135deg, var(--bg-card), var(--bg-elevated));
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.course-info h1 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.course-info h1 i { color: var(--primary); }
+
+.course-info p {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+}
+
+.course-actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
+/* 步骤导航 */
+.steps-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.8rem 1.5rem;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.steps-nav::-webkit-scrollbar { display: none; }
+
+.step-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition-spring);
+  flex-shrink: 0;
+}
+
+.step-dot:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: scale(1.1);
+}
+
+.step-dot.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+  box-shadow: var(--shadow-glow);
+}
+
+.step-dot.completed {
+  background: var(--success);
+  border-color: var(--success);
+  color: white;
+}
+
+.step-connector {
+  width: 20px;
+  height: 2px;
+  background: var(--border-color);
+  flex-shrink: 0;
+}
+
+.step-connector.completed { background: var(--success); }
+
+/* 学习内容区 */
+.lesson-content {
+  flex: 1;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.content-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  min-width: 0;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1rem;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.panel-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.panel-title i { color: var(--primary); }
+
+.panel-actions { display: flex; gap: 0.4rem; }
+
+.panel-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.35rem;
+  border-radius: var(--radius-xs);
+  transition: var(--transition);
+  font-size: 0.85rem;
+}
+
+.panel-btn:hover {
+  background: var(--bg-card);
+  color: var(--primary);
+}
+
+/* 教学内容 */
+.teaching-content {
+  flex: 1;
+  padding: 1.2rem;
+  overflow-y: auto;
+  line-height: 1.7;
+}
+
+.teaching-content h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 0.8rem;
+  color: var(--text-primary);
+}
+
+.teaching-content p {
+  margin-bottom: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.teaching-content code {
+  background: var(--bg-code);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-family: var(--font-code);
+  font-size: 0.85em;
+  color: var(--accent);
+}
+
+.teaching-content pre {
+  background: var(--bg-code);
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+  margin: 0.8rem 0;
+  border: 1px solid var(--border-color);
+}
+
+.teaching-content pre code {
+  background: none;
+  padding: 0;
+}
+
+/* 提示框 */
+.tip-box {
+  background: linear-gradient(135deg, rgba(108, 92, 231, 0.08), rgba(0, 206, 201, 0.05));
+  border: 1px solid rgba(108, 92, 231, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 0.8rem 1rem;
+  margin: 0.8rem 0;
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+}
+
+.tip-box i { color: var(--primary); margin-top: 0.15rem; }
+
+.tip-box-content { flex: 1; }
+
+.tip-box-title {
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 0.2rem;
+}
+
+.tip-box p {
+  margin: 0;
+  font-size: 0.85rem;
+}

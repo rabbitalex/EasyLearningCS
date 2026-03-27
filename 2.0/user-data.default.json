@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "createdAt": null,
+  "lastSavedAt": null,
+  "profile": {
+    "nickname": "Python学徒",
+    "avatar": "👤",
+    "joinDate": null,
+    "theme": "magic"
+  },
+  "settings": {
+    "autoSave": true,
+    "soundEffects": true,
+    "animations": true,
+    "showHints": true,
+    "difficulty": "normal"
+  },
+  "progress": {
+    "completedLessons": [],
+    "lessonProgress": {},
+    "currentLesson": null,
+    "currentStep": 0
+  },
+  "challenges": {},
+  "stats": {
+    "codeRuns": 0,
+    "learnTimeMinutes": 0,
+    "loginStreak": 0,
+    "lastLogin": null,
+    "visitedPages": []
+  },
+  "code": {}
+}

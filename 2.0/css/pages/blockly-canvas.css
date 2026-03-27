@@ -1,0 +1,3 @@
+/* blockly-canvas.css — aggregator */
+@import url('blockly-canvas-parts/part1.css');
+@import url('blockly-canvas-parts/part2.css');

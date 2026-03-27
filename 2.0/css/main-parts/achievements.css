@@ -1,0 +1,203 @@
+/* ========== Achievements Page - 卡通成就殿堂 ========== */
+.achievements-page, .stats-page {
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-header {
+  margin-bottom: 1.8rem;
+}
+
+.page-header h2 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--text-primary);
+}
+
+.page-header h2 i {
+  color: var(--warning);
+  font-size: 1.6rem;
+}
+
+.page-desc {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.achievements-summary {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.8rem;
+  flex-wrap: wrap;
+}
+
+.ach-stat {
+  text-align: center;
+  padding: 1.2rem 2.5rem;
+  background: var(--bg-card);
+  border-radius: 22px;
+  border: 2px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  transition: var(--bounce);
+}
+
+.ach-stat:hover {
+  transform: translateY(-3px);
+}
+
+.ach-stat-num {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--primary);
+}
+
+.ach-stat-label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.2rem;
+}
+
+.achievement-card {
+  background: var(--bg-card);
+  border-radius: 22px;
+  border: 2px solid var(--border-color);
+  padding: 1.4rem;
+  text-align: center;
+  transition: var(--bounce);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.achievement-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  border-color: var(--warning-light);
+  box-shadow: var(--shadow-lg);
+}
+
+.achievement-card.locked {
+  opacity: 0.45;
+  filter: grayscale(0.8);
+}
+
+.achievement-card.unlocked {
+  border-color: var(--warning);
+  background: linear-gradient(135deg, rgba(255, 171, 64, 0.08), var(--bg-card));
+}
+
+.achievement-icon-card {
+  font-size: 3rem;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.achievement-name {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+}
+
+.achievement-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+/* Toast 组件 - 卡通通知 */
+#toastContainer {
+  position: fixed;
+  top: 1.2rem;
+  right: 1.2rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  pointer-events: none;
+}
+
+.toast {
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-radius: 18px;
+  padding: 1.1rem 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  animation: slideInRight 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  pointer-events: auto;
+  min-width: 260px;
+  max-width: 380px;
+}
+
+.toast.hiding {
+  animation: slideOutRight 0.3s ease forwards;
+}
+
+.toast-icon {
+  font-size: 1.8rem;
+}
+
+.toast-content {
+  flex: 1;
+}
+
+.toast-title {
+  font-weight: 800;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.toast-message {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.toast-xp {
+  padding: 0.35rem 0.7rem;
+  background: rgba(255, 171, 64, 0.1);
+  border-radius: 12px;
+  color: var(--warning);
+  font-weight: 800;
+  font-size: 0.9rem;
+  border: 2px solid rgba(255, 171, 64, 0.2);
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+

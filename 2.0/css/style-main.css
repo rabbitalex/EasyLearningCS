@@ -1,0 +1,14 @@
+/* style-main.css — 聚合入口，按顺序引入所有子文件 */
+@import url('main-parts/_header.css');
+@import url('main-parts/variables.css');
+@import url('main-parts/base.css');
+@import url('main-parts/layout.css');
+@import url('main-parts/sidebar.css');
+@import url('main-parts/topbar.css');
+@import url('main-parts/welcome.css');
+@import url('main-parts/lesson.css');
+@import url('main-parts/playground.css');
+@import url('main-parts/challenge.css');
+@import url('main-parts/achievements.css');
+@import url('main-parts/stats-grid.css');
+@import url('main-parts/misc.css');

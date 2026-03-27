@@ -1,0 +1,49 @@
+/* ========== Variables - 暗灰色主题 ========== */
+:root {
+  --primary: #FF9800;
+  --primary-light: #FFB74D;
+  --primary-dark: #F57C00;
+  --primary-bg: rgba(255, 152, 0, 0.12);
+  --secondary: #00BFA5;
+  --secondary-dark: #00897B;
+  --accent: #FF6090;
+  --accent-light: #FF80AB;
+  --success: #00E676;
+  --success-light: #69F0AE;
+  --warning: #FFAB40;
+  --warning-light: #FFD180;
+  --danger: #FF5252;
+  
+  /* 暗灰色背景系列 */
+  --bg-primary: #1a1d23;
+  --bg-secondary: #22262e;
+  --bg-card: #272b34;
+  --bg-elevated: #2c313a;
+  --bg-code: #1e2128;
+  --bg-sidebar: linear-gradient(180deg, #0d1b2a 0%, #1b2838 50%, #1a2332 100%);
+  
+  /* 浅色文字 - 高对比度，无灰色 */
+  --text-primary: #f0f2f5;
+  --text-secondary: #d0d8e8;
+  --text-muted: #b0bcd0;
+  
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 152, 0, 0.4);
+  
+  --sidebar-width: 280px;
+  --topbar-height: 64px;
+  --radius: 20px;
+  --radius-sm: 14px;
+  
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 40px rgba(255, 152, 0, 0.15);
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.25);
+  --shadow-btn: 0 4px 12px rgba(255, 152, 0, 0.3);
+  
+  --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  --font-main: 'Nunito', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-code: 'Fira Code', monospace;
+}
+

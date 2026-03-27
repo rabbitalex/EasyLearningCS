@@ -1,0 +1,174 @@
+/* 弹窗 */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+}
+
+.modal-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  max-width: 480px;
+  width: 90%;
+  max-height: 85vh;
+  overflow: hidden;
+  transform: scale(0.9) translateY(20px);
+  transition: var(--transition-spring);
+  box-shadow: var(--shadow-lg);
+}
+
+.modal-overlay.show .modal {
+  transform: scale(1) translateY(0);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--border-color);
+  background: linear-gradient(180deg, rgba(108, 92, 231, 0.05), transparent);
+}
+
+.modal-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-title i { color: var(--primary); }
+
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.4rem;
+  border-radius: var(--radius-xs);
+  transition: var(--transition);
+  font-size: 1rem;
+}
+
+.modal-close:hover {
+  background: var(--bg-primary);
+  color: var(--danger);
+}
+
+.modal-body {
+  padding: 1.2rem;
+  overflow-y: auto;
+  max-height: 60vh;
+}
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  padding: 1rem 1.2rem;
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-elevated);
+}
+
+/* 成就弹窗 */
+.achievement-modal .modal {
+  max-width: 400px;
+  text-align: center;
+}
+
+.achievement-icon {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 1rem;
+  background: linear-gradient(135deg, rgba(253, 203, 110, 0.2), rgba(253, 121, 168, 0.15));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  animation: achievementPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 0 40px rgba(253, 203, 110, 0.3);
+}
+
+@keyframes achievementPop {
+  0% { transform: scale(0) rotate(-180deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.achievement-title {
+  font-size: 1.3rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--warning), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.achievement-desc {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.achievement-xp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: linear-gradient(135deg, var(--warning), #e0a800);
+  color: var(--bg-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+/* 确认弹窗 */
+.confirm-modal .modal { max-width: 380px; text-align: center; }
+
+.confirm-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 1rem;
+  background: rgba(225, 112, 85, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--danger);
+}
+
+.confirm-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.confirm-message {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.confirm-actions {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+}

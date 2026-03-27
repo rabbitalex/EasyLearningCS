@@ -1,0 +1,212 @@
+/* 代码编辑器 */
+.code-panel {
+  display: flex;
+  flex-direction: column;
+  min-width: 320px;
+  max-width: 500px;
+}
+
+.code-editor-wrapper {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.code-editor-wrapper .CodeMirror {
+  height: 100%;
+  font-family: var(--font-code);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  background: var(--bg-code);
+  padding: 0.6rem;
+}
+
+.code-editor-wrapper .CodeMirror-gutters {
+  background: transparent;
+  border-right: 1px solid var(--border-color);
+  padding-right: 0.3rem;
+}
+
+.code-editor-wrapper .CodeMirror-linenumber { color: var(--text-muted); }
+
+.code-editor-wrapper .CodeMirror-cursor {
+  border-left: 2px solid var(--primary);
+}
+
+.code-editor-wrapper .CodeMirror-selected {
+  background: rgba(108, 92, 231, 0.15) !important;
+}
+
+/* 代码高亮 */
+.cm-s-default .cm-keyword { color: #c792ea; font-weight: 600; }
+.cm-s-default .cm-def { color: #82aaff; }
+.cm-s-default .cm-variable { color: var(--text-primary); }
+.cm-s-default .cm-variable-2 { color: #c3e88d; }
+.cm-s-default .cm-string { color: #c3e88d; }
+.cm-s-default .cm-number { color: #f78c6c; }
+.cm-s-default .cm-comment { color: var(--text-muted); }
+.cm-s-default .cm-operator { color: #89ddff; }
+.cm-s-default .cm-builtin { color: #ffcb6b; }
+.cm-s-default .cm-property { color: #f07178; }
+
+/* 执行高亮 */
+.CodeMirror-line.exec-highlight {
+  background: rgba(255, 152, 0, 0.18) !important;
+  border-left: 3px solid #FF9800 !important;
+  margin-left: -3px;
+  padding-left: calc(0.6rem + 3px);
+  position: relative;
+}
+
+.CodeMirror-line.exec-highlight::after {
+  content: '';
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 8px solid #FF9800;
+  filter: drop-shadow(0 0 3px rgba(255, 152, 0, 0.5));
+}
+
+/* 代码工具栏 */
+.code-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.8rem;
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--border-color);
+  gap: 0.5rem;
+}
+
+.code-toolbar-left, .code-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.run-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  border: none;
+  border-radius: var(--radius-sm);
+  color: white;
+  font-family: var(--font-main);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-spring);
+  box-shadow: 0 2px 8px rgba(108, 92, 231, 0.3);
+}
+
+.run-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(108, 92, 231, 0.4);
+}
+
+.run-btn:active { transform: translateY(0); }
+
+.run-btn.running {
+  background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+}
+
+.run-btn i { font-size: 0.75rem; }
+
+.reset-btn, .copy-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xs);
+  color: var(--text-secondary);
+  padding: 0.4rem 0.6rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.reset-btn:hover, .copy-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* 输出面板 */
+.output-panel {
+  border-top: 1px solid var(--border-color);
+  max-height: 180px;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+}
+
+.output-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.8rem;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.output-header i { margin-right: 0.3rem; color: var(--secondary); }
+
+.output-content {
+  flex: 1;
+  padding: 0.6rem 0.8rem;
+  font-family: var(--font-code);
+  font-size: 0.82rem;
+  overflow-y: auto;
+  background: var(--bg-code);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.output-line { margin: 0.15rem 0; }
+
+.output-line.error { color: var(--danger); }
+.output-line.success { color: var(--success); }
+.output-line.info { color: var(--secondary); }
+
+/* 速度控制 */
+.speed-control {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.speed-control input[type="range"] {
+  width: 60px;
+  height: 4px;
+  -webkit-appearance: none;
+  background: var(--border-color);
+  border-radius: 4px;
+  outline: none;
+}
+
+.speed-control input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background: var(--primary);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.speed-control input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 8px rgba(108, 92, 231, 0.5);
+}

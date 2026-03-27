@@ -1,0 +1,436 @@
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      min-height: 100vh;
+      color: #e8e8e8;
+      overflow: hidden;
+    }
+    
+    /* ========== 顶部导航 ========== */
+    .top-nav {
+      height: 60px;
+      background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+      position: relative;
+      z-index: 1000;
+    }
+    
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: white;
+    }
+    
+    .nav-brand i {
+      font-size: 1.8rem;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+    
+    .nav-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    
+    .btn {
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Nunito', sans-serif;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(0, 184, 148, 0.4);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 184, 148, 0.5);
+    }
+    
+    .btn-secondary {
+      background: rgba(255,255,255,0.15);
+      color: white;
+      backdrop-filter: blur(10px);
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-2px);
+    }
+    
+    .btn-danger {
+      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+      color: white;
+    }
+    
+    .btn-danger:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+    }
+    
+    .btn-gold {
+      background: linear-gradient(135deg, #f39c12 0%, #f1c40f 100%);
+      color: #1a1a2e;
+      box-shadow: 0 4px 15px rgba(243, 156, 18, 0.4);
+    }
+    
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(243, 156, 18, 0.5);
+    }
+    
+    /* ========== 主工作区 ========== */
+    .main-container {
+      display: flex;
+      height: calc(100vh - 60px);
+    }
+    
+    /* ========== 左侧面板 - 画板 ========== */
+    .panel-canvas {
+      width: 35%;
+      min-width: 350px;
+      background: rgba(0,0,0,0.3);
+      border-right: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .panel-header {
+      height: 50px;
+      background: rgba(255,255,255,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .panel-title {
+      font-weight: 700;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #fff;
+    }
+    
+    .panel-title i {
+      color: #00cec9;
+      font-size: 1.2rem;
+    }
+    
+    .panel-actions {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .panel-actions .btn {
+      padding: 6px 12px;
+      font-size: 0.8rem;
+    }
+    
+    .canvas-container {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      background: #0a0a1a;
+    }
+    
+    #turtleCanvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+      cursor: crosshair;
+    }
+    
+    .canvas-overlay {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+    
+    .canvas-info {
+      background: rgba(0,0,0,0.7);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-family: 'Fira Code', monospace;
+      color: #00cec9;
+      backdrop-filter: blur(10px);
+    }
+    
+    .canvas-speed {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,0,0,0.7);
+      padding: 8px 14px;
+      border-radius: 8px;
+      pointer-events: auto;
+    }
+    
+    .canvas-speed label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.7);
+    }
+    
+    .speed-slider {
+      width: 80px;
+      height: 5px;
+      border-radius: 3px;
+      background: rgba(255,255,255,0.2);
+      outline: none;
+      -webkit-appearance: none;
+    }
+    
+    .speed-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #00cec9;
+      cursor: pointer;
+    }
+    
+    /* ========== 中间面板 - 代码编辑 ========== */
+    .panel-code {
+      width: 40%;
+      min-width: 350px;
+      display: flex;
+      flex-direction: column;
+      background: #1e1e2e;
+    }
+    
+    .code-toolbar {
+      height: 50px;
+      background: rgba(255,255,255,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .code-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.6);
+    }
+    
+    .code-info span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .editor-container {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .editor-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      pointer-events: none;
+      z-index: 10;
+    }
+    
+    .line-highlight {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 24px;
+      background: rgba(0, 206, 201, 0.25);
+      border-left: 3px solid #00cec9;
+      display: none;
+      pointer-events: none;
+      transition: top 0.3s ease;
+    }
+    
+    .CodeMirror {
+      height: 100%;
+      font-family: 'Fira Code', monospace;
+      font-size: 14px;
+      line-height: 24px;
+      background: #1e1e2e !important;
+    }
+    
+    .CodeMirror-gutters {
+      background: rgba(255,255,255,0.03) !important;
+      border-right: 1px solid rgba(255,255,255,0.1) !important;
+    }
+    
+    .CodeMirror-linenumber {
+      color: rgba(255,255,255,0.4) !important;
+    }
+    
+    .CodeMirror-line {
+      padding-left: 16px;
+    }
+    
+    .CodeMirror-cursor {
+      border-color: #00cec9 !important;
+    }
+    
+    .cm-s-dracula.CodeMirror {
+      background: #1e1e2e;
+    }
+    
+    /* ========== 右侧面板 - 变量监控 ========== */
+    .panel-variables {
+      width: 25%;
+      min-width: 220px;
+      background: rgba(0,0,0,0.2);
+      border-left: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .variables-content {
+      flex: 1;
+      overflow: auto;
+      padding: 12px;
+    }
+    
+    .variable-item {
+      background: rgba(255,255,255,0.05);
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 8px;
+      border-left: 3px solid #00cec9;
+      transition: all 0.3s ease;
+      animation: slideIn 0.3s ease;
+    }
+    
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    .variable-item:hover {
+      background: rgba(255,255,255,0.08);
+      transform: translateX(3px);
+    }
+    
+    .variable-item.changed {
+      animation: pulse-glow 0.5s ease;
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(0, 206, 201, 0); }
+      50% { box-shadow: 0 0 20px rgba(0, 206, 201, 0.3); }
+    }
+    
+    .var-name {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+      color: #ff6b6b;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    
+    .var-type {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 6px;
+    }
+    
+    .var-value {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.95rem;
+      color: #00cec9;
+      word-break: break-all;
+      background: rgba(0,0,0,0.3);
+      padding: 6px 10px;
+      border-radius: 6px;
+    }
+    
+    .var-value.number { color: #79c0ff; }
+    .var-value.string { color: #a5d6ff; }
+    .var-value.boolean { color: #ff7b72; }
+    .var-value.list { color: #d2a8ff; }
+    
+    .empty-state {
+      text-align: center;
+      color: rgba(255,255,255,0.4);
+      padding: 60px 20px;
+    }
+    
+    .empty-state i {
+      font-size: 3.5rem;
+      margin-bottom: 16px;
+      opacity: 0.5;
+    }
+    
+    .empty-state p {
+      font-size: 0.95rem;
+    }
+    
+    /* 变量统计 */
+    .var-stats {
+      display: flex;
+      justify-content: space-around;
+      padding: 12px;
+      background: rgba(255,255,255,0.03);
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .var-stat {
+      text-align: center;
+    }
+    
+    .var-stat-value {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #00cec9;
+    }
+    
+    .var-stat-label {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 2px;
+    }
+    

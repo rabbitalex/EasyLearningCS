@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌍 小王王的计算机大世界 - 互动编程课程</title>
+  <!-- Skulpt - 浏览器端Python解释器 (本地) -->
+  <script src="lib/skulpt/skulpt.min.js"></script>
+  <script src="lib/skulpt/skulpt-stdlib.js"></script>
+  <!-- 本地字体 -->
+  <link rel="stylesheet" href="lib/css/fonts.css">
+  <!-- Font Awesome Icons (本地) -->
+  <link rel="stylesheet" href="lib/fontawesome/css/all.min.css">
+  <!-- Animate.css (本地) -->
+  <link rel="stylesheet" href="lib/css/animate.min.css">
+  <!-- 主样式文件 -->
+  <link rel="stylesheet" href="css/style-main.css">
+</head>
+<body>
+  <!-- SVG渐变定义（供进度环使用） -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#FF9800"/>
+        <stop offset="50%" stop-color="#00cec9"/>
+        <stop offset="100%" stop-color="#fd79a8"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- 加载动画 -->
+  <div id="loader" class="loader-overlay">
+    <div class="loader-content">
+      <div class="loader-icon">
+        <i class="fas fa-globe-americas" style="font-size:3rem;color:#00cec9;animation:spin 3s linear infinite"></i>
+      </div>
+      <h2>小王王的计算机大世界</h2>
+      <p>正在准备你的编程冒险...</p>
+      <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- 主容器 -->
+  <div id="app" class="app-container" style="display:none;">
+    <!-- 侧边栏 -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <span class="logo-text">🌍 小王王的计算机大世界</span>
+        </div>
+        <!-- 全部展开/收起按钮 -->
+        <div class="nav-global-actions">
+          <button class="nav-action-btn" id="expandAllBtn" title="全部展开">
+            <i class="fas fa-expand-alt"></i>
+          </button>
+          <button class="nav-action-btn" id="collapseAllBtn" title="全部收起">
+            <i class="fas fa-compress-alt"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="progress-overview">
+        <div class="progress-bar-inline">
+          <span class="progress-label">学习进度</span>
+          <span class="progress-pct" id="progressPercent">0%</span>
+        </div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill-inline" id="progressBarFill" style="width:0%"></div>
+        </div>
+      </div>
+      <nav id="courseNav" class="course-nav">
+        <!-- 由JS动态生成 -->
+      </nav>
+
+      <!-- 侧边栏底部导航 -->
+      <div class="sidebar-bottom-nav">
+        <button class="sidebar-nav-btn active" data-page="home" title="首页">
+          <i class="fas fa-home"></i>
+          <span>首页</span>
+        </button>
+        <button class="sidebar-nav-btn" data-page="stats" title="统计">
+          <i class="fas fa-chart-bar"></i>
+          <span>统计</span>
+        </button>
+        <a href="sticker-stage.html" class="sidebar-nav-btn" title="贴纸舞台" style="text-decoration:none">
+          <i class="fas fa-theater-masks"></i>
+          <span>贴纸舞台</span>
+        </a>
+      </div>
+
+      <div class="sidebar-footer">
+        <a href="https://github.com/skulpt/skulpt" target="_blank" class="github-link" title="Powered by Skulpt">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+    </aside>
+
+    <!-- 侧边栏遮罩（移动端） -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+    <!-- 侧边栏宽度拖拽手柄 -->
+    <div id="sidebarResizeHandle" class="sidebar-resize-handle"></div>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+      <!-- 顶部导航栏 -->
+      <header class="top-bar">
+        <button id="menuBtn" class="menu-btn" title="打开菜单">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="breadcrumb" id="breadcrumb">
+          <span class="breadcrumb-item">🏠 首页</span>
+        </div>
+        <div class="top-actions">
+          <button id="clearProgressBtn" class="btn-clear-progress" title="清除学习进度">
+            <i class="fas fa-trash-alt"></i> 清除进度
+          </button>
+        </div>
+      </header>
+
+      <!-- ============ 欢迎页 ============ -->
+      <section id="welcomePage" class="welcome-page">
+        <div class="welcome-hero">
+          <div class="hero-content animate__animated animate__fadeInUp">
+            <h1>欢迎来到 <span class="gradient-text">小王王的计算机大世界</span></h1>
+            <p class="hero-subtitle">从零开始，一步一步成为编程大师！</p>
+            <p class="hero-desc">互动式学习 · 实时代码执行 · 变量可视化 · 逐步动画教学</p>
+            <button id="startBtn" class="btn-hero">
+              <i class="fas fa-rocket"></i> 开始冒险
+            </button>
+          </div>
+
+          <!-- 卷概览卡片 -->
+          <div class="volume-overview animate__animated animate__fadeInUp" style="animation-delay:0.6s" id="volumeOverview">
+            <!-- 由JS动态生成 -->
+          </div>
+
+          <!-- 课程推荐网格 -->
+          <div class="course-grid animate__animated animate__fadeInUp" style="animation-delay: 1s" id="courseGrid">
+            <!-- 由JS动态生成 -->
+          </div>
+
+          <!-- 快捷键提示 -->
+          <div class="shortcut-hints animate__animated animate__fadeIn" style="animation-delay: 1.2s">
+            <div class="shortcut-hint">
+              <kbd>Ctrl</kbd>+<kbd>Enter</kbd> 运行代码
+            </div>
+            <div class="shortcut-hint">
+              <kbd>Tab</kbd> 缩进代码
+            </div>
+            <div class="shortcut-hint">
+              <kbd>Esc</kbd> 关闭弹窗
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 学习统计页面 ============ -->
+      <section id="statsPage" class="stats-page" style="display:none;">
+        <div class="page-header">
+          <h2><i class="fas fa-chart-bar"></i> 学习统计</h2>
+          <p class="page-desc">追踪你的编程学习之旅！</p>
+        </div>
+        <div class="stats-dashboard">
+          <div class="stats-card stats-card-lg">
+            <div class="stats-card-header">
+              <i class="fas fa-code"></i> 学习概览
+            </div>
+            <div class="stats-overview-grid">
+              <div class="stats-item">
+                <div class="stats-item-icon" style="background:rgba(255,152,0,0.12);color:var(--primary)"><i class="fas fa-book"></i></div>
+                <div class="stats-item-info">
+                  <span class="stats-item-value" id="statsCompleted">0</span>
+                  <span class="stats-item-label">已完成课程</span>
+                </div>
+              </div>
+              <div class="stats-item">
+                <div class="stats-item-icon" style="background:rgba(0,206,201,0.12);color:var(--secondary)"><i class="fas fa-puzzle-piece"></i></div>
+                <div class="stats-item-info">
+                  <span class="stats-item-value" id="statsChallenges">0</span>
+                  <span class="stats-item-label">挑战通过</span>
+                </div>
+              </div>
+              <div class="stats-item">
+                <div class="stats-item-icon" style="background:rgba(253,121,168,0.12);color:var(--accent)"><i class="fas fa-fire"></i></div>
+                <div class="stats-item-info">
+                  <span class="stats-item-value" id="statsStreak">1</span>
+                  <span class="stats-item-label">连续天数</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="stats-card">
+            <div class="stats-card-header">
+              <i class="fas fa-map"></i> 章节进度
+            </div>
+            <div class="chapter-progress-list" id="chapterProgressList">
+              <!-- 由JS动态生成 -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 课程学习页 ============ -->
+      <section id="lessonPage" class="lesson-page" style="display:none;">
+        <div class="lesson-header">
+          <div class="lesson-title-bar">
+            <button id="prevLesson" class="btn-nav" title="上一课"><i class="fas fa-chevron-left"></i> 上一课</button>
+            <div class="lesson-title-wrapper">
+              <h2 id="lessonTitle" class="lesson-title"></h2>
+            </div>
+            <button id="nextLesson" class="btn-nav" title="下一课">下一课 <i class="fas fa-chevron-right"></i></button>
+          </div>
+          <div class="lesson-progress-bar">
+            <div id="lessonProgressFill" class="lesson-progress-fill"></div>
+          </div>
+        </div>
+
+        <div class="lesson-content-scroll">
+        <div class="lesson-body">
+          <!-- 教学区域 -->
+          <div class="lesson-teach-area">
+            <div id="stepContainer" class="step-container"></div>
+            <div class="step-nav">
+              <button id="prevStep" class="btn-step" disabled>
+                <i class="fas fa-arrow-left"></i> 上一步
+              </button>
+              <div class="step-dots" id="stepDots"></div>
+              <button id="nextStep" class="btn-step btn-primary">
+                下一步 <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- 代码交互区 - 上中下同屏布局 -->
+          <div class="code-playground-wrapper">
+            <button class="code-toggle-btn" id="codeToggleBtn" onclick="toggleCodePanel()" title="展开代码编辑器">
+              <i class="fas fa-code"></i>
+              <span class="code-toggle-text">代码</span>
+              <i class="fas fa-chevron-left code-toggle-arrow"></i>
+            </button>
+            <div class="code-playground unified-view" id="codePlayground">
+            <!-- 顶部：代码编辑器 -->
+            <div class="playground-section section-editor" id="sectionEditor">
+              <div class="section-label">
+                <i class="fas fa-code"></i> <span style="color: #ff9800; font-weight: 700;">代码编辑器</span>
+              </div>
+              <div class="editor-toolbar">
+                <button id="runCode" class="btn-run" title="运行代码 (Ctrl+Enter)">
+                  <i class="fas fa-play"></i> 运行
+                </button>
+                <button id="stepRun" class="btn-step-run" title="逐步执行">
+                  <i class="fas fa-shoe-prints"></i> 逐步执行
+                </button>
+                <button id="stepNextBtn" class="btn-step-run" title="执行下一步" disabled style="display:none;">
+                  <i class="fas fa-forward-step"></i> 下一步
+                </button>
+                <button id="stepStopBtn" class="btn-step-run" title="停止" disabled style="display:none;">
+                  <i class="fas fa-stop"></i> 停止
+                </button>
+                <span class="toolbar-spacer"></span>
+                <button id="resetCode" class="btn-reset" title="重置代码">
+                  <i class="fas fa-undo"></i> 重置
+                </button>
+                <button id="copyCode" class="btn-copy" title="复制代码">
+                  <i class="fas fa-copy"></i> 复制
+                </button>
+              </div>
+              <div class="code-editor-wrapper">
+                <div class="line-numbers" id="lineNumbers"></div>
+                <div class="code-highlight-container">
+                  <div class="current-line-highlight" id="currentLineHighlight"></div>
+                  <pre class="code-highlight-layer" id="codeHighlight" aria-hidden="true"><code id="codeHighlightCode"></code></pre>
+                  <textarea id="codeEditor" class="code-editor" spellcheck="false" placeholder="在这里输入Python代码..."></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- 拖拽分隔条：编辑器 ↔ 运行结果 -->
+            <div class="resize-handle" data-above="sectionEditor" data-below="sectionOutput" title="拖拽调整高度">
+              <div class="resize-handle-grip"></div>
+            </div>
+
+            <!-- 中部：运行结果 -->
+            <div class="playground-section section-output" id="sectionOutput">
+              <div class="output-header">
+                <span><i class="fas fa-terminal"></i> 运行结果</span>
+                <button id="clearOutput" class="btn-clear" title="清除输出">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
+              <div id="outputArea" class="output-area">
+                <span class="output-placeholder">点击 ▶ 运行 按钮查看输出结果 ✨</span>
+              </div>
+            </div>
+
+            <!-- 拖拽分隔条：运行结果 ↔ 变量追踪 -->
+            <div class="resize-handle" data-above="sectionOutput" data-below="sectionVariables" title="拖拽调整高度">
+              <div class="resize-handle-grip"></div>
+            </div>
+
+            <!-- 底部：变量追踪 -->
+            <div class="playground-section section-variables" id="sectionVariables">
+              <div class="variables-header">
+                <span><i class="fas fa-database"></i> 变量追踪器</span>
+                <span class="var-hint">实时显示变量变化</span>
+              </div>
+              <div id="variablesArea" class="variables-area">
+                <div class="empty-variables">
+                  <i class="fas fa-box-open"></i>
+                  <p>运行代码后，变量会在这里显示</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div id="challengeSection" class="challenge-section" style="display:none;">
+          <div class="challenge-card">
+            <div class="challenge-header" id="challengeToggle" style="cursor:pointer;user-select:none;">
+              <i class="fas fa-trophy"></i>
+              <h3>编程挑战</h3>
+              <i class="fas fa-chevron-right challenge-arrow" id="challengeArrow" style="margin-left:auto;transition:transform 0.3s;font-size:0.9rem;"></i>
+            </div>
+            <div id="challengeBody" class="challenge-body" style="display:none;">
+              <p id="challengeDesc" class="challenge-desc"></p>
+              <div class="challenge-editor-wrapper">
+                <textarea id="challengeEditor" class="code-editor challenge-editor" spellcheck="false"></textarea>
+              </div>
+              <div class="challenge-actions">
+                <button id="submitChallenge" class="btn-submit">
+                  <i class="fas fa-check"></i> 提交答案
+                </button>
+                <button id="hintBtn" class="btn-hint">
+                  <i class="fas fa-lightbulb"></i> 提示
+                </button>
+              </div>
+              <div id="challengeResult" class="challenge-result"></div>
+            </div>
+          </div>
+        </div>
+        </div> <!-- /.lesson-content-scroll -->
+      </section>
+      <div id="clearProgressModal" class="modal-overlay" style="display:none;">
+        <div class="modal-content confirm-modal">
+          <div class="confirm-icon">⚠️</div>
+          <h2>确认清除进度</h2>
+          <p>这将清除你的所有学习进度和统计数据。<br><strong>此操作不可撤销！</strong></p>
+          <div class="confirm-actions">
+            <button id="confirmClear" class="btn-danger">
+              <i class="fas fa-trash-alt"></i> 确认清除
+            </button>
+            <button id="cancelClear" class="btn-cancel">
+              <i class="fas fa-times"></i> 取消
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/config/storage.js"></script>
+  <script src="js/config/manager.js"></script>
+  <script src="js/config/sync.js"></script>
+  <!-- 卷一：理论 -->
+  <script src="js/courses/registry.js"></script>
+  <script src="js/courses/chapter_v1_logic.js"></script>
+  <script src="js/courses/chapter0.js"></script>
+  <script src="js/courses/chapter0b.js"></script>
+  <script src="js/courses/chapter_v1_numeral.js"></script>
+  <script src="js/courses/chapter0c.js"></script>
+  <script src="js/courses/chapter_v1_os.js"></script>
+  <script src="js/courses/chapter_v1_kernel.js"></script>
+  <script src="js/courses/chapter_v1_process.js"></script>
+  <script src="js/courses/chapter_v1_thread.js"></script>
+  <!-- 卷二：Python -->
+  <script src="js/courses/chapter1.js"></script>
+  <script src="js/courses/chapter2.js"></script>
+  <script src="js/courses/chapter3.js"></script>
+  <script src="js/courses/chapter4.js"></script>
+  <script src="js/courses/chapter5.js"></script>
+  <script src="js/courses/chapter6.js"></script>
+  <script src="js/courses/chapter7.js"></script>
+  <script src="js/courses/chapter8.js"></script>
+  <script src="js/courses/chapter9.js"></script>
+  <script src="js/courses/chapter10.js"></script>
+  <script src="js/courses/chapter11.js"></script>
+  <script src="js/courses/chapter12.js"></script>
+  <script src="js/courses/chapter13.js"></script>
+  <script src="js/courses/chapter14.js"></script>
+  <script src="js/courses/chapter15.js"></script>
+  <script src="js/courses/chapter16.js"></script>
+  <script src="js/courses/chapter17.js"></script>
+  <script src="js/courses/chapter18.js"></script>
+  <script src="js/courses/chapter19.js"></script>
+  <script src="js/courses/chapter20.js"></script>
+  <!-- 卷三：数据结构与算法 -->
+  <script src="js/courses/chapter_v3_ds.js"></script>
+  <script src="js/courses/chapter_v3_algo.js"></script>
+  <script src="js/courses/chapter_v3_hash.js"></script>
+  <script src="js/courses/chapter_v3_heap.js"></script>
+  <script src="js/courses/chapter_v3_graph.js"></script>
+  <script src="js/courses/chapter_v3_dp.js"></script>
+  <!-- 卷四：C++ -->
+  <script src="js/courses/chapter_v4_cpp1.js"></script>
+  <script src="js/courses/chapter_v4_cpp2.js"></script>
+  <script src="js/courses/chapter_v4_cpp3.js"></script>
+  <script src="js/courses/chapter_v4_cpp4.js"></script>
+  <script src="js/courses/chapter_v4_cpp5.js"></script>
+  <script src="js/courses/chapter_v4_cpp6.js"></script>
+  <script src="js/courses/chapter_v4_cpp7.js"></script>
+  <!-- 课程索引 -->
+  <script src="js/courses/index.js"></script>
+  <script src="js/app/syntax-highlight.js"></script>
+  <script src="js/app/lexer.js"></script>
+  <script src="js/app/state.js"></script>
+  <script src="js/app/init-skulpt.js"></script>
+  <script src="js/app/step-parse.js"></script>
+  <script src="js/app/step-loop.js"></script>
+  <script src="js/app/step-runner.js"></script>
+  <script src="js/app/step-ui.js"></script>
+  <script src="js/app/output.js"></script>
+  <script src="js/app/variables.js"></script>
+  <script src="js/app/sidebar.js"></script>
+  <script src="js/app/nav.js"></script>
+  <script src="js/app/page-switch.js"></script>
+  <script src="js/app/lesson.js"></script>
+  <script src="js/app/ui-misc.js"></script>
+  <script src="js/app/boot.js"></script>
+</body>
+</html>
