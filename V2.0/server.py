@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""hanhanpython HTTP 服务器 — 纯 Python 标准库，零依赖"""
+"""EasyLearningCS HTTP 服务器 — 纯 Python 标准库，零依赖"""
 import http.server, socketserver, json, os, sys, gzip, io, signal, socket
 from pathlib import Path
 from datetime import datetime, timezone
@@ -37,7 +37,7 @@ def init_user_data():
     print('  \033[32m✔ 已生成 user-data.json\033[0m')
 
 class Handler(http.server.BaseHTTPRequestHandler):
-    server_version = 'hanhanpython/2.0'
+    server_version = 'EasyLearningCS/2.0'
     def log_message(self, fmt, *a):
         pass  # 静默常规日志
 
@@ -160,7 +160,7 @@ def main():
 
     print()
     print('  \033[36m╔══════════════════════════════════════╗\033[0m')
-    print('  \033[36m║\033[0m  🌍 \033[1mhanhanpython\033[0m 服务器已启动      \033[36m║\033[0m')
+    print('  \033[36m║\033[0m  🌍 \033[1mEasyLearningCS\033[0m 服务器已启动      \033[36m║\033[0m')
     print('  \033[36m╠══════════════════════════════════════╣\033[0m')
     print(f'  \033[36m║\033[0m  \033[32m▸\033[0m {open_url:<37}\033[36m║\033[0m')
     print('  \033[36m║\033[0m  \033[2m▸ Ctrl+C 停止\033[0m                     \033[36m║\033[0m')

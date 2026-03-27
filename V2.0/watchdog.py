@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""hanhanpython watchdog — 纯 Python 标准库，零依赖
+"""EasyLearningCS watchdog — 纯 Python 标准库，零依赖
 每分钟检查一次状态，3 分钟无进展则生成 continue-task 并发通知。"""
 import json, os, sys, time, subprocess, platform
 from pathlib import Path
 from datetime import datetime, timezone
 
-ROOT = Path(__file__).resolve().parent.parent.parent  # 2.0/
+ROOT = Path(__file__).resolve().parent  # V2.0/
 STATE_PATH = ROOT / 'automation' / 'state' / 'run-state.json'
 QUEUE_PATH = ROOT / 'automation' / 'state' / 'task-queue.json'
 WD_STATE = ROOT / 'automation' / 'state' / 'watchdog-state.json'
@@ -78,7 +78,7 @@ def has_work(state, queue):
 
 def notify(msg):
     if platform.system() == 'Darwin':
-        subprocess.run(['osascript', '-e', f'display notification "{msg}" with title "hanhanpython watchdog"'], capture_output=True)
+        subprocess.run(['osascript', '-e', f'display notification "{msg}" with title "EasyLearningCS watchdog"'], capture_output=True)
 
 def main():
     if not acquire_lock():

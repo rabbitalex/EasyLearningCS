@@ -2,12 +2,12 @@
 set -eu
 
 # ============================================================
-# hanhanpython 一键启动（macOS 10.6+ / Linux）
+# EasyLearningCS 一键启动（macOS 10.6+ / Linux）
 # 使用系统自带 Python 3，无需安装，无需管理员权限
 # ============================================================
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-APP_DIR="$SCRIPT_DIR/2.0"
+APP_DIR="$SCRIPT_DIR/V2.0"
 
 # ---------- 检测 Python 3（>= 3.6）----------
 PY=""
@@ -44,7 +44,7 @@ if [ -z "$PY" ]; then
 fi
 
 echo ""
-echo "  🚀 hanhanpython 启动中..."
+echo "  🚀 EasyLearningCS 启动中..."
 echo "  📁 $APP_DIR"
 echo "  🐍 $("$PY" --version 2>&1)"
 echo ""
@@ -53,7 +53,7 @@ echo ""
 rm -f "$APP_DIR/.port"
 
 # ---------- 启动服务器，捕获输出 ----------
-"$PY" "$APP_DIR/server.py" > /tmp/hanhanpython-server.log 2>&1 &
+"$PY" "$APP_DIR/server.py" > /tmp/EasyLearningCS-server.log 2>&1 &
 SERVER_PID=$!
 
 # ---------- 等待端口和 URL ----------
@@ -63,7 +63,7 @@ for i in $(seq 1 30); do
   if [ -f "$APP_DIR/.port" ]; then
     PORT="$(cat "$APP_DIR/.port")"
     # 从日志中读取 OPEN_URL
-    OPEN_URL=$(grep '^OPEN_URL:' /tmp/hanhanpython-server.log 2>/dev/null | tail -1 | cut -d: -f2-)
+    OPEN_URL=$(grep '^OPEN_URL:' /tmp/EasyLearningCS-server.log 2>/dev/null | tail -1 | cut -d: -f2-)
     break
   fi
   sleep 0.3
@@ -72,7 +72,7 @@ done
 [ -z "$OPEN_URL" ] && OPEN_URL="http://localhost:$PORT"
 
 # 把日志转到终端显示
-tail -f /tmp/hanhanpython-server.log &
+tail -f /tmp/EasyLearningCS-server.log &
 TAIL_PID=$!
 
 # ---------- 打开浏览器（直达课程）----------
@@ -100,7 +100,7 @@ cleanup() {
   kill $TAIL_PID 2>/dev/null || true
   kill $WD_PID 2>/dev/null || true
   kill $SERVER_PID 2>/dev/null || true
-  rm -f "$APP_DIR/.port" /tmp/hanhanpython-server.log
+  rm -f "$APP_DIR/.port" /tmp/EasyLearningCS-server.log
   wait $SERVER_PID 2>/dev/null || true
   echo "  👋 已关闭"
 }

@@ -3,12 +3,12 @@ chcp 65001 >nul 2>&1
 setlocal enabledelayedexpansion
 
 :: ============================================================
-:: hanhanpython 一键启动（Windows 7+）
+:: EasyLearningCS 一键启动（Windows 7+）
 :: 内嵌 Python，解压即用，无需安装任何软件，无需管理员权限
 :: ============================================================
 
 set "SCRIPT_DIR=%~dp0"
-set "APP_DIR=%SCRIPT_DIR%2.0"
+set "APP_DIR=%SCRIPT_DIR%V2.0"
 set "PY="
 
 :: 1. 内嵌 Python（优先）
@@ -42,7 +42,7 @@ exit /b 1
 
 :found
 echo.
-echo   🚀 hanhanpython 启动中...
+echo   🚀 EasyLearningCS 启动中...
 echo   📁 %APP_DIR%
 echo.
 
