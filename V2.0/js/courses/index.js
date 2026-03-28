@@ -45,6 +45,7 @@ const COURSE_GROUPS = Object.keys(VOLUME_META).map(function(key) {
     groupType: key,
     groupIcon: meta.groupIcon,
     groupColor: meta.groupColor,
+    groupNameColor: meta.groupNameColor || '',
     chapters: chapters,
     isComingSoon: chapters.length === 0
   };

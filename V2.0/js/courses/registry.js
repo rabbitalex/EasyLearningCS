@@ -15,8 +15,8 @@ window.VOLUME_META = {
   python:   { groupName: '卷二 · Python', groupIcon: '🐍', groupColor: '#00cec9' },
   dsa:      { groupName: '卷三 · 数据结构与算法', groupIcon: '🏗️', groupColor: '#FF9800' },
   cpp:      { groupName: '卷四 · C++<未完成>', groupIcon: '⚡', groupColor: '#0984e3' },
-  microbit: { groupName: '卷五 · 硬件基础-Microbit<未完成>', groupIcon: '🔌', groupColor: '#8b949e' },
-  ai:       { groupName: '卷六 · AI基础', groupIcon: '🤖', groupColor: '#8b949e' }
+  microbit: { groupName: '卷五 · 硬件基础-Microbit<未完成>', groupIcon: '🔌', groupColor: '#8b949e', groupNameColor: '#8b949e' },
+  ai:       { groupName: '卷六 · AI基础<未完成>', groupIcon: '🤖', groupColor: '#8b949e', groupNameColor: '#8b949e' }
 };
 
 window.registerChapter = function(volumeKey, chapterData) {

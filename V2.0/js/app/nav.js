@@ -58,6 +58,7 @@ function buildNav(filter) {
 
       var volumeColor = group.groupColor || '#fd79a8';
       var volumeIcon = group.groupIcon || '';
+      var volumeNameStyle = group.groupNameColor ? ' style="color:' + group.groupNameColor + '"' : '';
       var hasChapters = group.chapters && group.chapters.length > 0;
       var hasActiveCourse = hasChapters && group.chapters.some(function(ch) {
         return state.currentLesson && ch.lessons.some(function(l) { return l.id === state.currentLesson.id; });
@@ -75,7 +76,7 @@ function buildNav(filter) {
         '<div class="nav-volume-header">' +
         toggleHtml +
         '<span class="nav-volume-icon">' + volumeIcon + '</span>' +
-        '<span class="nav-volume-name">' + escapeHtml(group.groupName) + '</span></div>' +
+        '<span class="nav-volume-name"' + volumeNameStyle + '>' + escapeHtml(group.groupName) + '</span></div>' +
         bodyHtml +
         '</div>';
     });
