@@ -48,6 +48,25 @@ echo.
 
 del /f /q "%APP_DIR%\.port" >nul 2>&1
 
+:: ---------- 清理旧进程 ----------
+:: 查找并终止所有残留的 server.py 进程
+echo   🧹 正在清理旧进程...
+for /f "tokens=2" %%p in ('tasklist /fi "imagename eq python.exe" /fo list 2^>nul ^| findstr /i "PID:"') do (
+  wmic process where "ProcessId=%%p" get CommandLine 2>nul | findstr /i "server.py" >nul 2>&1 && (
+    taskkill /f /pid %%p >nul 2>&1 && echo   🧹 已终止旧进程 PID=%%p
+  )
+)
+for /f "tokens=2" %%p in ('tasklist /fi "imagename eq python3.exe" /fo list 2^>nul ^| findstr /i "PID:"') do (
+  wmic process where "ProcessId=%%p" get CommandLine 2>nul | findstr /i "server.py" >nul 2>&1 && (
+    taskkill /f /pid %%p >nul 2>&1 && echo   🧹 已终止旧进程 PID=%%p
+  )
+)
+:: 额外：按端口清理（如果 .port 文件留下了旧端口）
+for /f "tokens=5" %%a in ('netstat -aon 2^>nul ^| findstr ":9500 :9501 :9502 :9503 :9504" ^| findstr "LISTENING"') do (
+  taskkill /f /pid %%a >nul 2>&1
+)
+timeout /t 1 /nobreak >nul 2>&1
+
 :: 启动服务器
 start /b "" "%PY%" "%APP_DIR%\server.py"
 
