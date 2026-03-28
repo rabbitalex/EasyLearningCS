@@ -1,6 +1,11 @@
 # 运行时生成，不提交
 V2.0/user-data.json
 V2.0/.port
+V2.0/.daemon.pid
 V2.0/__pycache__/
+V2.0/logs/
 *.DS_Store
+*.pyc
+__pycache__/
 .daemon.pid
+/tmp/EasyLearningCS-*
