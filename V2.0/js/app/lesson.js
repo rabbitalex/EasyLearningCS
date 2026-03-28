@@ -164,13 +164,26 @@ function updateStreak() {
 
 // ===== Toast =====
 function toast(msg) {
-  var existing = document.querySelector('.toast');
+  // 确保容器存在
+  var container = document.getElementById('toastContainer');
+  if (!container) {
+    container = document.createElement('div');
+    container.id = 'toastContainer';
+    document.body.appendChild(container);
+  }
+  // 移除旧的
+  var existing = container.querySelector('.toast');
   if (existing) existing.remove();
+  // 创建新 toast
   var el = document.createElement('div');
   el.className = 'toast';
   el.innerHTML = msg;
-  document.body.appendChild(el);
-  setTimeout(function() { if (el.parentNode) el.remove(); }, 3000);
+  container.appendChild(el);
+  // 2.5秒后滑出消失
+  setTimeout(function() {
+    el.classList.add('hiding');
+    setTimeout(function() { if (el.parentNode) el.remove(); }, 300);
+  }, 2500);
 }
 
 // ===== 课程推荐网格 =====
