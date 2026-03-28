@@ -7,16 +7,24 @@
   var modal = document.getElementById('nameModal');
   var input = document.getElementById('nameInput');
   var confirmBtn = document.getElementById('nameConfirm');
+  var closeBtn = document.getElementById('nameClose');
 
   function getProfile() {
     try {
-      var data = localStorage.getItem(STORAGE_KEY);
-      return data ? JSON.parse(data) : null;
+      return safeGet(STORAGE_KEY, null);
     } catch(e) { return null; }
   }
 
   function saveProfile(profile) {
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(profile)); } catch(e) {}
+    try { safeSet(STORAGE_KEY, profile); } catch(e) {}
+  }
+
+  function updateBranding(name) {
+    var logoEl = document.getElementById('logoText');
+    var welcomeEl = document.getElementById('welcomeText');
+    if (logoEl) logoEl.textContent = '🌍 ' + name + '的编程世界';
+    if (welcomeEl) welcomeEl.textContent = name + '的编程世界';
+    document.title = '🌍 ' + name + '的编程世界';
   }
 
   function setName(name) {
@@ -28,6 +36,7 @@
     saveProfile(profile);
     nameEl.textContent = name;
     nameEl.title = '点击修改昵称';
+    updateBranding(name);
   }
 
   function showModal(placeholder) {
@@ -47,6 +56,11 @@
     if (name) { setName(name); hideModal(); }
   });
 
+  // 关闭按钮
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function() { hideModal(); });
+  }
+
   // 回车确认
   input.addEventListener('keydown', function(e) {
     if (e.key === 'Enter') {
@@ -65,6 +79,7 @@
   if (profile && profile.nickname && profile.nickname !== 'Python学徒') {
     nameEl.textContent = profile.nickname;
     nameEl.title = '点击修改昵称';
+    updateBranding(profile.nickname);
   } else {
     nameEl.textContent = 'Python学徒';
     // 首次打开，延迟弹窗（等加载动画结束后）

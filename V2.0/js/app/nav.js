@@ -1,4 +1,6 @@
 // ===== 导航构建 =====
+var _navAllExpanded = false; // 默认全部折叠
+
 function buildNav(filter) {
   var nav = $('courseNav');
   var html = '';
@@ -29,11 +31,15 @@ function buildNav(filter) {
       '<span class="nav-ch-badge">' + prog.completed + '/' + prog.total + '</span></div>' +
       '<div class="nav-lessons' + (isExpanded ? ' expanded' : '') + '">';
     lessons.forEach(function(lesson, li) {
-      var isCompleted = state.completedLessons.indexOf(lesson.id) !== -1;
       var isActive = state.currentLesson && state.currentLesson.id === lesson.id;
       var isLastLesson = li === lessons.length - 1;
-      chHtml += '<div class="nav-lesson' + (isActive ? ' active' : '') + (isCompleted ? ' completed' : '') + (isLastLesson ? ' last-lesson' : '') + '" data-lesson="' + lesson.id + '">' +
-        '<span class="nav-lesson-dot">' + (isCompleted ? '<i class="fas fa-check"></i>' : '') + '</span>' +
+      // 三态：completed(全部作业完成)=绿色, visited(学过未完成)=黄色, 默认=灰色
+      var isCompleted = state.completedLessons.indexOf(lesson.id) !== -1;
+      var isVisited = !isCompleted && state.visitedPages && state.visitedPages.indexOf(lesson.id) !== -1;
+      var stateClass = isCompleted ? ' completed' : (isVisited ? ' visited' : '');
+      var dotContent = isCompleted ? '<i class="fas fa-check"></i>' : '';
+      chHtml += '<div class="nav-lesson' + (isActive ? ' active' : '') + stateClass + (isLastLesson ? ' last-lesson' : '') + '" data-lesson="' + lesson.id + '">' +
+        '<span class="nav-lesson-dot">' + dotContent + '</span>' +
         '<span class="nav-lesson-text">' + lesson.title + '</span></div>';
     });
     chHtml += '</div></div>';
@@ -55,14 +61,14 @@ function buildNav(filter) {
         var hasActiveCourse = group.chapters.some(function(ch) {
           return state.currentLesson && ch.lessons.some(function(l) { return l.id === state.currentLesson.id; });
         });
-        // 默认展开所有卷，让用户可以点击折叠
-        var isExpanded = true;
-        html += '<div class="nav-volume nav-volume-' + group.groupType + (hasActiveCourse ? ' expanded' : ' expanded') + '" style="--vol-color:' + volumeColor + '">' +
+        // 默认折叠，仅当有活跃课程时展开该卷
+        var isExpanded = hasActiveCourse;
+        html += '<div class="nav-volume nav-volume-' + group.groupType + (isExpanded ? ' expanded' : '') + '" style="--vol-color:' + volumeColor + '">' +
           '<div class="nav-volume-header">' +
           '<div class="nav-volume-toggle"><i class="fas fa-chevron-right nav-vol-arrow"></i></div>' +
           '<span class="nav-volume-icon">' + volumeIcon + '</span>' +
           '<span class="nav-volume-name">' + group.groupName + '</span></div>' +
-          '<div class="nav-volume-body expanded">' +
+          '<div class="nav-volume-body' + (isExpanded ? ' expanded' : '') + '">' +
           '<div class="nav-volume-tree">' + groupChaptersHtml + '</div></div></div>';
       }
     });
@@ -84,7 +90,7 @@ function buildNav(filter) {
     });
   });
 
-  // 绑定章节标题点击事件（独立展开/折叠，不使用手风琴）
+  // 绑定章节标题点击事件（独立展开/折叠）
   $$('.nav-chapter-title').forEach(function(el) {
     el.addEventListener('click', function() {
       var parent = this.closest('.nav-chapter');
@@ -97,23 +103,30 @@ function buildNav(filter) {
     el.addEventListener('click', function() { loadLesson(this.getAttribute('data-lesson')); });
   });
 
-  // 全部展开/收起按钮
-  var expandAllBtn = document.getElementById('expandAllBtn');
-  var collapseAllBtn = document.getElementById('collapseAllBtn');
-  if (expandAllBtn) {
-    expandAllBtn.onclick = function() {
-      $$('.nav-volume').forEach(function(v) { v.classList.add('expanded'); });
-      $$('.nav-volume-body').forEach(function(b) { b.classList.add('expanded'); });
-      $$('.nav-chapter-title').forEach(function(t) { t.classList.add('expanded'); });
-      $$('.nav-lessons').forEach(function(l) { l.classList.add('expanded'); });
-    };
-  }
-  if (collapseAllBtn) {
-    collapseAllBtn.onclick = function() {
-      $$('.nav-volume').forEach(function(v) { v.classList.remove('expanded'); });
-      $$('.nav-volume-body').forEach(function(b) { b.classList.remove('expanded'); });
-      $$('.nav-chapter-title').forEach(function(t) { t.classList.remove('expanded'); });
-      $$('.nav-lessons').forEach(function(l) { l.classList.remove('expanded'); });
+  // 全部展开/收起切换按钮
+  var toggleBtn = document.getElementById('toggleAllBtn');
+  if (toggleBtn) {
+    toggleBtn.onclick = function() {
+      _navAllExpanded = !_navAllExpanded;
+      var icon = document.getElementById('toggleAllIcon');
+      var text = document.getElementById('toggleAllText');
+      if (_navAllExpanded) {
+        $$('.nav-volume').forEach(function(v) { v.classList.add('expanded'); });
+        $$('.nav-volume-body').forEach(function(b) { b.classList.add('expanded'); });
+        $$('.nav-chapter-title').forEach(function(t) { t.classList.add('expanded'); });
+        $$('.nav-lessons').forEach(function(l) { l.classList.add('expanded'); });
+        if (icon) { icon.className = 'fas fa-compress-alt'; }
+        if (text) { text.textContent = '收起'; }
+        toggleBtn.title = '全部收起';
+      } else {
+        $$('.nav-volume').forEach(function(v) { v.classList.remove('expanded'); });
+        $$('.nav-volume-body').forEach(function(b) { b.classList.remove('expanded'); });
+        $$('.nav-chapter-title').forEach(function(t) { t.classList.remove('expanded'); });
+        $$('.nav-lessons').forEach(function(l) { l.classList.remove('expanded'); });
+        if (icon) { icon.className = 'fas fa-expand-alt'; }
+        if (text) { text.textContent = '展开'; }
+        toggleBtn.title = '全部展开';
+      }
     };
   }
 
@@ -170,4 +183,3 @@ function switchPage(page) {
   $('sidebar').classList.remove('mobile-open');
   $('sidebarOverlay').classList.remove('show');
 }
-

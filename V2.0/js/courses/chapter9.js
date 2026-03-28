@@ -1,10 +1,10 @@
-// 第九章：文件操作
+// 第八章：文件操作
 const CHAPTER9 = {
-  chapter: "第九章：文件操作",
+  chapter: "第八章：文件操作",
   icon: "📁",
   lessons: [
     {
-      id: "9-1",
+      id: "8-1",
       title: "读写文件 - 数据的保存",
       xp: 30,
       code: '# 写入文件\nwith open("test.txt", "w") as f:\n    f.write("Hello, Python!")\n\n# 读取文件\nwith open("test.txt", "r") as f:\n    content = f.read()\n    print(content)',
@@ -181,7 +181,7 @@ f.close()  # 容易忘记！</div>
       }
     },
     {
-      id: "9-2",
+      id: "8-2",
       title: "文件操作进阶 - 处理数据文件",
       xp: 35,
       code: '# 学生成绩数据处理\nstudents = [\n    "小明,95",\n    "小红,87",\n    "小刚,72",\n    "小李,90",\n    "小王,65"\n]\n\n# 写入CSV格式\nwith open("scores.csv", "w") as f:\n    f.write("姓名,成绩\\n")\n    for s in students:\n        f.write(s + "\\n")\nprint("成绩文件已保存！")\n\n# 读取并分析\nwith open("scores.csv", "r") as f:\n    lines = f.readlines()\n    header = lines[0].strip()\n    print(header)\n    print("-" * 15)\n    for line in lines[1:]:\n        name, score = line.strip().split(",")\n        print(f"{name}: {score}分")',
@@ -346,7 +346,7 @@ f.close()  # 容易忘记！</div>
       }
     },
     {
-      id: "9-3",
+      id: "8-3",
       title: "异常处理 - 让程序更安全",
       xp: 30,
       code: '# try-except 捕获异常\ntry:\n    num = int(input("请输入一个数字: "))\n    result = 100 / num\n    print(f"100 / {num} = {result}")\nexcept ValueError:\n    print("请输入有效的数字！")\nexcept ZeroDivisionError:\n    print("不能除以零！")\nfinally:\n    print("程序执行完毕")',

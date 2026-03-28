@@ -1,10 +1,10 @@
-// 第十章：项目实战
+// 第九章：项目实战
 const CHAPTER10 = {
-  chapter: "第十章：项目实战",
+  chapter: "第九章：项目实战",
   icon: "🎯",
   lessons: [
     {
-      id: "10-1",
+      id: "9-1",
       title: "猜数字游戏",
       xp: 50,
       code: 'import random\n\nsecret = random.randint(1, 100)\nattempts = 0\nmax_attempts = 7\n\nprint("欢迎来到猜数字游戏！")\nprint("我想了一个1-100的数字，你有7次机会")\n\nwhile attempts < max_attempts:\n    guess = int(input("请输入你的猜测: "))\n    attempts += 1\n    \n    if guess == secret:\n        print(f"恭喜！你用了{attempts}次猜对了！")\n        break\n    elif guess > secret:\n        print("太大了！")\n    else:\n        print("太小了！")\n    \n    print(f"还剩{max_attempts - attempts}次机会")\n\nif attempts >= max_attempts:\n    print(f"游戏结束！答案是{secret}")',
@@ -159,7 +159,7 @@ else: 提示"小了"</div>
       }
     },
     {
-      id: "10-2",
+      id: "9-2",
       title: "成绩管理系统",
       xp: 50,
       code: 'students = [\n    {"name": "小明", "score": 95},\n    {"name": "小红", "score": 87},\n    {"name": "小刚", "score": 72},\n    {"name": "小李", "score": 90},\n    {"name": "小王", "score": 65}\n]\n\ndef show_all(students):\n    print("=== 所有学生 ===")\n    for s in students:\n        print(f"  {s[\'name\']}: {s[\'score\']}分")\n\ndef calc_stats(students):\n    scores = [s["score"] for s in students]\n    print(f"\\n=== 统计信息 ===")\n    print(f"  平均分: {sum(scores)/len(scores):.1f}")\n    print(f"  最高分: {max(scores)}")\n    print(f"  最低分: {min(scores)}")\n\nshow_all(students)\ncalc_stats(students)',
@@ -339,7 +339,7 @@ else: 提示"小了"</div>
       }
     },
     {
-      id: "10-3",
+      id: "9-3",
       title: "石头剪刀布",
       xp: 40,
       code: 'import random\n\nchoices = ["石头", "剪刀", "布"]\nwin_rules = {"石头": "剪刀", "剪刀": "布", "布": "石头"}\n\nplayer_wins = 0\ncomputer_wins = 0\nrounds = 3\n\nfor i in range(rounds):\n    player = input(f"第{i+1}轮，请出(石头/剪刀/布): ")\n    computer = random.choice(choices)\n    print(f"电脑出: {computer}")\n    \n    if player == computer:\n        print("平局！")\n    elif win_rules[player] == computer:\n        print("你赢了！")\n        player_wins += 1\n    else:\n        print("你输了！")\n        computer_wins += 1\n\nprint(f"\\n最终比分: 你 {player_wins} - {computer_wins} 电脑")',
@@ -461,7 +461,7 @@ else: 提示"小了"</div>
       }
     },
     {
-      id: "10-4",
+      id: "9-4",
       title: "密码生成器",
       xp: 45,
       code: 'import random\n\ndef generate_password(length=12):\n    """生成随机密码"""\n    lower = "abcdefghijklmnopqrstuvwxyz"\n    upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"\n    digits = "0123456789"\n    symbols = "!@#$%&*"\n    \n    all_chars = lower + upper + digits + symbols\n    \n    # 确保至少包含每种类型一个\n    password = [\n        random.choice(lower),\n        random.choice(upper),\n        random.choice(digits),\n        random.choice(symbols)\n    ]\n    \n    # 剩余位置随机填充\n    for i in range(length - 4):\n        password.append(random.choice(all_chars))\n    \n    # 打乱顺序\n    random.shuffle(password)\n    return "".join(password)\n\n# 生成3个密码\nfor i in range(3):\n    pwd = generate_password(12)\n    print(f"密码{i+1}: {pwd}")',

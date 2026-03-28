@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于 · EasyLearningCS</title>
+  <link rel="stylesheet" href="lib/css/fonts.css">
+  <link rel="stylesheet" href="lib/fontawesome/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #1a1a3e, #24243e);
+      color: #e0e0e0;
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 14px;
+      margin-bottom: 24px;
+      transition: color 0.2s;
+    }
+    .back-btn:hover { color: #fff; }
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      color: rgba(255,255,255,0.45);
+      font-size: 14px;
+      margin-bottom: 40px;
+    }
+    .section {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title i {
+      font-size: 16px;
+      color: #667eea;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    thead th {
+      text-align: left;
+      padding: 8px 12px;
+      color: rgba(255,255,255,0.4);
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    tbody td {
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      vertical-align: top;
+    }
+    tbody tr:last-child td { border-bottom: none; }
+    a.lib-link {
+      color: #667eea;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    a.lib-link:hover { color: #a78bfa; text-decoration: underline; }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .badge-mit { background: rgba(0,206,201,0.15); color: #00cec9; }
+    .badge-ofl { background: rgba(108,92,231,0.15); color: #a29bfe; }
+    .badge-cc  { background: rgba(253,121,168,0.15); color: #fd79a8; }
+    .badge-apache { background: rgba(255,152,0,0.15); color: #FF9800; }
+    .license-box {
+      background: rgba(108,92,231,0.08);
+      border: 1px solid rgba(108,92,231,0.2);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-top: 8px;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    .license-box strong { color: #a78bfa; }
+    .license-box a { color: #667eea; text-decoration: none; }
+    .license-box a:hover { text-decoration: underline; }
+    .cc-icons {
+      display: flex;
+      gap: 8px;
+      margin: 12px 0;
+      font-size: 24px;
+      color: #a78bfa;
+    }
+    .desc-text {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.8;
+    }
+    @media (max-width: 600px) {
+      .container { padding: 24px 16px 40px; }
+      h1 { font-size: 22px; }
+      .section { padding: 20px 16px; }
+      table { font-size: 13px; }
+      thead th, tbody td { padding: 8px 6px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" onclick="if(history.length>1){history.back();return false;}" class="back-btn"><i class="fas fa-arrow-left"></i> 返回课程</a>
+
+    <h1>关于 EasyLearningCS</h1>
+    <p class="subtitle">一个完全离线运行的互动编程教学工具</p>
+
+    <!-- 项目说明 -->
+    <div class="section">
+      <div class="section-title"><i class="fas fa-book-open"></i> 项目说明</div>
+      <p class="desc-text">
+        EasyLearningCS 是一个面向编程初学者的互动课程平台。所有课程内容和代码执行均在本地完成，
+        无需联网。项目使用浏览器端 Python 解释器（Skulpt），让学习者可以直接在浏览器中编写和运行 Python 代码。
+      </p>
+    </div>
+
+    <!-- 开源库 -->
+    <div class="section">
+      <div class="section-title"><i class="fas fa-code"></i> 使用的开源库</div>
+      <table>
+        <thead>
+          <tr><th>名称</th><th>版本</th><th>用途</th><th>许可证</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a class="lib-link" href="https://skulpt.org" target="_blank">Skulpt</a></td>
+            <td>1.x</td>
+            <td>浏览器端 Python 解释器</td>
+            <td><span class="badge badge-mit">MIT</span></td>
+          </tr>
+          <tr>
+            <td><a class="lib-link" href="https://animate.style" target="_blank">Animate.css</a></td>
+            <td>4.1.1</td>
+            <td>CSS 入场/退场动画</td>
+            <td><span class="badge badge-mit">MIT</span></td>
+          </tr>
+          <tr>
+            <td><a class="lib-link" href="https://fontawesome.com" target="_blank">Font Awesome Free</a></td>
+            <td>6.5.1</td>
+            <td>图标库</td>
+            <td>
+              <span class="badge badge-cc">Icons: CC BY 4.0</span><br>
+              <span class="badge badge-ofl" style="margin-top:4px">Fonts: SIL OFL 1.1</span><br>
+              <span class="badge badge-mit" style="margin-top:4px">Code: MIT</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 字体 -->
+    <div class="section">
+      <div class="section-title"><i class="fas fa-font"></i> 使用的字体</div>
+      <table>
+        <thead>
+          <tr><th>名称</th><th>设计方</th><th>用途</th><th>许可证</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a class="lib-link" href="https://github.com/tonsky/FiraCode" target="_blank">Fira Code</a></td>
+            <td>Nikita Prokopov</td>
+            <td>代码编辑器等宽字体</td>
+            <td><span class="badge badge-ofl">SIL OFL 1.1</span></td>
+          </tr>
+          <tr>
+            <td><a class="lib-link" href="https://fonts.google.com/specimen/Nunito" target="_blank">Nunito</a></td>
+            <td>Vernon Adams</td>
+            <td>界面正文/标题字体</td>
+            <td><span class="badge badge-ofl">SIL OFL 1.1</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 许可证 -->
+    <div class="section">
+      <div class="section-title"><i class="fas fa-balance-scale"></i> 本项目许可证</div>
+      <div class="license-box">
+        <div class="cc-icons">
+          <i class="fab fa-creative-commons"></i>
+          <i class="fab fa-creative-commons-by"></i>
+          <i class="fab fa-creative-commons-nc"></i>
+          <i class="fab fa-creative-commons-sa"></i>
+        </div>
+        <p>
+          本项目采用 <strong>CC BY-NC-SA 4.0</strong>（知识共享 署名-非商业性使用-相同方式共享 4.0 国际）许可协议发布。
+        </p>
+        <p style="margin-top:8px;">
+          <strong>✅ 你可以：</strong>自由拷贝、修改和分发本项目<br>
+          <strong>❌ 但不可以：</strong>将本项目或其衍生作品用于商业目的<br>
+          <strong>📌 附加条件：</strong>修改后的作品须以相同许可证发布，并注明原作者
+        </p>
+        <p style="margin-top:12px;font-size:13px;color:rgba(255,255,255,0.4);">
+          完整协议文本：<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">https://creativecommons.org/licenses/by-nc-sa/4.0/</a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

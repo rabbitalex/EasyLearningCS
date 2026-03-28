@@ -7,7 +7,7 @@ const CHAPTER1 = {
       id: "1-1",
       title: "Hello World! 你的第一个程序",
       xp: 10,
-      code: 'print("Hello, World!")\nprint("你好，Python魔法学院！")',
+      code: 'print("Hello, World!")\nprint("你好，Python编程课程！")',
       steps: [
         {
           title: "什么是编程？",

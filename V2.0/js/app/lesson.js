@@ -90,26 +90,33 @@ function updateLessonProgress() {
 function completeLesson() {
   if (!state.currentLesson) return;
   var id = state.currentLesson.id;
-  if (state.completedLessons.indexOf(id) === -1) {
-    // 使用 Config 管理器保存完成状态
-    state.completedLessons = Config.completeLesson(id, state.currentLesson.chapter);
-    toast('🎉 恭喜！你完成了「' + state.currentLesson.title + '」');
-  } else {
-    toast('✅ 这节课你已经完成过啦！');
+
+  // 标记为已访问（黄色圆点），绿色需要完成全部作业
+  if (state.visitedPages.indexOf(id) === -1) {
+    state.visitedPages = Config.logPageVisit(id);
   }
+
+  // 检查作业是否全部完成
+  if (typeof HomeworkSystem !== 'undefined' && HomeworkSystem.isAllDone(id)) {
+    if (state.completedLessons.indexOf(id) === -1) {
+      state.completedLessons = Config.completeLesson(id, state.currentLesson.chapter);
+      toast('🏆 所有作业完成！课程已标记为完成！');
+    }
+  } else {
+    toast('📝 课程内容已学完，完成全部作业即可获得绿色标记！');
+  }
+
   updateProgress();
-  // 自动跳转到下一课（loadLesson内部会调用buildNav，无需重复调用）
+  // 自动跳转到下一课
   var allLessons = [];
   COURSES.forEach(function(ch) { ch.lessons.forEach(function(l) { allLessons.push(l); }); });
   var idx = allLessons.findIndex(function(l) { return l.id === id; });
   if (idx >= 0 && idx < allLessons.length - 1) {
-    // 使用requestAnimationFrame避免卡顿，快速切换到下一课
     requestAnimationFrame(function() {
       loadLesson(allLessons[idx + 1].id);
       toast('📖 已跳转到下一课');
     });
   } else {
-    // 最后一课，无需跳转，仅刷新导航状态
     buildNav();
   }
 }

@@ -357,6 +357,14 @@
   background: var(--vol-color, #FF9800);
   box-shadow: 0 0 6px color-mix(in srgb, var(--vol-color, #FF9800) 40%, transparent);
 }
+/* 已学习但作业未完成 - 黄色圆点 */
+.nav-lesson.visited .nav-lesson-dot {
+  border-color: #FFD54F;
+  background: #FFD54F;
+  color: #1a2332;
+  font-size: 0.45rem;
+}
+/* 全部完成 - 绿色圆点 */
 .nav-lesson.completed .nav-lesson-dot {
   border-color: #69F0AE;
   background: #69F0AE;
@@ -465,5 +473,27 @@
 .sidebar-overlay.show {
   display: block;
   opacity: 1;
+}
+
+/* ========== 关于链接（底部导航下方） ========== */
+.sidebar-about-link {
+  padding: 0.3rem 0.8rem 0.6rem;
+  text-align: center;
+}
+.sidebar-about-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  font-size: 0.7rem;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.sidebar-about-btn:hover {
+  color: rgba(255,255,255,0.7);
+}
+.sidebar-about-btn i {
+  font-size: 0.7rem;
 }
 

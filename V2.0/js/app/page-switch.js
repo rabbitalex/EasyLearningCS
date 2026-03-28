@@ -15,7 +15,7 @@ function loadLesson(id) {
   state.stepExecuting = false;
   hideStepButtons();
   // 记录当前课程，下次打开自动恢复
-  try { localStorage.setItem('py_current_lesson', id); } catch(e) {}
+  try { safeSet(STORAGE_KEYS.CURRENT_LESSON, id); } catch(e) {}
 
   // 隐藏其他页面
   $('welcomePage').style.display = 'none';
@@ -67,15 +67,17 @@ function loadLesson(id) {
 
   if (lesson.challenge) {
     $('challengeSection').style.display = '';
-    $('challengeDesc').textContent = lesson.challenge.desc;
-    $('challengeEditor').value = lesson.challenge.template || '';
-    $('challengeResult').className = 'challenge-result';
-    $('challengeResult').style.display = 'none';
-    // 默认折叠挑战内容
+    // 使用作业系统渲染10道作业
+    if (typeof HomeworkSystem !== 'undefined') {
+      HomeworkSystem.render(lesson);
+    }
+    // 默认折叠
     var challengeBody = $('challengeBody');
     var challengeArrow = $('challengeArrow');
     if (challengeBody) challengeBody.style.display = 'none';
     if (challengeArrow) challengeArrow.style.transform = 'rotate(0deg)';
+    var card = document.querySelector('.challenge-card');
+    if (card) card.classList.remove('expanded');
   } else {
     $('challengeSection').style.display = 'none';
   }

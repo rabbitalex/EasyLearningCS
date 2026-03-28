@@ -5,7 +5,7 @@ function initSidebarResize() {
   if (!handle || !sidebar) return;
 
   // 恢复保存的宽度
-  var savedWidth = localStorage.getItem('sidebarWidth');
+  var savedWidth = safeGet(STORAGE_KEYS.SIDEBAR_WIDTH, null);
   if (savedWidth) {
     var w = parseInt(savedWidth);
     if (w >= 200 && w <= 500) {
@@ -30,7 +30,7 @@ function initSidebarResize() {
       document.body.style.cursor = '';
       document.body.style.userSelect = '';
       var finalWidth = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--sidebar-width'));
-      localStorage.setItem('sidebarWidth', finalWidth);
+      safeSet(STORAGE_KEYS.SIDEBAR_WIDTH, finalWidth);
       handle.style.left = '';
       document.removeEventListener('mousemove', onMove);
       document.removeEventListener('mouseup', onUp);
@@ -55,7 +55,7 @@ function initSidebarResize() {
     function onTouchEnd() {
       handle.classList.remove('dragging');
       var finalWidth = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--sidebar-width'));
-      localStorage.setItem('sidebarWidth', finalWidth);
+      safeSet(STORAGE_KEYS.SIDEBAR_WIDTH, finalWidth);
       document.removeEventListener('touchmove', onTouchMove);
       document.removeEventListener('touchend', onTouchEnd);
     }

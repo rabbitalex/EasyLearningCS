@@ -26,7 +26,8 @@ var STORAGE_KEYS = {
   UNLOCKED_CONTENT: 'py_unlocked',      // 已解锁的隐藏内容
   
   // 设置偏好
-  SETTINGS: 'py_settings'               // 用户设置
+  SETTINGS: 'py_settings',              // 用户设置
+  SIDEBAR_WIDTH: 'py_sidebar_width'     // 侧边栏宽度
 };
 
 // ========== 默认配置数据 ==========
@@ -50,37 +51,23 @@ var DEFAULTS = {
   visitedPages: []
 };
 
-// ========== 安全的 localStorage 包装器 ==========
+// ========== 纯内存存储（不使用 localStorage） ==========
+// 所有数据在内存中操作，通过 sync.js 与服务端 user-data.json 同步
 var memoryStorage = {};
-var storageAvailable = false;
-
-try {
-  localStorage.setItem('__test__', 'test');
-  localStorage.removeItem('__test__');
-  storageAvailable = true;
-} catch (e) {
-  console.warn('[Config] localStorage 不可用，将使用内存存储');
-}
 
 function safeSet(key, value) {
   try {
-    var json = JSON.stringify(value);
-    if (storageAvailable) {
-      localStorage.setItem(key, json);
-    } else {
-      memoryStorage[key] = json;
-    }
+    memoryStorage[key] = JSON.stringify(value);
     return true;
   } catch (e) {
-    memoryStorage[key] = JSON.stringify(value);
     return false;
   }
 }
 
 function safeGet(key, defaultValue) {
   try {
-    var json = storageAvailable ? localStorage.getItem(key) : memoryStorage[key];
-    if (json === null) return defaultValue;
+    var json = memoryStorage[key];
+    if (json === undefined || json === null) return defaultValue;
     return JSON.parse(json);
   } catch (e) {
     return defaultValue;
@@ -88,14 +75,6 @@ function safeGet(key, defaultValue) {
 }
 
 function safeRemove(key) {
-  try {
-    if (storageAvailable) {
-      localStorage.removeItem(key);
-    } else {
-      delete memoryStorage[key];
-    }
-  } catch (e) {
-    delete memoryStorage[key];
-  }
+  delete memoryStorage[key];
 }
 

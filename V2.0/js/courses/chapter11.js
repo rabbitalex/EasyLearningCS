@@ -1,10 +1,10 @@
-// 第十一章：高级特性
+// 第十章：高级特性
 const CHAPTER11 = {
-  chapter: "第十一章：高级特性",
+  chapter: "第十章：高级特性",
   icon: "🚀",
   lessons: [
     {
-      id: "11-1",
+      id: "10-1",
       title: "切片 - 快速截取",
       xp: 20,
       code: 'fruits = ["苹果", "香蕉", "橘子", "葡萄", "西瓜"]\nprint(fruits[1:3])\nprint(fruits[:2])\nprint(fruits[-2:])\nprint(fruits[::2])',
@@ -65,7 +65,7 @@ const CHAPTER11 = {
       }
     },
     {
-      id: "11-2",
+      id: "10-2",
       title: "迭代 - 遍历一切",
       xp: 20,
       code: 'for ch in "Python":\n    print(ch)\n\nd = {"name": "小明", "age": 10}\nfor k, v in d.items():\n    print(f"{k}: {v}")',
@@ -107,7 +107,7 @@ const CHAPTER11 = {
       }
     },
     {
-      id: "11-3",
+      id: "10-3",
       title: "列表生成式 - 一行创建列表",
       xp: 25,
       code: 'squares = [x**2 for x in range(1, 11)]\nprint(squares)\n\nevens = [x for x in range(1, 21) if x % 2 == 0]\nprint(evens)',
@@ -147,7 +147,7 @@ const CHAPTER11 = {
       }
     },
     {
-      id: "11-4",
+      id: "10-4",
       title: "生成器 - 惰性计算",
       xp: 25,
       code: 'g = (x**2 for x in range(5))\nfor val in g:\n    print(val)\n\ndef fib(n):\n    a, b = 0, 1\n    for i in range(n):\n        yield a\n        a, b = b, a + b\n\nfor x in fib(8):\n    print(x)',
@@ -186,7 +186,7 @@ const CHAPTER11 = {
       }
     },
     {
-      id: "11-5",
+      id: "10-5",
       title: "迭代器 - 统一的遍历接口",
       xp: 20,
       code: 'it = iter([1, 2, 3])\nprint(next(it))\nprint(next(it))\nprint(next(it))\n\n# 检查对象是否可迭代\ndef is_iterable(obj):\n    try:\n        iter(obj)\n        return True\n    except TypeError:\n        return False\n\nprint("列表可迭代?", is_iterable([]))\nprint("数字可迭代?", is_iterable(123))\nprint("字符串可迭代?", is_iterable("hello"))',

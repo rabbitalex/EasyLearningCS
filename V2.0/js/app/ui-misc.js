@@ -134,43 +134,18 @@ function bindEvents() {
     this.classList.remove('show');
   });
 
-  // 挑战提交
+  // 作业提交
   $('submitChallenge').addEventListener('click', function() {
-    if (!state.currentLesson || !state.currentLesson.challenge) return;
-    var code = $('challengeEditor').value;
-    if (!code.trim()) { toast('\u26a0\ufe0f 请先在挑战区写代码'); return; }
-
-    clearOutput();
-    runPython(code, function(success) {
-      var outputLines = $$('#outputArea .output-line');
-      var text = '';
-      outputLines.forEach(function(l) { text += l.textContent + '\n'; });
-
-      var result = $('challengeResult');
-      if (success && state.currentLesson.challenge.check(text)) {
-        result.className = 'challenge-result success';
-        result.innerHTML = '<i class="fas fa-check-circle"></i> \ud83c\udf89 太棒了！挑战通过！你真是个编程天才！';
-        result.style.display = 'block';
-        // 记录挑战完成 - 使用 Config 管理器
-        var cid = state.currentLesson.id + '_challenge';
-        if (!state.completedChallenges[cid] || !state.completedChallenges[cid].completed) {
-          Config.completeChallenge(cid, 100);
-          state.completedChallenges = Config.getChallengeProgress();
-        }
-        completeLesson();
-      } else {
-        result.className = 'challenge-result error';
-        result.innerHTML = '<i class="fas fa-times-circle"></i> \ud83d\ude05 还不太对哦，仔细看看题目要求再试试？';
-        result.style.display = 'block';
-      }
-    });
+    if (typeof HomeworkSystem !== 'undefined') {
+      HomeworkSystem.submit();
+    }
   });
 
   // 提示
   $('hintBtn').addEventListener('click', function() {
     if (!state.currentLesson || !state.currentLesson.challenge) return;
-    $('challengeEditor').value = state.currentLesson.challenge.hint;
-    toast('\ud83d\udca1 提示代码已加载到编辑器，试着理解它然后提交！');
+    // 提示仍然从当前作业获取（HomeworkSystem 管理）
+    toast('\ud83d\udca1 请参考课程内容完成作业！');
   });
 
   // 键盘快捷键

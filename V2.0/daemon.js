@@ -1,5 +1,5 @@
 /**
- * 🌍 小王王的计算机大世界 - 守护进程 (Daemon)
+ * 🌍 互动编程课程 - 守护进程 (Daemon)
  * 
  * 零依赖 Node.js 守护进程，确保 server.js 在后台持续运行并自动重启。
  * 
@@ -551,7 +551,7 @@ function cmdLogs(lines) {
 function printBanner() {
   console.log('');
   console.log(`  ${c.cyan}╔══════════════════════════════════════════════════╗${c.reset}`);
-  console.log(`  ${c.cyan}║${c.reset}   🌍 ${c.bold}小王王的计算机大世界${c.reset} - 守护进程            ${c.cyan}║${c.reset}`);
+  console.log(`  ${c.cyan}║${c.reset}   🌍 ${c.bold}互动编程课程${c.reset} - 守护进程                  ${c.cyan}║${c.reset}`);
   console.log(`  ${c.cyan}╚══════════════════════════════════════════════════╝${c.reset}`);
 }
 

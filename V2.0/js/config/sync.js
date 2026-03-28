@@ -1,6 +1,6 @@
 // js/config/sync.js — 前端数据同步层
-// 把 localStorage 数据自动同步到服务端 user-data.json
-// 课程完成时立即同步，代码修改后每 1 分钟自动同步
+// 所有数据存储在内存（memoryStorage），通过此模块与服务端 user-data.json 同步
+// 启动时同步加载服务端数据到内存，之后定期自动同步
 
 (function() {
   'use strict';
@@ -11,27 +11,8 @@
   var _syncing = false;
   var _timer = null;
 
-  // 从服务端加载数据到 localStorage
-  function loadFromServer(callback) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', API_URL);
-    xhr.onload = function() {
-      if (xhr.status === 200) {
-        try {
-          var data = JSON.parse(xhr.responseText);
-          applyToLocalStorage(data);
-          if (callback) callback(null, data);
-        } catch (e) {
-          if (callback) callback(e);
-        }
-      }
-    };
-    xhr.onerror = function() { if (callback) callback(new Error('network')); };
-    xhr.send();
-  }
-
-  // 把服务端数据写入 localStorage
-  function applyToLocalStorage(data) {
+  // 把服务端数据写入内存
+  function applyToMemory(data) {
     if (data.progress) {
       if (data.progress.completedLessons) safeSet(STORAGE_KEYS.COMPLETED_LESSONS, data.progress.completedLessons);
       if (data.progress.lessonProgress) safeSet(STORAGE_KEYS.LESSON_PROGRESS, data.progress.lessonProgress);
@@ -48,10 +29,13 @@
     }
     if (data.profile) safeSet(STORAGE_KEYS.USER_PROFILE, data.profile);
     if (data.settings) safeSet(STORAGE_KEYS.SETTINGS, data.settings);
+    if (data.ui) {
+      if (data.ui.sidebarWidth != null) safeSet(STORAGE_KEYS.SIDEBAR_WIDTH, data.ui.sidebarWidth);
+    }
   }
 
-  // 从 localStorage 收集全部数据
-  function collectFromLocalStorage() {
+  // 从内存收集全部数据
+  function collectFromMemory() {
     return {
       version: 1,
       lastSavedAt: new Date().toISOString(),
@@ -71,15 +55,52 @@
         lastLogin: safeGet(STORAGE_KEYS.LAST_LOGIN, null),
         visitedPages: safeGet(STORAGE_KEYS.VISITED_PAGES, [])
       },
+      ui: {
+        sidebarWidth: safeGet(STORAGE_KEYS.SIDEBAR_WIDTH, null)
+      },
       code: safeGet('py_user_code', {})
     };
+  }
+
+  // 启动时同步加载服务端数据（阻塞式，确保后续模块能读到数据）
+  function loadFromServerSync() {
+    try {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', API_URL, false); // 同步请求
+      xhr.send();
+      if (xhr.status === 200) {
+        var data = JSON.parse(xhr.responseText);
+        applyToMemory(data);
+      }
+    } catch (e) {
+      console.warn('[Sync] 同步加载服务端数据失败:', e);
+    }
+  }
+
+  // 从服务端异步加载数据到内存
+  function loadFromServer(callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', API_URL);
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        try {
+          var data = JSON.parse(xhr.responseText);
+          applyToMemory(data);
+          if (callback) callback(null, data);
+        } catch (e) {
+          if (callback) callback(e);
+        }
+      }
+    };
+    xhr.onerror = function() { if (callback) callback(new Error('network')); };
+    xhr.send();
   }
 
   // 保存到服务端
   function saveToServer(callback) {
     if (_syncing) return;
     _syncing = true;
-    var data = collectFromLocalStorage();
+    var data = collectFromMemory();
     var xhr = new XMLHttpRequest();
     xhr.open('POST', API_URL);
     xhr.setRequestHeader('Content-Type', 'application/json');
@@ -118,7 +139,7 @@
   // 页面关闭前尝试同步
   window.addEventListener('beforeunload', function() {
     if (_dirty) {
-      var data = collectFromLocalStorage();
+      var data = collectFromMemory();
       var blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
       navigator.sendBeacon(API_URL, blob);
     }
@@ -132,11 +153,12 @@
     return result;
   };
 
-  // 启动时：从服务端加载 → 合并到 localStorage → 开始自动同步
-  loadFromServer(function(err) {
-    if (!err) { /* 服务端数据已合并 */ }
-    startAutoSync();
-  });
+  // 启动时：同步加载服务端数据到内存，确保后续模块能立即读到
+  loadFromServerSync();
+  // 脏标记在加载时被设为 true（因为 applyToMemory 调用了被拦截的 safeSet），重置它
+  _dirty = false;
+  // 启动自动同步定时器
+  startAutoSync();
 
   // 暴露到全局
   window.DataSync = {
@@ -144,6 +166,6 @@
     markDirty: markDirty,
     saveToServer: saveToServer,
     loadFromServer: loadFromServer,
-    collectAll: collectFromLocalStorage
+    collectAll: collectFromMemory
   };
 })();

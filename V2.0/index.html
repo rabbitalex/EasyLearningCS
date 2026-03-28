@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🌍 小王王的计算机大世界 - 互动编程课程</title>
+  <title>🌍 互动编程课程</title>
   <!-- Skulpt - 浏览器端Python解释器 (本地) -->
   <script src="lib/skulpt/skulpt.min.js"></script>
   <script src="lib/skulpt/skulpt-stdlib.js"></script>
@@ -34,7 +34,7 @@
       <div class="loader-icon">
         <i class="fas fa-globe-americas" style="font-size:3rem;color:#00cec9;animation:spin 3s linear infinite"></i>
       </div>
-      <h2>小王王的计算机大世界</h2>
+      <h2>正在加载...</h2>
       <p>正在准备你的编程冒险...</p>
       <div class="loader-bar"><div class="loader-bar-fill"></div></div>
     </div>
@@ -46,7 +46,7 @@
     <aside id="sidebar" class="sidebar">
       <div class="sidebar-header">
         <div class="logo">
-          <span class="logo-text">🌍 小王王的计算机大世界</span>
+          <span class="logo-text" id="logoText">🌍 互动编程课程</span>
         </div>
         <div class="user-greeting" style="padding:6px 16px 2px;font-size:13px;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:6px;">
           <span>👤</span>
@@ -54,11 +54,8 @@
         </div>
         <!-- 全部展开/收起按钮 -->
         <div class="nav-global-actions">
-          <button class="nav-action-btn" id="expandAllBtn" title="全部展开">
-            <i class="fas fa-expand-alt"></i>
-          </button>
-          <button class="nav-action-btn" id="collapseAllBtn" title="全部收起">
-            <i class="fas fa-compress-alt"></i>
+          <button class="nav-action-btn" id="toggleAllBtn" title="全部展开">
+            <i class="fas fa-expand-alt" id="toggleAllIcon"></i> <span id="toggleAllText" style="font-size:11px;">展开</span>
           </button>
         </div>
       </div>
@@ -91,10 +88,9 @@
           <span>贴纸舞台</span>
         </a>
       </div>
-
-      <div class="sidebar-footer">
-        <a href="https://github.com/skulpt/skulpt" target="_blank" class="github-link" title="Powered by Skulpt">
-          <i class="fab fa-github"></i>
+      <div class="sidebar-about-link">
+        <a href="about.html" class="sidebar-about-btn" title="说明与致谢">
+          <i class="fas fa-info-circle"></i> 关于
         </a>
       </div>
     </aside>
@@ -126,12 +122,17 @@
       <section id="welcomePage" class="welcome-page">
         <div class="welcome-hero">
           <div class="hero-content animate__animated animate__fadeInUp">
-            <h1>欢迎来到 <span class="gradient-text">小王王的计算机大世界</span></h1>
+            <h1>欢迎来到 <span class="gradient-text" id="welcomeText">互动编程课程</span></h1>
             <p class="hero-subtitle">从零开始，一步一步成为编程大师！</p>
             <p class="hero-desc">互动式学习 · 实时代码执行 · 变量可视化 · 逐步动画教学</p>
-            <button id="startBtn" class="btn-hero">
-              <i class="fas fa-rocket"></i> 开始冒险
-            </button>
+            <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+              <button id="startBtn" class="btn-hero">
+                <i class="fas fa-rocket"></i> 开始冒险
+              </button>
+              <a href="sticker-stage.html" class="btn-hero" style="text-decoration:none;background:linear-gradient(135deg,#6c5ce7,#a29bfe);display:inline-flex;align-items:center;gap:8px;">
+                <i class="fas fa-theater-masks"></i> 贴纸舞台
+              </a>
+            </div>
           </div>
 
           <!-- 卷概览卡片 -->
@@ -323,24 +324,36 @@
         <div id="challengeSection" class="challenge-section" style="display:none;">
           <div class="challenge-card">
             <div class="challenge-header" id="challengeToggle" style="cursor:pointer;user-select:none;">
-              <i class="fas fa-trophy"></i>
-              <h3>编程挑战</h3>
+              <i class="fas fa-clipboard-list"></i>
+              <h3>本课作业</h3>
+              <span id="homeworkProgress" style="margin-left:8px;font-size:0.75rem;color:rgba(255,255,255,0.4);font-weight:600;">0/10</span>
               <i class="fas fa-chevron-right challenge-arrow" id="challengeArrow" style="margin-left:auto;transition:transform 0.3s;font-size:0.9rem;"></i>
             </div>
             <div id="challengeBody" class="challenge-body" style="display:none;">
-              <p id="challengeDesc" class="challenge-desc"></p>
-              <div class="challenge-editor-wrapper">
-                <textarea id="challengeEditor" class="code-editor challenge-editor" spellcheck="false"></textarea>
+              <div id="homeworkList" class="homework-list">
+                <!-- 由JS动态生成10道作业 -->
               </div>
-              <div class="challenge-actions">
-                <button id="submitChallenge" class="btn-submit">
-                  <i class="fas fa-check"></i> 提交答案
-                </button>
-                <button id="hintBtn" class="btn-hint">
-                  <i class="fas fa-lightbulb"></i> 提示
-                </button>
+              <!-- 当前作业详情 -->
+              <div id="homeworkDetail" style="display:none;">
+                <div id="homeworkDetailHeader" style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                  <button id="backToList" style="background:none;border:none;color:rgba(255,255,255,0.5);cursor:pointer;font-size:0.85rem;padding:4px;"><i class="fas fa-arrow-left"></i></button>
+                  <span id="homeworkDetailTitle" style="font-weight:700;font-size:0.9rem;"></span>
+                  <span id="homeworkDetailStars" style="margin-left:auto;"></span>
+                </div>
+                <p id="challengeDesc" class="challenge-desc"></p>
+                <div class="challenge-editor-wrapper">
+                  <textarea id="challengeEditor" class="code-editor challenge-editor" spellcheck="false"></textarea>
+                </div>
+                <div class="challenge-actions">
+                  <button id="submitChallenge" class="btn-submit">
+                    <i class="fas fa-check"></i> 提交答案
+                  </button>
+                  <button id="hintBtn" class="btn-hint">
+                    <i class="fas fa-lightbulb"></i> 提示
+                  </button>
+                </div>
+                <div id="challengeResult" class="challenge-result"></div>
               </div>
-              <div id="challengeResult" class="challenge-result"></div>
             </div>
           </div>
         </div>
@@ -385,7 +398,6 @@
   <script src="js/courses/chapter4.js"></script>
   <script src="js/courses/chapter5.js"></script>
   <script src="js/courses/chapter6.js"></script>
-  <script src="js/courses/chapter7.js"></script>
   <script src="js/courses/chapter8.js"></script>
   <script src="js/courses/chapter9.js"></script>
   <script src="js/courses/chapter10.js"></script>
@@ -415,6 +427,7 @@
   <script src="js/courses/chapter_v4_cpp6.js"></script>
   <script src="js/courses/chapter_v4_cpp7.js"></script>
   <!-- 课程索引 -->
+  <script src="js/courses/homework-data.js"></script>
   <script src="js/courses/index.js"></script>
   <script src="js/app/syntax-highlight.js"></script>
   <script src="js/app/lexer.js"></script>
@@ -430,19 +443,21 @@
   <script src="js/app/nav.js"></script>
   <script src="js/app/page-switch.js"></script>
   <script src="js/app/lesson.js"></script>
+  <script src="js/app/homework.js"></script>
   <script src="js/app/ui-misc.js"></script>
   <script src="js/app/boot.js"></script>
-  <script src="js/app/username.js"></script>
-
   <!-- 用户名输入弹窗 -->
-  <div id="nameModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:9999;display:none;justify-content:center;align-items:center;">
-    <div style="background:linear-gradient(135deg,#1a1a3e,#2d2d6e);border-radius:20px;padding:40px;text-align:center;max-width:400px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.5);">
+  <div id="nameModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:9999;justify-content:center;align-items:center;">
+    <div style="background:linear-gradient(135deg,#1a1a3e,#2d2d6e);border-radius:20px;padding:40px;text-align:center;max-width:400px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.5);position:relative;">
+      <button id="nameClose" style="position:absolute;top:12px;right:16px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:20px;cursor:pointer;padding:4px 8px;border-radius:8px;transition:all 0.2s;" title="关闭">✕</button>
       <div style="font-size:48px;margin-bottom:16px;">👋</div>
-      <h2 style="color:#fff;font-size:22px;margin-bottom:8px;">欢迎来到计算机大世界！</h2>
+      <h2 style="color:#fff;font-size:22px;margin-bottom:8px;">欢迎来到编程世界！</h2>
       <p style="color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:24px;">请告诉我你的名字</p>
       <input id="nameInput" type="text" maxlength="20" placeholder="请输入你的名字" style="width:100%;padding:12px 16px;border-radius:12px;border:2px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.08);color:#fff;font-size:16px;outline:none;text-align:center;box-sizing:border-box;">
       <button id="nameConfirm" style="margin-top:16px;padding:12px 40px;border-radius:12px;border:none;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;font-size:16px;font-weight:bold;cursor:pointer;width:100%;">开始学习 🚀</button>
     </div>
   </div>
+
+  <script src="js/app/username.js"></script>
 </body>
 </html>

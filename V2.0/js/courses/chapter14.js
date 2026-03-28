@@ -1,10 +1,10 @@
-// 第十四章：面向对象高级编程
+// 第十三章：面向对象高级编程
 const CHAPTER14 = {
-  chapter: "第十四章：面向对象进阶",
+  chapter: "第十三章：面向对象进阶",
   icon: "⚙️",
   lessons: [
     {
-      id: "14-1",
+      id: "13-1",
       title: "__slots__ - 限制属性",
       xp: 25,
       code: 'class Student:\n    __slots__ = ("name", "age")\n\ns = Student()\ns.name = "小明"\ns.age = 10\nprint(f"{s.name}, {s.age}岁")\n# s.score = 95  # 这行会报错！',
@@ -36,7 +36,7 @@ const CHAPTER14 = {
       }
     },
     {
-      id: "14-2",
+      id: "13-2",
       title: "@property - 优雅的属性访问",
       xp: 25,
       code: 'class Temperature:\n    def __init__(self, celsius=0):\n        self._celsius = celsius\n    \n    @property\n    def celsius(self):\n        return self._celsius\n    \n    @celsius.setter\n    def celsius(self, value):\n        if value < -273.15:\n            raise ValueError("温度不能低于绝对零度!")\n        self._celsius = value\n    \n    @property\n    def fahrenheit(self):\n        return self._celsius * 9/5 + 32\n\nt = Temperature(25)\nprint(f"{t.celsius}°C = {t.fahrenheit}°F")\nt.celsius = 100\nprint(f"{t.celsius}°C = {t.fahrenheit}°F")',
@@ -63,7 +63,7 @@ const CHAPTER14 = {
       }
     },
     {
-      id: "14-3",
+      id: "13-3",
       title: "定制类 - 魔法方法",
       xp: 30,
       code: 'class Vector:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n    \n    def __str__(self):\n        return f"Vector({self.x}, {self.y})"\n    \n    def __add__(self, other):\n        return Vector(self.x+other.x, self.y+other.y)\n    \n    def __len__(self):\n        return int((self.x**2 + self.y**2)**0.5)\n\nv1 = Vector(3, 4)\nv2 = Vector(1, 2)\nprint(v1)\nprint(v1 + v2)\nprint(f"长度: {len(v1)}")',
@@ -92,7 +92,7 @@ const CHAPTER14 = {
       }
     },
     {
-      id: "14-4",
+      id: "13-4",
       title: "枚举类 - 有限选项",
       xp: 20,
       code: 'class Color:\n    RED = 1\n    GREEN = 2\n    BLUE = 3\n\nprint(Color.RED)\nprint(Color.GREEN)\n\n# 用字典模拟枚举映射\ncolor_names = {1: "红色", 2: "绿色", 3: "蓝色"}\nfor val in [Color.RED, Color.GREEN, Color.BLUE]:\n    print(f"{val} -> {color_names[val]}")',

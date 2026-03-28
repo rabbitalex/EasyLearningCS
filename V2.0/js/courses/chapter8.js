@@ -1,10 +1,10 @@
-// 第八章：模块与库
+// 第七章：模块与库
 const CHAPTER8 = {
-  chapter: "第八章：模块与库",
+  chapter: "第七章：模块与库",
   icon: "📦",
   lessons: [
     {
-      id: "8-1",
+      id: "7-1",
       title: "导入模块 - 站在巨人的肩膀",
       xp: 25,
       code: 'import random\nimport math\n\nprint("随机数:", random.randint(1, 100))\nprint("圆周率:", math.pi)\nprint("平方根:", math.sqrt(16))',
@@ -185,7 +185,7 @@ const CHAPTER8 = {
       }
     },
     {
-      id: "8-2",
+      id: "7-2",
       title: "random 深入 - 随机的魔法",
       xp: 30,
       code: 'import random\n\n# 掷骰子\ndef roll_dice():\n    return random.randint(1, 6)\n\n# 模拟10次掷骰子\nresults = []\nfor i in range(10):\n    results.append(roll_dice())\n\nprint("掷骰子结果:", results)\nprint("最大值:", max(results))\nprint("最小值:", min(results))',
@@ -325,7 +325,7 @@ const CHAPTER8 = {
       }
     },
     {
-      id: "8-3",
+      id: "7-3",
       title: "制作自己的模块 - 工具箱DIY",
       xp: 35,
       code: '# 模拟自定义模块的效果\n# 假设 mytools.py 中有这些函数\n\ndef is_even(n):\n    """判断是否为偶数"""\n    return n % 2 == 0\n\ndef factorial(n):\n    """计算阶乘"""\n    result = 1\n    for i in range(1, n + 1):\n        result *= i\n    return result\n\ndef celsius_to_fahrenheit(c):\n    """摄氏度转华氏度"""\n    return c * 1.8 + 32\n\n# 使用我们的"模块"\nprint("5是偶数吗？", is_even(5))\nprint("5的阶乘:", factorial(5))\nprint("37°C =", celsius_to_fahrenheit(37), "°F")',

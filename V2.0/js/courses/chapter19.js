@@ -1,10 +1,10 @@
-// 第十九章：进程与线程
+// 第十八章：进程与线程
 const CHAPTER19 = {
-  chapter: "第十九章：进程与线程",
+  chapter: "第十八章：进程与线程",
   icon: "⚡",
   lessons: [
     {
-      id: "19-1",
+      id: "18-1",
       title: "多任务概念",
       xp: 20,
       code: '# 模拟多任务概念\ndef task1():\n    for i in range(3):\n        print(f"任务1: 步骤{i+1}")\n\ndef task2():\n    for i in range(3):\n        print(f"任务2: 步骤{i+1}")\n\n# 顺序执行\nprint("=== 顺序执行 ===")\ntask1()\ntask2()\n\n# 交替执行（模拟并发）\nprint("\\n=== 并发执行(模拟) ===")\nfor i in range(3):\n    print(f"任务1: 步骤{i+1}")\n    print(f"任务2: 步骤{i+1}")',
@@ -49,7 +49,7 @@ const CHAPTER19 = {
       }
     },
     {
-      id: "19-2",
+      id: "18-2",
       title: "线程基础",
       xp: 25,
       code: '# 模拟线程的工作方式\n# (真实Python中使用 threading 模块)\n\ndef worker(name, count):\n    results = []\n    for i in range(count):\n        results.append(f"[{name}] 工作中... {i+1}/{count}")\n    return results\n\n# 模拟创建"线程"并收集任务\nthread_a = worker("线程A", 3)\nthread_b = worker("线程B", 3)\n\n# 模拟并发交替输出\nprint("=== 模拟线程并发 ===")\nfor i in range(3):\n    print(thread_a[i])\n    print(thread_b[i])\n\nprint("\\n所有线程完成！")',

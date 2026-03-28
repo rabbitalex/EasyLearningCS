@@ -1,10 +1,10 @@
-// 第二十章：网络编程
+// 第十九章：网络编程
 const CHAPTER20 = {
-  chapter: "第二十章：网络编程",
+  chapter: "第十九章：网络编程",
   icon: "🌐",
   lessons: [
     {
-      id: "20-1",
+      id: "19-1",
       title: "TCP/IP基础概念",
       xp: 20,
       code: '# TCP/IP 模型层次\nlayers = [("应用层", "HTTP, FTP, SMTP", "你写的程序"), ("传输层", "TCP, UDP", "可靠/快速传输"), ("网络层", "IP", "找到目标电脑"), ("链路层", "以太网, WiFi", "物理传输")]\n\nprint("🌐 TCP/IP 四层模型")\nprint("=" * 40)\nfor item in layers:\n    name = item[0]\n    proto = item[1]\n    desc = item[2]\n    print(f"📦 {name}: {proto}")\n    print(f"   说明: {desc}")\n    print("-" * 40)',
@@ -49,7 +49,7 @@ const CHAPTER20 = {
       }
     },
     {
-      id: "20-2",
+      id: "19-2",
       title: "TCP编程基础",
       xp: 25,
       code: '# 模拟TCP通信过程\nclass TCPServer:\n    def __init__(self, port):\n        self.port = port\n        self.clients = []\n    def accept(self, client_name):\n        self.clients.append(client_name)\n        print(f"[服务器] {client_name}已连接(端口:{self.port})")\n        return f"欢迎{client_name}!"\n    def close(self):\n        print(f"[服务器] 关闭连接")\n\nclass TCPClient:\n    def connect(self, server, name):\n        msg = server.accept(name)\n        print(f"[{name}] 收到回复: {msg}")\n\nserver = TCPServer(8080)\nclient1 = TCPClient()\nclient2 = TCPClient()\nclient1.connect(server, "Alice")\nclient2.connect(server, "Bob")\nserver.close()',
@@ -76,7 +76,7 @@ const CHAPTER20 = {
       }
     },
     {
-      id: "20-3",
+      id: "19-3",
       title: "HTTP协议入门",
       xp: 25,
       code: '# HTTP 请求和响应模拟\nclass HTTPRequest:\n    def __init__(self, method, path):\n        self.method = method\n        self.path = path\n        self.headers = {}\n    def add_header(self, key, value):\n        self.headers[key] = value\n    def show(self):\n        print(f"{self.method} {self.path} HTTP/1.1")\n        for k in self.headers:\n            print(f"{k}: {self.headers[k]}")\n\nclass HTTPResponse:\n    def __init__(self, status, body):\n        self.status = status\n        self.body = body\n    def show(self):\n        print(f"HTTP/1.1 {self.status}")\n        print(f"Content-Length: {len(self.body)}")\n        print()\n        print(self.body)\n\n# 模拟请求\nreq = HTTPRequest("GET", "/index.html")\nreq.add_header("Host", "example.com")\nprint("=== 请求 ===")\nreq.show()\n\nresp = HTTPResponse("200 OK", "<h1>Hello!</h1>")\nprint("\\n=== 响应 ===")\nresp.show()',

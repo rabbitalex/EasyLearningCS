@@ -1,10 +1,10 @@
-// 第十八章：常用内建模块
+// 第十七章：常用内建模块
 const CHAPTER18 = {
-  chapter: "第十八章：常用内建模块",
+  chapter: "第十七章：常用内建模块",
   icon: "📦",
   lessons: [
     {
-      id: "18-1",
+      id: "17-1",
       title: "datetime - 日期与时间",
       xp: 20,
       code: 'import datetime\n\nnow = datetime.datetime.now()\nprint("现在:", now)\nprint(f"年:{now.year} 月:{now.month} 日:{now.day}")\nprint(f"时:{now.hour} 分:{now.minute}")\n\n# 时间运算\nfuture = now + datetime.timedelta(days=7)\nprint(f"一周后: {future}")',
@@ -37,7 +37,7 @@ const CHAPTER18 = {
       }
     },
     {
-      id: "18-2",
+      id: "17-2",
       title: "collections - 高级数据结构",
       xp: 25,
       code: '# 模拟 Counter: 计数器\ndef counter(items):\n    result = {}\n    for item in items:\n        if item in result:\n            result[item] = result[item] + 1\n        else:\n            result[item] = 1\n    return result\n\nwords = "apple banana apple cherry banana apple"\ncnt = counter(words.split())\nprint("词频:", cnt)\n\n# 找出最常见的词\nsorted_items = sorted(cnt.keys(), key=lambda x: cnt[x], reverse=True)\nprint("最常见:", sorted_items[:2])\n\n# 模拟 defaultdict: 默认字典\nscores = {}\ndata = [("语文", 95), ("数学", 88), ("语文", 92), ("数学", 95)]\nfor item in data:\n    name = item[0]\n    score = item[1]\n    if name not in scores:\n        scores[name] = []\n    scores[name].append(score)\nprint("成绩:", scores)',
@@ -66,7 +66,7 @@ const CHAPTER18 = {
       }
     },
     {
-      id: "18-3",
+      id: "17-3",
       title: "哈希与编码",
       xp: 20,
       code: '# 模拟哈希函数原理\ndef simple_hash(text):\n    """简单哈希: 将字符串转为固定长度的数字摘要"""\n    h = 0\n    for ch in text:\n        h = (h * 31 + ord(ch)) % (2**32)\n    return format(h, "08x")\n\ntext = "Hello, Python!"\nhash1 = simple_hash(text)\nprint(f"原文: {text}")\nprint(f"哈希: {hash1}")\n\n# 改一个字符，哈希完全不同\ntext2 = "Hello, Python?"\nhash2 = simple_hash(text2)\nprint(f"\\n原文: {text2}")\nprint(f"哈希: {hash2}")\nprint(f"\\n哈希相同? {hash1 == hash2}")\n\n# 模拟Base64编码原理\ndef simple_b64(text):\n    """简化版Base64: 将每个字符转为ASCII码的可视化表示"""\n    chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"\n    result = ""\n    for ch in text:\n        n = ord(ch)\n        result = result + chars[n // 64 % 64] + chars[n % 64]\n    return result\n\nencoded = simple_b64("Hi")\nprint(f"\\nBase64编码 Hi → {encoded}")',

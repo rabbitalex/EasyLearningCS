@@ -5,6 +5,7 @@ function init() {
   buildCourseGrid();
   buildVolumeOverview();
   bindEvents();
+  if (typeof HomeworkSystem !== 'undefined') HomeworkSystem.init();
   initSidebarResize();
   updateProgress();
   updateStatsNumbers();
@@ -16,7 +17,7 @@ function init() {
     var targetLesson = params.get('lesson');
     if (!targetLesson) {
       // 没有 URL 参数时，尝试恢复上次学习的课程
-      try { targetLesson = localStorage.getItem('py_current_lesson'); } catch(e) {}
+      try { targetLesson = safeGet(STORAGE_KEYS.CURRENT_LESSON, null); } catch(e) {}
     }
     if (targetLesson) {
       var found = COURSES.some(function(ch) {

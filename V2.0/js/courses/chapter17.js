@@ -1,10 +1,10 @@
-// 第十七章：正则表达式
+// 第十六章：正则表达式
 const CHAPTER17 = {
-  chapter: "第十七章：正则表达式",
+  chapter: "第十六章：正则表达式",
   icon: "🔍",
   lessons: [
     {
-      id: "17-1",
+      id: "16-1",
       title: "正则入门 - 模式匹配",
       xp: 25,
       code: '# 用纯Python模拟正则匹配原理\n\ndef find_digits(text):\n    """找出字符串中所有连续数字"""\n    results = []\n    current = ""\n    for ch in text:\n        if ch >= "0" and ch <= "9":\n            current = current + ch\n        else:\n            if current:\n                results.append(current)\n                current = ""\n    if current:\n        results.append(current)\n    return results\n\ndef match_phone(text):\n    """匹配电话号码格式: xxx-xxxx-xxxx"""\n    digits = find_digits(text)\n    for i in range(len(text) - 12):\n        part = text[i:i+13]\n        segs = part.split("-")\n        if len(segs) == 3:\n            if len(segs[0]) == 3 and len(segs[1]) == 4 and len(segs[2]) == 4:\n                all_digit = True\n                for s in segs:\n                    for c in s:\n                        if c < "0" or c > "9":\n                            all_digit = False\n                if all_digit:\n                    return part\n    return None\n\ntext = "我的电话是138-0000-1234，请联系我"\nphone = match_phone(text)\nprint("找到电话:", phone)\n\nnums = find_digits("我有3只猫和5只狗，共计18只宠物")\nprint("找到数字:", nums)',
@@ -53,7 +53,7 @@ const CHAPTER17 = {
       }
     },
     {
-      id: "17-2",
+      id: "16-2",
       title: "文本处理实战",
       xp: 25,
       code: '# 模拟 re.split: 用多种分隔符分割\ndef smart_split(text, separators):\n    """用多个分隔符分割字符串"""\n    result = [text]\n    for sep in separators:\n        new_result = []\n        for item in result:\n            new_result = new_result + item.split(sep)\n        result = new_result\n    return [x for x in result if x]\n\nresult = smart_split("hello world,foo;bar  baz", [" ", ",", ";"])\nprint("分割:", result)\n\n# 模拟 re.findall: 提取价格\ndef find_prices(text):\n    """提取文本中的数字(含小数)"""\n    results = []\n    current = ""\n    for ch in text:\n        if ch >= "0" and ch <= "9" or ch == ".":\n            current = current + ch\n        else:\n            if current and current != ".":\n                results.append(current)\n                current = ""\n    if current and current != ".":\n        results.append(current)\n    return results\n\nprices = find_prices("价格: 9.9元, 19.99元, 100元")\nprint("价格:", prices)\n\n# 模拟 re.sub: 去除HTML标签\ndef strip_tags(html):\n    """去除HTML标签"""\n    result = ""\n    inside_tag = False\n    for ch in html:\n        if ch == "<":\n            inside_tag = True\n        elif ch == ">":\n            inside_tag = False\n        elif not inside_tag:\n            result = result + ch\n    return result\n\nclean = strip_tags("<b>粗体</b>和<i>斜体</i>")\nprint("去标签:", clean)',

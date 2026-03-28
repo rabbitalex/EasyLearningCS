@@ -274,6 +274,7 @@ var ConfigManager = {
       loginStreak: this.getLoginStreak(),
       visitedPages: this.getVisitedPages(),
       settings: this.getSettings(),
+      sidebarWidth: safeGet(STORAGE_KEYS.SIDEBAR_WIDTH, null),
       exportTime: new Date().toISOString()
     };
   },
@@ -291,6 +292,7 @@ var ConfigManager = {
     if (data.loginStreak) safeSet(STORAGE_KEYS.LOGIN_STREAK, data.loginStreak);
     if (data.visitedPages) safeSet(STORAGE_KEYS.VISITED_PAGES, data.visitedPages);
     if (data.settings) safeSet(STORAGE_KEYS.SETTINGS, data.settings);
+    if (data.sidebarWidth != null) safeSet(STORAGE_KEYS.SIDEBAR_WIDTH, data.sidebarWidth);
     return true;
   },
 

@@ -1,10 +1,10 @@
-// 第十六章：IO编程
+// 第十五章：IO编程
 const CHAPTER16 = {
-  chapter: "第十六章：IO编程",
+  chapter: "第十五章：IO编程",
   icon: "💾",
   lessons: [
     {
-      id: "16-1",
+      id: "15-1",
       title: "文件读写进阶",
       xp: 25,
       code: '# 模拟文件操作（浏览器环境）\ncontent = "第一行：Hello\\n第二行：World\\n第三行：Python"\nlines = content.split("\\n")\nfor i, line in enumerate(lines, 1):\n    print(f"行{i}: {line}")\nprint(f"\\n共{len(lines)}行")',
@@ -51,7 +51,7 @@ const CHAPTER16 = {
       }
     },
     {
-      id: "16-2",
+      id: "15-2",
       title: "JSON序列化 - 数据存取",
       xp: 25,
       code: 'import json\n\ndata = {\n    "name": "小明",\n    "age": 10,\n    "hobbies": ["编程", "画画", "游泳"]\n}\n\n# 序列化：Python对象 → JSON字符串\njson_str = json.dumps(data, ensure_ascii=False)\nprint("JSON:", json_str)\n\n# 反序列化：JSON字符串 → Python对象\nobj = json.loads(json_str)\nprint(f"姓名: {obj[\'name\']}")\nprint(f"爱好: {obj[\'hobbies\']}")',
@@ -79,7 +79,7 @@ const CHAPTER16 = {
       }
     },
     {
-      id: "16-3",
+      id: "15-3",
       title: "StringIO - 内存中的文件",
       xp: 20,
       code: '# 模拟 StringIO: 内存中的虚拟文件\nclass StringIO:\n    def __init__(self, text=""):\n        self.data = text\n    def write(self, s):\n        self.data = self.data + s\n    def getvalue(self):\n        return self.data\n    def readlines(self):\n        return self.data.split("\\n")\n\n# 写入 StringIO\nf = StringIO()\nf.write("Hello ")\nf.write("World!")\nprint("写入内容:", f.getvalue())\n\n# 读取 StringIO\nf2 = StringIO("第一行\\n第二行\\n第三行")\nfor line in f2.readlines():\n    print("读取:", line)',

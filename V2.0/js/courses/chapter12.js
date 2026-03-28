@@ -1,10 +1,10 @@
-// 第十二章：函数式编程
+// 第十一章：函数式编程
 const CHAPTER12 = {
-  chapter: "第十二章：函数式编程",
+  chapter: "第十一章：函数式编程",
   icon: "🧩",
   lessons: [
     {
-      id: "12-1",
+      id: "11-1",
       title: "高阶函数 - 函数也是变量",
       xp: 25,
       code: 'def add(x, y):\n    return x + y\n\nf = add\nprint(f(3, 5))\n\ndef apply(func, a, b):\n    return func(a, b)\n\nprint(apply(add, 10, 20))',
@@ -53,7 +53,7 @@ const CHAPTER12 = {
       }
     },
     {
-      id: "12-2",
+      id: "11-2",
       title: "匿名函数 lambda",
       xp: 20,
       code: 'square = lambda x: x ** 2\nprint(square(5))\n\npairs = [(1, "b"), (3, "a"), (2, "c")]\npairs.sort(key=lambda p: p[1])\nprint(pairs)',
@@ -92,7 +92,7 @@ const CHAPTER12 = {
       }
     },
     {
-      id: "12-3",
+      id: "11-3",
       title: "装饰器 - 给函数穿衣服",
       xp: 30,
       code: 'def timer(func):\n    def wrapper(*args):\n        print(f"调用 {func.__name__}...")\n        result = func(*args)\n        print(f"{func.__name__} 执行完毕!")\n        return result\n    return wrapper\n\n@timer\ndef say_hello(name):\n    print(f"Hello, {name}!")\n\nsay_hello("小明")',
@@ -133,7 +133,7 @@ const CHAPTER12 = {
       }
     },
     {
-      id: "12-4",
+      id: "11-4",
       title: "返回函数与闭包",
       xp: 25,
       code: 'def make_adder(n):\n    def adder(x):\n        return x + n\n    return adder\n\nadd5 = make_adder(5)\nadd10 = make_adder(10)\nprint(add5(3))\nprint(add10(3))',

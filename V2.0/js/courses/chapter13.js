@@ -1,10 +1,10 @@
-// 第十三章：面向对象编程
+// 第十二章：面向对象编程
 const CHAPTER13 = {
-  chapter: "第十三章：面向对象编程",
+  chapter: "第十二章：面向对象编程",
   icon: "🏗️",
   lessons: [
     {
-      id: "13-1",
+      id: "12-1",
       title: "类与实例 - 造模具",
       xp: 25,
       code: 'class Dog:\n    def __init__(self, name, age):\n        self.name = name\n        self.age = age\n    \n    def bark(self):\n        print(f"{self.name}说: 汪汪汪!")\n\nmy_dog = Dog("旺财", 3)\nmy_dog.bark()\nprint(f"{my_dog.name}今年{my_dog.age}岁")',
@@ -50,7 +50,7 @@ const CHAPTER13 = {
       }
     },
     {
-      id: "13-2",
+      id: "12-2",
       title: "继承与多态 - 父子关系",
       xp: 30,
       code: 'class Animal:\n    def __init__(self, name):\n        self.name = name\n    def speak(self):\n        pass\n\nclass Cat(Animal):\n    def speak(self):\n        print(f"{self.name}: 喵喵喵!")\n\nclass Dog(Animal):\n    def speak(self):\n        print(f"{self.name}: 汪汪汪!")\n\nanimals = [Cat("咪咪"), Dog("旺财"), Cat("花花")]\nfor a in animals:\n    a.speak()',
@@ -90,7 +90,7 @@ const CHAPTER13 = {
       }
     },
     {
-      id: "13-3",
+      id: "12-3",
       title: "访问限制 - 公有与私有",
       xp: 20,
       code: 'class BankAccount:\n    def __init__(self, owner, balance):\n        self.owner = owner\n        self.__balance = balance  # 私有属性\n    \n    def deposit(self, amount):\n        self.__balance += amount\n        print(f"存入{amount}元")\n    \n    def get_balance(self):\n        return self.__balance\n\nacc = BankAccount("小明", 1000)\nacc.deposit(500)\nprint(f"余额: {acc.get_balance()}元")',
@@ -117,7 +117,7 @@ const CHAPTER13 = {
       }
     },
     {
-      id: "13-4",
+      id: "12-4",
       title: "获取对象信息",
       xp: 20,
       code: 'class MyClass:\n    def __init__(self):\n        self.x = 1\n    def hello(self):\n        pass\n\nobj = MyClass()\nprint(type(obj))\nprint(isinstance(obj, MyClass))\nprint(dir(obj))\nprint(hasattr(obj, "x"))\nprint(getattr(obj, "x"))',

@@ -1,10 +1,10 @@
-// 第十五章：错误调试与测试
+// 第十四章：错误调试与测试
 const CHAPTER15 = {
-  chapter: "第十五章：错误处理",
+  chapter: "第十四章：错误处理",
   icon: "🛡️",
   lessons: [
     {
-      id: "15-1",
+      id: "14-1",
       title: "try/except - 捕获错误",
       xp: 25,
       code: 'try:\n    result = 10 / 0\nexcept ZeroDivisionError:\n    print("不能除以零！")\n\ntry:\n    num = int("abc")\nexcept ValueError as e:\n    print(f"转换失败: {e}")\nfinally:\n    print("无论如何都会执行")',
@@ -52,7 +52,7 @@ const CHAPTER15 = {
       }
     },
     {
-      id: "15-2",
+      id: "14-2",
       title: "raise - 主动抛出错误",
       xp: 20,
       code: 'def set_age(age):\n    if not isinstance(age, int):\n        raise TypeError("年龄必须是整数")\n    if age < 0 or age > 150:\n        raise ValueError(f"年龄{age}不合理")\n    print(f"年龄设为{age}岁")\n\nset_age(10)\ntry:\n    set_age(-5)\nexcept ValueError as e:\n    print(f"错误: {e}")',
@@ -79,7 +79,7 @@ const CHAPTER15 = {
       }
     },
     {
-      id: "15-3",
+      id: "14-3",
       title: "调试技巧 - 找Bug",
       xp: 20,
       code: '# 方法1: print调试法\ndef calc(data):\n    print(f"[DEBUG] 输入: {data}")\n    result = sum(data) / len(data)\n    print(f"[DEBUG] 结果: {result}")\n    return result\n\ncalc([10, 20, 30])\n\n# 方法2: assert断言\ndef divide(a, b):\n    assert b != 0, "除数不能为0"\n    return a / b\n\nprint(divide(10, 2))',

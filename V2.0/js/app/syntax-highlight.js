@@ -1,4 +1,4 @@
-// app.js - Python魔法学院核心引擎（升级版 v2.0）
+// app.js - Python编程课程核心引擎（升级版 v2.0）
 
 // ===== Python 语法高亮引擎 =====
 function pythonSyntaxHighlight(code) {
