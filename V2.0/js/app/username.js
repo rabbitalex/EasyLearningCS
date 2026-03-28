@@ -3,8 +3,11 @@
 
 (function() {
   var STORAGE_KEY = 'py_user_profile';
+  var NICKNAME_MAX_UNITS = 10;
+  var NICKNAME_RULE_TEXT = '昵称最多 5 个汉字或 10 个字符';
   var nameEl = document.getElementById('userName');
   var avatarEl = document.getElementById('userAvatar');
+  var editBtn = document.getElementById('userNameEditBtn');
   var modal = document.getElementById('nameModal');
   var input = document.getElementById('nameInput');
   var confirmBtn = document.getElementById('nameConfirm');
@@ -21,6 +24,45 @@
 
   function saveProfile(profile) {
     try { safeSet(STORAGE_KEY, profile); } catch(e) {}
+  }
+
+  function isChineseChar(char) {
+    return /[\u3400-\u9fff\uf900-\ufaff]/.test(char);
+  }
+
+  function getNicknameUnits(name) {
+    return Array.from(name || '').reduce(function(total, char) {
+      return total + (isChineseChar(char) ? 2 : 1);
+    }, 0);
+  }
+
+  function normalizeNickname(name) {
+    var chars = Array.from((name || '').trim());
+    var result = '';
+    var units = 0;
+    for (var i = 0; i < chars.length; i++) {
+      var char = chars[i];
+      var weight = isChineseChar(char) ? 2 : 1;
+      if (units + weight > NICKNAME_MAX_UNITS) break;
+      result += char;
+      units += weight;
+    }
+    return result;
+  }
+
+  function getDisplayNickname(profile) {
+    var nickname = normalizeNickname(profile && profile.nickname ? profile.nickname : '');
+    return nickname || 'Python学徒';
+  }
+
+  function normalizeProfileNickname(profile) {
+    if (!profile) return profile;
+    var nickname = getDisplayNickname(profile);
+    if (nickname !== profile.nickname) {
+      profile.nickname = nickname;
+      saveProfile(profile);
+    }
+    return profile;
   }
 
   function resolveAvatar(gender) {
@@ -49,16 +91,17 @@
     }
   }
 
-  function updateBranding(name) {
+  function updateBranding() {
+    var brandText = '孩子的编程冒险乐园';
     var logoEl = document.getElementById('logoText');
     var welcomeEl = document.getElementById('welcomeText');
-    if (logoEl) logoEl.textContent = '🌍 ' + name + '的编程世界';
-    if (welcomeEl) welcomeEl.textContent = name + '的编程世界';
-    document.title = '🌍 ' + name + '的编程世界';
+    if (logoEl) logoEl.textContent = brandText;
+    if (welcomeEl) welcomeEl.textContent = brandText;
+    document.title = '🌈 ' + brandText;
   }
 
   function applyProfile(profile) {
-    var nickname = (profile && profile.nickname) ? profile.nickname : 'Python学徒';
+    var nickname = getDisplayNickname(profile);
     var gender = profile && profile.gender ? profile.gender : 'unknown';
     var avatar = profile && profile.avatar ? profile.avatar : resolveAvatar(gender);
     if (nameEl) {
@@ -69,14 +112,19 @@
       avatarEl.textContent = avatar;
       avatarEl.title = '点击修改资料';
     }
-    updateBranding(nickname);
+    updateBranding();
   }
 
   function saveCurrentProfile() {
-    var name = input.value.trim();
+    var rawName = input.value.trim();
+    var name = normalizeNickname(rawName);
+    input.value = name;
     if (!name) {
       input.focus();
       return;
+    }
+    if (getNicknameUnits(rawName) > NICKNAME_MAX_UNITS && typeof toast === 'function') {
+      toast('⚠️ ' + NICKNAME_RULE_TEXT);
     }
     var oldProfile = getProfile() || { nickname: '', avatar: '🧒', gender: 'unknown', theme: 'magic' };
     var gender = getSelectedGender();
@@ -94,11 +142,12 @@
 
   function showModal(placeholder, isEdit) {
     var profile = getProfile() || { nickname: '', avatar: '🧒', gender: 'unknown', theme: 'magic' };
-    input.value = isEdit && profile.nickname && profile.nickname !== 'Python学徒' ? profile.nickname : '';
-    input.placeholder = placeholder || '请输入你的名字';
+    input.value = isEdit && profile.nickname && profile.nickname !== 'Python学徒' ? normalizeNickname(profile.nickname) : '';
+    input.placeholder = (placeholder || '请输入昵称') + '（最多5个汉字或10个字符）';
+    input.maxLength = 10;
     setSelectedGender(profile.gender || 'unknown');
     if (modalTitleEl) modalTitleEl.textContent = isEdit ? '修改我的资料' : '欢迎来到编程世界！';
-    if (modalDescEl) modalDescEl.textContent = isEdit ? '可以修改昵称，也可以重新选择性别显示。' : '先告诉我你的名字，再选一个小身份吧';
+    if (modalDescEl) modalDescEl.textContent = isEdit ? '可以修改昵称，也可以重新选择性别显示。昵称最多 5 个汉字或 10 个字符。' : '先告诉我你的名字，再选一个小身份吧。昵称最多 5 个汉字或 10 个字符。';
     if (confirmBtn) confirmBtn.textContent = isEdit ? '保存资料 ✨' : '开始学习 🚀';
     modal.style.display = 'flex';
     setTimeout(function() { input.focus(); }, 100);
@@ -107,6 +156,13 @@
   function hideModal() {
     modal.style.display = 'none';
   }
+
+  input.addEventListener('input', function() {
+    var normalized = normalizeNickname(input.value);
+    if (input.value !== normalized) {
+      input.value = normalized;
+    }
+  });
 
   // 确认按钮
   confirmBtn.addEventListener('click', saveCurrentProfile);
@@ -123,20 +179,23 @@
     }
   });
 
-  // 点击名字/头像改资料
+  function openProfileEditor() {
+    showModal('输入新昵称', true);
+  }
+
+  // 点击名字/头像/编辑按钮改资料
   if (nameEl) {
-    nameEl.addEventListener('click', function() {
-      showModal('输入新昵称', true);
-    });
+    nameEl.addEventListener('click', openProfileEditor);
   }
   if (avatarEl) {
-    avatarEl.addEventListener('click', function() {
-      showModal('输入新昵称', true);
-    });
+    avatarEl.addEventListener('click', openProfileEditor);
+  }
+  if (editBtn) {
+    editBtn.addEventListener('click', openProfileEditor);
   }
 
   // 初始化：首次打开弹窗
-  var profile = getProfile();
+  var profile = normalizeProfileNickname(getProfile());
   if (profile && profile.nickname && profile.nickname !== 'Python学徒') {
     if (!profile.gender) profile.gender = 'unknown';
     if (!profile.avatar || profile.avatar === '👤') profile.avatar = resolveAvatar(profile.gender);

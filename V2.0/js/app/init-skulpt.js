@@ -1,8 +1,28 @@
 // ===== 初始化 =====
+function hasSavedLearningHistory() {
+  try {
+    var lessonProgress = safeGet(STORAGE_KEYS.LESSON_PROGRESS, {});
+    var completedLessons = safeGet(STORAGE_KEYS.COMPLETED_LESSONS, []);
+    var challenges = safeGet(STORAGE_KEYS.CHALLENGE_PROGRESS, {});
+    return Object.keys(lessonProgress).length > 0 || completedLessons.length > 0 || Object.keys(challenges).length > 0;
+  } catch (e) {
+    return false;
+  }
+}
+
+function clearLessonQueryParam() {
+  try {
+    var url = new URL(window.location.href);
+    if (!url.searchParams.has('lesson')) return;
+    url.searchParams.delete('lesson');
+    var cleanUrl = url.pathname + (url.searchParams.toString() ? '?' + url.searchParams.toString() : '') + url.hash;
+    window.history.replaceState({}, document.title, cleanUrl);
+  } catch (e) {}
+}
+
 function init() {
   initSkulpt();
   buildNav();
-  buildCourseGrid();
   buildVolumeOverview();
   bindEvents();
   if (typeof HomeworkSystem !== 'undefined') HomeworkSystem.init();
@@ -12,11 +32,14 @@ function init() {
   setTimeout(function() {
     $('loader').classList.add('hidden');
     $('app').style.display = '';
+    switchPage('home');
+
     // 自动跳转到指定课程
     var params = new URLSearchParams(window.location.search);
     var targetLesson = params.get('lesson');
-    if (!targetLesson) {
-      // 没有 URL 参数时，尝试恢复上次学习的课程
+    var hasLessonParam = !!targetLesson;
+    if (!targetLesson && hasSavedLearningHistory()) {
+      // 仅在确实存在学习记录时，才恢复上次学习的课程
       try { targetLesson = safeGet(STORAGE_KEYS.CURRENT_LESSON, null); } catch(e) {}
     }
     if (targetLesson) {
@@ -25,6 +48,7 @@ function init() {
       });
       if (found) loadLesson(targetLesson);
     }
+    if (hasLessonParam) clearLessonQueryParam();
   }, 2200);
 }
 

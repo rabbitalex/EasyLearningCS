@@ -22,9 +22,9 @@ const CHAPTER_V4_CPP2 = {
       <div style="font-size:0.65rem;color:rgba(255,255,255,0.5);margin-top:0.3rem">隐藏内部实现<br>只暴露必要接口</div>
       <div style="margin-top:0.5rem;font-family:monospace;font-size:0.6rem;color:rgba(255,255,255,0.3);background:rgba(0,0,0,0.2);border-radius:4px;padding:0.3rem">private:<br>&nbsp;&nbsp;int age;<br>public:<br>&nbsp;&nbsp;int getAge();</div>
     </div>
-    <div class="t0-fadein" style="animation-delay:0.5s;background:rgba(108,92,231,0.12);border:1px solid rgba(108,92,231,0.3);border-radius:12px;padding:1rem;text-align:center">
+    <div class="t0-fadein" style="animation-delay:0.5s;background:rgba(253,121,168,0.12);border:1px solid rgba(253,121,168,0.3);border-radius:12px;padding:1rem;text-align:center">
       <div style="font-size:2rem;margin-bottom:0.3rem">🧬</div>
-      <div style="font-weight:800;color:#6c5ce7;font-size:0.9rem">继承</div>
+      <div style="font-weight:800;color:#fd79a8;font-size:0.9rem">继承</div>
       <div style="font-size:0.65rem;color:rgba(255,255,255,0.5);margin-top:0.3rem">子类复用父类代码<br>扩展新功能</div>
       <div style="margin-top:0.5rem;font-family:monospace;font-size:0.6rem;color:rgba(255,255,255,0.3);background:rgba(0,0,0,0.2);border-radius:4px;padding:0.3rem">class Dog<br>&nbsp;&nbsp;: public Animal<br>{ ... };</div>
     </div>

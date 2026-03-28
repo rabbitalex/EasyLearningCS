@@ -31,7 +31,7 @@ body {
 ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 
 ::selection {
-  background: rgba(108, 92, 231, 0.3);
+  background: rgba(253, 121, 168, 0.3);
   color: var(--text-primary);
 }
 
@@ -67,7 +67,7 @@ body {
   font-size: 5rem;
   display: inline-block;
   animation: snakeBounce 1.5s ease-in-out infinite;
-  filter: drop-shadow(0 10px 30px rgba(108, 92, 231, 0.5));
+  filter: drop-shadow(0 10px 30px rgba(253, 121, 168, 0.5));
 }
 
 @keyframes snakeBounce {

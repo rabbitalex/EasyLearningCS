@@ -21,9 +21,9 @@ const CHAPTER_V4_CPP1 = {
       <div style="font-weight:800;color:#0984e3;font-size:0.85rem">游戏开发</div>
       <div style="font-size:0.65rem;color:rgba(255,255,255,0.4);margin-top:0.2rem">Unreal Engine<br>Unity底层</div>
     </div>
-    <div class="t0-fadein" style="animation-delay:0.4s;background:rgba(108,92,231,0.12);border:1px solid rgba(108,92,231,0.3);border-radius:12px;padding:0.8rem;text-align:center">
+    <div class="t0-fadein" style="animation-delay:0.4s;background:rgba(253,121,168,0.12);border:1px solid rgba(253,121,168,0.3);border-radius:12px;padding:0.8rem;text-align:center">
       <div style="font-size:1.8rem;margin-bottom:0.3rem">🖥️</div>
-      <div style="font-weight:800;color:#6c5ce7;font-size:0.85rem">操作系统</div>
+      <div style="font-weight:800;color:#fd79a8;font-size:0.85rem">操作系统</div>
       <div style="font-size:0.65rem;color:rgba(255,255,255,0.4);margin-top:0.2rem">Windows<br>Linux内核</div>
     </div>
     <div class="t0-fadein" style="animation-delay:0.6s;background:rgba(0,206,201,0.12);border:1px solid rgba(0,206,201,0.3);border-radius:12px;padding:0.8rem;text-align:center">
@@ -89,9 +89,9 @@ const CHAPTER_V4_CPP1 = {
       <div style="font-size:0.55rem;color:rgba(255,255,255,0.3)">.cpp</div>
     </div>
     <div class="t0-fadein" style="animation-delay:0.3s;color:rgba(255,255,255,0.3)">→</div>
-    <div class="t0-fadein" style="animation-delay:0.4s;background:rgba(108,92,231,0.15);border:1px solid rgba(108,92,231,0.3);border-radius:10px;padding:0.6rem;text-align:center;min-width:80px">
+    <div class="t0-fadein" style="animation-delay:0.4s;background:rgba(253,121,168,0.15);border:1px solid rgba(253,121,168,0.3);border-radius:10px;padding:0.6rem;text-align:center;min-width:80px">
       <div style="font-size:1.2rem;margin-bottom:0.2rem">⚙️</div>
-      <div style="font-size:0.7rem;font-weight:700;color:#6c5ce7">预处理</div>
+      <div style="font-size:0.7rem;font-weight:700;color:#fd79a8">预处理</div>
       <div style="font-size:0.55rem;color:rgba(255,255,255,0.3)">#include展开</div>
     </div>
     <div class="t0-fadein" style="animation-delay:0.5s;color:rgba(255,255,255,0.3)">→</div>

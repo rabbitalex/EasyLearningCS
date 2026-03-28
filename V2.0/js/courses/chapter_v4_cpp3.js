@@ -21,9 +21,9 @@ const CHAPTER_V4_CPP3 = {
       <div style="font-weight:800;color:#0984e3;text-align:center;font-size:0.85rem">unique_ptr</div>
       <div style="font-size:0.65rem;color:rgba(255,255,255,0.5);margin-top:0.3rem;text-align:center">独占所有权<br>不能复制，只能移动<br>离开作用域自动释放</div>
     </div>
-    <div class="t0-fadein" style="animation-delay:0.5s;background:rgba(108,92,231,0.12);border:1px solid rgba(108,92,231,0.3);border-radius:12px;padding:1rem">
+    <div class="t0-fadein" style="animation-delay:0.5s;background:rgba(253,121,168,0.12);border:1px solid rgba(253,121,168,0.3);border-radius:12px;padding:1rem">
       <div style="font-size:1.5rem;text-align:center;margin-bottom:0.3rem">👥</div>
-      <div style="font-weight:800;color:#6c5ce7;text-align:center;font-size:0.85rem">shared_ptr</div>
+      <div style="font-weight:800;color:#fd79a8;text-align:center;font-size:0.85rem">shared_ptr</div>
       <div style="font-size:0.65rem;color:rgba(255,255,255,0.5);margin-top:0.3rem;text-align:center">共享所有权<br>引用计数追踪<br>最后一个释放时释放内存</div>
     </div>
     <div class="t0-fadein" style="animation-delay:0.8s;background:rgba(253,121,168,0.12);border:1px solid rgba(253,121,168,0.3);border-radius:12px;padding:1rem">
@@ -43,14 +43,14 @@ const CHAPTER_V4_CPP3 = {
   <div id="refCountDemo" style="padding:1rem;text-align:center">
     <div style="margin-bottom:1rem">
       <div style="font-size:0.7rem;color:rgba(255,255,255,0.4)">内存中的对象</div>
-      <div id="refObj" style="display:inline-block;padding:0.8rem 1.5rem;background:rgba(108,92,231,0.2);border:2px solid rgba(108,92,231,0.4);border-radius:12px;margin:0.5rem;transition:all 0.3s">
-        <div style="font-weight:800;color:#6c5ce7;font-size:1.1rem" id="refObjVal">Data{42}</div>
+      <div id="refObj" style="display:inline-block;padding:0.8rem 1.5rem;background:rgba(253,121,168,0.2);border:2px solid rgba(253,121,168,0.4);border-radius:12px;margin:0.5rem;transition:all 0.3s">
+        <div style="font-weight:800;color:#fd79a8;font-size:1.1rem" id="refObjVal">Data{42}</div>
         <div style="font-size:0.7rem;color:rgba(255,255,255,0.4)">ref_count: <span id="refCountVal" style="color:#FF9800;font-weight:800">0</span></div>
       </div>
     </div>
     <div id="refPtrs" style="display:flex;gap:0.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:1rem"></div>
     <div style="display:flex;gap:0.5rem;justify-content:center">
-      <button onclick="addRefPtr()" style="padding:0.4rem 1rem;border-radius:6px;border:none;background:#6c5ce7;color:white;font-weight:700;cursor:pointer;font-size:0.75rem">+ 添加shared_ptr</button>
+      <button onclick="addRefPtr()" style="padding:0.4rem 1rem;border-radius:6px;border:none;background:#fd79a8;color:white;font-weight:700;cursor:pointer;font-size:0.75rem">+ 添加shared_ptr</button>
       <button onclick="removeRefPtr()" style="padding:0.4rem 1rem;border-radius:6px;border:none;background:#fd79a8;color:white;font-weight:700;cursor:pointer;font-size:0.75rem">- 释放shared_ptr</button>
     </div>
   </div>
@@ -59,7 +59,7 @@ const CHAPTER_V4_CPP3 = {
 var refPtrCount=0,refPtrNames=[];
 function addRefPtr(){refPtrCount++;refPtrNames.push('sp'+refPtrCount);renderRefPtrs();}
 function removeRefPtr(){if(refPtrNames.length>0){refPtrNames.pop();renderRefPtrs();}}
-function renderRefPtrs(){var el=document.getElementById('refPtrs');var cntEl=document.getElementById('refCountVal');var objEl=document.getElementById('refObj');el.innerHTML='';refPtrNames.forEach(function(n){el.innerHTML+='<div style="background:rgba(0,206,201,0.15);border:1px solid rgba(0,206,201,0.3);border-radius:8px;padding:0.4rem 0.8rem;font-size:0.75rem;font-weight:700;color:#00cec9;animation:treeExpand 0.2s ease">'+n+' →</div>';});cntEl.textContent=refPtrNames.length;if(refPtrNames.length===0){objEl.style.opacity='0.3';objEl.style.borderColor='rgba(253,121,168,0.4)';cntEl.style.color='#fd79a8';}else{objEl.style.opacity='1';objEl.style.borderColor='rgba(108,92,231,0.4)';cntEl.style.color='#FF9800';}}
+function renderRefPtrs(){var el=document.getElementById('refPtrs');var cntEl=document.getElementById('refCountVal');var objEl=document.getElementById('refObj');el.innerHTML='';refPtrNames.forEach(function(n){el.innerHTML+='<div style="background:rgba(0,206,201,0.15);border:1px solid rgba(0,206,201,0.3);border-radius:8px;padding:0.4rem 0.8rem;font-size:0.75rem;font-weight:700;color:#00cec9;animation:treeExpand 0.2s ease">'+n+' →</div>';});cntEl.textContent=refPtrNames.length;if(refPtrNames.length===0){objEl.style.opacity='0.3';objEl.style.borderColor='rgba(253,121,168,0.4)';cntEl.style.color='#fd79a8';}else{objEl.style.opacity='1';objEl.style.borderColor='rgba(253,121,168,0.4)';cntEl.style.color='#FF9800';}}
 </script>`
         }
       ],
@@ -110,8 +110,8 @@ function renderRefPtrs(){var el=document.getElementById('refPtrs');var cntEl=doc
       <div style="font-weight:700;color:#0984e3;margin-bottom:0.2rem">🔗 list (双向链表)</div>
       <div style="color:rgba(255,255,255,0.4);font-size:0.65rem">任意位置插入O(1)、不支持随机访问</div>
     </div>
-    <div class="t0-fadein" style="animation-delay:0.4s;background:rgba(108,92,231,0.08);border:1px solid rgba(108,92,231,0.2);border-radius:8px;padding:0.6rem">
-      <div style="font-weight:700;color:#6c5ce7;margin-bottom:0.2rem">🗺️ map (红黑树)</div>
+    <div class="t0-fadein" style="animation-delay:0.4s;background:rgba(253,121,168,0.08);border:1px solid rgba(253,121,168,0.2);border-radius:8px;padding:0.6rem">
+      <div style="font-weight:700;color:#fd79a8;margin-bottom:0.2rem">🗺️ map (红黑树)</div>
       <div style="color:rgba(255,255,255,0.4);font-size:0.65rem">键值对、有序、查找O(log n)</div>
     </div>
     <div class="t0-fadein" style="animation-delay:0.5s;background:rgba(255,152,0,0.08);border:1px solid rgba(255,152,0,0.2);border-radius:8px;padding:0.6rem">

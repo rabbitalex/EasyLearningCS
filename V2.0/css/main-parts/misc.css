@@ -235,11 +235,20 @@
   }
 
   .welcome-hero {
-    padding: 2rem 1.5rem;
+    padding: 1.45rem 1rem 1.2rem;
   }
   
   .hero-content h1 {
-    font-size: 1.8rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .hero-title {
+    justify-content: center;
+  }
+
+  .hero-title-main {
+    max-width: 100%;
+    font-size: 2.25rem;
   }
 
   .hero-emoji {
@@ -459,12 +468,12 @@
   padding: 0.88rem 1rem;
   border: none;
   border-radius: 16px;
-  background: linear-gradient(135deg, #667eea, #8e6cff);
+  background: linear-gradient(135deg, #ff8fbc, #ffb3d1);
   color: #fff;
   font-size: 1rem;
   font-weight: 900;
   cursor: pointer;
-  box-shadow: 0 10px 22px rgba(102, 126, 234, 0.35);
+  box-shadow: 0 10px 22px rgba(253, 121, 168, 0.28);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 .name-modal-confirm:hover {
@@ -677,15 +686,16 @@
 
 /* ========== 首页 hero 上移优化 ========== */
 .welcome-hero {
-  padding-top: 2rem;
+  padding-top: 1.8rem;
 }
 
 /* ========== 选中课程时，父级卷和章的高亮 ========== */
 .nav-volume.active-parent .nav-volume-name {
-  color: var(--vol-color, #FF9800) !important;
+  color: var(--nav-volume-name-color, #ffe0b2) !important;
+  text-shadow: none;
 }
 .nav-volume.active-parent .nav-vol-arrow {
-  color: var(--vol-color, #FF9800);
+  color: #ffd180;
 }
 
 .nav-chapter.active-parent > .nav-chapter-title {
@@ -743,8 +753,18 @@
 .volume-card-header {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  margin-bottom: 1rem;
+  gap: 0.95rem;
+  margin-bottom: 0.72rem;
+}
+
+.volume-card-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.38rem;
+  min-width: 3.6rem;
+  flex-shrink: 0;
 }
 
 .volume-card-icon {
@@ -754,13 +774,14 @@
 
 .volume-card-info {
   flex: 1;
+  min-width: 0;
 }
 
 .volume-card-name {
   font-size: 1.15rem;
   font-weight: 900;
   color: var(--text-primary);
-  margin-bottom: 0.15rem;
+  margin-bottom: 0;
 }
 
 .volume-card-meta {
@@ -774,7 +795,7 @@
   background: rgba(255,255,255,0.06);
   border-radius: 3px;
   overflow: hidden;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0;
 }
 
 .volume-card-progress-fill {
@@ -783,44 +804,18 @@
   transition: width 0.5s ease;
 }
 
-.volume-card-chapters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-}
-
-.volume-card-chip {
+.volume-card-pct {
+  position: static;
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
-  padding: 0.25rem 0.6rem;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 8px;
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  font-weight: 600;
-  transition: all 0.2s;
-}
-
-.volume-card-chip:hover {
-  background: rgba(255,255,255,0.1);
-  color: var(--text-primary);
-}
-
-.volume-card-chip .chip-icon {
-  font-size: 0.8rem;
-}
-
-.volume-card-pct {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: 0.78rem;
-  font-weight: 800;
-  padding: 0.2rem 0.6rem;
-  border-radius: 12px;
+  justify-content: center;
+  min-width: 2.9rem;
+  font-size: 0.76rem;
+  font-weight: 900;
+  padding: 0.22rem 0.56rem;
+  border-radius: 999px;
   background: rgba(255,255,255,0.06);
+  line-height: 1;
 }
 
 /* ========== 侧边栏宽度变化时的过渡 ========== */

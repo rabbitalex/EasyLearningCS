@@ -53,7 +53,7 @@
     .key-points {
       margin: 24px 32px 32px;
       padding: 20px 24px;
-      background: linear-gradient(135deg, rgba(253, 121, 168, 0.1) 0%, rgba(108, 92, 231, 0.1) 100%);
+      background: linear-gradient(135deg, rgba(253, 121, 168, 0.1) 0%, rgba(253, 121, 168, 0.1) 100%);
       border-radius: 12px;
       border: 1px solid rgba(253, 121, 168, 0.2);
     }
@@ -135,12 +135,12 @@
     .btn-next {
       background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
       color: white;
-      box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+      box-shadow: 0 4px 15px rgba(253, 121, 168, 0.4);
     }
     
     .btn-next:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(108, 92, 231, 0.5);
+      box-shadow: 0 6px 20px rgba(253, 121, 168, 0.5);
     }
     
     .btn-try {

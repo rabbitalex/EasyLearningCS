@@ -90,14 +90,19 @@ function updateLessonProgress() {
 function completeLesson() {
   if (!state.currentLesson) return;
   var id = state.currentLesson.id;
+  var autoPassByCourse = state.currentVolumeType === 'theory';
 
   // 标记为已访问（黄色圆点），绿色需要完成全部作业
   if (state.visitedPages.indexOf(id) === -1) {
     state.visitedPages = Config.logPageVisit(id);
   }
 
-  // 检查作业是否全部完成
-  if (typeof HomeworkSystem !== 'undefined' && HomeworkSystem.isAllDone(id)) {
+  if (autoPassByCourse) {
+    if (state.completedLessons.indexOf(id) === -1) {
+      state.completedLessons = Config.completeLesson(id, state.currentLesson.chapter);
+    }
+    toast('✅ 理论卷课程已完成，已直接记为通过！');
+  } else if (typeof HomeworkSystem !== 'undefined' && HomeworkSystem.isAllDone(id)) {
     if (state.completedLessons.indexOf(id) === -1) {
       state.completedLessons = Config.completeLesson(id, state.currentLesson.chapter);
       toast('🏆 所有作业完成！课程已标记为完成！');
@@ -263,7 +268,7 @@ function renderStatsPage() {
 function createParticles() {
   var container = $('particles');
   if (!container) return;
-  var colors = ['#6C5CE7', '#00cec9', '#fd79a8', '#fdcb6e', '#00b894'];
+  var colors = ['#FD79A8', '#00cec9', '#ffb3d1', '#fdcb6e', '#00b894'];
   for (var i = 0; i < 25; i++) {
     var p = document.createElement('div');
     p.className = 'hero-particle';

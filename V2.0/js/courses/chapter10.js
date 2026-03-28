@@ -36,7 +36,7 @@ const CHAPTER10 = {
     <div class="ch10-ku-title">📚 用到的知识点</div>
     <div class="ch10-ku-tags">
       <span class="ch10-tag" style="background:rgba(253,121,168,0.15);color:#fd79a8">random模块</span>
-      <span class="ch10-tag" style="background:rgba(108,92,231,0.15);color:#FF9800;font-weight:700">while循环</span>
+      <span class="ch10-tag" style="background:rgba(253,121,168,0.15);color:#FF9800;font-weight:700">while循环</span>
       <span class="ch10-tag" style="background:rgba(0,184,148,0.15);color:#00b894">if-elif-else</span>
       <span class="ch10-tag" style="background:rgba(253,203,110,0.15);color:#fdcb6e">input输入</span>
       <span class="ch10-tag" style="background:rgba(0,206,201,0.15);color:#00cec9">break退出</span>
@@ -45,9 +45,9 @@ const CHAPTER10 = {
   </div>
 </div>
 <style>
-.theory-anim-box{background:linear-gradient(135deg,rgba(108,92,231,0.08),rgba(0,206,201,0.08));border:1px solid rgba(108,92,231,0.2);border-radius:16px;padding:1.2rem;margin:1rem 0}
+.theory-anim-box{background:linear-gradient(135deg,rgba(253,121,168,0.08),rgba(0,206,201,0.08));border:1px solid rgba(253,121,168,0.2);border-radius:16px;padding:1.2rem;margin:1rem 0}
 .theory-anim-title{font-weight:800;color:#FF9800;font-weight:700;margin-bottom:1rem;font-size:0.9rem}
-.theory-callout{background:rgba(108,92,231,0.1);border-left:3px solid #6c5ce7;padding:0.5rem 0.8rem;border-radius:0 8px 8px 0;font-size:0.8rem;color:#e8ecf2;margin-top:0.8rem}
+.theory-callout{background:rgba(253,121,168,0.1);border-left:3px solid #fd79a8;padding:0.5rem 0.8rem;border-radius:0 8px 8px 0;font-size:0.8rem;color:#e8ecf2;margin-top:0.8rem}
 .ch10-req-grid{display:flex;flex-direction:column;gap:0.3rem;margin:0.5rem 0}
 .ch10-req-card{display:flex;align-items:center;gap:0.5rem;background:#0d0d1a;border-radius:8px;padding:0.45rem 0.7rem;animation:ch10SlideIn 0.3s ease both;transition:transform 0.2s}
 .ch10-req-card:hover{transform:translateX(5px)}
@@ -72,7 +72,7 @@ const CHAPTER10 = {
 attempts = 0</div>
     </div>
     <div class="ch10-lf-arrow">⬇️</div>
-    <div class="ch10-lf-step" style="border-color:rgba(108,92,231,0.4)">
+    <div class="ch10-lf-step" style="border-color:rgba(253,121,168,0.4)">
       <div class="ch10-lf-phase">循环主体</div>
       <div class="ch10-lf-code">while attempts < max_attempts:
     guess = int(input("猜: "))</div>
@@ -178,7 +178,7 @@ else: 提示"小了"</div>
         <div class="ch10-am-icon">➕</div>
         <div class="ch10-am-name">添加学生</div>
       </div>
-      <div class="ch10-arch-mod" style="animation-delay:0.1s;border-color:rgba(108,92,231,0.4)">
+      <div class="ch10-arch-mod" style="animation-delay:0.1s;border-color:rgba(253,121,168,0.4)">
         <div class="ch10-am-icon">📋</div>
         <div class="ch10-am-name">显示全部</div>
       </div>
@@ -204,7 +204,7 @@ else: 提示"小了"</div>
     <div class="ch10-ku-title">📚 综合知识点</div>
     <div class="ch10-ku-tags">
       <span class="ch10-tag" style="background:rgba(253,121,168,0.15);color:#fd79a8">列表&字典</span>
-      <span class="ch10-tag" style="background:rgba(108,92,231,0.15);color:#FF9800;font-weight:700">函数封装</span>
+      <span class="ch10-tag" style="background:rgba(253,121,168,0.15);color:#FF9800;font-weight:700">函数封装</span>
       <span class="ch10-tag" style="background:rgba(0,184,148,0.15);color:#00b894">循环遍历</span>
       <span class="ch10-tag" style="background:rgba(253,203,110,0.15);color:#fdcb6e">条件判断</span>
       <span class="ch10-tag" style="background:rgba(0,206,201,0.15);color:#00cec9">排序算法</span>
@@ -215,7 +215,7 @@ else: 提示"小了"</div>
 <style>
 .ch10-arch-diagram{margin:0.5rem 0}
 .ch10-arch-center{text-align:center;margin-bottom:0.5rem}
-.ch10-arch-core{display:inline-block;background:linear-gradient(135deg,rgba(108,92,231,0.15),rgba(253,121,168,0.15));border:2px solid rgba(108,92,231,0.3);border-radius:50%;width:80px;height:80px;line-height:1.3;font-size:0.88rem;font-weight:700;color:#FF9800;font-weight:700;display:inline-flex;align-items:center;justify-content:center;text-align:center}
+.ch10-arch-core{display:inline-block;background:linear-gradient(135deg,rgba(253,121,168,0.15),rgba(253,121,168,0.15));border:2px solid rgba(253,121,168,0.3);border-radius:50%;width:80px;height:80px;line-height:1.3;font-size:0.88rem;font-weight:700;color:#FF9800;font-weight:700;display:inline-flex;align-items:center;justify-content:center;text-align:center}
 .ch10-arch-modules{display:grid;grid-template-columns:repeat(3,1fr);gap:0.35rem}
 .ch10-arch-mod{background:#0d0d1a;border-radius:10px;padding:0.5rem;text-align:center;border-top:3px solid;animation:ch10SlideIn 0.3s ease both;transition:transform 0.2s}
 .ch10-arch-mod:hover{transform:translateY(-3px)}
@@ -252,7 +252,7 @@ else: 提示"小了"</div>
 </div>
 <style>
 .ch10-data-design{display:flex;flex-direction:column;align-items:center;gap:0.1rem;margin:0.5rem 0}
-.ch10-dd-block{background:#0d0d1a;border-radius:10px;padding:0.5rem 0.7rem;width:100%;border:1px solid rgba(108,92,231,0.15)}
+.ch10-dd-block{background:#0d0d1a;border-radius:10px;padding:0.5rem 0.7rem;width:100%;border:1px solid rgba(253,121,168,0.15)}
 .ch10-dd-title{font-size:0.82rem;color:#fdcb6e;font-weight:700;margin-bottom:0.2rem}
 .ch10-dd-code{font-family:monospace;font-size:0.82rem;color:#FF9800;font-weight:700;white-space:pre;line-height:1.4}
 .ch10-dd-arrow{font-size:0.85rem;color:#555}
@@ -269,7 +269,7 @@ else: 提示"小了"</div>
       <code>show_all()</code>
       <span>展示所有学生成绩</span>
     </div>
-    <div class="ch10-fl-item" style="border-color:rgba(108,92,231,0.3)">
+    <div class="ch10-fl-item" style="border-color:rgba(253,121,168,0.3)">
       <code>calc_stats()</code>
       <span>计算平均分/最高/最低</span>
     </div>
@@ -308,7 +308,7 @@ else: 提示"小了"</div>
     </div>
     <div class="ch10-gc-bar">
       <div class="ch10-gc-label">良好 (80-89)</div>
-      <div class="ch10-gc-track"><div class="ch10-gc-fill" style="width:20%;background:#a29bfe">20%</div></div>
+      <div class="ch10-gc-track"><div class="ch10-gc-fill" style="width:20%;background:#ffb3d1">20%</div></div>
     </div>
     <div class="ch10-gc-bar">
       <div class="ch10-gc-label">及格 (60-79)</div>
@@ -538,7 +538,7 @@ else: 提示"小了"</div>
       </div>
     </div>
     <div class="ch10-gf-arrow">⬇️</div>
-    <div class="ch10-gf-step" style="animation-delay:0.15s;border-color:rgba(108,92,231,0.4)">
+    <div class="ch10-gf-step" style="animation-delay:0.15s;border-color:rgba(253,121,168,0.4)">
       <div class="ch10-gf-label">②保证每类至少1个</div>
       <div class="ch10-gf-sample">
         <span style="color:#fd79a8">k</span>

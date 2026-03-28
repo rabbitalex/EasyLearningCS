@@ -41,7 +41,7 @@
   justify-content: space-between;
   padding: 1rem 1.2rem;
   border-bottom: 1px solid var(--border-color);
-  background: linear-gradient(180deg, rgba(108, 92, 231, 0.05), transparent);
+  background: linear-gradient(180deg, rgba(253, 121, 168, 0.05), transparent);
 }
 
 .modal-title {

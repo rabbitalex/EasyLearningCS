@@ -199,8 +199,8 @@
 
 /* 提示框 */
 .tip-box {
-  background: linear-gradient(135deg, rgba(108, 92, 231, 0.08), rgba(0, 206, 201, 0.05));
-  border: 1px solid rgba(108, 92, 231, 0.2);
+  background: linear-gradient(135deg, rgba(253, 121, 168, 0.08), rgba(0, 206, 201, 0.05));
+  border: 1px solid rgba(253, 121, 168, 0.2);
   border-radius: var(--radius-sm);
   padding: 0.8rem 1rem;
   margin: 0.8rem 0;

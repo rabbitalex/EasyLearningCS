@@ -1,6 +1,7 @@
 // 卷一 · 理论 - 线程
 const CHAPTER_V1_THREAD = {
   chapter: "第八章：线程",
+  chapterNum: 8,
   icon: "🧵",
   lessons: [
     {
@@ -17,8 +18,8 @@ const CHAPTER_V1_THREAD = {
 <div class="theory-anim-box">
   <div class="theory-anim-title">🧵 进程与线程的关系</div>
   <div style="display:flex;gap:1.5rem;margin:1rem 0;flex-wrap:wrap;justify-content:center">
-    <div class="t0-fadein" style="animation-delay:0.3s;background:rgba(108,92,231,0.1);border:2px solid rgba(108,92,231,0.3);border-radius:16px;padding:1rem;min-width:200px">
-      <div style="font-weight:800;color:#6c5ce7;text-align:center;margin-bottom:0.8rem">📦 进程 A（浏览器）</div>
+    <div class="t0-fadein" style="animation-delay:0.3s;background:rgba(253,121,168,0.1);border:2px solid rgba(253,121,168,0.3);border-radius:16px;padding:1rem;min-width:200px">
+      <div style="font-weight:800;color:#fd79a8;text-align:center;margin-bottom:0.8rem">📦 进程 A（浏览器）</div>
       <div style="display:flex;gap:0.5rem;justify-content:center;flex-wrap:wrap">
         <div style="background:rgba(0,206,201,0.2);border:1px solid rgba(0,206,201,0.3);border-radius:8px;padding:0.4rem 0.6rem;font-size:0.7rem;color:#00cec9;font-weight:600">线程1: UI渲染</div>
         <div style="background:rgba(255,152,0,0.2);border:1px solid rgba(255,152,0,0.3);border-radius:8px;padding:0.4rem 0.6rem;font-size:0.7rem;color:#FF9800;font-weight:600">线程2: 网络请求</div>
@@ -29,7 +30,7 @@ const CHAPTER_V1_THREAD = {
     <div class="t0-fadein" style="animation-delay:0.6s;background:rgba(0,206,201,0.1);border:2px solid rgba(0,206,201,0.3);border-radius:16px;padding:1rem;min-width:200px">
       <div style="font-weight:800;color:#00cec9;text-align:center;margin-bottom:0.8rem">📦 进程 B（编辑器）</div>
       <div style="display:flex;gap:0.5rem;justify-content:center;flex-wrap:wrap">
-        <div style="background:rgba(108,92,231,0.2);border:1px solid rgba(108,92,231,0.3);border-radius:8px;padding:0.4rem 0.6rem;font-size:0.7rem;color:#6c5ce7;font-weight:600">线程1: 编辑</div>
+        <div style="background:rgba(253,121,168,0.2);border:1px solid rgba(253,121,168,0.3);border-radius:8px;padding:0.4rem 0.6rem;font-size:0.7rem;color:#fd79a8;font-weight:600">线程1: 编辑</div>
         <div style="background:rgba(105,240,174,0.2);border:1px solid rgba(105,240,174,0.3);border-radius:8px;padding:0.4rem 0.6rem;font-size:0.7rem;color:#69F0AE;font-weight:600">线程2: 自动保存</div>
       </div>
       <div style="margin-top:0.5rem;text-align:center;font-size:0.6rem;color:rgba(255,255,255,0.4)">独立的内存空间</div>
@@ -84,7 +85,7 @@ function runRaceDemo(useLock){var countEl=document.getElementById('raceCount');v
       steps: [
         {
           title: "什么是死锁？",
-          content: '<p>想象两个人面对面走在窄巷子里，互不相让——谁也过不去。这就是<strong>死锁</strong>！在编程中，两个线程互相持有对方需要的资源，导致永远等待。</p><div class="theory-anim-box"><div class="theory-anim-title">💀 死锁四大必要条件</div><div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.6rem;margin:1rem 0"><div class="t0-fadein" style="animation-delay:0.2s;background:rgba(253,121,168,0.1);border:1px solid rgba(253,121,168,0.25);border-radius:10px;padding:0.7rem"><div style="font-weight:800;color:#fd79a8;font-size:0.8rem">① 互斥</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.5);margin-top:0.3rem">资源同一时刻只能被一个线程持有</div></div><div class="t0-fadein" style="animation-delay:0.4s;background:rgba(108,92,231,0.1);border:1px solid rgba(108,92,231,0.25);border-radius:10px;padding:0.7rem"><div style="font-weight:800;color:#6c5ce7;font-size:0.8rem">② 持有并等待</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.5);margin-top:0.3rem">已持有资源的线程继续请求新资源</div></div><div class="t0-fadein" style="animation-delay:0.6s;background:rgba(0,206,201,0.1);border:1px solid rgba(0,206,201,0.25);border-radius:10px;padding:0.7rem"><div style="font-weight:800;color:#00cec9;font-size:0.8rem">③ 不可剥夺</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.5);margin-top:0.3rem">资源只能由持有者主动释放</div></div><div class="t0-fadein" style="animation-delay:0.8s;background:rgba(255,152,0,0.1);border:1px solid rgba(255,152,0,0.25);border-radius:10px;padding:0.7rem"><div style="font-weight:800;color:#FF9800;font-size:0.8rem">④ 循环等待</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.5);margin-top:0.3rem">A等B，B等C，C等A → 成环</div></div></div><div class="theory-callout">💡 打破任意一个条件就能<strong>预防死锁</strong>！最常用的方法是<strong>按固定顺序加锁</strong>，避免循环等待。</div></div>'
+          content: '<p>想象两个人面对面走在窄巷子里，互不相让——谁也过不去。这就是<strong>死锁</strong>！在编程中，两个线程互相持有对方需要的资源，导致永远等待。</p><div class="theory-anim-box"><div class="theory-anim-title">💀 死锁四大必要条件</div><div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.6rem;margin:1rem 0"><div class="t0-fadein" style="animation-delay:0.2s;background:rgba(253,121,168,0.1);border:1px solid rgba(253,121,168,0.25);border-radius:10px;padding:0.7rem"><div style="font-weight:800;color:#fd79a8;font-size:0.8rem">① 互斥</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.5);margin-top:0.3rem">资源同一时刻只能被一个线程持有</div></div><div class="t0-fadein" style="animation-delay:0.4s;background:rgba(253,121,168,0.1);border:1px solid rgba(253,121,168,0.25);border-radius:10px;padding:0.7rem"><div style="font-weight:800;color:#fd79a8;font-size:0.8rem">② 持有并等待</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.5);margin-top:0.3rem">已持有资源的线程继续请求新资源</div></div><div class="t0-fadein" style="animation-delay:0.6s;background:rgba(0,206,201,0.1);border:1px solid rgba(0,206,201,0.25);border-radius:10px;padding:0.7rem"><div style="font-weight:800;color:#00cec9;font-size:0.8rem">③ 不可剥夺</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.5);margin-top:0.3rem">资源只能由持有者主动释放</div></div><div class="t0-fadein" style="animation-delay:0.8s;background:rgba(255,152,0,0.1);border:1px solid rgba(255,152,0,0.25);border-radius:10px;padding:0.7rem"><div style="font-weight:800;color:#FF9800;font-size:0.8rem">④ 循环等待</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.5);margin-top:0.3rem">A等B，B等C，C等A → 成环</div></div></div><div class="theory-callout">💡 打破任意一个条件就能<strong>预防死锁</strong>！最常用的方法是<strong>按固定顺序加锁</strong>，避免循环等待。</div></div>'
         },
         {
           title: "哲学家就餐问题",

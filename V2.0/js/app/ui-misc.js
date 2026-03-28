@@ -183,9 +183,29 @@ function bindEvents() {
     });
     $('confirmClear').addEventListener('click', function() {
       Config.resetAll();
+      state.currentLesson = null;
+      state.currentStep = 0;
+      state.completedLessons = [];
+      state.completedChallenges = {};
+      state.visitedPages = [];
+      state.currentPage = 'home';
       $('clearProgressModal').style.display = 'none';
-      toast('✅ 所有学习进度已清除！页面即将刷新...');
-      setTimeout(function() { location.reload(); }, 1200);
+      if (typeof switchPage === 'function') switchPage('home');
+
+      function finishReload(syncError) {
+        if (syncError) console.warn('[Sync] 清除数据后同步失败:', syncError);
+        toast('✅ 所有学习进度已清除！页面即将刷新...');
+        setTimeout(function() {
+          var cleanUrl = window.location.pathname + window.location.hash;
+          window.location.replace(cleanUrl);
+        }, 1200);
+      }
+
+      if (window.DataSync && typeof DataSync.syncNow === 'function') {
+        DataSync.syncNow(function(err) { finishReload(err); });
+      } else {
+        finishReload();
+      }
     });
     $('cancelClear').addEventListener('click', function() {
       $('clearProgressModal').style.display = 'none';

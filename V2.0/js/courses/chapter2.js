@@ -15,13 +15,13 @@ const CHAPTER2 = {
 <div class="theory-anim-box">
   <div class="theory-anim-title">🧮 Python运算符一览</div>
   <div class="ch2-op-grid">
-    <div class="ch2-op-card" style="--opc:#6c5ce7"><div class="ch2-op-sym">+</div><div class="ch2-op-name">加法</div><div class="ch2-op-ex">10 + 3 = 13</div></div>
+    <div class="ch2-op-card" style="--opc:#fd79a8"><div class="ch2-op-sym">+</div><div class="ch2-op-name">加法</div><div class="ch2-op-ex">10 + 3 = 13</div></div>
     <div class="ch2-op-card" style="--opc:#00cec9"><div class="ch2-op-sym">-</div><div class="ch2-op-name">减法</div><div class="ch2-op-ex">10 - 3 = 7</div></div>
     <div class="ch2-op-card" style="--opc:#fd79a8"><div class="ch2-op-sym">*</div><div class="ch2-op-name">乘法</div><div class="ch2-op-ex">10 * 3 = 30</div></div>
     <div class="ch2-op-card" style="--opc:#fdcb6e"><div class="ch2-op-sym">/</div><div class="ch2-op-name">除法</div><div class="ch2-op-ex">10 / 3 = 3.33...</div></div>
     <div class="ch2-op-card" style="--opc:#00b894"><div class="ch2-op-sym">//</div><div class="ch2-op-name">整除</div><div class="ch2-op-ex">10 // 3 = 3</div></div>
     <div class="ch2-op-card" style="--opc:#e17055"><div class="ch2-op-sym">%</div><div class="ch2-op-name">取余</div><div class="ch2-op-ex">10 % 3 = 1</div></div>
-    <div class="ch2-op-card" style="--opc:#a29bfe"><div class="ch2-op-sym">**</div><div class="ch2-op-name">乘方</div><div class="ch2-op-ex">10 ** 3 = 1000</div></div>
+    <div class="ch2-op-card" style="--opc:#ffb3d1"><div class="ch2-op-sym">**</div><div class="ch2-op-name">乘方</div><div class="ch2-op-ex">10 ** 3 = 1000</div></div>
   </div>
   <div class="theory-callout">💡 注意 <strong>/</strong>（除法）和 <strong>//</strong>（整除）的区别：<code>10/3=3.333...</code> 而 <code>10//3=3</code></div>
 </div>
@@ -33,10 +33,10 @@ const CHAPTER2 = {
 .ch2-op-card:hover{transform:translateY(-3px)}
 .ch2-op-sym{font-size:1.4rem;font-weight:900;color:var(--opc);font-family:monospace}
 .ch2-op-name{font-size:0.82rem;color:#c8d0e0;margin:0.15rem 0}
-.ch2-op-ex{font-size:0.92rem;color:#FF9800;font-weight:700;font-family:monospace;background:rgba(108,92,231,0.08);padding:0.15rem 0.3rem;border-radius:4px}
-.theory-anim-box{background:linear-gradient(135deg,rgba(108,92,231,0.08),rgba(0,206,201,0.08));border:1px solid rgba(108,92,231,0.2);border-radius:16px;padding:1.2rem;margin:1rem 0}
+.ch2-op-ex{font-size:0.92rem;color:#FF9800;font-weight:700;font-family:monospace;background:rgba(253,121,168,0.08);padding:0.15rem 0.3rem;border-radius:4px}
+.theory-anim-box{background:linear-gradient(135deg,rgba(253,121,168,0.08),rgba(0,206,201,0.08));border:1px solid rgba(253,121,168,0.2);border-radius:16px;padding:1.2rem;margin:1rem 0}
 .theory-anim-title{font-weight:800;color:#FF9800;font-weight:700;margin-bottom:1rem;font-size:0.9rem}
-.theory-callout{background:rgba(108,92,231,0.1);border-left:3px solid #6c5ce7;padding:0.5rem 0.8rem;border-radius:0 8px 8px 0;font-size:0.8rem;color:#e8ecf2;margin-top:0.8rem}
+.theory-callout{background:rgba(253,121,168,0.1);border-left:3px solid #fd79a8;padding:0.5rem 0.8rem;border-radius:0 8px 8px 0;font-size:0.8rem;color:#e8ecf2;margin-top:0.8rem}
 </style>`
         },
         {
@@ -100,7 +100,7 @@ const CHAPTER2 = {
 .ch2-pri-expr{font-family:monospace;font-size:1.1rem;color:#FF9800;font-weight:700;text-align:center;font-weight:800;margin-bottom:0.7rem}
 .ch2-pri-steps{display:flex;flex-direction:column;gap:0.3rem;margin-bottom:0.7rem}
 .ch2-pri-step{background:#0d0d1a;border-radius:8px;padding:0.45rem 0.7rem;font-size:0.92rem;color:#e8ecf2;display:flex;align-items:center;gap:0.5rem}
-.ch2-pri-badge{width:22px;height:22px;border-radius:50%;background:#6c5ce7;color:#fff;font-size:0.8rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ch2-pri-badge{width:22px;height:22px;border-radius:50%;background:#fd79a8;color:#fff;font-size:0.8rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .ch2-pri-hl{color:#fdcb6e;font-weight:700;font-family:monospace}
 .ch2-pri-vs{display:flex;align-items:center;justify-content:center;gap:0.8rem;margin-top:0.5rem;flex-wrap:wrap}
 .ch2-pri-vs-item{background:#0d0d1a;border-radius:8px;padding:0.5rem 0.8rem;display:flex;align-items:center;gap:0.4rem;font-family:monospace;font-size:0.82rem;color:#e8ecf2}
@@ -189,7 +189,7 @@ const CHAPTER2 = {
 .ch2-str-val{font-family:monospace;font-size:0.82rem;color:#00b894;font-weight:700}
 .ch2-str-sign{font-size:0.9rem;color:#fd79a8;font-weight:800}
 .ch2-str-eq{color:#c8d0e0;font-size:0.9rem}
-.ch2-str-result{font-family:monospace;font-size:0.82rem;color:#FF9800;font-weight:700;font-weight:700;background:rgba(108,92,231,0.1);padding:0.2rem 0.5rem;border-radius:4px}
+.ch2-str-result{font-family:monospace;font-size:0.82rem;color:#FF9800;font-weight:700;font-weight:700;background:rgba(253,121,168,0.1);padding:0.2rem 0.5rem;border-radius:4px}
 </style>`,
           codeToLoad: 'first = "Hello"\nsecond = " World"\nresult = first + second\nprint(result)\nprint("哈" * 5)\nprint("=-" * 15)'
         },
@@ -232,7 +232,7 @@ const CHAPTER2 = {
 .ch2-idx-chars,.ch2-idx-negative{display:flex;gap:0.3rem;justify-content:center;margin-bottom:0.3rem}
 .ch2-idx-cell{display:flex;flex-direction:column;align-items:center;gap:0.15rem;animation:nodeAppear 0.3s ease both}
 .ch2-idx-cell:nth-child(1){animation-delay:0.05s}.ch2-idx-cell:nth-child(2){animation-delay:0.1s}.ch2-idx-cell:nth-child(3){animation-delay:0.15s}.ch2-idx-cell:nth-child(4){animation-delay:0.2s}.ch2-idx-cell:nth-child(5){animation-delay:0.25s}.ch2-idx-cell:nth-child(6){animation-delay:0.3s}
-.ch2-idx-char{width:32px;height:32px;background:#0d0d1a;border:1px solid rgba(108,92,231,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:0.9rem;font-weight:700;color:#FF9800;font-weight:700}
+.ch2-idx-char{width:32px;height:32px;background:#0d0d1a;border:1px solid rgba(253,121,168,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:0.9rem;font-weight:700;color:#FF9800;font-weight:700}
 .ch2-idx-num{font-size:0.92rem;font-weight:700;color:#FF9800;font-weight:700;font-family:monospace}
 .ch2-idx-labels{display:flex;justify-content:space-between;font-size:0.92rem;font-weight:700;margin-top:0.2rem}
 .ch2-idx-examples{display:flex;flex-direction:column;gap:0.2rem;margin-top:0.6rem}
@@ -280,7 +280,7 @@ const CHAPTER2 = {
 </div>
 <style>
 .ch2-method-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:0.4rem;margin:0.6rem 0}
-.ch2-meth-card{background:#0d0d1a;border-radius:8px;padding:0.5rem;border-left:3px solid #6c5ce7;transition:transform 0.2s}
+.ch2-meth-card{background:#0d0d1a;border-radius:8px;padding:0.5rem;border-left:3px solid #fd79a8;transition:transform 0.2s}
 .ch2-meth-card:hover{transform:translateX(3px)}
 .ch2-meth-name{font-family:monospace;font-size:0.9rem;font-weight:700;color:#FF9800;font-weight:700;margin-bottom:0.15rem}
 .ch2-meth-desc{font-size:0.8rem;color:#c8d0e0}

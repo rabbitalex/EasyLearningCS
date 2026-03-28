@@ -20,7 +20,7 @@ const CHAPTER8 = {
       <div class="ch8-mod-name">random</div>
       <div class="ch8-mod-desc">随机数生成</div>
     </div>
-    <div class="ch8-mod-card" style="border-color:rgba(108,92,231,0.5);animation-delay:0.08s">
+    <div class="ch8-mod-card" style="border-color:rgba(253,121,168,0.5);animation-delay:0.08s">
       <div class="ch8-mod-icon">📐</div>
       <div class="ch8-mod-name">math</div>
       <div class="ch8-mod-desc">数学运算</div>
@@ -49,9 +49,9 @@ const CHAPTER8 = {
   <div class="theory-callout">💡 不用自己重复造轮子——直接 import 就可以使用这些强大的功能！</div>
 </div>
 <style>
-.theory-anim-box{background:linear-gradient(135deg,rgba(108,92,231,0.08),rgba(0,206,201,0.08));border:1px solid rgba(108,92,231,0.2);border-radius:16px;padding:1.2rem;margin:1rem 0}
+.theory-anim-box{background:linear-gradient(135deg,rgba(253,121,168,0.08),rgba(0,206,201,0.08));border:1px solid rgba(253,121,168,0.2);border-radius:16px;padding:1.2rem;margin:1rem 0}
 .theory-anim-title{font-weight:800;color:#FF9800;font-weight:700;margin-bottom:1rem;font-size:0.9rem}
-.theory-callout{background:rgba(108,92,231,0.1);border-left:3px solid #6c5ce7;padding:0.5rem 0.8rem;border-radius:0 8px 8px 0;font-size:0.8rem;color:#e8ecf2;margin-top:0.8rem}
+.theory-callout{background:rgba(253,121,168,0.1);border-left:3px solid #fd79a8;padding:0.5rem 0.8rem;border-radius:0 8px 8px 0;font-size:0.8rem;color:#e8ecf2;margin-top:0.8rem}
 .ch8-mod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem}
 .ch8-mod-card{background:#0d0d1a;border-radius:10px;padding:0.6rem;text-align:center;border-top:3px solid;animation:ch8CardIn 0.4s ease both;transition:transform 0.2s}
 .ch8-mod-card:hover{transform:translateY(-4px)}
@@ -74,7 +74,7 @@ const CHAPTER8 = {
       <div class="ch8-ic-note">✅ 推荐！清晰知道函数来源</div>
     </div>
     <div class="ch8-ic-row" style="border-color:#FF9800;font-weight:700">
-      <div class="ch8-ic-tag" style="background:#a29bfe">方式二</div>
+      <div class="ch8-ic-tag" style="background:#ffb3d1">方式二</div>
       <div class="ch8-ic-code">from math import sqrt</div>
       <div class="ch8-ic-usage">sqrt(16)</div>
       <div class="ch8-ic-note">✅ 只导入需要的函数</div>
@@ -169,7 +169,7 @@ const CHAPTER8 = {
 </div>
 <style>
 .ch8-import-flow{display:flex;align-items:center;gap:0.2rem;flex-wrap:wrap;justify-content:center;margin:0.5rem 0}
-.ch8-if-step{background:#0d0d1a;border-radius:10px;padding:0.5rem;text-align:center;min-width:80px;animation:ch8CardIn 0.4s ease both;border:1px solid rgba(108,92,231,0.15)}
+.ch8-if-step{background:#0d0d1a;border-radius:10px;padding:0.5rem;text-align:center;min-width:80px;animation:ch8CardIn 0.4s ease both;border:1px solid rgba(253,121,168,0.15)}
 .ch8-if-num{font-size:0.9rem;font-weight:800;color:#fdcb6e}
 .ch8-if-text{font-size:0.88rem;font-weight:700;color:#FF9800;font-weight:700;margin:0.1rem 0}
 .ch8-if-detail{font-size:0.9rem;color:#c8d0e0}
@@ -306,7 +306,7 @@ const CHAPTER8 = {
 .ch8-cd-section{background:#0d0d1a;border-radius:10px;padding:0.5rem 0.7rem}
 .ch8-cd-title{font-size:0.88rem;color:#FF9800;font-weight:700;font-weight:700;margin-bottom:0.3rem}
 .ch8-cd-items{display:flex;gap:0.3rem;flex-wrap:wrap}
-.ch8-cd-item{background:rgba(108,92,231,0.08);border:1px solid rgba(108,92,231,0.2);border-radius:6px;padding:0.2rem 0.5rem;font-size:0.85rem;color:#e8ecf2;animation:ch8CardIn 0.3s ease both}
+.ch8-cd-item{background:rgba(253,121,168,0.08);border:1px solid rgba(253,121,168,0.2);border-radius:6px;padding:0.2rem 0.5rem;font-size:0.85rem;color:#e8ecf2;animation:ch8CardIn 0.3s ease both}
 .ch8-cd-selected{background:rgba(253,121,168,0.15);border-color:#fd79a8;color:#fd79a8;font-weight:700}
 .ch8-shuffle-demo{display:flex;align-items:center;gap:0.4rem;margin-top:0.2rem}
 .ch8-sd-before,.ch8-sd-after{font-family:monospace;font-size:0.88rem;color:#e8ecf2}
@@ -413,7 +413,7 @@ print(mytools.factorial(5))</div>
 </div>
 <style>
 .ch8-file-structure,.ch8-usage-box{background:#0d0d1a;border-radius:10px;overflow:hidden}
-.ch8-fs-header{display:flex;align-items:center;gap:0.4rem;padding:0.4rem 0.7rem;background:rgba(108,92,231,0.1);border-bottom:1px solid rgba(108,92,231,0.15)}
+.ch8-fs-header{display:flex;align-items:center;gap:0.4rem;padding:0.4rem 0.7rem;background:rgba(253,121,168,0.1);border-bottom:1px solid rgba(253,121,168,0.15)}
 .ch8-fs-icon{font-size:0.9rem}
 .ch8-fs-name{font-size:0.88rem;font-weight:700;color:#FF9800;font-weight:700}
 .ch8-fs-content{padding:0.5rem 0.7rem}

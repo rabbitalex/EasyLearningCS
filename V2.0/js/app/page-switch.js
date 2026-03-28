@@ -15,7 +15,10 @@ function loadLesson(id) {
   state.stepExecuting = false;
   hideStepButtons();
   // 记录当前课程，下次打开自动恢复
-  try { safeSet(STORAGE_KEYS.CURRENT_LESSON, id); } catch(e) {}
+  try {
+    Config.saveCurrentPosition(id, 0);
+    Config.recordLessonProgress(id, chapterName, 'studying');
+  } catch(e) {}
 
   // 隐藏其他页面
   $('welcomePage').style.display = 'none';
@@ -37,15 +40,18 @@ function loadLesson(id) {
 
   // 查找当前分组名称
   var groupName = '';
+  var groupType = '';
   if (typeof COURSE_GROUPS !== 'undefined') {
     COURSE_GROUPS.forEach(function(group) {
       group.chapters.forEach(function(ch) {
         if (ch.chapter === chapterName) {
           groupName = group.groupName;
+          groupType = group.groupType || '';
         }
       });
     });
   }
+  state.currentVolumeType = groupType;
 
   var breadcrumbHtml =
     '<span class="breadcrumb-item breadcrumb-link" onclick="window._switchPage(\'home\')">\ud83c\udfe0 首页</span>' +
@@ -65,7 +71,8 @@ function loadLesson(id) {
   updateLineNumbers();
   updateHighlight();
 
-  if (lesson.challenge) {
+  var shouldShowHomework = !!lesson.challenge && groupType !== 'theory';
+  if (shouldShowHomework) {
     $('challengeSection').style.display = '';
     // 使用作业系统渲染10道作业
     if (typeof HomeworkSystem !== 'undefined') {

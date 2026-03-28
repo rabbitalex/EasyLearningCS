@@ -2,8 +2,8 @@
    贴纸舞台 - sticker-stage.css
    ============================================ */
 :root {
-  --primary: #6C5CE7;
-  --primary-light: #a29bfe;
+  --primary: #FD79A8;
+  --primary-light: #ffb3d1;
   --secondary: #00cec9;
   --accent: #fd79a8;
   --success: #00b894;
@@ -141,7 +141,7 @@ html, body {
 }
 .panel-resizer:hover,
 .panel-resizer.dragging {
-  background: rgba(108,92,231,0.3);
+  background: rgba(253,121,168,0.3);
 }
 .panel-resizer:hover::before,
 .panel-resizer.dragging::before {
@@ -205,7 +205,7 @@ html, body {
 }
 .lib-tab:hover { background: var(--border); color: var(--text2); }
 .lib-tab.active {
-  background: rgba(108,92,231,0.2);
+  background: rgba(253,121,168,0.2);
   color: var(--primary-light);
   font-weight: 700;
 }
@@ -297,7 +297,7 @@ html, body {
   font-size: 0.8rem;
 }
 .tool-btn:hover { background: var(--border); color: var(--text); }
-.tool-btn.active { background: rgba(108,92,231,0.2); border-color: var(--primary); color: var(--primary-light); }
+.tool-btn.active { background: rgba(253,121,168,0.2); border-color: var(--primary); color: var(--primary-light); }
 
 .stage-size-info {
   margin-left: auto;
@@ -317,15 +317,15 @@ html, body {
     0deg,
     transparent,
     transparent 39px,
-    rgba(108,92,231,0.05) 39px,
-    rgba(108,92,231,0.05) 40px
+    rgba(253,121,168,0.05) 39px,
+    rgba(253,121,168,0.05) 40px
   ),
   repeating-linear-gradient(
     90deg,
     transparent,
     transparent 39px,
-    rgba(108,92,231,0.05) 39px,
-    rgba(108,92,231,0.05) 40px
+    rgba(253,121,168,0.05) 39px,
+    rgba(253,121,168,0.05) 40px
   );
 }
 
@@ -337,7 +337,7 @@ html, body {
   background: linear-gradient(135deg, #1a1d23 0%, #22262e 100%);
   border: 1px solid var(--border);
   border-radius: 4px;
-  box-shadow: 0 0 40px rgba(108,92,231,0.15);
+  box-shadow: 0 0 40px rgba(253,121,168,0.15);
 }
 
 .stage-elements {

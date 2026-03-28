@@ -177,7 +177,7 @@
   display: flex;
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
-  background: linear-gradient(180deg, rgba(108,92,231,0.03), transparent);
+  background: linear-gradient(180deg, rgba(253,121,168,0.03), transparent);
 }
 
 .sidebar-nav-btn {
@@ -199,7 +199,7 @@
 }
 
 .sidebar-nav-btn i { font-size: 1rem; }
-.sidebar-nav-btn:hover { color: var(--primary); background: rgba(108,92,231,0.06); }
+.sidebar-nav-btn:hover { color: var(--primary); background: rgba(253,121,168,0.06); }
 .sidebar-nav-btn.active { color: var(--primary); }
 .sidebar-nav-btn.active::after {
   content: '';
@@ -215,7 +215,7 @@
   display: flex; align-items: center; gap: 0.35rem;
   padding: 0.3rem 0.75rem; border-radius: 20px;
   font-size: 0.78rem; font-weight: 700;
-  background: linear-gradient(135deg, rgba(108,92,231,0.12), rgba(253,121,168,0.08));
+  background: linear-gradient(135deg, rgba(253,121,168,0.12), rgba(253,121,168,0.08));
   border: 1px solid var(--border-color);
   transition: var(--transition); cursor: default;
 }
@@ -225,7 +225,7 @@
 .stat-card .stat-icon {
   display: flex; align-items: center; justify-content: center;
   width: 36px; height: 36px; border-radius: 10px;
-  background: linear-gradient(135deg, rgba(108,92,231,0.12), rgba(0,206,201,0.08));
+  background: linear-gradient(135deg, rgba(253,121,168,0.12), rgba(0,206,201,0.08));
   margin: 0 auto 0.5rem; font-size: 1rem; color: var(--primary);
 }
 
@@ -284,7 +284,7 @@
   padding: 1rem 1.2rem; font-size: 0.9rem; font-weight: 800;
   color: var(--text-primary); border-bottom: 1px solid var(--border-color);
   display: flex; align-items: center; gap: 0.5rem;
-  background: linear-gradient(135deg, rgba(108,92,231,0.04), transparent);
+  background: linear-gradient(135deg, rgba(253,121,168,0.04), transparent);
 }
 .stats-card-header i { color: var(--primary); }
 .stats-overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; padding: 1.2rem; }
@@ -316,7 +316,7 @@
   width: 50px; height: 50px; border-radius: 50%;
   background: linear-gradient(135deg, var(--primary), var(--accent));
   color: #fff; font-size: 1.4rem; font-weight: 900;
-  box-shadow: 0 4px 20px rgba(108,92,231,0.35);
+  box-shadow: 0 4px 20px rgba(253,121,168,0.35);
 }
 .level-title { font-size: 1.1rem; font-weight: 800; color: var(--text-primary); }
 .level-progress-wrap { margin-bottom: 1rem; }
@@ -335,7 +335,7 @@
   background: var(--bg-elevated); border: 1px solid var(--border-color);
   font-size: 0.75rem; transition: var(--transition);
 }
-.level-item.current { border-color: var(--primary); background: rgba(108,92,231,0.08); }
+.level-item.current { border-color: var(--primary); background: rgba(253,121,168,0.08); }
 .level-item.achieved { border-color: rgba(0,184,148,0.3); background: rgba(0,184,148,0.06); }
 .level-item .li-badge {
   width: 26px; height: 26px; border-radius: 50%;

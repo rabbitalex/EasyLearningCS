@@ -45,35 +45,33 @@
     <!-- 侧边栏 -->
     <aside id="sidebar" class="sidebar">
       <div class="sidebar-header">
-        <div class="sidebar-brand-card">
-          <div class="sidebar-brand-badge">🌈</div>
-          <div class="logo">
-            <span class="logo-kicker">孩子的编程冒险乐园</span>
-            <span class="logo-text" id="logoText">互动编程课程</span>
-          </div>
-        </div>
         <div class="user-greeting">
           <span id="userAvatar" class="user-avatar-bubble" title="点击修改资料">🧒</span>
           <div class="user-greeting-text">
             <span class="user-greeting-label">今天也要快乐写代码</span>
-            <span id="userName" class="user-name-link" title="点击修改昵称">Python学徒</span>
+            <div class="user-name-row">
+              <span id="userName" class="user-name-link" title="点击修改昵称">Python学徒</span>
+              <button id="userNameEditBtn" class="user-name-edit-btn" type="button" title="修改昵称" aria-label="修改昵称">
+                <i class="fas fa-pen"></i>
+              </button>
+            </div>
           </div>
-        </div>
-        <!-- 全部展开/收起按钮 -->
-        <div class="nav-global-actions">
-          <button class="nav-action-btn" id="toggleAllBtn" title="全部展开">
-            <i class="fas fa-expand-alt" id="toggleAllIcon"></i> <span id="toggleAllText" style="font-size:11px;">展开</span>
-          </button>
         </div>
       </div>
 
       <div class="progress-overview">
         <div class="progress-bar-inline">
           <span class="progress-label">学习进度</span>
-          <span class="progress-pct" id="progressPercent">0%</span>
-        </div>
-        <div class="progress-bar-track">
-          <div class="progress-bar-fill-inline" id="progressBarFill" style="width:0%"></div>
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill-inline" id="progressBarFill" style="width:0%"></div>
+          </div>
+          <div class="progress-inline-actions">
+            <span class="progress-pct" id="progressPercent">0%</span>
+            <button class="nav-action-btn progress-toggle-btn" id="toggleAllBtn" title="全部展开">
+              <i class="fas fa-expand-alt" id="toggleAllIcon"></i>
+              <span id="toggleAllText">展开</span>
+            </button>
+          </div>
         </div>
       </div>
       <nav id="courseNav" class="course-nav">
@@ -130,31 +128,19 @@
       <section id="welcomePage" class="welcome-page">
         <div class="welcome-hero">
           <div class="hero-content animate__animated animate__fadeInUp">
-            <h1>欢迎来到 <span class="gradient-text" id="welcomeText">互动编程课程</span></h1>
-            <p class="hero-subtitle">从零开始，一步一步成为编程大师！</p>
-            <p class="hero-desc">互动式学习 · 实时代码执行 · 变量可视化 · 逐步动画教学</p>
-            <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+            <p class="hero-desc hero-desc-highlight">互动式学习 · 实时代码执行 · 变量可视化 · 逐步动画教学</p>
+            <div class="hero-actions" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
               <button id="startBtn" class="btn-hero">
                 <i class="fas fa-rocket"></i> 开始冒险
               </button>
-              <a href="sticker-stage.html" class="btn-hero" style="text-decoration:none;background:linear-gradient(135deg,#6c5ce7,#a29bfe);display:inline-flex;align-items:center;gap:8px;">
+              <a href="sticker-stage.html" class="btn-hero" style="text-decoration:none;background:linear-gradient(135deg,#ff7eb6,#ffb3d1);display:inline-flex;align-items:center;gap:8px;">
                 <i class="fas fa-theater-masks"></i> 贴纸舞台
               </a>
             </div>
           </div>
 
-          <!-- 卷概览卡片 -->
-          <div class="volume-overview animate__animated animate__fadeInUp" style="animation-delay:0.6s" id="volumeOverview">
-            <!-- 由JS动态生成 -->
-          </div>
-
-          <!-- 课程推荐网格 -->
-          <div class="course-grid animate__animated animate__fadeInUp" style="animation-delay: 1s" id="courseGrid">
-            <!-- 由JS动态生成 -->
-          </div>
-
           <!-- 快捷键提示 -->
-          <div class="shortcut-hints animate__animated animate__fadeIn" style="animation-delay: 1.2s">
+          <div class="shortcut-hints animate__animated animate__fadeIn" style="animation-delay: 0.52s">
             <div class="shortcut-hint">
               <kbd>Ctrl</kbd>+<kbd>Enter</kbd> 运行代码
             </div>
@@ -164,6 +150,11 @@
             <div class="shortcut-hint">
               <kbd>Esc</kbd> 关闭弹窗
             </div>
+          </div>
+
+          <!-- 卷概览卡片 -->
+          <div class="volume-overview animate__animated animate__fadeInUp" style="animation-delay:0.6s" id="volumeOverview">
+            <!-- 由JS动态生成 -->
           </div>
         </div>
       </section>
@@ -298,7 +289,7 @@
             <!-- 中部：运行结果 -->
             <div class="playground-section section-output" id="sectionOutput">
               <div class="output-header">
-                <span><i class="fas fa-terminal"></i> 运行结果</span>
+                <span>运行结果</span>
                 <button id="clearOutput" class="btn-clear" title="清除输出">
                   <i class="fas fa-trash"></i>
                 </button>
@@ -486,7 +477,7 @@
       <div class="name-modal-hero">🌈</div>
       <h2 id="nameModalTitle">欢迎来到编程世界！</h2>
       <p id="nameModalDesc">先告诉我你的名字，再选一个小身份吧</p>
-      <input id="nameInput" class="name-modal-input" type="text" maxlength="20" placeholder="请输入你的名字">
+      <input id="nameInput" class="name-modal-input" type="text" maxlength="10" placeholder="请输入昵称（最多5个汉字或10个字符）">
       <div class="name-gender-group">
         <div class="name-gender-title">选择你的性别</div>
         <div class="name-gender-options">

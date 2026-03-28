@@ -12,6 +12,7 @@ var state = {
   runCount: Config.getCodeRunCount(),
   theme: Config.getSettings().theme !== 'magic' ? 'dark' : Config.getSettings().theme,
   currentPage: 'home',
+  currentVolumeType: '',
   skulptReady: false,
   isRunning: false,
   stepLines: [],

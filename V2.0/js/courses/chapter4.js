@@ -34,9 +34,9 @@ print("你好")</div>
   <div class="theory-callout">💡 如果要打印100次呢？循环只需改一个数字：<code>range(100)</code>！</div>
 </div>
 <style>
-.theory-anim-box{background:linear-gradient(135deg,rgba(108,92,231,0.08),rgba(0,206,201,0.08));border:1px solid rgba(108,92,231,0.2);border-radius:16px;padding:1.2rem;margin:1rem 0}
+.theory-anim-box{background:linear-gradient(135deg,rgba(253,121,168,0.08),rgba(0,206,201,0.08));border:1px solid rgba(253,121,168,0.2);border-radius:16px;padding:1.2rem;margin:1rem 0}
 .theory-anim-title{font-weight:800;color:#FF9800;font-weight:700;margin-bottom:1rem;font-size:0.9rem}
-.theory-callout{background:rgba(108,92,231,0.1);border-left:3px solid #6c5ce7;padding:0.5rem 0.8rem;border-radius:0 8px 8px 0;font-size:0.8rem;color:#e8ecf2;margin-top:0.8rem}
+.theory-callout{background:rgba(253,121,168,0.1);border-left:3px solid #fd79a8;padding:0.5rem 0.8rem;border-radius:0 8px 8px 0;font-size:0.8rem;color:#e8ecf2;margin-top:0.8rem}
 .ch4-vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin:0.5rem 0}
 .ch4-vs-card{background:#0d0d1a;border-radius:10px;padding:0.6rem;border:1px solid}
 .ch4-vs-bad{border-color:rgba(225,112,85,0.3)}
@@ -82,7 +82,7 @@ print("你好")</div>
 .ch4-range-row{background:#0d0d1a;border-radius:10px;padding:0.6rem;display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap}
 .ch4-range-code{font-family:monospace;font-size:0.92rem;color:#fdcb6e;font-weight:700;min-width:100px}
 .ch4-range-nums{display:flex;gap:0.3rem}
-.ch4-range-num{width:28px;height:28px;border-radius:6px;background:rgba(108,92,231,0.08);border:1px solid rgba(108,92,231,0.3);display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:0.92rem;font-weight:700;color:#FF9800;font-weight:700;animation:nodeAppear 0.3s ease both}
+.ch4-range-num{width:28px;height:28px;border-radius:6px;background:rgba(253,121,168,0.08);border:1px solid rgba(253,121,168,0.3);display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:0.92rem;font-weight:700;color:#FF9800;font-weight:700;animation:nodeAppear 0.3s ease both}
 .ch4-range-num:nth-child(1){animation-delay:0.05s}.ch4-range-num:nth-child(2){animation-delay:0.1s}.ch4-range-num:nth-child(3){animation-delay:0.15s}.ch4-range-num:nth-child(4){animation-delay:0.2s}.ch4-range-num:nth-child(5){animation-delay:0.25s}
 @keyframes nodeAppear{from{opacity:0;transform:scale(0.7)}to{opacity:1;transform:scale(1)}}
 .ch4-range-note{font-size:0.8rem;color:#c8d0e0;margin-left:auto}
@@ -142,11 +142,11 @@ print("你好")</div>
 </div>
 <style>
 .ch4-iter-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin:0.5rem 0}
-.ch4-iter-card{background:#0d0d1a;border-radius:10px;padding:0.6rem;text-align:center;border-top:3px solid #6c5ce7;transition:transform 0.2s}
+.ch4-iter-card{background:#0d0d1a;border-radius:10px;padding:0.6rem;text-align:center;border-top:3px solid #fd79a8;transition:transform 0.2s}
 .ch4-iter-card:hover{transform:translateY(-3px)}
 .ch4-iter-icon{font-size:1.3rem;margin-bottom:0.2rem}
 .ch4-iter-name{font-size:0.9rem;font-weight:700;color:#e8ecf2;margin-bottom:0.2rem}
-.ch4-iter-code{font-family:monospace;font-size:0.8rem;color:#FF9800;font-weight:700;background:rgba(108,92,231,0.08);padding:0.15rem 0.3rem;border-radius:4px}
+.ch4-iter-code{font-family:monospace;font-size:0.8rem;color:#FF9800;font-weight:700;background:rgba(253,121,168,0.08);padding:0.15rem 0.3rem;border-radius:4px}
 </style>`,
           codeToLoad: '# 遍历列表\nfruits = ["苹果", "香蕉", "橙子"]\nfor fruit in fruits:\n    print("我喜欢", fruit)\n\nprint("---")\n# 遍历字符串\nfor char in "Python":\n    print(char, end=" ")'
         }
@@ -190,8 +190,8 @@ print("你好")</div>
 </div>
 <style>
 .ch4-while-flow{display:flex;flex-direction:column;align-items:center;gap:0.1rem;margin:0.6rem 0}
-.ch4-wf-step{background:#0d0d1a;border-radius:8px;padding:0.35rem 0.7rem;font-size:0.9rem;color:#e8ecf2;border:1px solid rgba(108,92,231,0.2)}
-.ch4-wf-start{border-color:rgba(108,92,231,0.4);color:#FF9800;font-weight:700}
+.ch4-wf-step{background:#0d0d1a;border-radius:8px;padding:0.35rem 0.7rem;font-size:0.9rem;color:#e8ecf2;border:1px solid rgba(253,121,168,0.2)}
+.ch4-wf-start{border-color:rgba(253,121,168,0.4);color:#FF9800;font-weight:700}
 .ch4-wf-cond{border-radius:20px;background:rgba(253,203,110,0.08);border-color:rgba(253,203,110,0.4);color:#fdcb6e;font-weight:700}
 .ch4-wf-body{border-color:rgba(0,184,148,0.3);color:#00b894}
 .ch4-wf-end{border-color:rgba(225,112,85,0.3);color:#e17055}
@@ -209,7 +209,7 @@ print("你好")</div>
 <div class="theory-anim-box">
   <div class="theory-anim-title">⚔️ for vs while 对比</div>
   <div class="ch4-compare-grid">
-    <div class="ch4-cmp-card" style="border-color:rgba(108,92,231,0.3)">
+    <div class="ch4-cmp-card" style="border-color:rgba(253,121,168,0.3)">
       <div class="ch4-cmp-title" style="color:#FF9800;font-weight:700">🔄 for 循环</div>
       <div class="ch4-cmp-when">知道循环几次时用</div>
       <div class="ch4-cmp-examples">

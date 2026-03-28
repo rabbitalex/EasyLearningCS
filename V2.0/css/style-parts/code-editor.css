@@ -34,7 +34,7 @@
 }
 
 .code-editor-wrapper .CodeMirror-selected {
-  background: rgba(108, 92, 231, 0.15) !important;
+  background: rgba(253, 121, 168, 0.15) !important;
 }
 
 /* 代码高亮 */
@@ -103,12 +103,12 @@
   font-weight: 700;
   cursor: pointer;
   transition: var(--transition-spring);
-  box-shadow: 0 2px 8px rgba(108, 92, 231, 0.3);
+  box-shadow: 0 2px 8px rgba(253, 121, 168, 0.3);
 }
 
 .run-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(108, 92, 231, 0.4);
+  box-shadow: 0 4px 16px rgba(253, 121, 168, 0.4);
 }
 
 .run-btn:active { transform: translateY(0); }
@@ -208,5 +208,5 @@
 
 .speed-control input[type="range"]::-webkit-slider-thumb:hover {
   transform: scale(1.2);
-  box-shadow: 0 0 8px rgba(108, 92, 231, 0.5);
+  box-shadow: 0 0 8px rgba(253, 121, 168, 0.5);
 }

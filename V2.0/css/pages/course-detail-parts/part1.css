@@ -1,6 +1,6 @@
     :root {
-      --primary: #6C5CE7;
-      --primary-light: #a29bfe;
+      --primary: #FD79A8;
+      --primary-light: #ffb3d1;
       --secondary: #00cec9;
       --accent: #fd79a8;
       --success: #00b894;
@@ -17,9 +17,9 @@
       --text-secondary: #a0a3c0;
       --text-muted: #5a5d80;
       
-      --border-color: rgba(108, 92, 231, 0.15);
+      --border-color: rgba(253, 121, 168, 0.15);
       --shadow: 0 4px 24px rgba(0,0,0,0.25);
-      --shadow-glow: 0 0 30px rgba(108,92,231,0.2);
+      --shadow-glow: 0 0 30px rgba(253,121,168,0.2);
     }
     
     * {
@@ -39,7 +39,7 @@
     /* ============ 顶部导航 ============ */
     .top-nav {
       height: 64px;
-      background: linear-gradient(135deg, rgba(108, 92, 231, 0.2) 0%, rgba(0, 206, 201, 0.1) 100%);
+      background: linear-gradient(135deg, rgba(253, 121, 168, 0.2) 0%, rgba(0, 206, 201, 0.1) 100%);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border-color);
       display: flex;
@@ -74,7 +74,7 @@
     }
     
     .back-btn:hover {
-      background: rgba(108, 92, 231, 0.2);
+      background: rgba(253, 121, 168, 0.2);
       color: var(--text-primary);
       transform: translateX(-3px);
     }
@@ -170,12 +170,12 @@
     }
     
     .chapter-item:hover {
-      border-color: rgba(108, 92, 231, 0.3);
+      border-color: rgba(253, 121, 168, 0.3);
     }
     
     .chapter-header {
       padding: 14px 16px;
-      background: rgba(108, 92, 231, 0.08);
+      background: rgba(253, 121, 168, 0.08);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -239,12 +239,12 @@
     }
     
     .step-item:hover {
-      background: rgba(108, 92, 231, 0.1);
+      background: rgba(253, 121, 168, 0.1);
       color: var(--text-primary);
     }
     
     .step-item.active {
-      background: rgba(108, 92, 231, 0.15);
+      background: rgba(253, 121, 168, 0.15);
       color: var(--primary-light);
       border-left: 3px solid var(--primary);
     }
@@ -294,7 +294,7 @@
     
     .content-header {
       padding: 24px 32px;
-      background: linear-gradient(135deg, rgba(108, 92, 231, 0.1) 0%, rgba(0, 206, 201, 0.05) 100%);
+      background: linear-gradient(135deg, rgba(253, 121, 168, 0.1) 0%, rgba(0, 206, 201, 0.05) 100%);
       border-bottom: 1px solid var(--border-color);
     }
     
@@ -303,7 +303,7 @@
       align-items: center;
       gap: 6px;
       padding: 6px 14px;
-      background: rgba(108, 92, 231, 0.2);
+      background: rgba(253, 121, 168, 0.2);
       border-radius: 20px;
       font-size: 0.8rem;
       font-weight: 700;
@@ -379,7 +379,7 @@
     }
     
     .explanation-block .block-icon {
-      background: rgba(108, 92, 231, 0.2);
+      background: rgba(253, 121, 168, 0.2);
       color: var(--primary-light);
     }
     
@@ -464,9 +464,9 @@
     }
     
     .code-btn:hover {
-      background: rgba(108, 92, 231, 0.2);
+      background: rgba(253, 121, 168, 0.2);
       color: var(--text-primary);
-      border-color: rgba(108, 92, 231, 0.3);
+      border-color: rgba(253, 121, 168, 0.3);
     }
     
     .code-block {

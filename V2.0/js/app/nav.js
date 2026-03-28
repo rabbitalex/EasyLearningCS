@@ -26,7 +26,7 @@ function buildNav(filter) {
     var prog = getChapterProgress(chapter);
     var chHtml = '<div class="nav-chapter' + (isLast ? ' last-in-volume' : '') + '">' +
       '<div class="nav-chapter-title' + (isExpanded ? ' expanded' : '') + '" data-chapter="' + ci + '">' +
-      '<i class="fas fa-chevron-right nav-arrow"></i>' +
+      '<span class="nav-arrow" aria-hidden="true"></span>' +
       '<span class="nav-chapter-name">' + chapter.chapter + '</span>' +
       '<span class="nav-ch-badge">' + prog.completed + '/' + prog.total + '</span></div>' +
       '<div class="nav-lessons' + (isExpanded ? ' expanded' : '') + '">';
@@ -55,22 +55,29 @@ function buildNav(filter) {
         var isLast = idx === group.chapters.length - 1;
         groupChaptersHtml += renderChapter(chapter, globalIdx, isLast);
       });
-      if (groupChaptersHtml) {
-        var volumeColor = group.groupColor || '#6c5ce7';
-        var volumeIcon = group.groupIcon || '';
-        var hasActiveCourse = group.chapters.some(function(ch) {
-          return state.currentLesson && ch.lessons.some(function(l) { return l.id === state.currentLesson.id; });
-        });
-        // 默认折叠，仅当有活跃课程时展开该卷
-        var isExpanded = hasActiveCourse;
-        html += '<div class="nav-volume nav-volume-' + group.groupType + (isExpanded ? ' expanded' : '') + '" style="--vol-color:' + volumeColor + '">' +
-          '<div class="nav-volume-header">' +
-          '<div class="nav-volume-toggle"><i class="fas fa-chevron-right nav-vol-arrow"></i></div>' +
-          '<span class="nav-volume-icon">' + volumeIcon + '</span>' +
-          '<span class="nav-volume-name">' + group.groupName + '</span></div>' +
-          '<div class="nav-volume-body' + (isExpanded ? ' expanded' : '') + '">' +
-          '<div class="nav-volume-tree">' + groupChaptersHtml + '</div></div></div>';
-      }
+
+      var volumeColor = group.groupColor || '#fd79a8';
+      var volumeIcon = group.groupIcon || '';
+      var hasChapters = group.chapters && group.chapters.length > 0;
+      var hasActiveCourse = hasChapters && group.chapters.some(function(ch) {
+        return state.currentLesson && ch.lessons.some(function(l) { return l.id === state.currentLesson.id; });
+      });
+      // 默认折叠，仅当有活跃课程时展开该卷
+      var isExpanded = hasActiveCourse;
+      var toggleHtml = hasChapters
+        ? '<div class="nav-volume-toggle"><i class="fas fa-chevron-right nav-vol-arrow"></i></div>'
+        : '<div class="nav-volume-toggle"></div>';
+      var bodyHtml = hasChapters
+        ? '<div class="nav-volume-body' + (isExpanded ? ' expanded' : '') + '"><div class="nav-volume-tree">' + groupChaptersHtml + '</div></div>'
+        : '';
+
+      html += '<div class="nav-volume nav-volume-' + group.groupType + (isExpanded ? ' expanded' : '') + (hasChapters ? '' : ' nav-volume-empty') + '" style="--vol-color:' + volumeColor + '">' +
+        '<div class="nav-volume-header">' +
+        toggleHtml +
+        '<span class="nav-volume-icon">' + volumeIcon + '</span>' +
+        '<span class="nav-volume-name">' + escapeHtml(group.groupName) + '</span></div>' +
+        bodyHtml +
+        '</div>';
     });
   } else {
     COURSES.forEach(function(chapter, ci) {
@@ -84,8 +91,9 @@ function buildNav(filter) {
   $$('.nav-volume-header').forEach(function(el) {
     el.addEventListener('click', function() {
       var vol = this.closest('.nav-volume');
-      vol.classList.toggle('expanded');
       var body = vol.querySelector('.nav-volume-body');
+      if (!body) return;
+      vol.classList.toggle('expanded');
       body.classList.toggle('expanded');
     });
   });
@@ -163,7 +171,6 @@ function switchPage(page) {
 
   if (page === 'home') {
     $('welcomePage').style.display = '';
-    buildCourseGrid();
     buildVolumeOverview();
     // 回到首页时折叠所有展开的章节
     $$('.nav-chapter-title.expanded').forEach(function(el) {

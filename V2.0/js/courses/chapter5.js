@@ -30,13 +30,13 @@ const CHAPTER5 = {
   <div class="theory-callout">💡 列表用方括号 <code>[]</code> 创建，元素之间用逗号分隔。索引从 <strong>0</strong> 开始！</div>
 </div>
 <style>
-.theory-anim-box{background:linear-gradient(135deg,rgba(108,92,231,0.08),rgba(0,206,201,0.08));border:1px solid rgba(108,92,231,0.2);border-radius:16px;padding:1.2rem;margin:1rem 0}
+.theory-anim-box{background:linear-gradient(135deg,rgba(253,121,168,0.08),rgba(0,206,201,0.08));border:1px solid rgba(253,121,168,0.2);border-radius:16px;padding:1.2rem;margin:1rem 0}
 .theory-anim-title{font-weight:800;color:#FF9800;font-weight:700;margin-bottom:1rem;font-size:0.9rem}
-.theory-callout{background:rgba(108,92,231,0.1);border-left:3px solid #6c5ce7;padding:0.5rem 0.8rem;border-radius:0 8px 8px 0;font-size:0.8rem;color:#e8ecf2;margin-top:0.8rem}
+.theory-callout{background:rgba(253,121,168,0.1);border-left:3px solid #fd79a8;padding:0.5rem 0.8rem;border-radius:0 8px 8px 0;font-size:0.8rem;color:#e8ecf2;margin-top:0.8rem}
 .ch5-list-viz{display:flex;align-items:center;gap:0.5rem;margin:0.6rem 0;flex-wrap:wrap}
 .ch5-list-name{font-family:monospace;font-size:0.82rem;color:#FF9800;font-weight:700;font-weight:700}
 .ch5-list-items{display:flex;gap:0.3rem}
-.ch5-list-item{background:#0d0d1a;border:1px solid rgba(108,92,231,0.3);border-radius:8px;padding:0.3rem 0.5rem;text-align:center;animation:nodeAppear 0.3s ease both}
+.ch5-list-item{background:#0d0d1a;border:1px solid rgba(253,121,168,0.3);border-radius:8px;padding:0.3rem 0.5rem;text-align:center;animation:nodeAppear 0.3s ease both}
 @keyframes nodeAppear{from{opacity:0;transform:scale(0.7)}to{opacity:1;transform:scale(1)}}
 .ch5-list-item:nth-child(1){animation-delay:0.1s}.ch5-list-item:nth-child(2){animation-delay:0.2s}.ch5-list-item:nth-child(3){animation-delay:0.3s}
 .ch5-item-idx{font-size:0.92rem;color:#c8d0e0;font-family:monospace}
@@ -66,7 +66,7 @@ const CHAPTER5 = {
       <div class="ch5-op-name">.insert(i,x)</div>
       <div class="ch5-op-desc">在指定位置插入</div>
     </div>
-    <div class="ch5-op-card" style="border-color:rgba(108,92,231,0.4)">
+    <div class="ch5-op-card" style="border-color:rgba(253,121,168,0.4)">
       <div class="ch5-op-icon">🔢</div>
       <div class="ch5-op-name">len(list)</div>
       <div class="ch5-op-desc">获取长度</div>
@@ -187,7 +187,7 @@ const CHAPTER5 = {
 .ch5-dvs-card{background:#0d0d1a;border-radius:8px;padding:0.5rem 0.7rem;text-align:center;flex:1;max-width:160px}
 .ch5-dvs-title{font-size:0.92rem;font-weight:800;color:#e8ecf2;margin-bottom:0.15rem}
 .ch5-dvs-desc{font-size:0.8rem;color:#c8d0e0;margin-bottom:0.2rem}
-.ch5-dvs-code{font-family:monospace;font-size:0.88rem;color:#FF9800;font-weight:700;background:rgba(108,92,231,0.08);padding:0.15rem 0.4rem;border-radius:4px}
+.ch5-dvs-code{font-family:monospace;font-size:0.88rem;color:#FF9800;font-weight:700;background:rgba(253,121,168,0.08);padding:0.15rem 0.4rem;border-radius:4px}
 .ch5-dvs-sep{font-size:0.9rem;font-weight:800;color:#fd79a8}
 </style>`
         },

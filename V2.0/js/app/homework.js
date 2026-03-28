@@ -92,6 +92,27 @@
     return hw.answer || hw.solution || hw.hint || '';
   }
 
+  function getHomeworkEditorTemplate(hw, idx) {
+    if (!hw) return '# 请在这里完成作业\n';
+
+    var raw = typeof hw.template === 'string' ? hw.template.replace(/\r\n/g, '\n') : '';
+    if (!raw.trim()) {
+      return '# 请在这里完成作业 ' + (idx + 1) + '\n';
+    }
+
+    var trimmed = raw.trim();
+    if (trimmed.charAt(0) === '#') {
+      return raw;
+    }
+
+    var lines = raw.replace(/\n+$/g, '').split('\n');
+    var commented = lines.map(function(line) {
+      return line.trim() ? '# ' + line : '#';
+    }).join('\n');
+
+    return '# 请在这里完成作业 ' + (idx + 1) + '\n' + commented + '\n';
+  }
+
   function showHomeworkHint() {
     if (!state.currentLesson || _currentHomeworkIndex < 0) {
       toast('⚠️ 请先打开一道作业');
@@ -152,8 +173,8 @@
     // 绑定点击事件
     listEl.querySelectorAll('.homework-item').forEach(function(item) {
       item.addEventListener('click', function() {
-        var idx = parseInt(this.getAttribute('data-hw-index'));
-        openHomeworkDetail(lesson, homeworks, idx);
+        var idx = parseInt(this.getAttribute('data-hw-index'), 10);
+        openHomeworkDetail(homeworks, idx);
       });
     });
   }
@@ -164,10 +185,13 @@
     var detailEl = document.getElementById('homeworkDetail');
     var titleEl = document.getElementById('homeworkDetailTitle');
     var starsEl = document.getElementById('homeworkDetailStars');
-    if (!detailEl || idx < 0 || idx >= homeworks.length) return;
+    if (!Array.isArray(homeworks)) return;
+    idx = parseInt(idx, 10);
+    if (!detailEl || isNaN(idx) || idx < 0 || idx >= homeworks.length) return;
 
     _currentHomeworkIndex = idx;
     var hw = homeworks[idx];
+    if (!hw) return;
 
     listEl.style.display = 'none';
     detailEl.style.display = '';
@@ -183,7 +207,7 @@
     var editorEl = document.getElementById('challengeEditor');
     var resultEl = document.getElementById('challengeResult');
     if (descEl) descEl.textContent = hw.desc;
-    if (editorEl) editorEl.value = hw.template;
+    if (editorEl) editorEl.value = getHomeworkEditorTemplate(hw, idx);
     if (resultEl) { resultEl.style.display = 'none'; resultEl.className = 'challenge-result'; }
   }
 

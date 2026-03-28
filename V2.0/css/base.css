@@ -1,8 +1,8 @@
 /* ========== Base & Variables ========== */
 :root {
   /* Primary Colors */
-  --magic-purple: #667eea;
-  --magic-pink: #764ba2;
+  --magic-purple: #ff9dc0;
+  --magic-pink: #ffb3d1;
   --neon-cyan: #00cec9;
   --neon-green: #00b894;
   --neon-pink: #fd79a8;
@@ -96,7 +96,7 @@ body {
 
 /* ========== Utility Classes ========== */
 .gradient-text {
-  background: linear-gradient(135deg, var(--neon-cyan) 0%, var(--magic-purple) 50%, var(--neon-pink) 100%);
+  background: linear-gradient(135deg, #fff4e3 0%, var(--magic-purple) 52%, #d9ebff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

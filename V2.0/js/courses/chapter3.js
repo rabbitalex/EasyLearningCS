@@ -43,11 +43,11 @@ const CHAPTER3 = {
   <div class="theory-callout">💡 Python用 <code>if-else</code> 来做条件判断，让程序也能"做选择"！</div>
 </div>
 <style>
-.theory-anim-box{background:linear-gradient(135deg,rgba(108,92,231,0.08),rgba(0,206,201,0.08));border:1px solid rgba(108,92,231,0.2);border-radius:16px;padding:1.2rem;margin:1rem 0}
+.theory-anim-box{background:linear-gradient(135deg,rgba(253,121,168,0.08),rgba(0,206,201,0.08));border:1px solid rgba(253,121,168,0.2);border-radius:16px;padding:1.2rem;margin:1rem 0}
 .theory-anim-title{font-weight:800;color:#FF9800;font-weight:700;margin-bottom:1rem;font-size:0.9rem}
-.theory-callout{background:rgba(108,92,231,0.1);border-left:3px solid #6c5ce7;padding:0.5rem 0.8rem;border-radius:0 8px 8px 0;font-size:0.8rem;color:#e8ecf2;margin-top:0.8rem}
+.theory-callout{background:rgba(253,121,168,0.1);border-left:3px solid #fd79a8;padding:0.5rem 0.8rem;border-radius:0 8px 8px 0;font-size:0.8rem;color:#e8ecf2;margin-top:0.8rem}
 .ch3-life-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:0.5rem;margin:0.5rem 0}
-.ch3-life-card{background:#0d0d1a;border-radius:10px;padding:0.6rem;text-align:center;border:1px solid rgba(108,92,231,0.15);animation:nodeAppear 0.4s ease both}
+.ch3-life-card{background:#0d0d1a;border-radius:10px;padding:0.6rem;text-align:center;border:1px solid rgba(253,121,168,0.15);animation:nodeAppear 0.4s ease both}
 .ch3-life-card:nth-child(1){animation-delay:0.1s}.ch3-life-card:nth-child(2){animation-delay:0.2s}.ch3-life-card:nth-child(3){animation-delay:0.3s}
 @keyframes nodeAppear{from{opacity:0;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}
 .ch3-life-icon{font-size:1.5rem;margin-bottom:0.3rem}
@@ -75,7 +75,7 @@ const CHAPTER3 = {
 </div>
 <style>
 .ch3-cmp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:0.4rem;margin:0.6rem 0}
-.ch3-cmp-card{background:#0d0d1a;border-radius:8px;padding:0.5rem;display:flex;flex-direction:column;gap:0.15rem;border-left:3px solid #6c5ce7;animation:slideInPipe 0.3s ease both}
+.ch3-cmp-card{background:#0d0d1a;border-radius:8px;padding:0.5rem;display:flex;flex-direction:column;gap:0.15rem;border-left:3px solid #fd79a8;animation:slideInPipe 0.3s ease both}
 @keyframes slideInPipe{from{opacity:0;transform:translateX(-15px)}to{opacity:1;transform:translateX(0)}}
 .ch3-cmp-card:nth-child(1){animation-delay:0.05s}.ch3-cmp-card:nth-child(2){animation-delay:0.1s}.ch3-cmp-card:nth-child(3){animation-delay:0.15s}.ch3-cmp-card:nth-child(4){animation-delay:0.2s}.ch3-cmp-card:nth-child(5){animation-delay:0.25s}.ch3-cmp-card:nth-child(6){animation-delay:0.3s}
 .ch3-cmp-sym{font-family:monospace;font-size:1rem;font-weight:900;color:#FF9800;font-weight:700}
@@ -112,11 +112,11 @@ const CHAPTER3 = {
 </div>
 <style>
 .ch3-flow-demo{display:flex;flex-direction:column;align-items:center;gap:0.1rem;margin:0.6rem 0}
-.ch3-flow-step{background:#0d0d1a;border-radius:8px;padding:0.35rem 0.7rem;font-family:monospace;font-size:0.9rem;color:#e8ecf2;border:1px solid rgba(108,92,231,0.2)}
-.ch3-flow-start{border-color:rgba(108,92,231,0.4);color:#FF9800;font-weight:700}
+.ch3-flow-step{background:#0d0d1a;border-radius:8px;padding:0.35rem 0.7rem;font-family:monospace;font-size:0.9rem;color:#e8ecf2;border:1px solid rgba(253,121,168,0.2)}
+.ch3-flow-start{border-color:rgba(253,121,168,0.4);color:#FF9800;font-weight:700}
 .ch3-flow-cond{border-radius:20px;background:rgba(253,203,110,0.08);border-color:rgba(253,203,110,0.4);color:#fdcb6e;font-weight:700}
 .ch3-flow-action{font-size:0.85rem}
-.ch3-flow-end{border-color:rgba(108,92,231,0.2);color:#c8d0e0}
+.ch3-flow-end{border-color:rgba(253,121,168,0.2);color:#c8d0e0}
 .ch3-flow-arrow{font-size:0.9rem;color:#c8d0e0}
 .ch3-flow-branches{display:flex;gap:1.5rem;margin:0.2rem 0}
 .ch3-flow-branch{display:flex;flex-direction:column;align-items:center;gap:0.1rem}
@@ -180,7 +180,7 @@ const CHAPTER3 = {
       <div class="ch3-logic-ex">True and True → <b style="color:#00b894">True</b></div>
       <div class="ch3-logic-ex">True and False → <b style="color:#e17055">False</b></div>
     </div>
-    <div class="ch3-logic-card" style="border-color:rgba(108,92,231,0.4)">
+    <div class="ch3-logic-card" style="border-color:rgba(253,121,168,0.4)">
       <div class="ch3-logic-sym">or</div>
       <div class="ch3-logic-desc"><strong>任一条件</strong>满足即为True</div>
       <div class="ch3-logic-ex">True or False → <b style="color:#00b894">True</b></div>

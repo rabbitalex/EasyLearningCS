@@ -30,7 +30,9 @@
   --border-color: rgba(255, 255, 255, 0.08);
   --border-hover: rgba(255, 152, 0, 0.4);
   
-  --sidebar-width: 310px;
+  --sidebar-width: 392px;
+  --sidebar-min-width: 380px;
+  --sidebar-max-width: 500px;
   --topbar-height: 64px;
   --radius: 20px;
   --radius-sm: 14px;

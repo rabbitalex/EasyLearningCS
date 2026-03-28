@@ -1,7 +1,7 @@
 // 第零章：计算机科学理论基础（动画教学）
 const CHAPTER0 = {
   chapter: "第九章：程序是怎么跑起来的",
-  chapterNum: 1,
+  chapterNum: 9,
   icon: "🔬",
   lessons: [
     // ============================================================
@@ -43,24 +43,24 @@ const CHAPTER0 = {
   <div class="theory-callout" style="margin-top:1rem">💡 这个"神秘的过程"就是今天要揭秘的内容——<strong>解释器</strong>！</div>
 </div>
 <style>
-.theory-anim-box{background:linear-gradient(135deg,rgba(108,92,231,0.08),rgba(0,206,201,0.08));border:1px solid rgba(108,92,231,0.2);border-radius:16px;padding:1.2rem;margin:1rem 0}
+.theory-anim-box{background:linear-gradient(135deg,rgba(253,121,168,0.08),rgba(0,206,201,0.08));border:1px solid rgba(253,121,168,0.2);border-radius:16px;padding:1.2rem;margin:1rem 0}
 .theory-anim-title{font-weight:800;color:#FF9800;font-weight:700;margin-bottom:1rem;font-size:0.9rem}
 .theory-flow-row{display:flex;align-items:center;justify-content:center;gap:0.5rem;flex-wrap:wrap;margin:0.8rem 0}
-.theory-node{background:rgba(13,13,26,0.8);border-radius:12px;padding:0.7rem 0.9rem;text-align:center;min-width:90px;border:1px solid rgba(108,92,231,0.25);transition:transform 0.3s}
+.theory-node{background:rgba(13,13,26,0.8);border-radius:12px;padding:0.7rem 0.9rem;text-align:center;min-width:90px;border:1px solid rgba(253,121,168,0.25);transition:transform 0.3s}
 .theory-node:hover{transform:translateY(-3px)}
 .theory-node-icon{font-size:1.5rem;margin-bottom:0.2rem}
 .theory-node-label{font-size:0.9rem;font-weight:700;color:#e8ecf2}
 .theory-node-sub{font-size:0.8rem;color:#c8d0e0;margin-top:0.15rem;font-family:monospace}
-.theory-node-code{border-color:rgba(108,92,231,0.5)}
+.theory-node-code{border-color:rgba(253,121,168,0.5)}
 .theory-node-mystery{border-color:rgba(253,203,110,0.5)}
 .theory-node-result{border-color:rgba(0,184,148,0.5)}
 .theory-arrow{font-size:1.4rem;color:#FF9800;font-weight:700;animation:arrowPulse 1.2s ease-in-out infinite}
 @keyframes arrowPulse{0%,100%{opacity:0.4;transform:translateX(0)}50%{opacity:1;transform:translateX(4px)}}
-.theory-callout{background:rgba(108,92,231,0.1);border-left:3px solid #6c5ce7;padding:0.5rem 0.8rem;border-radius:0 8px 8px 0;font-size:0.8rem;color:#e8ecf2;margin-top:0.8rem}
+.theory-callout{background:rgba(253,121,168,0.1);border-left:3px solid #fd79a8;padding:0.5rem 0.8rem;border-radius:0 8px 8px 0;font-size:0.8rem;color:#e8ecf2;margin-top:0.8rem}
 .theory-btn{margin-top:0.8rem;padding:0.5rem 1.2rem;background:linear-gradient(135deg,#FF9800,#F57C00);border:none;border-radius:20px;color:#fff;font-size:0.92rem;font-weight:700;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 3px 10px rgba(255,152,0,0.3)}
 .theory-btn:hover{transform:scale(1.05);box-shadow:0 4px 18px rgba(255,152,0,0.5)}
 /* 打字机效果 */
-.t0-typewriter{overflow:hidden;white-space:nowrap;border-right:2px solid #a29bfe;width:0;animation:t0tw calc(var(--tw-dur,1.5s)) steps(var(--tw-len,14)) 0.5s forwards,t0blink 0.6s step-end infinite}
+.t0-typewriter{overflow:hidden;white-space:nowrap;border-right:2px solid #ffb3d1;width:0;animation:t0tw calc(var(--tw-dur,1.5s)) steps(var(--tw-len,14)) 0.5s forwards,t0blink 0.6s step-end infinite}
 @keyframes t0tw{to{width:100%}}
 @keyframes t0blink{50%{border-color:transparent}}
 /* 渐入动画 */
@@ -74,7 +74,7 @@ const CHAPTER0 = {
 .t0-binary-title{font-size:0.9rem;font-weight:700;color:#00cec9;margin-bottom:0.6rem;text-align:center}
 .t0-binary-flow{display:flex;justify-content:center;gap:0.5rem;flex-wrap:wrap}
 .t0-char-col{display:flex;flex-direction:column;align-items:center;gap:0.3rem}
-.t0-char{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#6c5ce7,#a29bfe);color:#fff;font-weight:800;font-size:0.85rem;display:flex;align-items:center;justify-content:center;font-family:monospace}
+.t0-char{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#fd79a8,#ffb3d1);color:#fff;font-weight:800;font-size:0.85rem;display:flex;align-items:center;justify-content:center;font-family:monospace}
 .t0-bin-val{font-family:monospace;font-size:0.88rem;color:#00b894;letter-spacing:0.5px;background:rgba(0,184,148,0.08);padding:0.15rem 0.3rem;border-radius:4px;animation:t0binGlow 2s ease-in-out infinite alternate}
 @keyframes t0binGlow{0%{text-shadow:none}100%{text-shadow:0 0 6px rgba(0,184,148,0.5)}}
 .t0-binary-hint{text-align:center;font-size:0.8rem;color:#c8d0e0;margin-top:0.5rem}
@@ -117,10 +117,10 @@ const CHAPTER0 = {
 </div>
 <style>
 .interp-demo{display:flex;gap:0.6rem;align-items:stretch;margin:0.8rem 0;flex-wrap:wrap}
-.interp-code-panel,.interp-output-panel{background:#0d0d1a;border-radius:10px;padding:0.8rem;flex:1;min-width:130px;border:1px solid rgba(108,92,231,0.2)}
+.interp-code-panel,.interp-output-panel{background:#0d0d1a;border-radius:10px;padding:0.8rem;flex:1;min-width:130px;border:1px solid rgba(253,121,168,0.2)}
 .interp-code-title{font-size:0.85rem;color:#c8d0e0;margin-bottom:0.5rem;font-weight:700}
 .interp-line{font-family:monospace;font-size:0.92rem;padding:0.3rem 0.4rem;border-radius:6px;color:#FF9800;font-weight:700;transition:all 0.4s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;gap:0.3rem;border-left:3px solid transparent}
-.interp-line.active{background:rgba(108,92,231,0.15);color:#fff;border-left-color:#FF9800;font-weight:700;transform:translateX(4px)}
+.interp-line.active{background:rgba(253,121,168,0.15);color:#fff;border-left-color:#FF9800;font-weight:700;transform:translateX(4px)}
 .interp-ln{font-size:0.92rem;color:#555;min-width:14px;text-align:right;margin-right:0.2rem}
 .interp-cursor{color:#fdcb6e;font-size:0.85rem;transition:opacity 0.3s}
 .interp-arrow-col{display:flex;flex-direction:column;align-items:center;gap:0.3rem;justify-content:center;min-width:60px}
@@ -136,7 +136,7 @@ const CHAPTER0 = {
 .interp-mem-item{font-size:0.82rem;color:#e8ecf2;padding:0.15rem 0.3rem;font-family:monospace}
 /* 类比卡片 */
 .t0-analogy-row{display:flex;align-items:center;justify-content:center;gap:0.6rem;flex-wrap:wrap}
-.t0-analogy-card{background:#0d0d1a;border-radius:12px;padding:0.8rem;text-align:center;border:1px solid rgba(108,92,231,0.3);flex:1;min-width:120px;transition:transform 0.3s}
+.t0-analogy-card{background:#0d0d1a;border-radius:12px;padding:0.8rem;text-align:center;border:1px solid rgba(253,121,168,0.3);flex:1;min-width:120px;transition:transform 0.3s}
 .t0-analogy-card:hover{transform:scale(1.03)}
 .t0-an-icon{font-size:1.8rem;margin-bottom:0.3rem}
 .t0-an-label{font-size:0.92rem;font-weight:800;color:#e8ecf2;margin-bottom:0.3rem}
@@ -169,10 +169,10 @@ const CHAPTER0 = {
     <div class="t0-sp-title">🏎️ 运行速度直觉对比</div>
     <div class="t0-sp-row"><span class="t0-sp-label">C/C++ 编译型</span><div class="t0-sp-bar"><div class="t0-sp-fill" style="width:95%;background:linear-gradient(90deg,#00b894,#00cec9);animation-delay:0.3s"></div></div><span class="t0-sp-val">⚡极快</span></div>
     <div class="t0-sp-row"><span class="t0-sp-label">Java 半编译</span><div class="t0-sp-bar"><div class="t0-sp-fill" style="width:70%;background:linear-gradient(90deg,#fdcb6e,#e17055);animation-delay:0.5s"></div></div><span class="t0-sp-val">🚀较快</span></div>
-    <div class="t0-sp-row"><span class="t0-sp-label">Python 解释型</span><div class="t0-sp-bar"><div class="t0-sp-fill" style="width:25%;background:linear-gradient(90deg,#6c5ce7,#a29bfe);animation-delay:0.7s"></div></div><span class="t0-sp-val">🐢一般</span></div>
+    <div class="t0-sp-row"><span class="t0-sp-label">Python 解释型</span><div class="t0-sp-bar"><div class="t0-sp-fill" style="width:25%;background:linear-gradient(90deg,#fd79a8,#ffb3d1);animation-delay:0.7s"></div></div><span class="t0-sp-val">🐢一般</span></div>
   </div>
   <div class="lang-examples">
-    <div class="lang-tag t0-fadein" style="background:rgba(108,92,231,0.2);border-color:rgba(108,92,231,0.4);animation-delay:0.3s">🐍 Python</div>
+    <div class="lang-tag t0-fadein" style="background:rgba(253,121,168,0.2);border-color:rgba(253,121,168,0.4);animation-delay:0.3s">🐍 Python</div>
     <div class="lang-tag t0-fadein" style="background:rgba(253,203,110,0.2);border-color:rgba(253,203,110,0.4);animation-delay:0.4s">🌐 JavaScript</div>
     <div class="lang-tag t0-fadein" style="background:rgba(253,121,168,0.2);border-color:rgba(253,121,168,0.4);animation-delay:0.5s">💎 Ruby</div>
     <div class="lang-tag t0-fadein" style="background:rgba(0,206,201,0.2);border-color:rgba(0,206,201,0.4);animation-delay:0.6s">🐘 PHP</div>
@@ -214,7 +214,7 @@ const CHAPTER0 = {
 <div class="theory-anim-box">
   <div class="theory-anim-title">🔬 Python解释器内部流程 — 点击查看动画</div>
   <div class="pipeline-steps" id="pipeSteps">
-    <div class="pipe-step t0-pipe-anim" style="--c:#6c5ce7;--idx:0"><div class="pipe-num">1</div><div class="pipe-icon">📖</div><div class="pipe-name">词法分析</div><div class="pipe-desc">把代码切成一个个"词"（Token）</div><div class="pipe-detail">print → [关键字] ( → [符号] "Hello" → [字符串] )</div></div>
+    <div class="pipe-step t0-pipe-anim" style="--c:#fd79a8;--idx:0"><div class="pipe-num">1</div><div class="pipe-icon">📖</div><div class="pipe-name">词法分析</div><div class="pipe-desc">把代码切成一个个"词"（Token）</div><div class="pipe-detail">print → [关键字] ( → [符号] "Hello" → [字符串] )</div></div>
     <div class="pipe-arrow t0-pipe-anim" style="--idx:1"><div class="pipe-arrow-icon">⬇️</div></div>
     <div class="pipe-step t0-pipe-anim" style="--c:#00cec9;--idx:2"><div class="pipe-num">2</div><div class="pipe-icon">🌳</div><div class="pipe-name">语法分析</div><div class="pipe-desc">把词组成语法树（AST）</div><div class="pipe-detail">检查语法结构是否合法</div></div>
     <div class="pipe-arrow t0-pipe-anim" style="--idx:3"><div class="pipe-arrow-icon">⬇️</div></div>
@@ -318,17 +318,17 @@ const CHAPTER0 = {
 </div>
 <style>
 .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin:0.8rem 0}
-.compare-card{background:#0d0d1a;border-radius:12px;padding:0.8rem;border:1px solid rgba(108,92,231,0.2);position:relative}
+.compare-card{background:#0d0d1a;border-radius:12px;padding:0.8rem;border:1px solid rgba(253,121,168,0.2);position:relative}
 .compare-interp{border-color:rgba(0,206,201,0.3)}
 .compare-compiler{border-color:rgba(253,121,168,0.3)}
 .compare-title{font-size:0.82rem;font-weight:800;color:#e8ecf2;margin-bottom:0.6rem;text-align:center}
 .compare-flow{display:flex;flex-direction:column;align-items:center;gap:0.1rem}
-.cf-item{font-size:0.82rem;padding:0.25rem 0.5rem;border-radius:6px;background:rgba(108,92,231,0.1);color:#e8ecf2;text-align:center;width:100%;transition:all 0.4s cubic-bezier(.4,0,.2,1)}
+.cf-item{font-size:0.82rem;padding:0.25rem 0.5rem;border-radius:6px;background:rgba(253,121,168,0.1);color:#e8ecf2;text-align:center;width:100%;transition:all 0.4s cubic-bezier(.4,0,.2,1)}
 .cf-exec{background:rgba(0,184,148,0.15);color:#00b894}
 .cf-compile{background:rgba(253,121,168,0.15);color:#fd79a8}
 .cf-binary{background:rgba(253,203,110,0.15);color:#fdcb6e}
 .cf-arrow{font-size:0.8rem;color:#555}
-.cf-active{transform:scale(1.05);box-shadow:0 0 12px rgba(108,92,231,0.4);border:1px solid rgba(108,92,231,0.5);font-weight:700}
+.cf-active{transform:scale(1.05);box-shadow:0 0 12px rgba(253,121,168,0.4);border:1px solid rgba(253,121,168,0.5);font-weight:700}
 .cf-done{opacity:0.5;transform:scale(0.98)}
 .compare-tag{margin-top:0.6rem;text-align:center;font-size:0.82rem;font-weight:700;color:#c8d0e0;background:rgba(255,255,255,0.05);padding:0.2rem 0.5rem;border-radius:10px}
 .cf-timer{text-align:center;font-size:0.85rem;color:#fdcb6e;font-weight:700;margin-top:0.4rem;min-height:1.2em}
@@ -348,7 +348,7 @@ const CHAPTER0 = {
 <div class="theory-anim-box">
   <div class="theory-anim-title">🏭 编译器流水线 — 点击每个阶段查看详情</div>
   <div class="compiler-pipeline">
-    <div class="cp-stage cp-clickable" style="--cc:#6c5ce7" onclick="this.classList.toggle('cp-expanded')">
+    <div class="cp-stage cp-clickable" style="--cc:#fd79a8" onclick="this.classList.toggle('cp-expanded')">
       <div class="cp-stage-icon">📖</div>
       <div class="cp-stage-info">
         <div class="cp-stage-name">① 词法分析 <span class="cp-expand-hint">👆点击展开</span></div>
@@ -428,7 +428,7 @@ const CHAPTER0 = {
 .cp-arrow{text-align:center;font-size:0.85rem;color:#555;margin:0.15rem 0}
 /* token chips */
 .token-chip{padding:0.15rem 0.4rem;border-radius:6px;font-family:monospace;font-size:0.82rem;font-weight:700}
-.token-id{background:rgba(108,92,231,0.2);color:#FF9800;font-weight:700;border:1px solid rgba(108,92,231,0.3)}
+.token-id{background:rgba(253,121,168,0.2);color:#FF9800;font-weight:700;border:1px solid rgba(253,121,168,0.3)}
 .token-op{background:rgba(253,121,168,0.2);color:#fd79a8;border:1px solid rgba(253,121,168,0.3)}
 .token-num{background:rgba(253,203,110,0.2);color:#fdcb6e;border:1px solid rgba(253,203,110,0.3)}
 .token-kw{background:rgba(0,206,201,0.2);color:#00cec9;border:1px solid rgba(0,206,201,0.3)}
@@ -456,7 +456,7 @@ const CHAPTER0 = {
   <div class="lang-examples">
     <div class="lang-tag" style="background:rgba(0,184,148,0.2);border-color:rgba(0,184,148,0.4)">⚡ C/C++</div>
     <div class="lang-tag" style="background:rgba(0,206,201,0.2);border-color:rgba(0,206,201,0.4)">🦀 Rust</div>
-    <div class="lang-tag" style="background:rgba(108,92,231,0.2);border-color:rgba(108,92,231,0.4)">🐹 Go</div>
+    <div class="lang-tag" style="background:rgba(253,121,168,0.2);border-color:rgba(253,121,168,0.4)">🐹 Go</div>
     <div class="lang-tag" style="background:rgba(253,121,168,0.2);border-color:rgba(253,121,168,0.4)">☕ Java*</div>
   </div>
   <div class="theory-callout">💡 Java比较特殊：先编译成字节码，再用JVM解释执行——兼具两者优点！Python也类似。</div>
@@ -517,10 +517,10 @@ const CHAPTER0 = {
 </div>
 <style>
 .hybrid-flow{display:flex;align-items:center;justify-content:center;gap:0.3rem;flex-wrap:wrap;margin:0.8rem 0}
-.hf-box{background:#0d0d1a;border-radius:10px;padding:0.6rem 0.8rem;text-align:center;border:1px solid rgba(108,92,231,0.2);min-width:80px;transition:all 0.4s}
+.hf-box{background:#0d0d1a;border-radius:10px;padding:0.6rem 0.8rem;text-align:center;border:1px solid rgba(253,121,168,0.2);min-width:80px;transition:all 0.4s}
 .hf-anim{opacity:0;transform:translateY(10px)}
 .hf-anim.hf-show{opacity:1;transform:translateY(0)}
-.hf-source{border-color:rgba(108,92,231,0.4)}.hf-bytecode{border-color:rgba(253,203,110,0.4)}.hf-result{border-color:rgba(0,184,148,0.4)}
+.hf-source{border-color:rgba(253,121,168,0.4)}.hf-bytecode{border-color:rgba(253,203,110,0.4)}.hf-result{border-color:rgba(0,184,148,0.4)}
 .hf-icon{font-size:1.3rem}.hf-name{font-size:0.88rem;font-weight:700;color:#e8ecf2;margin-top:0.2rem}.hf-sub{font-size:0.92rem;color:#c8d0e0;font-family:monospace}
 .hf-arrow-wrap{display:flex;flex-direction:column;align-items:center;gap:0.1rem}
 .hf-arrow-label{font-size:0.92rem;color:#FF9800;font-weight:700;font-weight:700;white-space:nowrap}
@@ -536,7 +536,7 @@ const CHAPTER0 = {
 .be-comment{font-size:0.92rem;color:#555}
 /* 对比表格 */
 .t0-mode-table{display:flex;flex-direction:column;gap:0.2rem}
-.t0-mt-header{display:grid;grid-template-columns:80px 1fr 1fr 1fr;gap:0.4rem;font-size:0.8rem;font-weight:800;color:#FF9800;font-weight:700;padding:0.3rem 0.5rem;background:rgba(108,92,231,0.08);border-radius:6px}
+.t0-mt-header{display:grid;grid-template-columns:80px 1fr 1fr 1fr;gap:0.4rem;font-size:0.8rem;font-weight:800;color:#FF9800;font-weight:700;padding:0.3rem 0.5rem;background:rgba(253,121,168,0.08);border-radius:6px}
 .t0-mt-row{display:grid;grid-template-columns:80px 1fr 1fr 1fr;gap:0.4rem;font-size:0.8rem;color:#e8ecf2;padding:0.25rem 0.5rem;border-radius:4px;transition:background 0.2s}
 .t0-mt-row:hover{background:rgba(255,255,255,0.03)}
 .t0-mt-label{color:#c8d0e0;font-weight:700}
@@ -594,11 +594,11 @@ const CHAPTER0 = {
   <div class="theory-callout">💡 试试输入 <code>if x > 10:</code> 或 <code>for i in range(5):</code> 看看Token是什么样的！</div>
 </div>
 <style>
-.lexer-interactive{background:#0d0d1a;border-radius:12px;padding:0.8rem;margin:0.8rem 0;border:1px solid rgba(108,92,231,0.2)}
+.lexer-interactive{background:#0d0d1a;border-radius:12px;padding:0.8rem;margin:0.8rem 0;border:1px solid rgba(253,121,168,0.2)}
 .lexer-input-row{display:flex;align-items:center;gap:0.3rem;margin-bottom:0.6rem}
 .lexer-prompt{font-family:monospace;color:#00b894;font-weight:700;font-size:0.85rem}
-.lexer-input{flex:1;background:rgba(108,92,231,0.08);border:1px solid rgba(108,92,231,0.3);border-radius:8px;padding:0.4rem 0.6rem;color:#FF9800;font-weight:700;font-family:monospace;font-size:0.82rem;outline:none;transition:border-color 0.3s}
-.lexer-input:focus{border-color:#FF9800;font-weight:700;box-shadow:0 0 12px rgba(108,92,231,0.2)}
+.lexer-input{flex:1;background:rgba(253,121,168,0.08);border:1px solid rgba(253,121,168,0.3);border-radius:8px;padding:0.4rem 0.6rem;color:#FF9800;font-weight:700;font-family:monospace;font-size:0.82rem;outline:none;transition:border-color 0.3s}
+.lexer-input:focus{border-color:#FF9800;font-weight:700;box-shadow:0 0 12px rgba(253,121,168,0.2)}
 .lexer-highlight-row{font-family:monospace;font-size:0.9rem;padding:0.2rem 0;margin-bottom:0.5rem;min-height:1.2em;letter-spacing:0.5px}
 .lexer-output-label{font-size:0.82rem;color:#c8d0e0;font-weight:700;margin-bottom:0.4rem}
 .lexer-output{display:flex;flex-wrap:wrap;gap:0.3rem;min-height:2rem}
@@ -662,9 +662,9 @@ const CHAPTER0 = {
 </div>
 <style>
 .token-examples{display:flex;flex-direction:column;gap:0.4rem;margin:0.8rem 0}
-.te-row{background:#0d0d1a;border-radius:10px;padding:0.7rem;border:1px solid rgba(108,92,231,0.15);transition:all 0.3s}
+.te-row{background:#0d0d1a;border-radius:10px;padding:0.7rem;border:1px solid rgba(253,121,168,0.15);transition:all 0.3s}
 .te-clickable{cursor:pointer}
-.te-clickable:hover{border-color:rgba(108,92,231,0.4)}
+.te-clickable:hover{border-color:rgba(253,121,168,0.4)}
 .te-code{font-family:monospace;font-size:0.92rem;color:#FF9800;font-weight:700;margin-bottom:0.4rem;position:relative}
 .te-click-hint{font-size:0.9rem;color:#555;margin-right:0.3rem}
 .te-clickable .te-tokens{max-height:0;overflow:hidden;opacity:0;transition:all 0.4s ease}
@@ -716,7 +716,7 @@ const CHAPTER0 = {
 </div>
 <style>
 .syntax-examples{display:flex;flex-direction:column;gap:0.3rem;margin:0.8rem 0}
-.se-row{display:flex;align-items:flex-start;gap:0.6rem;background:#0d0d1a;border-radius:8px;padding:0.6rem;border-left:3px solid rgba(108,92,231,0.3);transition:all 0.3s}
+.se-row{display:flex;align-items:flex-start;gap:0.6rem;background:#0d0d1a;border-radius:8px;padding:0.6rem;border-left:3px solid rgba(253,121,168,0.3);transition:all 0.3s}
 .se-quiz{cursor:pointer}
 .se-quiz:hover{background:rgba(13,13,26,0.95)}
 .se-hidden{opacity:0;transition:opacity 0.4s}
@@ -755,10 +755,10 @@ const CHAPTER0 = {
   <div class="theory-callout">💡 <strong>括号 () 可以改变优先级！</strong>  (2+3)*4 = 20，而不是 2+3*4 = 14</div>
 </div>
 <style>
-.priority-demo{background:#0d0d1a;border-radius:10px;padding:0.8rem;margin:0.8rem 0;border:1px solid rgba(108,92,231,0.2)}
+.priority-demo{background:#0d0d1a;border-radius:10px;padding:0.8rem;margin:0.8rem 0;border:1px solid rgba(253,121,168,0.2)}
 .pd-expr{font-family:monospace;font-size:1.1rem;color:#FF9800;font-weight:700;text-align:center;margin-bottom:0.8rem;font-weight:700;transition:all 0.4s}
 .pd-steps{display:flex;flex-direction:column;gap:0.3rem}
-.pd-step{display:flex;align-items:center;gap:0.6rem;padding:0.4rem 0.6rem;background:rgba(108,92,231,0.06);border-radius:6px;transition:all 0.5s}
+.pd-step{display:flex;align-items:center;gap:0.6rem;padding:0.4rem 0.6rem;background:rgba(253,121,168,0.06);border-radius:6px;transition:all 0.5s}
 .pd-s{opacity:0;transform:translateX(-15px)}
 .pd-s.pd-visible{opacity:1;transform:translateX(0)}
 .pd-step-num{font-size:0.8rem;font-weight:800;color:#c8d0e0;min-width:40px}
@@ -766,10 +766,10 @@ const CHAPTER0 = {
 .pd-step-expr{font-family:monospace;font-size:0.92rem;color:#FF9800;font-weight:700;min-width:80px;text-align:right}
 .pd-highlight{color:#fdcb6e;font-weight:800;background:rgba(253,203,110,0.15);padding:0 0.2rem;border-radius:3px}
 .pd-result{color:#00b894;font-weight:800}
-.priority-table{background:#0d0d1a;border-radius:10px;padding:0.7rem;margin-top:0.6rem;border:1px solid rgba(108,92,231,0.15)}
+.priority-table{background:#0d0d1a;border-radius:10px;padding:0.7rem;margin-top:0.6rem;border:1px solid rgba(253,121,168,0.15)}
 .pt-title{font-size:0.88rem;color:#c8d0e0;font-weight:700;margin-bottom:0.5rem}
 .pt-row{display:grid;grid-template-columns:24px 80px 1fr 70px;gap:0.4rem;align-items:center;padding:0.3rem 0.4rem;border-radius:4px;transition:background 0.2s}
-.pt-row:hover{background:rgba(108,92,231,0.06)}
+.pt-row:hover{background:rgba(253,121,168,0.06)}
 .pt-rank{font-size:0.8rem;font-weight:800;color:#555;text-align:center}
 .pt-op{font-family:monospace;font-size:0.88rem;color:#FF9800;font-weight:700;font-weight:700}
 .pt-name{font-size:0.8rem;color:#c8d0e0}
@@ -852,7 +852,7 @@ const CHAPTER0 = {
 </div>
 <style>
 .tree-intro{display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;margin:0.8rem 0}
-.ti-left,.ti-right{background:#0d0d1a;border-radius:10px;padding:0.7rem;border:1px solid rgba(108,92,231,0.2);flex:1;min-width:120px}
+.ti-left,.ti-right{background:#0d0d1a;border-radius:10px;padding:0.7rem;border:1px solid rgba(253,121,168,0.2);flex:1;min-width:120px}
 .ti-title{font-size:0.82rem;color:#c8d0e0;font-weight:700;margin-bottom:0.4rem}
 .ti-code{font-family:monospace;font-size:0.92rem;color:#FF9800;font-weight:700}
 .ti-arrow{font-size:0.92rem;color:#fdcb6e;font-weight:700;white-space:nowrap}
@@ -861,7 +861,7 @@ const CHAPTER0 = {
 .ast-anim{opacity:1}
 .ast-hide{opacity:0;transform:scale(0.5)}
 .ast-show{opacity:1;transform:scale(1)}
-.ast-root{background:rgba(108,92,231,0.25);color:#FF9800;font-weight:700;border:1px solid rgba(108,92,231,0.4)}
+.ast-root{background:rgba(253,121,168,0.25);color:#FF9800;font-weight:700;border:1px solid rgba(253,121,168,0.4)}
 .ast-op{background:rgba(253,121,168,0.2);color:#fd79a8;border:1px solid rgba(253,121,168,0.3)}
 .ast-num{background:rgba(253,203,110,0.2);color:#fdcb6e;border:1px solid rgba(253,203,110,0.3)}
 .ast-var{background:rgba(0,206,201,0.2);color:#00cec9;border:1px solid rgba(0,206,201,0.3)}
@@ -884,7 +884,7 @@ const CHAPTER0 = {
 <div class="theory-anim-box">
   <div class="theory-anim-title">🔖 AST节点类型大全</div>
   <div class="node-types-grid">
-    <div class="nt-card" style="--nc:#6c5ce7">
+    <div class="nt-card" style="--nc:#fd79a8">
       <div class="nt-icon">📦</div>
       <div class="nt-name">Module</div>
       <div class="nt-desc">整个程序文件</div>
@@ -920,7 +920,7 @@ const CHAPTER0 = {
       <div class="nt-desc">函数调用</div>
       <div class="nt-example">print("hello")</div>
     </div>
-    <div class="nt-card" style="--nc:#a29bfe">
+    <div class="nt-card" style="--nc:#ffb3d1">
       <div class="nt-icon">🔀</div>
       <div class="nt-name">If</div>
       <div class="nt-desc">条件语句</div>
@@ -989,12 +989,12 @@ else:
 </div>
 <style>
 .if-ast-demo{display:flex;flex-direction:column;gap:0.6rem;margin:0.8rem 0}
-.iad-code,.iad-tree{background:#0d0d1a;border-radius:10px;padding:0.7rem;border:1px solid rgba(108,92,231,0.2)}
+.iad-code,.iad-tree{background:#0d0d1a;border-radius:10px;padding:0.7rem;border:1px solid rgba(253,121,168,0.2)}
 .iad-code-title,.iad-tree-title{font-size:0.82rem;color:#c8d0e0;font-weight:700;margin-bottom:0.4rem}
 .iad-code-block{font-family:monospace;font-size:0.88rem;color:#FF9800;font-weight:700;line-height:1.7;white-space:pre}
 .iad-ast{display:flex;flex-direction:column;align-items:center;gap:0.3rem}
 .iad-node{padding:0.2rem 0.5rem;border-radius:6px;font-size:0.8rem;font-weight:700;text-align:center;white-space:nowrap}
-.iad-if{background:rgba(108,92,231,0.25);color:#FF9800;font-weight:700;border:1px solid rgba(108,92,231,0.4)}
+.iad-if{background:rgba(253,121,168,0.25);color:#FF9800;font-weight:700;border:1px solid rgba(253,121,168,0.4)}
 .iad-cmp{background:rgba(253,121,168,0.2);color:#fd79a8;border:1px solid rgba(253,121,168,0.3)}
 .iad-name{background:rgba(0,206,201,0.2);color:#00cec9;border:1px solid rgba(0,206,201,0.3)}
 .iad-num{background:rgba(253,203,110,0.2);color:#fdcb6e;border:1px solid rgba(253,203,110,0.3)}
@@ -1012,7 +1012,7 @@ else:
 <div class="theory-anim-box">
   <div class="theory-anim-title">🚀 AST的六大应用场景 — 悬停查看详情</div>
   <div class="ast-uses">
-    <div class="au-card" style="--auc:#6c5ce7">
+    <div class="au-card" style="--auc:#fd79a8">
       <div class="au-icon">🔨</div>
       <div class="au-title">编译器/解释器</div>
       <div class="au-desc">把代码转换成机器码或字节码执行——这就是我们本章学的！</div>
@@ -1047,7 +1047,7 @@ else:
 <div class="theory-anim-box" style="margin-top:0.8rem">
   <div class="theory-anim-title">🏆 完整流程回顾 — 你已经掌握了程序运行的全貌！</div>
   <div class="full-pipeline" id="fullPipeline">
-    <div class="fp-step fp-a" id="fp0" style="--fpc:#6c5ce7">📝<br><small>源代码</small></div>
+    <div class="fp-step fp-a" id="fp0" style="--fpc:#fd79a8">📝<br><small>源代码</small></div>
     <div class="fp-arr fp-a" id="fpa0">→</div>
     <div class="fp-step fp-a" id="fp1" style="--fpc:#00cec9">✂️<br><small>词法分析</small></div>
     <div class="fp-arr fp-a" id="fpa1">→</div>
@@ -1059,7 +1059,7 @@ else:
     <div class="fp-arr fp-a" id="fpa4">→</div>
     <div class="fp-step fp-a" id="fp5" style="--fpc:#e17055">⚙️<br><small>代码生成</small></div>
     <div class="fp-arr fp-a" id="fpa5">→</div>
-    <div class="fp-step fp-a" id="fp6" style="--fpc:#a29bfe">🚀<br><small>执行</small></div>
+    <div class="fp-step fp-a" id="fp6" style="--fpc:#ffb3d1">🚀<br><small>执行</small></div>
   </div>
   <div class="theory-btn-row">
     <div class="theory-callout" style="margin:0;flex:1;background:rgba(0,184,148,0.08);border-left-color:#00b894">🎓 <strong>恭喜你完成了第零章！</strong>你已经了解了程序从代码到执行的完整链路。这些知识会让你在后面的 Python 学习中理解得更深入！</div>
@@ -1103,14 +1103,14 @@ else:
           content: `
 <p>恭喜你走到了理论卷的最后一章！在前面的章节中，你已经学习了：</p>
 <div class="os-recap-grid">
-  <div class="os-recap-card" style="--rc:#6c5ce7"><div class="os-recap-icon">🧠</div><div class="os-recap-title">逻辑</div><div class="os-recap-desc">布尔代数与逻辑门</div></div>
+  <div class="os-recap-card" style="--rc:#fd79a8"><div class="os-recap-icon">🧠</div><div class="os-recap-title">逻辑</div><div class="os-recap-desc">布尔代数与逻辑门</div></div>
   <div class="os-recap-card" style="--rc:#0984e3"><div class="os-recap-icon">🔧</div><div class="os-recap-title">硬件</div><div class="os-recap-desc">CPU/内存/总线</div></div>
   <div class="os-recap-card" style="--rc:#00cec9"><div class="os-recap-icon">🔢</div><div class="os-recap-title">进制</div><div class="os-recap-desc">二进制与编码</div></div>
   <div class="os-recap-card" style="--rc:#e17055"><div class="os-recap-icon">⚙️</div><div class="os-recap-title">汇编</div><div class="os-recap-desc">机器码指令</div></div>
   <div class="os-recap-card" style="--rc:#fdcb6e"><div class="os-recap-icon">🖥️</div><div class="os-recap-title">OS</div><div class="os-recap-desc">操作系统管理</div></div>
   <div class="os-recap-card" style="--rc:#e84393"><div class="os-recap-icon">🫀</div><div class="os-recap-title">内核</div><div class="os-recap-desc">系统调用与驱动</div></div>
   <div class="os-recap-card" style="--rc:#55efc4"><div class="os-recap-icon">📋</div><div class="os-recap-title">进程</div><div class="os-recap-desc">程序的运行实例</div></div>
-  <div class="os-recap-card" style="--rc:#a29bfe"><div class="os-recap-icon">🧵</div><div class="os-recap-title">线程</div><div class="os-recap-desc">轻量执行单元</div></div>
+  <div class="os-recap-card" style="--rc:#ffb3d1"><div class="os-recap-icon">🧵</div><div class="os-recap-title">线程</div><div class="os-recap-desc">轻量执行单元</div></div>
 </div>
 <p style="margin-top:1rem;font-weight:700;color:#FF9800">现在，让我们把所有知识串联起来，看看当你<strong>双击运行一个程序</strong>时，到底发生了什么！</p>
 <style>
@@ -1160,14 +1160,14 @@ else:
 </div>
 <style>
 .os-launch-flow{display:flex;flex-direction:column;align-items:center;gap:0.3rem;padding:0.5rem 0}
-.os-launch-step{display:flex;align-items:center;gap:0.7rem;background:rgba(13,13,26,0.85);border-radius:12px;padding:0.65rem 1rem;width:100%;max-width:420px;border-left:3px solid #6c5ce7;transition:all 0.3s}
-.os-launch-step:hover{transform:translateX(6px);border-left-color:#FF9800;box-shadow:0 4px 15px rgba(108,92,231,0.2)}
-.os-launch-num{background:linear-gradient(135deg,#6c5ce7,#a29bfe);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:800;flex-shrink:0}
+.os-launch-step{display:flex;align-items:center;gap:0.7rem;background:rgba(13,13,26,0.85);border-radius:12px;padding:0.65rem 1rem;width:100%;max-width:420px;border-left:3px solid #fd79a8;transition:all 0.3s}
+.os-launch-step:hover{transform:translateX(6px);border-left-color:#FF9800;box-shadow:0 4px 15px rgba(253,121,168,0.2)}
+.os-launch-num{background:linear-gradient(135deg,#fd79a8,#ffb3d1);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:800;flex-shrink:0}
 .os-launch-icon{font-size:1.3rem;flex-shrink:0}
 .os-launch-text{font-size:0.85rem;color:#c8d0e0;line-height:1.45}
 .os-launch-text strong{color:#e8ecf2}
-.os-launch-text code{background:rgba(108,92,231,0.2);padding:0.1rem 0.3rem;border-radius:4px;font-size:0.8rem;color:#a29bfe}
-.os-launch-arrow{color:#6c5ce7;font-size:1rem;font-weight:700}
+.os-launch-text code{background:rgba(253,121,168,0.2);padding:0.1rem 0.3rem;border-radius:4px;font-size:0.8rem;color:#ffb3d1}
+.os-launch-arrow{color:#fd79a8;font-size:1rem;font-weight:700}
 @keyframes ols-fadein{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .ols-anim{opacity:0;animation:ols-fadein 0.5s ease forwards}
 </style>`
@@ -1180,7 +1180,7 @@ else:
   <div class="theory-anim-title">🏠 操作系统为程序分配资源</div>
   <div class="os-room-layout">
     <div class="os-room-box os-room-anim" style="animation-delay:0.3s">
-      <div class="os-room-header" style="background:linear-gradient(135deg,#6c5ce7,#a29bfe)">📋 进程控制块 (PCB)</div>
+      <div class="os-room-header" style="background:linear-gradient(135deg,#fd79a8,#ffb3d1)">📋 进程控制块 (PCB)</div>
       <div class="os-room-body">
         <div class="os-room-item"><span class="os-room-key">PID:</span> 12345</div>
         <div class="os-room-item"><span class="os-room-key">状态:</span> <span style="color:#55efc4">就绪</span></div>
@@ -1195,7 +1195,7 @@ else:
         <div class="os-mem-seg" style="--ms:#fdcb6e;flex:0.6">数据段<br><small>.data</small></div>
         <div class="os-mem-seg" style="--ms:#55efc4;flex:1.2">堆 Heap ↓<br><small>动态分配</small></div>
         <div class="os-mem-gap">···</div>
-        <div class="os-mem-seg" style="--ms:#a29bfe;flex:1">↑ 栈 Stack<br><small>函数调用</small></div>
+        <div class="os-mem-seg" style="--ms:#ffb3d1;flex:1">↑ 栈 Stack<br><small>函数调用</small></div>
       </div>
     </div>
     <div class="os-room-box os-room-anim" style="animation-delay:0.9s">
@@ -1220,7 +1220,7 @@ else:
 .os-room-body{padding:0.5rem}
 .os-room-item{font-size:0.8rem;color:#c8d0e0;padding:0.2rem 0.4rem;border-bottom:1px solid rgba(255,255,255,0.05)}
 .os-room-item:last-child{border-bottom:none}
-.os-room-key{color:#a29bfe;font-weight:700;font-family:monospace}
+.os-room-key{color:#ffb3d1;font-weight:700;font-family:monospace}
 .os-room-mem{display:flex;flex-direction:column;gap:2px;padding:0.4rem}
 .os-mem-seg{background:rgba(0,0,0,0.4);border-left:3px solid var(--ms);padding:0.3rem 0.5rem;font-size:0.75rem;color:#e8ecf2;text-align:center;border-radius:4px}
 .os-mem-seg small{color:#a0a8c0;font-size:0.7rem}
@@ -1258,7 +1258,7 @@ else:
       </div>
     </div>
     <div class="os-loader-item oli-anim" style="animation-delay:1.2s">
-      <div class="os-loader-dot" style="background:#a29bfe"></div>
+      <div class="os-loader-dot" style="background:#ffb3d1"></div>
       <div class="os-loader-content">
         <div class="os-loader-label">④ 初始化栈和寄存器</div>
         <div class="os-loader-detail">设置栈指针(SP)、指令指针(IP)指向程序入口 main()</div>
@@ -1279,7 +1279,7 @@ else:
       解释器启动后，再读取你的 .py 文件，逐行翻译执行。
     </div>
     <div class="os-pn-flow">
-      <span class="os-pn-tag" style="--pt:#6c5ce7">双击 hello.py</span>
+      <span class="os-pn-tag" style="--pt:#fd79a8">双击 hello.py</span>
       <span class="os-pn-arrow">→</span>
       <span class="os-pn-tag" style="--pt:#0984e3">OS 启动 python.exe</span>
       <span class="os-pn-arrow">→</span>
@@ -1291,18 +1291,18 @@ else:
 </div>
 <style>
 .os-loader-timeline{position:relative;padding-left:1.5rem;margin:0.5rem 0}
-.os-loader-timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,#6c5ce7,#e84393)}
+.os-loader-timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,#fd79a8,#e84393)}
 .os-loader-item{display:flex;align-items:flex-start;gap:0.6rem;margin-bottom:0.5rem;position:relative}
 .os-loader-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;margin-left:-1.18rem;margin-top:0.2rem;box-shadow:0 0 8px rgba(0,0,0,0.3);z-index:1}
 .os-loader-content{flex:1}
 .os-loader-label{font-size:0.85rem;font-weight:700;color:#e8ecf2}
 .os-loader-detail{font-size:0.8rem;color:#a0a8c0;margin-top:0.15rem;line-height:1.4}
-.os-python-note{background:rgba(108,92,231,0.1);border:1px solid rgba(108,92,231,0.25);border-radius:12px;padding:0.7rem;margin-top:0.8rem}
+.os-python-note{background:rgba(253,121,168,0.1);border:1px solid rgba(253,121,168,0.25);border-radius:12px;padding:0.7rem;margin-top:0.8rem}
 .os-pn-title{font-size:0.85rem;font-weight:800;color:#FF9800;margin-bottom:0.3rem}
 .os-pn-text{font-size:0.82rem;color:#c8d0e0;line-height:1.5}
 .os-pn-flow{display:flex;align-items:center;flex-wrap:wrap;gap:0.3rem;margin-top:0.5rem}
 .os-pn-tag{background:rgba(13,13,26,0.8);border:1px solid var(--pt);border-radius:8px;padding:0.25rem 0.5rem;font-size:0.75rem;color:#e8ecf2;white-space:nowrap}
-.os-pn-arrow{color:#6c5ce7;font-weight:700;font-size:0.85rem}
+.os-pn-arrow{color:#fd79a8;font-weight:700;font-size:0.85rem}
 @keyframes oli-fadein{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:translateX(0)}}
 .oli-anim{opacity:0;animation:oli-fadein 0.5s ease forwards}
 </style>`
@@ -1342,9 +1342,9 @@ else:
 <style>
 .os-sched-visual{display:flex;gap:1rem;margin:0.6rem 0;align-items:flex-start}
 @media(max-width:500px){.os-sched-visual{flex-direction:column}}
-.os-cpu-core{background:rgba(13,13,26,0.9);border:2px solid #6c5ce7;border-radius:12px;padding:0.6rem;flex:0 0 140px;text-align:center}
-.os-cpu-label{font-size:0.8rem;font-weight:800;color:#a29bfe;margin-bottom:0.4rem}
-.os-cpu-slot{background:linear-gradient(135deg,rgba(108,92,231,0.2),rgba(232,67,147,0.2));border-radius:8px;padding:0.6rem;min-height:50px;display:flex;align-items:center;justify-content:center}
+.os-cpu-core{background:rgba(13,13,26,0.9);border:2px solid #fd79a8;border-radius:12px;padding:0.6rem;flex:0 0 140px;text-align:center}
+.os-cpu-label{font-size:0.8rem;font-weight:800;color:#ffb3d1;margin-bottom:0.4rem}
+.os-cpu-slot{background:linear-gradient(135deg,rgba(253,121,168,0.2),rgba(232,67,147,0.2));border-radius:8px;padding:0.6rem;min-height:50px;display:flex;align-items:center;justify-content:center}
 .os-cpu-running{font-size:0.8rem;color:#55efc4;animation:os-blink 1.5s ease infinite}
 @keyframes os-blink{0%,100%{opacity:1}50%{opacity:0.4}}
 .os-ready-queue{flex:1;background:rgba(13,13,26,0.85);border-radius:12px;padding:0.6rem;border:1px solid rgba(255,255,255,0.08)}
@@ -1387,7 +1387,7 @@ else:
           <div class="os-kern-mod" style="--km:#0984e3">内存管理<br><small>mmap/brk</small></div>
           <div class="os-kern-mod" style="--km:#55efc4">进程管理<br><small>fork/exec</small></div>
           <div class="os-kern-mod" style="--km:#fdcb6e">网络协议栈<br><small>socket/send</small></div>
-          <div class="os-kern-mod" style="--km:#a29bfe">设备驱动<br><small>ioctl</small></div>
+          <div class="os-kern-mod" style="--km:#ffb3d1">设备驱动<br><small>ioctl</small></div>
           <div class="os-kern-mod" style="--km:#e84393">安全模块<br><small>权限检查</small></div>
         </div>
       </div>
@@ -1411,16 +1411,16 @@ else:
 <style>
 .os-syscall-diagram{display:flex;flex-direction:column;gap:0;margin:0.5rem 0}
 .os-layer{border-radius:10px;padding:0.6rem;margin:0;transition:all 0.3s}
-.os-user-layer{background:rgba(108,92,231,0.12);border:1px solid rgba(108,92,231,0.3)}
+.os-user-layer{background:rgba(253,121,168,0.12);border:1px solid rgba(253,121,168,0.3)}
 .os-kernel-layer{background:rgba(232,67,147,0.1);border:1px solid rgba(232,67,147,0.25)}
 .os-hw-layer{background:rgba(253,203,110,0.1);border:1px solid rgba(253,203,110,0.25)}
 .os-layer-label{font-size:0.8rem;font-weight:800;color:#e8ecf2;margin-bottom:0.4rem}
 .os-layer-divider{display:flex;align-items:center;gap:0.5rem;padding:0.3rem 0}
-.os-divider-line{flex:1;border-top:2px dashed rgba(108,92,231,0.4)}
-.os-divider-label{font-size:0.75rem;font-weight:700;color:#a29bfe;white-space:nowrap}
+.os-divider-line{flex:1;border-top:2px dashed rgba(253,121,168,0.4)}
+.os-divider-label{font-size:0.75rem;font-weight:700;color:#ffb3d1;white-space:nowrap}
 .os-app-box{text-align:center}
 .os-app-code{background:rgba(13,13,26,0.9);display:inline-block;padding:0.3rem 0.8rem;border-radius:8px;font-family:monospace;font-size:0.85rem;color:#55efc4}
-.os-app-arrow{color:#a29bfe;font-size:0.8rem;margin-top:0.3rem}
+.os-app-arrow{color:#ffb3d1;font-size:0.8rem;margin-top:0.3rem}
 .os-kern-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.4rem}
 @media(max-width:480px){.os-kern-grid{grid-template-columns:repeat(2,1fr)}}
 .os-kern-mod{background:rgba(13,13,26,0.8);border-top:2px solid var(--km);border-radius:8px;padding:0.4rem;text-align:center;font-size:0.8rem;color:#e8ecf2;transition:all 0.3s}
@@ -1438,7 +1438,7 @@ else:
   <div class="theory-anim-title">🌟 print("Hello World") 的完整旅程</div>
   <div class="os-journey-map">
     <div class="os-j-phase">
-      <div class="os-j-phase-title" style="--jc:#6c5ce7">📝 编写阶段</div>
+      <div class="os-j-phase-title" style="--jc:#fd79a8">📝 编写阶段</div>
       <div class="os-j-step ojs-anim" style="animation-delay:0.2s">你在编辑器中写下 <code>print("Hello World")</code></div>
     </div>
     <div class="os-j-connector">⬇</div>
@@ -1474,13 +1474,13 @@ else:
 </div>
 <style>
 .os-journey-map{margin:0.5rem 0;display:flex;flex-direction:column;gap:0;align-items:stretch}
-.os-j-phase{background:rgba(13,13,26,0.85);border-radius:12px;padding:0.6rem 0.8rem;border-left:3px solid var(--jc,#6c5ce7)}
+.os-j-phase{background:rgba(13,13,26,0.85);border-radius:12px;padding:0.6rem 0.8rem;border-left:3px solid var(--jc,#fd79a8)}
 .os-j-phase-title{font-size:0.85rem;font-weight:800;color:#e8ecf2;margin-bottom:0.3rem;padding-bottom:0.2rem;border-bottom:1px solid rgba(255,255,255,0.06)}
 .os-j-step{font-size:0.82rem;color:#c8d0e0;padding:0.25rem 0;line-height:1.45}
-.os-j-step code{background:rgba(108,92,231,0.2);padding:0.1rem 0.3rem;border-radius:4px;font-size:0.8rem;color:#a29bfe}
+.os-j-step code{background:rgba(253,121,168,0.2);padding:0.1rem 0.3rem;border-radius:4px;font-size:0.8rem;color:#ffb3d1}
 .os-j-step strong{color:#e8ecf2}
-.os-j-connector{text-align:center;color:#6c5ce7;font-size:0.8rem;padding:0.15rem 0}
-.os-final-wisdom{display:flex;align-items:flex-start;gap:0.7rem;margin-top:1rem;background:linear-gradient(135deg,rgba(108,92,231,0.12),rgba(0,206,201,0.08));border:1px solid rgba(108,92,231,0.3);border-radius:14px;padding:0.8rem}
+.os-j-connector{text-align:center;color:#fd79a8;font-size:0.8rem;padding:0.15rem 0}
+.os-final-wisdom{display:flex;align-items:flex-start;gap:0.7rem;margin-top:1rem;background:linear-gradient(135deg,rgba(253,121,168,0.12),rgba(0,206,201,0.08));border:1px solid rgba(253,121,168,0.3);border-radius:14px;padding:0.8rem}
 .os-fw-icon{font-size:2rem;flex-shrink:0}
 .os-fw-text{font-size:0.85rem;color:#c8d0e0;line-height:1.6}
 .os-fw-text strong{color:#e8ecf2;font-size:0.9rem}

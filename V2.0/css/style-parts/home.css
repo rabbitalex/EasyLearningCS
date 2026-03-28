@@ -27,7 +27,7 @@
   right: -20%;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(108, 92, 231, 0.1), transparent 70%);
+  background: radial-gradient(circle, rgba(253, 121, 168, 0.1), transparent 70%);
   pointer-events: none;
 }
 
@@ -149,7 +149,7 @@
   justify-content: center;
   font-size: 1.5rem;
   margin-bottom: 0.8rem;
-  background: linear-gradient(135deg, rgba(108, 92, 231, 0.15), rgba(0, 206, 201, 0.1));
+  background: linear-gradient(135deg, rgba(253, 121, 168, 0.15), rgba(0, 206, 201, 0.1));
 }
 
 .course-title {

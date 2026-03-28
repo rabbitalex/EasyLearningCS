@@ -45,9 +45,9 @@ const CHAPTER_V3_DS = {
   <div class="theory-anim-title">🔗 链表结构动画</div>
   <div style="display:flex;align-items:center;justify-content:center;gap:0.3rem;margin:1rem 0;flex-wrap:wrap">
     <div class="t0-fadein" style="animation-delay:0.2s;display:flex;align-items:center;gap:0.3rem">
-      <div style="display:flex;border:2px solid rgba(108,92,231,0.4);border-radius:10px;overflow:hidden">
-        <div style="background:rgba(108,92,231,0.15);padding:0.5rem 0.8rem;font-weight:800;color:#6c5ce7;font-size:0.85rem">10</div>
-        <div style="background:rgba(108,92,231,0.08);padding:0.5rem 0.4rem;font-size:0.6rem;color:rgba(255,255,255,0.3);border-left:1px solid rgba(108,92,231,0.2)">next→</div>
+      <div style="display:flex;border:2px solid rgba(253,121,168,0.4);border-radius:10px;overflow:hidden">
+        <div style="background:rgba(253,121,168,0.15);padding:0.5rem 0.8rem;font-weight:800;color:#fd79a8;font-size:0.85rem">10</div>
+        <div style="background:rgba(253,121,168,0.08);padding:0.5rem 0.4rem;font-size:0.6rem;color:rgba(255,255,255,0.3);border-left:1px solid rgba(253,121,168,0.2)">next→</div>
       </div>
       <div style="color:rgba(255,255,255,0.3)">→</div>
     </div>
@@ -87,10 +87,10 @@ const CHAPTER_V3_DS = {
   <div class="theory-anim-title">📚 栈与队列动画模拟</div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:1rem 0">
     <div style="text-align:center">
-      <div style="font-weight:800;color:#6c5ce7;margin-bottom:0.5rem">📚 栈 (LIFO)</div>
-      <div id="stackVis" style="display:flex;flex-direction:column-reverse;align-items:center;gap:3px;min-height:120px;background:rgba(108,92,231,0.05);border-radius:10px;padding:0.5rem;border:1px solid rgba(108,92,231,0.2)"></div>
+      <div style="font-weight:800;color:#fd79a8;margin-bottom:0.5rem">📚 栈 (LIFO)</div>
+      <div id="stackVis" style="display:flex;flex-direction:column-reverse;align-items:center;gap:3px;min-height:120px;background:rgba(253,121,168,0.05);border-radius:10px;padding:0.5rem;border:1px solid rgba(253,121,168,0.2)"></div>
       <div style="display:flex;gap:0.3rem;justify-content:center;margin-top:0.5rem">
-        <button onclick="stackPush()" style="padding:0.3rem 0.8rem;border-radius:6px;border:none;background:#6c5ce7;color:white;font-size:0.7rem;font-weight:700;cursor:pointer">Push</button>
+        <button onclick="stackPush()" style="padding:0.3rem 0.8rem;border-radius:6px;border:none;background:#fd79a8;color:white;font-size:0.7rem;font-weight:700;cursor:pointer">Push</button>
         <button onclick="stackPop()" style="padding:0.3rem 0.8rem;border-radius:6px;border:none;background:#fd79a8;color:white;font-size:0.7rem;font-weight:700;cursor:pointer">Pop</button>
       </div>
     </div>
@@ -108,7 +108,7 @@ const CHAPTER_V3_DS = {
 var stackData=[],queueData=[],dsCounter=1;
 function stackPush(){stackData.push(dsCounter++);renderStack();}
 function stackPop(){if(stackData.length>0){stackData.pop();renderStack();}}
-function renderStack(){var el=document.getElementById('stackVis');el.innerHTML='';stackData.forEach(function(v,i){el.innerHTML+='<div style="background:rgba(108,92,231,0.2);border:1px solid rgba(108,92,231,0.4);border-radius:6px;padding:0.3rem 1.5rem;font-weight:700;color:#6c5ce7;font-size:0.8rem;animation:treeExpand 0.2s ease">'+(i===stackData.length-1?'⬆️ ':'')+v+'</div>';});}
+function renderStack(){var el=document.getElementById('stackVis');el.innerHTML='';stackData.forEach(function(v,i){el.innerHTML+='<div style="background:rgba(253,121,168,0.2);border:1px solid rgba(253,121,168,0.4);border-radius:6px;padding:0.3rem 1.5rem;font-weight:700;color:#fd79a8;font-size:0.8rem;animation:treeExpand 0.2s ease">'+(i===stackData.length-1?'⬆️ ':'')+v+'</div>';});}
 function queueEnqueue(){queueData.push(dsCounter++);renderQueue();}
 function queueDequeue(){if(queueData.length>0){queueData.shift();renderQueue();}}
 function renderQueue(){var el=document.getElementById('queueVis');el.innerHTML='';queueData.forEach(function(v,i){el.innerHTML+='<div style="background:rgba(0,206,201,0.2);border:1px solid rgba(0,206,201,0.4);border-radius:6px;padding:0.3rem 0.8rem;font-weight:700;color:#00cec9;font-size:0.8rem;animation:treeExpand 0.2s ease">'+(i===0?'⬅️ ':'')+v+'</div>';});}
@@ -139,7 +139,7 @@ function renderQueue(){var el=document.getElementById('queueVis');el.innerHTML='
       <div style="display:flex;justify-content:center;gap:4rem;margin-top:0.3rem">
         <div style="text-align:center">
           <div style="font-size:0.7rem;color:rgba(255,255,255,0.2);margin-bottom:2px">╱</div>
-          <div class="t0-fadein" style="animation-delay:0.4s;width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#6c5ce7,#a29bfe);display:flex;align-items:center;justify-content:center;font-weight:900;color:white;margin:0 auto;font-size:0.9rem">2</div>
+          <div class="t0-fadein" style="animation-delay:0.4s;width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#fd79a8,#ffb3d1);display:flex;align-items:center;justify-content:center;font-weight:900;color:white;margin:0 auto;font-size:0.9rem">2</div>
           <div style="display:flex;gap:1.5rem;margin-top:0.3rem;justify-content:center">
             <div style="text-align:center">
               <div style="font-size:0.6rem;color:rgba(255,255,255,0.2)">╱</div>
@@ -169,7 +169,7 @@ function renderQueue(){var el=document.getElementById('queueVis');el.innerHTML='
     </div>
   </div>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin-top:0.5rem;font-size:0.7rem;text-align:center">
-    <div style="background:rgba(108,92,231,0.1);border-radius:6px;padding:0.4rem"><span style="color:#6c5ce7;font-weight:700">前序</span>: 1,2,4,5,3,6,7</div>
+    <div style="background:rgba(253,121,168,0.1);border-radius:6px;padding:0.4rem"><span style="color:#fd79a8;font-weight:700">前序</span>: 1,2,4,5,3,6,7</div>
     <div style="background:rgba(0,206,201,0.1);border-radius:6px;padding:0.4rem"><span style="color:#00cec9;font-weight:700">中序</span>: 4,2,5,1,6,3,7</div>
     <div style="background:rgba(253,121,168,0.1);border-radius:6px;padding:0.4rem"><span style="color:#fd79a8;font-weight:700">后序</span>: 4,5,2,6,7,3,1</div>
   </div>

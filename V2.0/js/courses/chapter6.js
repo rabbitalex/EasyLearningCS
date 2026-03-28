@@ -46,9 +46,9 @@ const CHAPTER6 = {
   <div class="theory-callout">💡 定义函数不会执行代码！只有<strong>调用</strong>函数时（写函数名+括号），代码才会运行。</div>
 </div>
 <style>
-.theory-anim-box{background:linear-gradient(135deg,rgba(108,92,231,0.08),rgba(0,206,201,0.08));border:1px solid rgba(108,92,231,0.2);border-radius:16px;padding:1.2rem;margin:1rem 0}
+.theory-anim-box{background:linear-gradient(135deg,rgba(253,121,168,0.08),rgba(0,206,201,0.08));border:1px solid rgba(253,121,168,0.2);border-radius:16px;padding:1.2rem;margin:1rem 0}
 .theory-anim-title{font-weight:800;color:#FF9800;font-weight:700;margin-bottom:1rem;font-size:0.9rem}
-.theory-callout{background:rgba(108,92,231,0.1);border-left:3px solid #6c5ce7;padding:0.5rem 0.8rem;border-radius:0 8px 8px 0;font-size:0.8rem;color:#e8ecf2;margin-top:0.8rem}
+.theory-callout{background:rgba(253,121,168,0.1);border-left:3px solid #fd79a8;padding:0.5rem 0.8rem;border-radius:0 8px 8px 0;font-size:0.8rem;color:#e8ecf2;margin-top:0.8rem}
 .ch6-func-anatomy{background:#0d0d1a;border-radius:10px;padding:0.8rem;margin:0.5rem 0;position:relative}
 .ch6-fa-line{font-family:monospace;font-size:0.85rem;color:#e8ecf2}
 .ch6-fa-kw{color:#fd79a8;font-weight:700}
@@ -142,9 +142,9 @@ const CHAPTER6 = {
 </div>
 <style>
 .ch6-return-flow{display:flex;align-items:center;justify-content:center;gap:0.3rem;margin:0.6rem 0;flex-wrap:wrap}
-.ch6-rf-box{background:#0d0d1a;border-radius:10px;padding:0.5rem 0.8rem;text-align:center;border:1px solid rgba(108,92,231,0.2);min-width:80px}
+.ch6-rf-box{background:#0d0d1a;border-radius:10px;padding:0.5rem 0.8rem;text-align:center;border:1px solid rgba(253,121,168,0.2);min-width:80px}
 .ch6-rf-input{border-color:rgba(253,203,110,0.4)}
-.ch6-rf-func{border-color:rgba(108,92,231,0.4);background:rgba(108,92,231,0.05)}
+.ch6-rf-func{border-color:rgba(253,121,168,0.4);background:rgba(253,121,168,0.05)}
 .ch6-rf-output{border-color:rgba(0,184,148,0.4)}
 .ch6-rf-label{font-size:0.92rem;color:#c8d0e0;margin-bottom:0.15rem}
 .ch6-rf-val{font-family:monospace;font-size:0.92rem;font-weight:700;color:#FF9800;font-weight:700}
@@ -181,7 +181,7 @@ const CHAPTER6 = {
 </div>
 <style>
 .ch6-examples{display:flex;flex-direction:column;gap:0.4rem;margin:0.5rem 0}
-.ch6-ex-card{background:#0d0d1a;border-radius:8px;padding:0.5rem 0.7rem;border-left:3px solid #6c5ce7}
+.ch6-ex-card{background:#0d0d1a;border-radius:8px;padding:0.5rem 0.7rem;border-left:3px solid #fd79a8}
 .ch6-ex-title{font-size:0.88rem;font-weight:700;color:#fdcb6e;margin-bottom:0.2rem}
 .ch6-ex-code{font-family:monospace;font-size:0.85rem;color:#FF9800;font-weight:700;white-space:pre;line-height:1.5}
 </style>`,

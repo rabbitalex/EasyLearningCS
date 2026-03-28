@@ -72,7 +72,7 @@ function lexerTokenize(el) {
   });
   out.innerHTML = html || '<span style="color:#555">输入代码查看Token...</span>';
   // 渲染语法高亮
-  var colorMap = { kw: '#00cec9', id: '#a29bfe', num: '#fdcb6e', op: '#fd79a8', str: '#00b894' };
+  var colorMap = { kw: '#00cec9', id: '#ffb3d1', num: '#fdcb6e', op: '#fd79a8', str: '#00b894' };
   html = '';
   tokens.forEach(function(tk) {
     var colorKey = tk.c.split('-')[1];

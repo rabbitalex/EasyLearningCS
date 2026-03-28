@@ -1,6 +1,7 @@
 // 第零章C：机器码与汇编指令（动画教学）
 const CHAPTER0C = {
   chapter: "第四章：机器码与汇编",
+  chapterNum: 4,
   icon: "⚙️",
   lessons: [
     // ============================================================
@@ -71,26 +72,26 @@ window.changeBinDemo = function(d) {
 };
 </script>
 <style>
-.theory-anim-box{background:linear-gradient(135deg,rgba(108,92,231,0.08),rgba(0,206,201,0.08));border:1px solid rgba(108,92,231,0.2);border-radius:16px;padding:1.2rem;margin:1rem 0}
+.theory-anim-box{background:linear-gradient(135deg,rgba(253,121,168,0.08),rgba(0,206,201,0.08));border:1px solid rgba(253,121,168,0.2);border-radius:16px;padding:1.2rem;margin:1rem 0}
 .theory-anim-title{font-weight:800;color:#FF9800;margin-bottom:1rem;font-size:0.9rem}
-.theory-callout{background:rgba(108,92,231,0.1);border-left:3px solid #6c5ce7;padding:0.5rem 0.8rem;border-radius:0 8px 8px 0;font-size:0.8rem;color:#e8ecf2;margin-top:0.8rem}
+.theory-callout{background:rgba(253,121,168,0.1);border-left:3px solid #fd79a8;padding:0.5rem 0.8rem;border-radius:0 8px 8px 0;font-size:0.8rem;color:#e8ecf2;margin-top:0.8rem}
 .theory-btn{margin-top:0.8rem;padding:0.5rem 1.2rem;background:linear-gradient(135deg,#FF9800,#F57C00);border:none;border-radius:20px;color:#fff;font-size:0.92rem;font-weight:700;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 3px 10px rgba(255,152,0,0.3)}
 .theory-btn:hover{transform:scale(1.05);box-shadow:0 4px 18px rgba(255,152,0,0.5)}
 .t0-fadein{opacity:0;animation:t0fi 0.6s ease forwards}
 @keyframes t0fi{to{opacity:1}}
 .bin-demo{background:rgba(13,13,26,0.5);border-radius:12px;padding:0.8rem}
 .bin-converter{display:flex;align-items:center;justify-content:center;gap:0.8rem;flex-wrap:wrap}
-.bin-dec-side,.bin-bin-side{background:rgba(13,13,26,0.8);border-radius:10px;padding:0.6rem 0.8rem;text-align:center;min-width:120px;border:1px solid rgba(108,92,231,0.2)}
+.bin-dec-side,.bin-bin-side{background:rgba(13,13,26,0.8);border-radius:10px;padding:0.6rem 0.8rem;text-align:center;min-width:120px;border:1px solid rgba(253,121,168,0.2)}
 .bin-dec-side{border-top:3px solid #FF9800}
 .bin-bin-side{border-top:3px solid #00cec9}
-.bin-label{font-size:0.65rem;color:#a29bfe;font-weight:600;margin-bottom:0.3rem}
+.bin-label{font-size:0.65rem;color:#ffb3d1;font-weight:600;margin-bottom:0.3rem}
 .bin-value{font-size:1.4rem;font-weight:800;color:#e8ecf2}
 .bin-mono{font-family:monospace;letter-spacing:2px;color:#00cec9}
 .bin-buttons{display:flex;gap:0.3rem;justify-content:center;margin-top:0.3rem}
 .bin-btn{width:28px;height:28px;border-radius:50%;border:1px solid rgba(255,152,0,0.4);background:rgba(255,152,0,0.1);color:#FF9800;font-weight:700;font-size:1rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center}
 .bin-btn:hover{background:rgba(255,152,0,0.2);transform:scale(1.1)}
 .bin-bit-labels{display:flex;justify-content:center;gap:2px;margin-top:0.3rem}
-.bin-bit-labels span{font-size:0.5rem;color:#a29bfe;width:16px;text-align:center}
+.bin-bit-labels span{font-size:0.5rem;color:#ffb3d1;width:16px;text-align:center}
 .bin-arrow-box{font-size:1.2rem;color:#FF9800;animation:binArrow 1.5s ease-in-out infinite}
 @keyframes binArrow{0%,100%{opacity:0.4;transform:scale(1)}50%{opacity:1;transform:scale(1.2)}}
 .bin-breakdown{display:flex;flex-wrap:wrap;gap:0.2rem;justify-content:center;margin-top:0.6rem;padding:0.4rem;background:rgba(0,0,0,0.2);border-radius:8px}
@@ -138,14 +139,14 @@ window.changeBinDemo = function(d) {
 </div>
 <style>
 .machine-code-demo{display:flex;flex-direction:column;gap:0.5rem;margin:0.5rem 0}
-.mc-instruction{background:rgba(13,13,26,0.8);border-radius:10px;padding:0.6rem;border-left:3px solid #6c5ce7;transition:all 0.3s}
+.mc-instruction{background:rgba(13,13,26,0.8);border-radius:10px;padding:0.6rem;border-left:3px solid #fd79a8;transition:all 0.3s}
 .mc-instruction:hover{transform:translateX(4px);border-left-color:#FF9800}
 .mc-hex{font-family:monospace;font-size:0.95rem;font-weight:800;color:#fdcb6e;letter-spacing:1px}
 .mc-binary{font-family:monospace;font-size:0.65rem;color:rgba(0,206,201,0.6);margin-top:0.15rem;letter-spacing:0.5px;word-break:break-all}
 .mc-meaning{font-size:0.78rem;color:#e8ecf2;margin-top:0.3rem;font-weight:600}
 .mc-parts{display:flex;gap:0.5rem;margin-top:0.25rem;flex-wrap:wrap}
 .mc-part{font-size:0.65rem;padding:0.1rem 0.4rem;border-radius:4px;font-family:monospace}
-.mc-opcode{background:rgba(108,92,231,0.15);color:#a29bfe}
+.mc-opcode{background:rgba(253,121,168,0.15);color:#ffb3d1}
 .mc-operand{background:rgba(0,206,201,0.1);color:#00cec9}
 </style>`
         },
@@ -184,7 +185,7 @@ window.changeBinDemo = function(d) {
 </div>
 <style>
 .code-journey{display:flex;flex-direction:column;align-items:center;gap:0.15rem;margin:0.5rem 0}
-.cj-stage{background:rgba(13,13,26,0.8);border-radius:10px;padding:0.5rem 0.8rem;min-width:220px;text-align:center;border:1px solid rgba(108,92,231,0.15);transition:all 0.4s}
+.cj-stage{background:rgba(13,13,26,0.8);border-radius:10px;padding:0.5rem 0.8rem;min-width:220px;text-align:center;border:1px solid rgba(253,121,168,0.15);transition:all 0.4s}
 .cj-stage.cj-active{border-color:#FF9800;box-shadow:0 0 18px rgba(255,152,0,0.25);transform:scale(1.04);background:rgba(255,152,0,0.06)}
 .cj-stage.cj-done{border-color:#00b894;background:rgba(0,184,148,0.06);opacity:0.75}
 .cj-icon{font-size:1.1rem}
@@ -273,15 +274,15 @@ window.changeBinDemo = function(d) {
 </div>
 <style>
 .asm-compare{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.4rem;margin:0.5rem 0}
-.asm-col{background:rgba(13,13,26,0.8);border-radius:10px;padding:0.5rem;text-align:center;border:1px solid rgba(108,92,231,0.15);transition:all 0.3s}
+.asm-col{background:rgba(13,13,26,0.8);border-radius:10px;padding:0.5rem;text-align:center;border:1px solid rgba(253,121,168,0.15);transition:all 0.3s}
 .asm-col:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.2)}
 .asm-col-title{font-weight:800;font-size:0.78rem;margin-bottom:0.3rem}
 .asm-col-code{font-family:monospace;font-size:0.72rem;color:#e8ecf2;background:rgba(0,0,0,0.3);padding:0.3rem;border-radius:6px;line-height:1.5;min-height:50px;display:flex;align-items:center;justify-content:center}
-.asm-col-tag{font-size:0.6rem;color:#a29bfe;margin-top:0.25rem}
+.asm-col-tag{font-size:0.6rem;color:#ffb3d1;margin-top:0.25rem}
 .asm-key-table{background:rgba(13,13,26,0.5);border-radius:10px;padding:0.6rem;margin-top:0.6rem}
 .asm-key-title{font-weight:700;color:#FF9800;font-size:0.8rem;margin-bottom:0.4rem;text-align:center}
 .asm-key-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.3rem}
-.asm-key-item{background:rgba(13,13,26,0.6);border-radius:8px;padding:0.35rem 0.5rem;display:flex;flex-direction:column;gap:0.1rem;border-left:2px solid rgba(108,92,231,0.3);transition:border-color 0.3s}
+.asm-key-item{background:rgba(13,13,26,0.6);border-radius:8px;padding:0.35rem 0.5rem;display:flex;flex-direction:column;gap:0.1rem;border-left:2px solid rgba(253,121,168,0.3);transition:border-color 0.3s}
 .asm-key-item:hover{border-left-color:#FF9800}
 .asm-key-inst{font-family:monospace;font-weight:800;font-size:0.8rem;color:#fdcb6e}
 .asm-key-desc{font-size:0.68rem;color:#e8ecf2}
@@ -340,7 +341,7 @@ window.changeBinDemo = function(d) {
     <div class="reg-legend">
       <span class="reg-legend-item"><span class="reg-dot" style="background:#fdcb6e"></span>通用寄存器</span>
       <span class="reg-legend-item"><span class="reg-dot" style="background:#00cec9"></span>栈指针</span>
-      <span class="reg-legend-item"><span class="reg-dot" style="background:#a29bfe"></span>控制寄存器</span>
+      <span class="reg-legend-item"><span class="reg-dot" style="background:#ffb3d1"></span>控制寄存器</span>
     </div>
   </div>
   <div class="theory-callout">💡 Python的变量存在内存里，但CPU运算时会先把它们<strong>加载到寄存器</strong>中，算完再存回去！</div>
@@ -348,14 +349,14 @@ window.changeBinDemo = function(d) {
 <style>
 .reg-demo{background:rgba(13,13,26,0.5);border-radius:12px;padding:0.6rem}
 .reg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.3rem}
-.reg-card{background:rgba(13,13,26,0.8);border-radius:8px;padding:0.4rem;text-align:center;border:1px solid rgba(108,92,231,0.15);transition:all 0.3s}
+.reg-card{background:rgba(13,13,26,0.8);border-radius:8px;padding:0.4rem;text-align:center;border:1px solid rgba(253,121,168,0.15);transition:all 0.3s}
 .reg-card:hover{transform:translateY(-2px);box-shadow:0 3px 10px rgba(0,0,0,0.3)}
 .reg-general{border-top:2px solid #fdcb6e}
 .reg-special{border-top:2px solid #00cec9}
-.reg-control{border-top:2px solid #a29bfe}
+.reg-control{border-top:2px solid #ffb3d1}
 .reg-name{font-family:monospace;font-weight:800;font-size:0.78rem;color:#e8ecf2}
 .reg-val{font-family:monospace;font-size:0.65rem;color:#00cec9;background:rgba(0,0,0,0.3);padding:0.1rem 0.2rem;border-radius:3px;margin:0.15rem 0}
-.reg-role{font-size:0.55rem;color:#a29bfe}
+.reg-role{font-size:0.55rem;color:#ffb3d1}
 .reg-legend{display:flex;justify-content:center;gap:0.8rem;margin-top:0.5rem;flex-wrap:wrap}
 .reg-legend-item{display:flex;align-items:center;gap:0.25rem;font-size:0.65rem;color:#c8d0e0}
 .reg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
@@ -419,14 +420,14 @@ else:
 </div>
 <style>
 .cmp-demo{display:grid;grid-template-columns:1fr auto 1fr;gap:0.4rem;align-items:center;margin:0.5rem 0}
-.cmp-side{background:rgba(13,13,26,0.8);border-radius:10px;padding:0.5rem;border:1px solid rgba(108,92,231,0.15)}
+.cmp-side{background:rgba(13,13,26,0.8);border-radius:10px;padding:0.5rem;border:1px solid rgba(253,121,168,0.15)}
 .cmp-side-title{font-weight:800;font-size:0.78rem;margin-bottom:0.3rem;text-align:center}
 .cmp-code-block{font-family:monospace;font-size:0.68rem;color:#e8ecf2;background:rgba(0,0,0,0.3);padding:0.4rem;border-radius:6px;margin:0;line-height:1.5;white-space:pre;overflow-x:auto}
 .cmp-arrow-mid{font-size:1.2rem;color:#FF9800;font-weight:700;text-align:center}
 .asm-h-cmp{color:#fdcb6e;font-weight:700}
 .asm-h-jmp{color:#e17055;font-weight:700}
 .asm-h-label{color:#00cec9;font-weight:700}
-.asm-h-normal{color:#a29bfe}
+.asm-h-normal{color:#ffb3d1}
 .asm-comment{color:rgba(255,255,255,0.3);font-style:italic}
 .jmp-table{background:rgba(0,206,201,0.06);border:1px solid rgba(0,206,201,0.15);border-radius:10px;padding:0.6rem;margin-top:0.6rem}
 .jmp-title{font-weight:700;color:#00cec9;font-size:0.8rem;margin-bottom:0.4rem;text-align:center}
@@ -477,7 +478,7 @@ print(total)  # 6</pre>
   </div>
   <div style="display:flex;gap:0.4rem;margin-top:0.5rem">
     <button class="theory-btn" onclick="stepLoopDemo()">⏭ 下一步</button>
-    <button class="theory-btn" style="background:linear-gradient(135deg,#6c5ce7,#a29bfe)" onclick="resetLoopDemo()">🔄 重置</button>
+    <button class="theory-btn" style="background:linear-gradient(135deg,#fd79a8,#ffb3d1)" onclick="resetLoopDemo()">🔄 重置</button>
   </div>
 </div>
 <script>
@@ -526,7 +527,7 @@ print(total)  # 6</pre>
 .loop-demo{display:grid;grid-template-columns:1fr auto;gap:0.5rem;margin:0.5rem 0}
 .loop-code-side{display:flex;flex-direction:column;gap:0.4rem}
 .loop-py-box,.loop-asm-box{background:rgba(13,13,26,0.8);border-radius:8px;padding:0.4rem 0.5rem}
-.loop-py-title,.loop-asm-title{font-weight:700;font-size:0.75rem;color:#a29bfe;margin-bottom:0.2rem}
+.loop-py-title,.loop-asm-title{font-weight:700;font-size:0.75rem;color:#ffb3d1;margin-bottom:0.2rem}
 .loop-code{font-family:monospace;font-size:0.7rem;color:#e8ecf2;margin:0;line-height:1.4}
 .loop-asm-lines{font-family:monospace;font-size:0.7rem;color:#e8ecf2;line-height:1.6}
 .loop-asm-line{padding:0.05rem 0.3rem;border-radius:4px;transition:all 0.3s}
@@ -535,7 +536,7 @@ print(total)  # 6</pre>
 .loop-reg-side{background:rgba(13,13,26,0.6);border-radius:10px;padding:0.5rem;min-width:90px;display:flex;flex-direction:column;gap:0.3rem}
 .loop-reg-title{font-weight:700;font-size:0.72rem;color:#FF9800;text-align:center}
 .loop-reg-item{display:flex;justify-content:space-between;padding:0.2rem 0.3rem;background:rgba(0,0,0,0.2);border-radius:4px}
-.lrn{font-family:monospace;font-weight:700;font-size:0.72rem;color:#a29bfe}
+.lrn{font-family:monospace;font-weight:700;font-size:0.72rem;color:#ffb3d1}
 .lrv{font-family:monospace;font-weight:800;font-size:0.72rem;color:#00cec9}
 .loop-out{font-size:0.72rem;color:#c8d0e0;text-align:center;padding:0.3rem;background:rgba(0,0,0,0.2);border-radius:4px;margin-top:auto}
 </style>`
@@ -605,20 +606,20 @@ print(total)  # 6</pre>
 </div>
 <style>
 .timeline-demo{display:flex;flex-direction:column;gap:0.3rem;margin:0.5rem 0;position:relative;padding-left:2.8rem}
-.timeline-demo::before{content:'';position:absolute;left:1.1rem;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,#e17055,#fdcb6e,#00cec9,#6c5ce7);border-radius:2px}
+.timeline-demo::before{content:'';position:absolute;left:1.1rem;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,#e17055,#fdcb6e,#00cec9,#fd79a8);border-radius:2px}
 .tl-item{display:flex;align-items:center;gap:0.5rem;position:relative}
 .tl-item::before{content:'';position:absolute;left:-1.9rem;width:10px;height:10px;border-radius:50%;border:2px solid;background:rgba(13,13,26,0.9);z-index:1}
 .tl-item:nth-child(1)::before{border-color:#e17055}
 .tl-item:nth-child(2)::before{border-color:#fdcb6e}
 .tl-item:nth-child(3)::before{border-color:#00cec9}
-.tl-item:nth-child(4)::before{border-color:#6c5ce7}
-.tl-year{position:absolute;left:-2.7rem;font-size:0.55rem;font-weight:800;color:#a29bfe;width:2rem;text-align:right}
-.tl-content{background:rgba(13,13,26,0.8);border-radius:10px;padding:0.5rem 0.6rem;flex:1;border:1px solid rgba(108,92,231,0.15);transition:all 0.3s}
+.tl-item:nth-child(4)::before{border-color:#fd79a8}
+.tl-year{position:absolute;left:-2.7rem;font-size:0.55rem;font-weight:800;color:#ffb3d1;width:2rem;text-align:right}
+.tl-content{background:rgba(13,13,26,0.8);border-radius:10px;padding:0.5rem 0.6rem;flex:1;border:1px solid rgba(253,121,168,0.15);transition:all 0.3s}
 .tl-content:hover{transform:translateX(4px)}
 .tl-gen1{border-left:3px solid #e17055}
 .tl-gen2{border-left:3px solid #fdcb6e}
 .tl-gen3{border-left:3px solid #00cec9}
-.tl-gen4{border-left:3px solid #6c5ce7}
+.tl-gen4{border-left:3px solid #fd79a8}
 .tl-title{font-weight:800;font-size:0.8rem;color:#e8ecf2}
 .tl-code{font-family:monospace;font-size:0.72rem;color:#00cec9;background:rgba(0,0,0,0.3);padding:0.15rem 0.4rem;border-radius:4px;display:inline-block;margin:0.15rem 0}
 .tl-desc{font-size:0.65rem;color:#c8d0e0}
@@ -667,8 +668,8 @@ print(total)  # 6</pre>
 </div>
 <style>
 .value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.4rem;margin:0.5rem 0}
-.value-card{background:rgba(13,13,26,0.8);border-radius:10px;padding:0.5rem;text-align:center;border:1px solid rgba(108,92,231,0.15);transition:all 0.3s;cursor:default}
-.value-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(108,92,231,0.15);border-color:rgba(108,92,231,0.4)}
+.value-card{background:rgba(13,13,26,0.8);border-radius:10px;padding:0.5rem;text-align:center;border:1px solid rgba(253,121,168,0.15);transition:all 0.3s;cursor:default}
+.value-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(253,121,168,0.15);border-color:rgba(253,121,168,0.4)}
 .vc-icon{font-size:1.3rem;margin-bottom:0.2rem}
 .vc-title{font-weight:800;font-size:0.78rem;color:#e8ecf2}
 .vc-desc{font-size:0.65rem;color:#c8d0e0;margin-top:0.2rem;line-height:1.3}

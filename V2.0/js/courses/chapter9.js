@@ -40,11 +40,11 @@ const CHAPTER9 = {
   <div class="theory-callout">💡 就像游戏存档一样——不保存就白玩了！文件操作就是给程序"存档"的能力。</div>
 </div>
 <style>
-.theory-anim-box{background:linear-gradient(135deg,rgba(108,92,231,0.08),rgba(0,206,201,0.08));border:1px solid rgba(108,92,231,0.2);border-radius:16px;padding:1.2rem;margin:1rem 0}
+.theory-anim-box{background:linear-gradient(135deg,rgba(253,121,168,0.08),rgba(0,206,201,0.08));border:1px solid rgba(253,121,168,0.2);border-radius:16px;padding:1.2rem;margin:1rem 0}
 .theory-anim-title{font-weight:800;color:#FF9800;font-weight:700;margin-bottom:1rem;font-size:0.9rem}
-.theory-callout{background:rgba(108,92,231,0.1);border-left:3px solid #6c5ce7;padding:0.5rem 0.8rem;border-radius:0 8px 8px 0;font-size:0.8rem;color:#e8ecf2;margin-top:0.8rem}
+.theory-callout{background:rgba(253,121,168,0.1);border-left:3px solid #fd79a8;padding:0.5rem 0.8rem;border-radius:0 8px 8px 0;font-size:0.8rem;color:#e8ecf2;margin-top:0.8rem}
 .ch9-compare-grid{display:flex;align-items:center;gap:0.5rem;justify-content:center}
-.ch9-cmp-card{background:#0d0d1a;border-radius:12px;padding:0.6rem;text-align:center;flex:1;border:1px solid rgba(108,92,231,0.15)}
+.ch9-cmp-card{background:#0d0d1a;border-radius:12px;padding:0.6rem;text-align:center;flex:1;border:1px solid rgba(253,121,168,0.15)}
 .ch9-cmp-mem{border-color:rgba(253,203,110,0.3)}
 .ch9-cmp-file{border-color:rgba(0,184,148,0.3)}
 .ch9-cmp-icon{font-size:1.5rem;margin-bottom:0.2rem}
@@ -109,7 +109,7 @@ const CHAPTER9 = {
 <div class="theory-anim-box">
   <div class="theory-anim-title">📖 读取文件的三种方法</div>
   <div class="ch9-read-methods">
-    <div class="ch9-rm-card" style="border-color:rgba(108,92,231,0.4)">
+    <div class="ch9-rm-card" style="border-color:rgba(253,121,168,0.4)">
       <div class="ch9-rm-name">f.read()</div>
       <div class="ch9-rm-desc">一次读取全部内容</div>
       <div class="ch9-rm-use">适合小文件</div>
@@ -223,7 +223,7 @@ f.close()  # 容易忘记！</div>
 <style>
 .ch9-csv-demo{display:flex;gap:0.8rem;align-items:flex-start;margin:0.5rem 0;flex-wrap:wrap}
 .ch9-csv-file{background:#0d0d1a;border-radius:10px;overflow:hidden;flex:1;min-width:160px}
-.ch9-csv-header{display:flex;align-items:center;gap:0.3rem;padding:0.35rem 0.6rem;background:rgba(108,92,231,0.1);font-size:0.88rem;font-weight:700;color:#FF9800;font-weight:700}
+.ch9-csv-header{display:flex;align-items:center;gap:0.3rem;padding:0.35rem 0.6rem;background:rgba(253,121,168,0.1);font-size:0.88rem;font-weight:700;color:#FF9800;font-weight:700}
 .ch9-csv-icon{font-size:0.9rem}
 .ch9-csv-content{padding:0.4rem 0.6rem}
 .ch9-csv-row{font-family:monospace;font-size:0.88rem;color:#e8ecf2;padding:0.15rem 0;animation:ch9FadeIn 0.3s ease both}
@@ -302,7 +302,7 @@ f.close()  # 容易忘记！</div>
       <div class="ch9-af-name">读取数据</div>
     </div>
     <div class="ch9-af-arrow">→</div>
-    <div class="ch9-af-step" style="background:rgba(108,92,231,0.08);border-color:rgba(108,92,231,0.3)">
+    <div class="ch9-af-step" style="background:rgba(253,121,168,0.08);border-color:rgba(253,121,168,0.3)">
       <div class="ch9-af-icon">🔧</div>
       <div class="ch9-af-name">清洗处理</div>
     </div>
@@ -445,7 +445,7 @@ f.close()  # 容易忘记！</div>
 .ch9-ts-block{display:flex;align-items:center;gap:0.5rem;border-radius:8px;padding:0.35rem 0.6rem}
 .ch9-ts-label{font-family:monospace;font-size:0.9rem;font-weight:700;min-width:120px}
 .ch9-ts-desc{font-size:0.8rem;color:#c8d0e0}
-.ch9-ts-try{background:rgba(108,92,231,0.08);border-left:3px solid #6c5ce7}
+.ch9-ts-try{background:rgba(253,121,168,0.08);border-left:3px solid #fd79a8}
 .ch9-ts-try .ch9-ts-label{color:#FF9800;font-weight:700}
 .ch9-ts-except{background:rgba(225,112,85,0.08);border-left:3px solid #e17055}
 .ch9-ts-except .ch9-ts-label{color:#e17055}

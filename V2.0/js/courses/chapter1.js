@@ -45,19 +45,19 @@ const CHAPTER1 = {
   <div class="theory-callout">💡 Python的名字来自英国喜剧团体 "Monty Python"，不是大蟒蛇哦！</div>
 </div>
 <style>
-.theory-anim-box{background:linear-gradient(135deg,rgba(108,92,231,0.08),rgba(0,206,201,0.08));border:1px solid rgba(108,92,231,0.2);border-radius:16px;padding:1.2rem;margin:1rem 0}
+.theory-anim-box{background:linear-gradient(135deg,rgba(253,121,168,0.08),rgba(0,206,201,0.08));border:1px solid rgba(253,121,168,0.2);border-radius:16px;padding:1.2rem;margin:1rem 0}
 .theory-anim-title{font-weight:800;color:#FF9800;font-weight:700;margin-bottom:1rem;font-size:0.9rem}
-.theory-callout{background:rgba(108,92,231,0.1);border-left:3px solid #6c5ce7;padding:0.5rem 0.8rem;border-radius:0 8px 8px 0;font-size:0.8rem;color:#e8ecf2;margin-top:0.8rem}
+.theory-callout{background:rgba(253,121,168,0.1);border-left:3px solid #fd79a8;padding:0.5rem 0.8rem;border-radius:0 8px 8px 0;font-size:0.8rem;color:#e8ecf2;margin-top:0.8rem}
 .ch1-lang-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.4rem;margin:0.6rem 0}
-.ch1-lang-card{background:#0d0d1a;border-radius:10px;padding:0.5rem;text-align:center;border:1px solid rgba(108,92,231,0.15);transition:transform 0.2s;animation:nodeAppear 0.3s ease both;position:relative}
+.ch1-lang-card{background:#0d0d1a;border-radius:10px;padding:0.5rem;text-align:center;border:1px solid rgba(253,121,168,0.15);transition:transform 0.2s;animation:nodeAppear 0.3s ease both;position:relative}
 @keyframes nodeAppear{from{opacity:0;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}
 .ch1-lang-card:nth-child(1){animation-delay:0.05s}.ch1-lang-card:nth-child(2){animation-delay:0.1s}.ch1-lang-card:nth-child(3){animation-delay:0.15s}.ch1-lang-card:nth-child(4){animation-delay:0.2s}
 .ch1-lang-card:hover{transform:translateY(-3px)}
-.ch1-lang-highlight{border-color:rgba(108,92,231,0.5);background:rgba(108,92,231,0.06);box-shadow:0 0 12px rgba(108,92,231,0.15)}
+.ch1-lang-highlight{border-color:rgba(253,121,168,0.5);background:rgba(253,121,168,0.06);box-shadow:0 0 12px rgba(253,121,168,0.15)}
 .ch1-lang-icon{font-size:1.3rem;margin-bottom:0.1rem}
 .ch1-lang-name{font-size:0.9rem;font-weight:800;color:#e8ecf2}
 .ch1-lang-desc{font-size:0.9rem;color:#c8d0e0;margin-top:0.05rem}
-.ch1-lang-badge{position:absolute;top:-5px;right:-5px;background:#6c5ce7;color:#fff;font-size:0.5rem;padding:0.1rem 0.35rem;border-radius:8px;font-weight:700;animation:badgePulse 2s ease infinite}
+.ch1-lang-badge{position:absolute;top:-5px;right:-5px;background:#fd79a8;color:#fff;font-size:0.5rem;padding:0.1rem 0.35rem;border-radius:8px;font-weight:700;animation:badgePulse 2s ease infinite}
 @keyframes badgePulse{0%,100%{opacity:1}50%{opacity:0.6}}
 .ch1-python-facts{display:flex;flex-direction:column;gap:0.25rem;margin-top:0.7rem}
 .ch1-fact{display:flex;align-items:center;gap:0.4rem;font-size:0.88rem;color:#e8ecf2;background:#0d0d1a;border-radius:6px;padding:0.3rem 0.6rem;animation:slideInPipe 0.3s ease both}
@@ -151,7 +151,7 @@ const CHAPTER1 = {
 .ch1-try-steps{display:flex;flex-direction:column;gap:0.3rem;margin:0.5rem 0}
 .ch1-try-step{display:flex;align-items:center;gap:0.5rem;background:#0d0d1a;border-radius:8px;padding:0.4rem 0.6rem;animation:slideInPipe 0.3s ease both}
 .ch1-try-step:nth-child(1){animation-delay:0.05s}.ch1-try-step:nth-child(2){animation-delay:0.1s}.ch1-try-step:nth-child(3){animation-delay:0.15s}.ch1-try-step:nth-child(4){animation-delay:0.2s}
-.ch1-try-num{width:22px;height:22px;border-radius:50%;background:#6c5ce7;color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:800;flex-shrink:0}
+.ch1-try-num{width:22px;height:22px;border-radius:50%;background:#fd79a8;color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:800;flex-shrink:0}
 .ch1-try-text{font-size:0.9rem;color:#e8ecf2}
 .ch1-try-example{background:#0d0d1a;border-radius:8px;padding:0.5rem 0.7rem;margin-top:0.5rem;font-size:0.88rem}
 .ch1-try-example code{color:#FF9800;font-weight:700;font-size:0.88rem}
@@ -170,7 +170,7 @@ const CHAPTER1 = {
 print("第二行")</div>
       <div class="ch1-trick-note">每个print换一行</div>
     </div>
-    <div class="ch1-trick-card" style="border-color:rgba(108,92,231,0.4)">
+    <div class="ch1-trick-card" style="border-color:rgba(253,121,168,0.4)">
       <div class="ch1-trick-name">打印多个值</div>
       <div class="ch1-trick-code">print("姓名:", "小明")</div>
       <div class="ch1-trick-note">用逗号分隔，自动加空格</div>
@@ -249,11 +249,11 @@ print("第二行")</div>
 </div>
 <style>
 .ch1-var-boxes{display:flex;gap:0.5rem;justify-content:center;margin:0.6rem 0;flex-wrap:wrap}
-.ch1-var-box{background:#0d0d1a;border:2px solid rgba(108,92,231,0.3);border-radius:12px;padding:0.5rem 0.7rem;text-align:center;min-width:80px;animation:nodeAppear 0.3s ease both;position:relative}
-.ch1-var-box:nth-child(1){animation-delay:0.1s;border-color:rgba(0,184,148,0.3)}.ch1-var-box:nth-child(2){animation-delay:0.2s;border-color:rgba(108,92,231,0.3)}.ch1-var-box:nth-child(3){animation-delay:0.3s;border-color:rgba(253,203,110,0.3)}
+.ch1-var-box{background:#0d0d1a;border:2px solid rgba(253,121,168,0.3);border-radius:12px;padding:0.5rem 0.7rem;text-align:center;min-width:80px;animation:nodeAppear 0.3s ease both;position:relative}
+.ch1-var-box:nth-child(1){animation-delay:0.1s;border-color:rgba(0,184,148,0.3)}.ch1-var-box:nth-child(2){animation-delay:0.2s;border-color:rgba(253,121,168,0.3)}.ch1-var-box:nth-child(3){animation-delay:0.3s;border-color:rgba(253,203,110,0.3)}
 .ch1-vb-label{font-family:monospace;font-size:0.8rem;color:#FF9800;font-weight:700;font-weight:700;margin-bottom:0.1rem}
 .ch1-vb-content{font-family:monospace;font-size:0.9rem;font-weight:800;color:#fff;margin:0.15rem 0}
-.ch1-vb-type{font-size:0.88rem;color:#c8d0e0;background:rgba(108,92,231,0.08);padding:0.1rem 0.3rem;border-radius:6px}
+.ch1-vb-type{font-size:0.88rem;color:#c8d0e0;background:rgba(253,121,168,0.08);padding:0.1rem 0.3rem;border-radius:6px}
 .ch1-assign-demo{background:#0d0d1a;border-radius:10px;padding:0.6rem;margin-top:0.6rem;text-align:center}
 .ch1-ad-line{font-family:monospace;font-size:0.95rem;margin-bottom:0.4rem}
 .ch1-ad-var{color:#fdcb6e;font-weight:700}
@@ -400,7 +400,7 @@ print("第二行")</div>
 <div class="theory-anim-box">
   <div class="theory-anim-title">🎨 四大基本数据类型</div>
   <div class="ch1-type-grid">
-    <div class="ch1-type-card" style="--tc:#6c5ce7">
+    <div class="ch1-type-card" style="--tc:#fd79a8">
       <div class="ch1-type-icon">🔢</div>
       <div class="ch1-type-name">int 整数</div>
       <div class="ch1-type-examples">42, -3, 0, 1000</div>
@@ -435,7 +435,7 @@ print("第二行")</div>
 .ch1-type-icon{font-size:1.2rem;margin-bottom:0.1rem}
 .ch1-type-name{font-size:0.9rem;font-weight:800;color:var(--tc)}
 .ch1-type-examples{font-family:monospace;font-size:0.8rem;color:#c8d0e0;margin:0.1rem 0}
-.ch1-type-use{font-size:0.92rem;color:#b8c4d8;background:rgba(108,92,231,0.05);padding:0.1rem 0.4rem;border-radius:8px}
+.ch1-type-use{font-size:0.92rem;color:#b8c4d8;background:rgba(253,121,168,0.05);padding:0.1rem 0.4rem;border-radius:8px}
 </style>`
         },
         {
