@@ -45,12 +45,19 @@
     <!-- 侧边栏 -->
     <aside id="sidebar" class="sidebar">
       <div class="sidebar-header">
-        <div class="logo">
-          <span class="logo-text" id="logoText">🌍 互动编程课程</span>
+        <div class="sidebar-brand-card">
+          <div class="sidebar-brand-badge">🌈</div>
+          <div class="logo">
+            <span class="logo-kicker">孩子的编程冒险乐园</span>
+            <span class="logo-text" id="logoText">互动编程课程</span>
+          </div>
         </div>
-        <div class="user-greeting" style="padding:6px 16px 2px;font-size:13px;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:6px;">
-          <span>👤</span>
-          <span id="userName" style="cursor:pointer;border-bottom:1px dashed rgba(255,255,255,0.3);padding-bottom:1px;" title="点击修改昵称">Python学徒</span>
+        <div class="user-greeting">
+          <span id="userAvatar" class="user-avatar-bubble" title="点击修改资料">🧒</span>
+          <div class="user-greeting-text">
+            <span class="user-greeting-label">今天也要快乐写代码</span>
+            <span id="userName" class="user-name-link" title="点击修改昵称">Python学徒</span>
+          </div>
         </div>
         <!-- 全部展开/收起按钮 -->
         <div class="nav-global-actions">
@@ -90,11 +97,12 @@
       </div>
       <div class="sidebar-about-link">
         <a href="about.html" class="sidebar-about-btn" title="说明与致谢">
-          <i class="fas fa-info-circle"></i> 关于
+          <i class="fas fa-info-circle"></i>
+          <span>关于</span>
         </a>
-        <span style="color:rgba(255,255,255,0.15);margin:0 4px;">|</span>
-        <button id="clearProgressBtn" class="sidebar-about-btn" title="清除学习进度" style="background:none;border:none;cursor:pointer;font-family:inherit;">
-          <i class="fas fa-trash-alt"></i> 清除进度
+        <button id="clearProgressBtn" type="button" class="sidebar-about-btn sidebar-danger-btn" title="清除学习进度">
+          <i class="fas fa-trash-alt"></i>
+          <span>清除进度</span>
         </button>
       </div>
     </aside>
@@ -115,11 +123,7 @@
         <div class="breadcrumb" id="breadcrumb">
           <span class="breadcrumb-item">🏠 首页</span>
         </div>
-        <div class="top-actions">
-          <button id="clearProgressBtn" class="btn-clear-progress" title="清除学习进度">
-            <i class="fas fa-trash-alt"></i> 清除进度
-          </button>
-        </div>
+
       </header>
 
       <!-- ============ 欢迎页 ============ -->
@@ -432,6 +436,31 @@
   <script src="js/courses/chapter_v4_cpp7.js"></script>
   <!-- 课程索引 -->
   <script src="js/courses/homework-data.js"></script>
+  <script src="js/courses/homework-bank/chapter-01-intro.js"></script>
+  <script src="js/courses/homework-bank/chapter-02-expressions.js"></script>
+  <script src="js/courses/homework-bank/chapter-03-conditions.js"></script>
+  <script src="js/courses/homework-bank/chapter-04-loops.js"></script>
+  <script src="js/courses/homework-bank/chapter-05-list-dict.js"></script>
+  <script src="js/courses/homework-bank/chapter-06-functions.js"></script>
+  <script src="js/courses/homework-bank/chapter-07-modules.js"></script>
+  <script src="js/courses/homework-bank/chapter-08-files.js"></script>
+  <script src="js/courses/homework-bank/chapter-09-projects.js"></script>
+  <script src="js/courses/homework-bank/chapter-10-advanced.js"></script>
+  <script src="js/courses/homework-bank/chapter-11-functional.js"></script>
+  <script src="js/courses/homework-bank/chapter-12-oop.js"></script>
+  <script src="js/courses/homework-bank/chapter-13-oop-advanced.js"></script>
+  <script src="js/courses/homework-bank/chapter-14-errors.js"></script>
+  <script src="js/courses/homework-bank/chapter-15-io.js"></script>
+  <script src="js/courses/homework-bank/chapter-16-regex.js"></script>
+  <script src="js/courses/homework-bank/chapter-17-builtins.js"></script>
+  <script src="js/courses/homework-bank/chapter-18-process-thread.js"></script>
+  <script src="js/courses/homework-bank/chapter-19-network.js"></script>
+  <script src="js/courses/homework-bank/extra-00-core.js"></script>
+  <script src="js/courses/homework-bank/extra-0b-cpu-memory.js"></script>
+  <script src="js/courses/homework-bank/extra-0c-number-assembly.js"></script>
+  <script src="js/courses/homework-bank/extra-v1-foundations.js"></script>
+  <script src="js/courses/homework-bank/extra-v3-algo.js"></script>
+  <script src="js/courses/homework-bank/extra-v4-cpp.js"></script>
   <script src="js/courses/index.js"></script>
   <script src="js/app/syntax-highlight.js"></script>
   <script src="js/app/lexer.js"></script>
@@ -450,15 +479,32 @@
   <script src="js/app/homework.js"></script>
   <script src="js/app/ui-misc.js"></script>
   <script src="js/app/boot.js"></script>
-  <!-- 用户名输入弹窗 -->
-  <div id="nameModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:9999;justify-content:center;align-items:center;">
-    <div style="background:linear-gradient(135deg,#1a1a3e,#2d2d6e);border-radius:20px;padding:40px;text-align:center;max-width:400px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.5);position:relative;">
-      <button id="nameClose" style="position:absolute;top:12px;right:16px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:20px;cursor:pointer;padding:4px 8px;border-radius:8px;transition:all 0.2s;" title="关闭">✕</button>
-      <div style="font-size:48px;margin-bottom:16px;">👋</div>
-      <h2 style="color:#fff;font-size:22px;margin-bottom:8px;">欢迎来到编程世界！</h2>
-      <p style="color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:24px;">请告诉我你的名字</p>
-      <input id="nameInput" type="text" maxlength="20" placeholder="请输入你的名字" style="width:100%;padding:12px 16px;border-radius:12px;border:2px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.08);color:#fff;font-size:16px;outline:none;text-align:center;box-sizing:border-box;">
-      <button id="nameConfirm" style="margin-top:16px;padding:12px 40px;border-radius:12px;border:none;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;font-size:16px;font-weight:bold;cursor:pointer;width:100%;">开始学习 🚀</button>
+  <!-- 用户资料输入弹窗 -->
+  <div id="nameModal" class="name-modal-overlay" style="display:none;">
+    <div class="name-modal-card">
+      <button id="nameClose" class="name-modal-close" title="关闭">✕</button>
+      <div class="name-modal-hero">🌈</div>
+      <h2 id="nameModalTitle">欢迎来到编程世界！</h2>
+      <p id="nameModalDesc">先告诉我你的名字，再选一个小身份吧</p>
+      <input id="nameInput" class="name-modal-input" type="text" maxlength="20" placeholder="请输入你的名字">
+      <div class="name-gender-group">
+        <div class="name-gender-title">选择你的性别</div>
+        <div class="name-gender-options">
+          <label class="name-gender-option">
+            <input type="radio" name="profileGender" value="boy">
+            <span>👦 男孩</span>
+          </label>
+          <label class="name-gender-option">
+            <input type="radio" name="profileGender" value="girl">
+            <span>👧 女孩</span>
+          </label>
+          <label class="name-gender-option">
+            <input type="radio" name="profileGender" value="unknown" checked>
+            <span>🧒 暂不选择</span>
+          </label>
+        </div>
+      </div>
+      <button id="nameConfirm" class="name-modal-confirm">开始学习 🚀</button>
     </div>
   </div>
 

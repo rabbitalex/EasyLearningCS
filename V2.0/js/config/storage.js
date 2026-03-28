@@ -34,7 +34,8 @@ var STORAGE_KEYS = {
 var DEFAULTS = {
   userProfile: {
     nickname: 'Python学徒',
-    avatar: '👤',
+    avatar: '🧒',
+    gender: 'unknown',
     joinDate: new Date().toISOString(),
     theme: 'magic'
   },
