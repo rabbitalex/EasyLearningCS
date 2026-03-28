@@ -50,28 +50,33 @@ echo "  🐍 $("$PY" --version 2>&1)"
 echo ""
 
 # ---------- 清理旧进程 ----------
-# 如果 .port 文件存在，说明之前有服务在跑
-if [ -f "$APP_DIR/.port" ]; then
-  OLD_PORT="$(cat "$APP_DIR/.port" 2>/dev/null || echo "")"
-  if [ -n "${OLD_PORT:-}" ]; then
-    echo "  🧹 检测到旧服务（端口 $OLD_PORT），正在清理..."
-    # macOS 用 lsof，Linux 用 fuser / lsof
-    OLD_PIDS="$(lsof -ti "tcp:${OLD_PORT}" 2>/dev/null || true)"
-    if [ -z "${OLD_PIDS:-}" ]; then
-      OLD_PIDS="$(fuser "${OLD_PORT}/tcp" 2>/dev/null | tr -s ' ' '\n' || true)"
+cleanup_old() {
+  local port=""
+  local pid=""
+  local pids=""
+  # 如果 .port 文件存在，说明之前有服务在跑
+  if [ -f "$APP_DIR/.port" ]; then
+    port="$(cat "$APP_DIR/.port" 2>/dev/null)" || port=""
+    if [ -n "$port" ]; then
+      echo "  🧹 检测到旧服务（端口 $port），正在清理..."
+      pids="$(lsof -ti "tcp:$port" 2>/dev/null)" || pids=""
+      if [ -z "$pids" ]; then
+        pids="$(fuser "$port/tcp" 2>/dev/null | tr -s ' ' '\n')" || pids=""
+      fi
+      for pid in $pids; do
+        kill "$pid" 2>/dev/null && echo "  🧹 已终止旧进程 PID=$pid" || true
+      done
+      sleep 0.5
     fi
-    for pid in ${OLD_PIDS:-}; do
-      kill "$pid" 2>/dev/null && echo "  🧹 已终止旧进程 PID=$pid" || true
-    done
-    sleep 0.5
   fi
-fi
-# 同时清理所有残留的 server.py 进程
-OLD_SERVER_PIDS="$(pgrep -f "python.*server\.py" 2>/dev/null || true)"
-for pid in ${OLD_SERVER_PIDS:-}; do
-  kill "$pid" 2>/dev/null && echo "  🧹 已终止残留 server.py PID=$pid" || true
-done
-rm -f "$APP_DIR/.port" /tmp/EasyLearningCS-server.log
+  # 同时清理所有残留的 server.py 进程
+  pids="$(pgrep -f "python.*server\.py" 2>/dev/null)" || pids=""
+  for pid in $pids; do
+    kill "$pid" 2>/dev/null && echo "  🧹 已终止残留 server.py PID=$pid" || true
+  done
+  rm -f "$APP_DIR/.port" /tmp/EasyLearningCS-server.log
+}
+cleanup_old
 
 # ---------- 启动服务器，捕获输出 ----------
 "$PY" "$APP_DIR/server.py" > /tmp/EasyLearningCS-server.log 2>&1 &
