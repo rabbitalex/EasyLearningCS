@@ -34,22 +34,38 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Resolve version
+      - name: Resolve version and release meta
         id: meta
         shell: bash
         run: |
           if [[ "${GITHUB_REF_TYPE}" == "tag" ]]; then
             VERSION="${GITHUB_REF_NAME}"
             SHOULD_RELEASE=true
+            RELEASE_TAG="${VERSION}"
+            RELEASE_NAME="EasyLearningCS ${VERSION}"
+            PRERELEASE=false
+            MAKE_LATEST=true
           elif [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
             VERSION="${{ inputs.version }}"
             SHOULD_RELEASE="${{ inputs.publish_release }}"
+            RELEASE_TAG="${VERSION}"
+            RELEASE_NAME="EasyLearningCS ${VERSION}"
+            PRERELEASE=false
+            MAKE_LATEST=true
           else
             VERSION="v2.0"
-            SHOULD_RELEASE=false
+            SHOULD_RELEASE=true
+            RELEASE_TAG="latest-dist"
+            RELEASE_NAME="EasyLearningCS 最新构建"
+            PRERELEASE=true
+            MAKE_LATEST=false
           fi
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
           echo "should_release=${SHOULD_RELEASE}" >> "$GITHUB_OUTPUT"
+          echo "release_tag=${RELEASE_TAG}" >> "$GITHUB_OUTPUT"
+          echo "release_name=${RELEASE_NAME}" >> "$GITHUB_OUTPUT"
+          echo "prerelease=${PRERELEASE}" >> "$GITHUB_OUTPUT"
+          echo "make_latest=${MAKE_LATEST}" >> "$GITHUB_OUTPUT"
 
       - name: Build dist packages
         run: python3 scripts/build_release.py --version "${{ steps.meta.outputs.version }}"
@@ -65,7 +81,10 @@ jobs:
         if: steps.meta.outputs.should_release == 'true'
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ steps.meta.outputs.version }}
-          name: EasyLearningCS ${{ steps.meta.outputs.version }}
+          tag_name: ${{ steps.meta.outputs.release_tag }}
+          target_commitish: ${{ github.sha }}
+          name: ${{ steps.meta.outputs.release_name }}
+          prerelease: ${{ steps.meta.outputs.prerelease }}
+          make_latest: ${{ steps.meta.outputs.make_latest }}
           files: dist/*.zip
           generate_release_notes: true
