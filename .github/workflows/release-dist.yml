@@ -9,9 +9,9 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: '发布版本号，例如 v2.0.1'
+        description: '发布版本号，例如 v2.0.2'
         required: false
-        default: 'v2.0.1'
+        default: 'v2.0.2'
       publish_release:
         description: '是否创建 GitHub Release'
         required: false
@@ -53,7 +53,7 @@ jobs:
             PRERELEASE=false
             MAKE_LATEST=true
           else
-            VERSION="v2.0.1"
+            VERSION="v2.0.2"
             SHOULD_RELEASE=true
             RELEASE_TAG="latest-dist"
             RELEASE_NAME="EasyLearningCS 最新构建"

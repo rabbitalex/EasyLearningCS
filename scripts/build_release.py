@@ -10,7 +10,7 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parent.parent
 DIST_DIR = ROOT / 'dist'
-DEFAULT_VERSION = 'v2.0.1'
+DEFAULT_VERSION = 'v2.0.2'
 
 BASE_EXCLUDES = [
     '.git', '.git/**',
@@ -74,7 +74,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         '--version',
         default=DEFAULT_VERSION,
-        help='发布版本号，默认 v2.0.1，例如 v2.1.0',
+        help='发布版本号，默认 v2.0.2，例如 v2.1.0',
     )
     return parser.parse_args()
 
