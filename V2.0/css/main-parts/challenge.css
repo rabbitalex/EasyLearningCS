@@ -142,6 +142,36 @@
   color: #c62828;
 }
 
+.challenge-result.hint {
+  background: rgba(255, 171, 64, 0.12);
+  border: 2px solid rgba(255, 171, 64, 0.45);
+  color: #ffb74d;
+}
+
+.challenge-result-label {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.8rem;
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
+.challenge-result-code {
+  margin: 0;
+  padding: 0.95rem 1rem;
+  border-radius: 12px;
+  background: rgba(7, 11, 24, 0.72);
+  color: #f8fbff;
+  font-family: var(--font-code);
+  font-size: 0.93rem;
+  font-weight: 500;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-x: auto;
+}
+
 /* ========== 作业列表 ========== */
 .homework-list {
   display: flex;

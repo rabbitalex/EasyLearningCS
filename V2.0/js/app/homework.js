@@ -21,6 +21,7 @@
           desc: bank[b].desc,
           template: bank[b].template || '',
           hint: bank[b].hint || '',
+          answer: bank[b].answer || bank[b].solution || bank[b].hint || '',
           check: bank[b].check || function() { return true; },
           stars: b < 3 ? 1 : (b < 7 ? 2 : 3)
         });
@@ -31,10 +32,12 @@
     if (homeworks.length === 0) {
       var ch = lesson.challenge;
       homeworks.push({
-        desc: ch.desc,
+        desc: ch.desc || ch.description || '',
         template: ch.template || '',
         hint: ch.hint || '',
-        check: ch.check,
+        answer: ch.answer || ch.solution || ch.hint || '',
+        solution: ch.solution || '',
+        check: ch.check || function() { return true; },
         stars: 1
       });
     }
@@ -47,6 +50,7 @@
         desc: '（作业 ' + (idx + 1) + ' 待补充）',
         template: '# 请完成作业 ' + (idx + 1) + '\n',
         hint: '',
+        answer: '',
         check: function() { return true; },
         stars: star
       });
@@ -81,6 +85,35 @@
   // 检查某课是否所有10道作业都完成
   function isAllHomeworkDone(lessonId) {
     return getCompletedHomeworks(lessonId).length >= 10;
+  }
+
+  function getHomeworkAnswer(hw) {
+    if (!hw) return '';
+    return hw.answer || hw.solution || hw.hint || '';
+  }
+
+  function showHomeworkHint() {
+    if (!state.currentLesson || _currentHomeworkIndex < 0) {
+      toast('⚠️ 请先打开一道作业');
+      return false;
+    }
+
+    var homeworks = generateHomeworks(state.currentLesson);
+    var hw = homeworks[_currentHomeworkIndex];
+    var answer = getHomeworkAnswer(hw);
+    var resultEl = document.getElementById('challengeResult');
+
+    if (!hw || !resultEl) return false;
+    if (!answer) {
+      toast('这道作业暂时还没有提供答案');
+      return false;
+    }
+
+    resultEl.className = 'challenge-result hint show';
+    resultEl.innerHTML = '<div class="challenge-result-label"><i class="fas fa-lightbulb"></i> 参考答案</div>' +
+      '<pre class="challenge-result-code">' + escapeHtml(answer) + '</pre>';
+    resultEl.style.display = 'block';
+    return true;
   }
 
   // 渲染作业列表
@@ -126,7 +159,7 @@
   }
 
   // 打开某道作业详情
-  function openHomeworkDetail(lesson, homeworks, idx) {
+  function openHomeworkDetail(homeworks, idx) {
     var listEl = document.getElementById('homeworkList');
     var detailEl = document.getElementById('homeworkDetail');
     var titleEl = document.getElementById('homeworkDetailTitle');
@@ -221,6 +254,7 @@
   window.HomeworkSystem = {
     render: renderHomeworkList,
     submit: submitCurrentHomework,
+    showHint: showHomeworkHint,
     init: initHomework,
     isAllDone: isAllHomeworkDone,
     getCompleted: getCompletedHomeworks

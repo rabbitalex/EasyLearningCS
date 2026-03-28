@@ -16,7 +16,7 @@ function bindEvents() {
   // 运行代码
   $('runCode').addEventListener('click', function() {
     var code = $('codeEditor').value;
-    if (!code.trim()) { toast('\u26a0\ufe0f 请先输入代码'); return; }
+    if (!code.trim()) { toast('⚠️ 请先输入代码'); return; }
     var runBtn = $('runCode');
     var outputSection = document.querySelector('.section-output');
     // 运行中状态
@@ -36,7 +36,7 @@ function bindEvents() {
   // 逐步执行
   $('stepRun').addEventListener('click', function() {
     var code = $('codeEditor').value;
-    if (!code.trim()) { toast('\u26a0\ufe0f 请先输入代码'); return; }
+    if (!code.trim()) { toast('⚠️ 请先输入代码'); return; }
     stepExecute(code);
   });
 
@@ -51,7 +51,7 @@ function bindEvents() {
     if (this.disabled) return;
     state.stepExecuting = false; state.stepIndex = 0;
     hideStepButtons(); removeHighlight();
-    toast('\u23f9 逐步执行已停止');
+    toast('⏹ 逐步执行已停止');
   });
 
   // 重置代码
@@ -61,11 +61,11 @@ function bindEvents() {
       updateLineNumbers();
       updateHighlight();
       clearOutput();
-      $('outputArea').innerHTML = '<span class="output-placeholder">代码已重置 \u2728</span>';
+      $('outputArea').innerHTML = '<span class="output-placeholder">代码已重置 ✨</span>';
       state.variables = {};
       updateVariablesDisplay({});
       hideStepButtons();
-      toast('\ud83d\udd04 代码已重置');
+      toast('🔄 代码已重置');
     }
   });
 
@@ -76,7 +76,7 @@ function bindEvents() {
     var doCopy = function() {
       copyBtn.classList.add('copied');
       copyBtn.innerHTML = '<i class="fas fa-check"></i> 已复制';
-      toast('\ud83d\udccb 代码已复制！');
+      toast('📋 代码已复制！');
       setTimeout(function() {
         copyBtn.classList.remove('copied');
         copyBtn.innerHTML = '<i class="fas fa-copy"></i> 复制';
@@ -94,7 +94,7 @@ function bindEvents() {
 
   // 清除输出
   $('clearOutput').addEventListener('click', function() {
-    $('outputArea').innerHTML = '<span class="output-placeholder">输出已清除 \u2728</span>';
+    $('outputArea').innerHTML = '<span class="output-placeholder">输出已清除 ✨</span>';
   });
 
   // 步骤导航
@@ -141,11 +141,11 @@ function bindEvents() {
     }
   });
 
-  // 提示
+  // 提示 / 答案
   $('hintBtn').addEventListener('click', function() {
-    if (!state.currentLesson || !state.currentLesson.challenge) return;
-    // 提示仍然从当前作业获取（HomeworkSystem 管理）
-    toast('\ud83d\udca1 请参考课程内容完成作业！');
+    if (typeof HomeworkSystem !== 'undefined' && HomeworkSystem.showHint) {
+      HomeworkSystem.showHint();
+    }
   });
 
   // 键盘快捷键
@@ -271,4 +271,3 @@ function bindEvents() {
     });
   });
 }
-
