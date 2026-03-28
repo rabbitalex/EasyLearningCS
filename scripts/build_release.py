@@ -14,20 +14,15 @@ DEFAULT_VERSION = 'v2.0'
 
 BASE_EXCLUDES = [
     '.git', '.git/**',
+    '.github', '.github/**',
     '.codebuddy', '.codebuddy/**',
     'dist', 'dist/**',
     'scripts', 'scripts/**',
     '.gitignore', '.gitattributes',
     '*.DS_Store', '*.pyc',
     '__pycache__', '__pycache__/**',
-    'runtime', 'runtime/**',
-    'start.bat',
-    'start.command',
-    'start.sh',
-    'V2.0/server.py',
-    'V2.0/watchdog.py',
+    'runtime/README.md',
     'V2.0/daemon.js',
-    'V2.0/user-data.default.json',
     'V2.0/user-data.json',
     'V2.0/.port',
     'V2.0/.daemon.pid',
@@ -43,6 +38,8 @@ def get_mode_config(version: str) -> dict:
             'excludes': [
                 '双击启动-Mac.command',
                 '使用说明-Mac.txt',
+                'start.command',
+                'start.sh',
             ],
             'rename_map': {
                 '双击启动-Windows.bat': '双击启动.bat',
@@ -55,6 +52,8 @@ def get_mode_config(version: str) -> dict:
             'excludes': [
                 '双击启动-Windows.bat',
                 '使用说明-Windows.txt',
+                'runtime', 'runtime/**',
+                'start.bat',
             ],
             'rename_map': {
                 '双击启动-Mac.command': '双击启动.command',

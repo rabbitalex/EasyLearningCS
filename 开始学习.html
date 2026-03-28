@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>开始学习 - EasyLearningCS</title>
-  <meta http-equiv="refresh" content="0; url=V2.0/index.html">
   <style>
     body {
       margin: 0;
@@ -17,7 +16,7 @@
       color: #1f2d3d;
     }
     .card {
-      width: min(92vw, 560px);
+      width: min(92vw, 620px);
       background: #fff;
       border-radius: 20px;
       box-shadow: 0 20px 60px rgba(64, 94, 160, 0.18);
@@ -25,25 +24,43 @@
       text-align: center;
     }
     h1 { margin: 0 0 12px; font-size: 28px; }
-    p { margin: 0 0 18px; line-height: 1.7; color: #50627a; }
-    a {
-      display: inline-block;
-      padding: 12px 22px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #6c5ce7, #00cec9);
-      color: #fff;
-      text-decoration: none;
-      font-weight: 700;
+    p { margin: 0 0 16px; line-height: 1.7; color: #50627a; }
+    .steps {
+      margin: 20px 0;
+      text-align: left;
+      background: #f7f9ff;
+      border-radius: 16px;
+      padding: 18px 20px;
+      color: #334155;
+      line-height: 1.8;
     }
-    .tip { margin-top: 16px; font-size: 14px; color: #7b8ba3; }
+    .warn {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: #fff8e8;
+      color: #8a5a00;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    code {
+      background: rgba(108, 92, 231, 0.08);
+      border-radius: 8px;
+      padding: 2px 8px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
   </style>
 </head>
 <body>
   <div class="card">
     <h1>🌈 EasyLearningCS</h1>
-    <p>正在为你打开课程主页……如果浏览器没有自动跳转，请点击下面的按钮。</p>
-    <a href="V2.0/index.html">点击开始学习</a>
-    <div class="tip">建议先解压整个 ZIP，再双击这个文件打开。</div>
+    <p>学习进度需要通过本地服务写入 <code>V2.0/user-data.json</code>，所以请不要直接打开课程 HTML。</p>
+    <div class="steps">
+      <div><strong>Windows：</strong>双击 <code>双击启动.bat</code></div>
+      <div><strong>macOS：</strong>双击 <code>双击启动.command</code></div>
+      <div><strong>然后：</strong>等待浏览器自动打开课程页面</div>
+    </div>
+    <div class="warn">直接双击 <code>开始学习.html</code> 或 <code>V2.0/index.html</code> 只会打开静态页面，不会把学习进度写入 <code>user-data.json</code>。</div>
   </div>
 </body>
 </html>

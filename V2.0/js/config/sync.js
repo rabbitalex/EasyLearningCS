@@ -1,6 +1,6 @@
 // js/config/sync.js — 前端数据同步层
-// 文件双击模式：直接使用 localStorage，不依赖本地服务
-// 服务端模式：通过 /api/user-data 与 user-data.json 同步
+// 正常启动模式：通过 /api/user-data 与 user-data.json 同步
+// 直接 file:// 打开时：仅保留内存态，不写浏览器本地存储，也不做持久化
 
 (function() {
   'use strict';
@@ -63,9 +63,10 @@
     };
   }
 
-  function exposeLocalDataSync() {
+  function exposeFileModeDataSync() {
+    console.warn('[Sync] 当前是 file:// 直接打开，数据不会写入浏览器，也不会保存到 user-data.json。请使用双击启动脚本。');
     window.DataSync = {
-      mode: 'localStorage',
+      mode: 'memory',
       syncNow: function(callback) {
         if (callback) callback(null);
       },
@@ -81,7 +82,7 @@
   }
 
   if (IS_FILE_MODE) {
-    exposeLocalDataSync();
+    exposeFileModeDataSync();
     return;
   }
 

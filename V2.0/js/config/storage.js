@@ -2,17 +2,8 @@
 
 var APP_RUNTIME = window.APP_RUNTIME || {};
 APP_RUNTIME.isFileMode = window.location.protocol === 'file:';
-APP_RUNTIME.hasLocalStorage = (function() {
-  try {
-    var testKey = '__easy_learning_cs_storage_test__';
-    window.localStorage.setItem(testKey, '1');
-    window.localStorage.removeItem(testKey);
-    return true;
-  } catch (e) {
-    return false;
-  }
-})();
-APP_RUNTIME.storageMode = (APP_RUNTIME.isFileMode && APP_RUNTIME.hasLocalStorage) ? 'localStorage' : 'memory';
+APP_RUNTIME.hasLocalStorage = false;
+APP_RUNTIME.storageMode = 'memory';
 window.APP_RUNTIME = APP_RUNTIME;
 
 // ========== 存储键名常量 ==========
@@ -68,14 +59,12 @@ var DEFAULTS = {
 };
 
 // ========== 存储实现 ==========
-// 文件双击模式：直接写 localStorage，做到零配置可持久化
-// 服务端模式：先写内存，再由 sync.js 同步到 user-data.json
+// 前端统一只使用内存作为缓冲层：
+// - 正常启动（http://localhost）时，由 sync.js 同步到 user-data.json
+// - 直接用 file:// 打开时，不会写入浏览器本地存储，也不会持久化
 var memoryStorage = {};
 
 function getActiveStorage() {
-  if (APP_RUNTIME.storageMode === 'localStorage') {
-    return window.localStorage;
-  }
   return null;
 }
 
