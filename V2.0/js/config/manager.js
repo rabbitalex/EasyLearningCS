@@ -303,6 +303,7 @@ var ConfigManager = {
     for (var key in STORAGE_KEYS) {
       safeRemove(STORAGE_KEYS[key]);
     }
+    safeRemove('py_user_code');
     memoryStorage = {};
     return true;
   },

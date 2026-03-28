@@ -1,6 +1,6 @@
 // js/config/sync.js — 前端数据同步层
-// 所有数据存储在内存（memoryStorage），通过此模块与服务端 user-data.json 同步
-// 启动时同步加载服务端数据到内存，之后定期自动同步
+// 文件双击模式：直接使用 localStorage，不依赖本地服务
+// 服务端模式：通过 /api/user-data 与 user-data.json 同步
 
 (function() {
   'use strict';
@@ -10,6 +10,7 @@
   var _dirty = false;
   var _syncing = false;
   var _timer = null;
+  var IS_FILE_MODE = !!(window.APP_RUNTIME && window.APP_RUNTIME.isFileMode);
 
   // 把服务端数据写入内存
   function applyToMemory(data) {
@@ -34,7 +35,7 @@
     }
   }
 
-  // 从内存收集全部数据
+  // 从当前存储收集全部数据
   function collectFromMemory() {
     return {
       version: 1,
@@ -60,6 +61,28 @@
       },
       code: safeGet('py_user_code', {})
     };
+  }
+
+  function exposeLocalDataSync() {
+    window.DataSync = {
+      mode: 'localStorage',
+      syncNow: function(callback) {
+        if (callback) callback(null);
+      },
+      markDirty: function() {},
+      saveToServer: function(callback) {
+        if (callback) callback(null);
+      },
+      loadFromServer: function(callback) {
+        if (callback) callback(null, collectFromMemory());
+      },
+      collectAll: collectFromMemory
+    };
+  }
+
+  if (IS_FILE_MODE) {
+    exposeLocalDataSync();
+    return;
   }
 
   // 启动时同步加载服务端数据（阻塞式，确保后续模块能读到数据）
@@ -90,6 +113,8 @@
         } catch (e) {
           if (callback) callback(e);
         }
+      } else if (callback) {
+        callback(new Error('http ' + xhr.status));
       }
     };
     xhr.onerror = function() { if (callback) callback(new Error('network')); };
@@ -106,8 +131,12 @@
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function() {
       _syncing = false;
-      _dirty = false;
-      if (callback) callback(null);
+      if (xhr.status >= 200 && xhr.status < 300) {
+        _dirty = false;
+        if (callback) callback(null);
+      } else if (callback) {
+        callback(new Error('http ' + xhr.status));
+      }
     };
     xhr.onerror = function() {
       _syncing = false;
@@ -162,6 +191,7 @@
 
   // 暴露到全局
   window.DataSync = {
+    mode: 'server',
     syncNow: syncNow,
     markDirty: markDirty,
     saveToServer: saveToServer,

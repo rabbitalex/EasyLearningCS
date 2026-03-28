@@ -1,0 +1,18 @@
+# GitHub 自动生成的源码 ZIP/TAR 排除项
+.codebuddy export-ignore
+dist export-ignore
+scripts export-ignore
+runtime export-ignore
+start.bat export-ignore
+start.command export-ignore
+start.sh export-ignore
+.gitignore export-ignore
+.gitattributes export-ignore
+V2.0/daemon.js export-ignore
+V2.0/server.py export-ignore
+V2.0/watchdog.py export-ignore
+V2.0/user-data.default.json export-ignore
+V2.0/user-data.json export-ignore
+V2.0/.port export-ignore
+V2.0/.daemon.pid export-ignore
+V2.0/logs export-ignore
